@@ -26,6 +26,9 @@ importers:
       '@urql/core':
         specifier: ^5.0.4
         version: 5.0.4(graphql@16.9.0)
+      '@vercel/speed-insights':
+        specifier: ^1.0.12
+        version: 1.0.12(@preact/compat@17.1.2(preact@10.22.0))(svelte@4.2.18)
       astro:
         specifier: ^4.11.0
         version: 4.11.0(typescript@5.5.2)
@@ -1068,6 +1071,29 @@ packages:
     resolution: {integrity: sha512-7LeioS1yE5hwPpQfD3DdH04tuugKjo5KrJk3yK5kAI3Lh76iSsK/ezoFQfzuT08X3ZASQOd1y9ePjLNI9+TxTQ==}
     engines: {node: '>=16'}
     hasBin: true
+
+  '@vercel/speed-insights@1.0.12':
+    resolution: {integrity: sha512-ZGQ+a7bcfWJD2VYEp2R1LHvRAMyyaFBYytZXsfnbOMkeOvzGNVxUL7aVUvisIrTZjXTSsxG45DKX7yiw6nq2Jw==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19
+      svelte: ^4
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@volar/kit@2.2.5':
     resolution: {integrity: sha512-Bmn0UCaT43xUGGRwcmFG9lKhiCCLjRT4ScSLLPn5C9ltUcSGnIFFDlbZZa1PreHYHq25/4zkXt9Ap32klAh17w==}
@@ -4241,6 +4267,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@vercel/speed-insights@1.0.12(@preact/compat@17.1.2(preact@10.22.0))(svelte@4.2.18)':
+    optionalDependencies:
+      react: '@preact/compat@17.1.2(preact@10.22.0)'
+      svelte: 4.2.18
 
   '@volar/kit@2.2.5(typescript@5.5.2)':
     dependencies:

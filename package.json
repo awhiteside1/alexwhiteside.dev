@@ -30,7 +30,8 @@
 		"react-dom": "npm:@preact/compat",
 		"sharp": "^0.33.2",
 		"tailwind-merge": "^2.3.0",
-		"typescript": "^5.5.2"
+		"typescript": "^5.5.2",
+		"@vercel/speed-insights": "^1.0.12"
 	},
 	"devDependencies": {
 		"@0no-co/graphqlsp": "^1.12.8",

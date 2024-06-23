@@ -4,6 +4,7 @@ import BaseHead from "@components/BaseHead.astro";
 import Drawer from "@components/Drawer.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 const { title, description } = Astro.props;
 import { SITE } from "@consts";
 ---
@@ -20,5 +21,6 @@ import { SITE } from "@consts";
       <slot />
     </main>
     <Footer />
+    <SpeedInsights/>
   </body>
 </html>
