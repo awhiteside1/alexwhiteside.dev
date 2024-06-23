@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import { getCollection } from "astro:content";
 import Blog from "@components/Blog";
 import { BLOG } from "@consts";
@@ -24,7 +26,7 @@ const tags = [] as string[];
     </div>
   </TopLayout>
   {JSON.stringify(out)}
-  <LampDemo client:load />
+  <LampDemo client:load ></LampDemo>
   <BottomLayout>
     <div class="animate">
       <Blog client:load tags={tags} data={posts} />

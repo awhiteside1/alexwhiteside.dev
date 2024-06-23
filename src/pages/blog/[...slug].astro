@@ -6,7 +6,7 @@ import BottomLayout from "@layouts/BottomLayout.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
 
-export const prerender = true;
+export const prerender = false;
 // Create the static blog pages
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");

@@ -9,7 +9,7 @@ export default defineConfig({
 	site: "https://astro-sphere-demo.vercel.app",
 	adapter: vercelServerless({webAnalytics: true}),
 	integrations: [mdx(), sitemap(), preact({ compat: true })],
-	output: "server",
+	output: "hybrid",
 	vite: {
 		optimizeDeps: {},
 		build: {
