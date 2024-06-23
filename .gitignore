@@ -3,3 +3,4 @@ dist/
 .astro/
 .idea/
 .env
+.vercel/
