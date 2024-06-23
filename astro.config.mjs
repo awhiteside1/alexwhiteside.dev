@@ -1,26 +1,26 @@
-import mdx from "@astrojs/mdx";
-import vercelServerless from '@astrojs/vercel/serverless';
-import preact from "@astrojs/preact";
-import sitemap from "@astrojs/sitemap";
-import { defineConfig, envField } from "astro/config";
+import mdx from '@astrojs/mdx'
+import vercelServerless from '@astrojs/vercel/serverless'
+import preact from '@astrojs/preact'
+import sitemap from '@astrojs/sitemap'
+import { defineConfig, envField } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://astro-sphere-demo.vercel.app",
-	adapter: vercelServerless({webAnalytics: true}),
+	site: 'https://alexwhiteside.dev',
+	adapter: vercelServerless({
+		webAnalytics: true,
+		isr: {
+			expiration: 60 * 60 * 24,
+			bypassToken: 'helloitsme',
+		},
+	}),
 	integrations: [mdx(), sitemap(), preact({ compat: true })],
-	output: "hybrid",
-	vite: {
-		optimizeDeps: {},
-		build: {
-			sourcemap: true,
+	output: 'hybrid',
+	experimental: {
+		env: {
+			schema: {
+				HASHNODE: envField.string({ context: 'server', access: 'secret' }),
+			},
 		},
 	},
-	experimental:{
-		env:{
-			schema:{
-				HASHNODE: envField.string({ context: "server", access: "secret" }),
-			}
-		}
-	}
-});
+})
