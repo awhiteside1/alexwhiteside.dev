@@ -7,8 +7,8 @@ type Props = {
   data: CollectionEntry<"projects">[]
 }
 
-export default function Projects({ data, tags }: Props) {
-  const [filter, setFilter] = useState(new Set<string>())
+export default function Projects({ data }: Props) {
+  const [filter] = useState(new Set<string>())
   const [projects, setProjects] = useState<CollectionEntry<"projects">[]>([])
 
   useEffect(() => {

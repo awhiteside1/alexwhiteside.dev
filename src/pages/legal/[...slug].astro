@@ -5,7 +5,7 @@ import TopLayout from "@layouts/TopLayout.astro"
 import BottomLayout from "@layouts/BottomLayout.astro"
 import { formatDate } from "@lib/utils"
 import { SITE } from "@consts"
-
+export const prerender = true;
 // Create the static pages for legal docs
 export async function getStaticPaths() {
 	const docs = await getCollection("legal")
