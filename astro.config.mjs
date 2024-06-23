@@ -2,7 +2,7 @@ import mdx from "@astrojs/mdx";
 import node from "@astrojs/node";
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,4 +16,11 @@ export default defineConfig({
 			sourcemap: true,
 		},
 	},
+	experimental:{
+		env:{
+			schema:{
+				HASHNODE: envField.string({ context: "server", access: "secret" }),
+			}
+		}
+	}
 });

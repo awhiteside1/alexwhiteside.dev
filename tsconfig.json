@@ -12,7 +12,14 @@
 		},
 		"skipLibCheck": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "preact"
+		"jsxImportSource": "preact",
+		"plugins": [
+			{
+				"name": "@0no-co/graphqlsp",
+				"schema": "https://gql.hashnode.com",
+				"tadaOutputLocation": "./src/graphql-env.d.ts"
+			}
+		]
 	},
 	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro"],
 	"exclude": ["dist", "node_modules"]

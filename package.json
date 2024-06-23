@@ -19,22 +19,28 @@
 		"@astrojs/preact": "^3.5.0",
 		"@astrojs/rss": "^4.0.6",
 		"@astrojs/sitemap": "^3.1.6",
+		"@urql/core": "^5.0.4",
 		"astro": "^4.11.0",
 		"clsx": "^2.1.1",
 		"framer-motion": "^11.2.11",
 		"fuse.js": "^7.0.0",
+		"gql.tada": "^1.7.6",
 		"preact": "^10.22.0",
+		"react": "npm:@preact/compat",
+		"react-dom": "npm:@preact/compat",
 		"sharp": "^0.33.2",
 		"tailwind-merge": "^2.3.0",
-		"typescript": "^5.5.2",
-		"react": "npm:@preact/compat",
-		"react-dom": "npm:@preact/compat"
+		"typescript": "^5.5.2"
 	},
 	"devDependencies": {
+		"@0no-co/graphqlsp": "^1.12.8",
 		"@astrojs/cloudflare": "^11.0.0",
 		"@astrojs/node": "^8.3.1",
 		"@biomejs/biome": "^1.8.2",
 		"@tailwindcss/typography": "^0.5.13",
 		"tailwindcss": "^3.4.4"
+	},
+	"graphql": {
+		"schema": "https://gql.hashnode.com"
 	}
 }

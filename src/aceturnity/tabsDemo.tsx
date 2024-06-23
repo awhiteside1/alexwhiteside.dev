@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { type Tab, Tabs } from "@aceturnity/tabs.tsx";
 import { LampDemo } from "@aceturnity/lamp.tsx";
 import type { PropsWithChildren } from "react";
