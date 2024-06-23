@@ -6,6 +6,7 @@ import BottomLayout from "@layouts/BottomLayout.astro"
 import ArticleTopLayout from "@layouts/ArticleTopLayout.astro"
 import ArticleBottomLayout from "@layouts/ArticleBottomLayout.astro"
 
+export const prerender = true;
 // Create the static blog pages
 export async function getStaticPaths() {
 	const posts = await getCollection("blog")

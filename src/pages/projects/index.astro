@@ -10,8 +10,7 @@ const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
-const tags = [...new Set(projects.flatMap(project => project.data.tags))]
-  .sort((a, b) => a.localeCompare(b))
+const tags = [] as any[]
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
