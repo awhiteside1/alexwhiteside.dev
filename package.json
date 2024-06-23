@@ -26,7 +26,9 @@
 		"preact": "^10.22.0",
 		"sharp": "^0.33.2",
 		"tailwind-merge": "^2.3.0",
-		"typescript": "^5.5.2"
+		"typescript": "^5.5.2",
+		"react": "npm:@preact/compat",
+		"react-dom": "npm:@preact/compat"
 	},
 	"devDependencies": {
 		"@astrojs/cloudflare": "^11.0.0",

@@ -5,6 +5,7 @@ import { BLOG } from "@consts";
 import BottomLayout from "@layouts/BottomLayout.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import TopLayout from "@layouts/TopLayout.astro";
+import {TabsDemo} from "../../aceturnity/tabsDemo";
 
 const posts = (await getCollection("blog"))
 	.filter((post) => !post.data.draft)
@@ -19,6 +20,7 @@ const tags = [] as string[];
       {BLOG.TITLE}
     </div>
   </TopLayout>
+  <TabsDemo client:load />
   <BottomLayout>
     <div class="animate">
       <Blog client:load tags={tags} data={posts} />

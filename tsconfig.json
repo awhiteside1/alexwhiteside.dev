@@ -1,11 +1,16 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
+		"noEmit": true,
 		"strictNullChecks": true,
-		"baseUrl": ".",
+		"baseUrl": "./",
 		"paths": {
-			"@*": ["src/*"]
+			"@*": ["src/*"],
+			"react": ["./node_modules/preact/compat"],
+			"react-dom": ["./node_modules/preact/compat"],
+			"react-dom/*": ["./node_modules/preact/compat/*"]
 		},
+		"skipLibCheck": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact"
 	},
