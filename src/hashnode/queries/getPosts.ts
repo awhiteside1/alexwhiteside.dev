@@ -1,6 +1,5 @@
-import { graphql } from 'gql.tada';
-import {client} from "../client";
-import type {Client} from "@urql/core";
+import { graphql } from 'gql.tada'
+import type { Client } from '@urql/core'
 
 const getPostsQuery = graphql(`query getPosts{
     publication(host: "blog.alexwhiteside.dev") {
@@ -19,10 +18,10 @@ const getPostsQuery = graphql(`query getPosts{
             }
         }
     }
-}`);
+}`)
 
-export async function getPosts(this: Client){
-        const result =   await  this.query(getPostsQuery,{}).toPromise()
-      const posts = result.data?.publication?.posts.edges ?? []
-    return posts.map(post => post.node)
+export async function getPosts(this: Client) {
+	const result = await this.query(getPostsQuery, {}).toPromise()
+	const posts = result.data?.publication?.posts.edges ?? []
+	return posts.map((post) => post.node)
 }
