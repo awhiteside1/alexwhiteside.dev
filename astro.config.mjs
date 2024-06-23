@@ -7,7 +7,7 @@ import { defineConfig, envField } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://astro-sphere-demo.vercel.app",
-	adapter: vercelServerless(),
+	adapter: vercelServerless({webAnalytics: true}),
 	integrations: [mdx(), sitemap(), preact({ compat: true })],
 	output: "server",
 	vite: {
