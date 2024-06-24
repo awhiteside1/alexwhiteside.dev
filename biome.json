@@ -1,7 +1,13 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
 	"files": {
-		"ignore": ["node_modules/**", "dist/**", ".astro/**", "src/graphql-env.d.ts"]
+		"ignore": [
+			"node_modules/**",
+			"dist/**",
+			".astro/**",
+			"src/graphql-env.d.ts",
+			"src/radar/**"
+		]
 	},
 	"organizeImports": {
 		"enabled": true
@@ -14,7 +20,6 @@
 	},
 	"formatter": {
 		"enabled": true
-
 	},
 	"javascript": {
 		"formatter": {
