@@ -1,4 +1,4 @@
-import { useState } from "preact/compat";
+import { useState } from "react";
 
 function CounterButton() {
 	const [count, setCount] = useState(0);
@@ -6,11 +6,11 @@ function CounterButton() {
 	const increment = () => setCount(count + 1);
 
 	return (
-		<div class="flex gap-4 items-center">
+		<div className="flex gap-4 items-center">
 			<button
 				type="button"
 				onClick={increment}
-				class="px-3 py-1 border border-black/25 dark:border-white/25 hover:bg-black/5 dark:hover:bg-white/15 blend"
+				className="px-3 py-1 border border-black/25 dark:border-white/25 hover:bg-black/5 dark:hover:bg-white/15 blend"
 			>
 				Increment
 			</button>

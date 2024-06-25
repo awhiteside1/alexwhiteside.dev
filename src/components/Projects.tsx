@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import ArrowCard from "@components/ArrowCard";
-import { useEffect, useState } from "preact/compat";
+import { useEffect, useState } from "react";
 
 type Props = {
 	tags: string[];
@@ -24,21 +24,21 @@ export default function Projects({ data }: Props) {
 	});
 
 	return (
-		<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-			<div class="col-span-3 sm:col-span-1">
-				<div class="sticky top-24">
-					<div class="text-sm font-semibold uppercase mb-2 text-black dark:text-white">
+		<div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+			<div className="col-span-3 sm:col-span-1">
+				<div className="sticky top-24">
+					<div className="text-sm font-semibold uppercase mb-2 text-black dark:text-white">
 						Filter
 					</div>
-					<ul class="flex flex-wrap sm:flex-col gap-1.5" />
+					<ul className="flex flex-wrap sm:flex-col gap-1.5" />
 				</div>
 			</div>
-			<div class="col-span-3 sm:col-span-2">
-				<div class="flex flex-col">
-					<div class="text-sm uppercase mb-2">
+			<div className="col-span-3 sm:col-span-2">
+				<div className="flex flex-col">
+					<div className="text-sm uppercase mb-2">
 						SHOWING {projects.length} OF {data.length} PROJECTS
 					</div>
-					<ul class="flex flex-col gap-3">
+					<ul className="flex flex-col gap-3">
 						{projects.map((project) => (
 							<li key={project.slug}>
 								<ArrowCard entry={project} />

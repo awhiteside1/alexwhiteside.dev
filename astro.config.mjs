@@ -1,6 +1,6 @@
 import mdx from '@astrojs/mdx'
 import vercelServerless from '@astrojs/vercel/serverless'
-import preact from '@astrojs/preact'
+import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import { defineConfig, envField } from 'astro/config'
 
@@ -14,7 +14,7 @@ export default defineConfig({
 			bypassToken: 'helloitsme',
 		},
 	}),
-	integrations: [mdx(), sitemap(), preact({ compat: true })],
+	integrations: [mdx(), sitemap(), react()],
 	output: 'hybrid',
 	experimental: {
 		env: {

@@ -5,14 +5,10 @@
 		"strictNullChecks": true,
 		"baseUrl": "./",
 		"paths": {
-			"@*": ["src/*"],
-			"react": ["./node_modules/preact/compat"],
-			"react-dom": ["./node_modules/preact/compat"],
-			"react-dom/*": ["./node_modules/preact/compat/*"]
+			"@*": ["src/*"]
 		},
 		"skipLibCheck": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "preact",
 		"plugins": [
 			{
 				"name": "@0no-co/graphqlsp",
