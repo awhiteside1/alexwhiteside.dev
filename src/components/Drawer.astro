@@ -1,8 +1,8 @@
 ---
-import { LINKS, SITE } from "@consts";
-import { cn } from "@lib/utils";
-const { pathname } = Astro.url;
-const subpath = pathname.match(/[^/]+/g);
+import { LINKS, SITE } from '@consts'
+import { cn } from '@lib/utils'
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^/]+/g)
 ---
 
 <div id="drawer" class="fixed inset-0 h-0 z-40 overflow-hidden flex flex-col items-center justify-center md:hidden bg-neutral-100 dark:bg-neutral-900 transition-[height] duration-300 ease-in-out">

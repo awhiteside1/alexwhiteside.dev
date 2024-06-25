@@ -1,5 +1,5 @@
-import { graphql } from 'gql.tada'
 import type { Client } from '@urql/core'
+import { graphql } from 'gql.tada'
 
 const getPostsQuery = graphql(`query getPosts{
     publication(host: "blog.alexwhiteside.dev") {

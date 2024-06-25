@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx'
-import vercelServerless from '@astrojs/vercel/serverless'
 import preact from '@astrojs/preact'
 import sitemap from '@astrojs/sitemap'
+import vercelServerless from '@astrojs/vercel/serverless'
 import { defineConfig, envField } from 'astro/config'
 
 // https://astro.build/config

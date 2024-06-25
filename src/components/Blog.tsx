@@ -1,15 +1,15 @@
-import type { CollectionEntry } from "astro:content";
-import ArrowCard from "@components/ArrowCard";
-import { cn } from "@lib/utils.ts";
-import { useEffect, useState } from "preact/compat";
+import type { CollectionEntry } from 'astro:content'
+import ArrowCard from '@components/ArrowCard'
+import { cn } from '@lib/utils.ts'
+import { useEffect, useState } from 'preact/compat'
 type Props = {
-	tags: string[];
-	data: CollectionEntry<"blog">[];
-};
+	tags: string[]
+	data: CollectionEntry<'blog'>[]
+}
 
 export default function Blog({ data, tags }: Props) {
-	const [filter, setFilter] = useState(new Set<string>());
-	const [posts, setPosts] = useState<CollectionEntry<"blog">[]>([]);
+	const [filter, setFilter] = useState(new Set<string>())
+	const [posts, setPosts] = useState<CollectionEntry<'blog'>[]>([])
 
 	useEffect(() => {
 		setPosts(
@@ -20,8 +20,8 @@ export default function Blog({ data, tags }: Props) {
 					),
 				),
 			),
-		);
-	}, [filter, data]);
+		)
+	}, [filter, data])
 
 	function toggleTag(tag: string) {
 		setFilter(
@@ -29,7 +29,7 @@ export default function Blog({ data, tags }: Props) {
 				new Set(
 					prev.has(tag) ? [...prev].filter((t) => t !== tag) : [...prev, tag],
 				),
-		);
+		)
 	}
 
 	return (
@@ -46,30 +46,30 @@ export default function Blog({ data, tags }: Props) {
 									type="button"
 									onClick={() => toggleTag(tag)}
 									class={cn(
-										"w-full px-2 py-1 rounded",
-										"whitespace-nowrap overflow-hidden overflow-ellipsis",
-										"flex gap-2 items-center",
-										"bg-black/5 dark:bg-white/10",
-										"hover:bg-black/10 hover:dark:bg-white/15",
-										"transition-colors duration-300 ease-in-out",
-										filter.has(tag) && "text-black dark:text-white",
+										'w-full px-2 py-1 rounded',
+										'whitespace-nowrap overflow-hidden overflow-ellipsis',
+										'flex gap-2 items-center',
+										'bg-black/5 dark:bg-white/10',
+										'hover:bg-black/10 hover:dark:bg-white/15',
+										'transition-colors duration-300 ease-in-out',
+										filter.has(tag) && 'text-black dark:text-white',
 									)}
 								>
 									<svg
 										class={cn(
-											"size-5 fill-black/50 dark:fill-white/50",
-											"transition-colors duration-300 ease-in-out",
-											filter.has(tag) && "fill-black dark:fill-white",
+											'size-5 fill-black/50 dark:fill-white/50',
+											'transition-colors duration-300 ease-in-out',
+											filter.has(tag) && 'fill-black dark:fill-white',
 										)}
 									>
 										<title>Selected</title>
 										<use
-											href={"/ui.svg#square"}
-											class={cn(!filter.has(tag) ? "block" : "hidden")}
+											href={'/ui.svg#square'}
+											class={cn(!filter.has(tag) ? 'block' : 'hidden')}
 										/>
 										<use
-											href={"/ui.svg#square-check"}
-											class={cn(filter.has(tag) ? "block" : "hidden")}
+											href={'/ui.svg#square-check'}
+											class={cn(filter.has(tag) ? 'block' : 'hidden')}
 										/>
 									</svg>
 									{tag}
@@ -94,5 +94,5 @@ export default function Blog({ data, tags }: Props) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

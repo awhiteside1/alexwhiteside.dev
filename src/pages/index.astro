@@ -1,44 +1,44 @@
 ---
-import { getCollection } from "astro:content";
-import ArrowCard from "@components/ArrowCard";
-import MeteorShower from "@components/MeteorShower.astro";
-import StackCard from "@components/StackCard.astro";
-import TwinklingStars from "@components/TwinklingStars.astro";
-import { SITE, SOCIALS } from "@consts";
-import PageLayout from "@layouts/PageLayout.astro";
+import { getCollection } from 'astro:content'
+import ArrowCard from '@components/ArrowCard'
+import MeteorShower from '@components/MeteorShower.astro'
+import StackCard from '@components/StackCard.astro'
+import TwinklingStars from '@components/TwinklingStars.astro'
+import { SITE, SOCIALS } from '@consts'
+import PageLayout from '@layouts/PageLayout.astro'
 
-const posts = (await getCollection("blog"))
+const posts = (await getCollection('blog'))
 	.filter((post) => !post.data.draft)
 	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	.slice(0, 3);
+	.slice(0, 3)
 
-const projects = (await getCollection("projects"))
+const projects = (await getCollection('projects'))
 	.filter((project) => !project.data.draft)
 	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	.slice(0, 3);
+	.slice(0, 3)
 
 const stack = [
 	{
-		text: "Astro",
-		icon: "astro",
-		href: "https://astro.build",
+		text: 'Astro',
+		icon: 'astro',
+		href: 'https://astro.build',
 	},
 	{
-		text: "Javascript",
-		icon: "javascript",
-		href: "https://www.javascript.com",
+		text: 'Javascript',
+		icon: 'javascript',
+		href: 'https://www.javascript.com',
 	},
 	{
-		text: "Typescript",
-		icon: "typescript",
-		href: "https://www.typescriptlang.org",
+		text: 'Typescript',
+		icon: 'typescript',
+		href: 'https://www.typescriptlang.org',
 	},
 	{
-		text: "Tailwind",
-		icon: "tailwind",
-		href: "https://tailwindcss.com",
+		text: 'Tailwind',
+		icon: 'tailwind',
+		href: 'https://tailwindcss.com',
 	},
-];
+]
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>

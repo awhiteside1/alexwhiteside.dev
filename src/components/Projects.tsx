@@ -1,15 +1,15 @@
-import type { CollectionEntry } from "astro:content";
-import ArrowCard from "@components/ArrowCard";
-import { useEffect, useState } from "preact/compat";
+import type { CollectionEntry } from 'astro:content'
+import ArrowCard from '@components/ArrowCard'
+import { useEffect, useState } from 'preact/compat'
 
 type Props = {
-	tags: string[];
-	data: CollectionEntry<"projects">[];
-};
+	tags: string[]
+	data: CollectionEntry<'projects'>[]
+}
 
 export default function Projects({ data }: Props) {
-	const [filter] = useState(new Set<string>());
-	const [projects, setProjects] = useState<CollectionEntry<"projects">[]>([]);
+	const [filter] = useState(new Set<string>())
+	const [projects, setProjects] = useState<CollectionEntry<'projects'>[]>([])
 
 	useEffect(() => {
 		setProjects(
@@ -20,8 +20,8 @@ export default function Projects({ data }: Props) {
 					),
 				),
 			),
-		);
-	});
+		)
+	})
 
 	return (
 		<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -48,5 +48,5 @@ export default function Projects({ data }: Props) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -1,35 +1,35 @@
-import type { CollectionEntry } from "astro:content";
-import ArrowCard from "@components/ArrowCard";
-import Fuse from "fuse.js";
-import { useEffect, useState } from "preact/compat";
+import type { CollectionEntry } from 'astro:content'
+import ArrowCard from '@components/ArrowCard'
+import Fuse from 'fuse.js'
+import { useEffect, useState } from 'preact/compat'
 
 type Props = {
-	data: CollectionEntry<"blog">[];
-};
+	data: CollectionEntry<'blog'>[]
+}
 
 export default function Search({ data }: Props) {
-	const [query, setQuery] = useState("");
-	const [results, setResults] = useState<CollectionEntry<"blog">[]>([]);
+	const [query, setQuery] = useState('')
+	const [results, setResults] = useState<CollectionEntry<'blog'>[]>([])
 
 	const fuse = new Fuse(data, {
-		keys: ["slug", "data.title", "data.summary", "data.tags"],
+		keys: ['slug', 'data.title', 'data.summary', 'data.tags'],
 		includeMatches: true,
 		minMatchCharLength: 2,
 		threshold: 0.4,
-	});
+	})
 
 	useEffect(() => {
 		if (query.length < 2) {
-			setResults([]);
+			setResults([])
 		} else {
-			setResults(fuse.search(query).map((result) => result.item));
+			setResults(fuse.search(query).map((result) => result.item))
 		}
-	}, [query, fuse.search]);
+	}, [query, fuse.search])
 
 	const onInput = (e: Event) => {
-		const target = e.target as HTMLInputElement;
-		setQuery(target.value);
-	};
+		const target = e.target as HTMLInputElement
+		setQuery(target.value)
+	}
 
 	return (
 		<div class="flex flex-col">
@@ -46,7 +46,7 @@ export default function Search({ data }: Props) {
 				/>
 				<svg class="absolute size-6 left-1.5 top-1/2 -translate-y-1/2 stroke-current">
 					<title>Search</title>
-					<use href={"/ui.svg#search"} />
+					<use href={'/ui.svg#search'} />
 				</svg>
 			</div>
 			{query.length >= 2 && results.length >= 1 && (
@@ -64,5 +64,5 @@ export default function Search({ data }: Props) {
 				</div>
 			)}
 		</div>
-	);
+	)
 }

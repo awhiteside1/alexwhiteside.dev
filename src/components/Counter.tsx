@@ -1,9 +1,9 @@
-import { useState } from "preact/compat";
+import { useState } from 'preact/compat'
 
 function CounterButton() {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0)
 
-	const increment = () => setCount(count + 1);
+	const increment = () => setCount(count + 1)
 
 	return (
 		<div class="flex gap-4 items-center">
@@ -15,10 +15,10 @@ function CounterButton() {
 				Increment
 			</button>
 			<div>
-				Clicked {count} {count === 1 ? "time" : "times"}
+				Clicked {count} {count === 1 ? 'time' : 'times'}
 			</div>
 		</div>
-	);
+	)
 }
 
-export default CounterButton;
+export default CounterButton
