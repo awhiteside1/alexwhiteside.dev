@@ -10,8 +10,7 @@ export default defineConfig({
 	adapter: vercelServerless({
 		webAnalytics: true,
 		isr: {
-			expiration: 60 * 60 * 24,
-			bypassToken: 'helloitsme',
+			expiration: 60 * 60 * 24
 		},
 	}),
 	integrations: [mdx(), sitemap(), react()],
