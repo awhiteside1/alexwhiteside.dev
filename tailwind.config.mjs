@@ -1,6 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
-import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette"
-import colors from 'tailwindcss/colors'
+// import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette"
+// import colors from 'tailwindcss/colors'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,6 +10,9 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Atkinson", ...defaultTheme.fontFamily.sans],
+			},
+			backgroundSize: {
+				'300%': '300%',
 			},
 			typography: {
 				DEFAULT: {
@@ -27,8 +30,14 @@ export default {
 			animation: {
 				twinkle: "twinkle 2s ease-in-out forwards",
 				meteor: "meteor 3s ease-in-out forwards",
+				gradient: 'animatedgradient 10s ease infinite alternate',
 			},
 			keyframes: {
+				animatedgradient: {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' },
+				},
 				twinkle: {
 					"0%": {
 						opacity: 0,
@@ -59,20 +68,20 @@ export default {
 			},
 		},
 	},
-	plugins: [require("@tailwindcss/typography"),addVariablesForColors],
+	plugins: [require("@tailwindcss/typography")],
 };
 
 
 
 
-// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
-function addVariablesForColors({ addBase, theme }) {
-	let allColors = flattenColorPalette(theme("colors"));
-	let newVars = Object.fromEntries(
-		Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-	);
-
-	addBase({
-		":root": newVars,
-	});
-}
+// // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+// function addVariablesForColors({ addBase, theme }) {
+// 	let allColors = flattenColorPalette(theme("colors"));
+// 	let newVars = Object.fromEntries(
+// 		Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+// 	);
+//
+// 	addBase({
+// 		":root": newVars,
+// 	});
+// }
