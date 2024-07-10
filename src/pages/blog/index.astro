@@ -4,18 +4,14 @@ export const prerender = false;
 import { getCollection } from "astro:content";
 import Blog from "@components/Blog";
 import { BLOG } from "@consts";
-import BottomLayout from "@layouts/BottomLayout.astro";
-import PageLayout from "@layouts/PageLayout.astro";
-import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "../../astro/layouts/BottomLayout.astro";
+import PageLayout from "../../astro/layouts/PageLayout.astro";
+import TopLayout from "../../astro/layouts/TopLayout.astro";
 import {Hashnode} from "../../hashnode";
 import {LampDemo}from '../../aceturnity/lamp'
 
-const posts = (await getCollection("blog"))
-	.filter((post) => !post.data.draft)
-	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
 const out =  await Hashnode.getPosts()
-console.log(out)
+debugger;
 const tags = [] as string[];
 ---
 
@@ -25,11 +21,10 @@ const tags = [] as string[];
       {BLOG.TITLE}
     </div>
   </TopLayout>
-  {JSON.stringify(out)}
   <LampDemo client:load ></LampDemo>
   <BottomLayout>
     <div class="animate">
-      <Blog client:load tags={tags} data={posts} />
+      <Blog client:load tags={tags} data={out} />
     </div>
   </BottomLayout>
 </PageLayout>

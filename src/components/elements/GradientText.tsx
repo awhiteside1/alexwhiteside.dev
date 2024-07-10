@@ -15,20 +15,17 @@ interface Props {
 
 export const GradientText = ({
 	children,
-	as = 'p',
 	size=2,
 	color = 'blue',
 }: PropsWithChildren<Props>) => {
-	const Tag = as
-
 	return (
-		<Tag
+		<span
 			className={cn(
 				`text-${size}xl font-bold bg-gradient-to-r text-transparent bg-clip-text animate-gradient bg-300%`,
 				gradients[color],
 			)}
 		>
 			{children}
-		</Tag>
+		</span>
 	)
 }

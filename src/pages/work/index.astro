@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import { WORK } from "@consts";
-import BottomLayout from "@layouts/BottomLayout.astro";
-import PageLayout from "@layouts/PageLayout.astro";
-import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "../../astro/layouts/BottomLayout.astro";
+import PageLayout from "../../astro/layouts/PageLayout.astro";
+import TopLayout from "../../astro/layouts/TopLayout.astro";
 
 const collection = await getCollection("work");
 
@@ -39,7 +39,7 @@ function formatWorkDate(input: Date | string) {
   </TopLayout>
   <BottomLayout>
     <ul>
-      { 
+      {
         work.map((entry) => (
           <li class="animate border-b border-black/10 dark:border-white/25 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none">
             <div class="text-sm uppercase mb-4">

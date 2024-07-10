@@ -2,35 +2,17 @@ import type { CollectionEntry } from "astro:content";
 import ArrowCard from "@components/ArrowCard";
 import { cn } from "@lib/utils.ts";
 import { useEffect, useState } from "react"
+import {type PostDetail, postDetails} from "@hashnode/queries/getPosts.ts";
+import {readFragment} from "../hashnode/graphql";
+import {BlogCard} from "@components/BlogCard.tsx";
 type Props = {
 	tags: string[];
-	data: CollectionEntry<"blog">[];
+	data: PostDetail[];
 };
 
 export default function Blog({ data, tags }: Props) {
-	const [filter, setFilter] = useState(new Set<string>());
-	const [posts, setPosts] = useState<CollectionEntry<"blog">[]>([]);
 
-	useEffect(() => {
-		setPosts(
-			data.filter((entry) =>
-				Array.from(filter).every((value) =>
-					entry.data.tags.some(
-						(tag: string) => tag.toLowerCase() === String(value).toLowerCase(),
-					),
-				),
-			),
-		);
-	}, [filter, data]);
-
-	function toggleTag(tag: string) {
-		setFilter(
-			(prev) =>
-				new Set(
-					prev.has(tag) ? [...prev].filter((t) => t !== tag) : [...prev, tag],
-				),
-		);
-	}
+const posts = data.map(post => readFragment(postDetails, post))
 
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -44,7 +26,7 @@ export default function Blog({ data, tags }: Props) {
 							<li key={tag}>
 								<button
 									type="button"
-									onClick={() => toggleTag(tag)}
+									onClick={() => {}}
 									className={cn(
 										"w-full px-2 py-1 rounded",
 										"whitespace-nowrap overflow-hidden overflow-ellipsis",
@@ -52,24 +34,24 @@ export default function Blog({ data, tags }: Props) {
 										"bg-black/5 dark:bg-white/10",
 										"hover:bg-black/10 hover:dark:bg-white/15",
 										"transition-colors duration-300 ease-in-out",
-										filter.has(tag) && "text-black dark:text-white",
+									//	filter.has(tag) && "text-black dark:text-white",
 									)}
 								>
 									<svg
 										className={cn(
 											"size-5 fill-black/50 dark:fill-white/50",
 											"transition-colors duration-300 ease-in-out",
-											filter.has(tag) && "fill-black dark:fill-white",
+								//			filter.has(tag) && "fill-black dark:fill-white",
 										)}
 									>
 										<title>Selected</title>
 										<use
 											href={"/ui.svg#square"}
-											className={cn(!filter.has(tag) ? "block" : "hidden")}
+									//		className={cn(!filter.has(tag) ? "block" : "hidden")}
 										/>
 										<use
 											href={"/ui.svg#square-check"}
-											className={cn(filter.has(tag) ? "block" : "hidden")}
+								//			className={cn(filter.has(tag) ? "block" : "hidden")}
 										/>
 									</svg>
 									{tag}
@@ -86,8 +68,8 @@ export default function Blog({ data, tags }: Props) {
 					</div>
 					<ul className="flex flex-col gap-3">
 						{posts.map((post) => (
-							<li key={post.slug}>
-								<ArrowCard entry={post} />
+							<li key={post.url}>
+								<BlogCard post={post} />
 							</li>
 						))}
 					</ul>

@@ -1,9 +1,9 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import { SITE } from "@consts";
-import BottomLayout from "@layouts/BottomLayout.astro";
-import PageLayout from "@layouts/PageLayout.astro";
-import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "../../astro/layouts/BottomLayout.astro";
+import PageLayout from "../../astro/layouts/PageLayout.astro";
+import TopLayout from "../../astro/layouts/TopLayout.astro";
 import { formatDate } from "@lib/utils";
 export const prerender = true;
 // Create the static pages for legal docs

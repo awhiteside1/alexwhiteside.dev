@@ -1,35 +1,25 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import ArticleBottomLayout from "@layouts/ArticleBottomLayout.astro";
-import ArticleTopLayout from "@layouts/ArticleTopLayout.astro";
-import BottomLayout from "@layouts/BottomLayout.astro";
-import PageLayout from "@layouts/PageLayout.astro";
-import TopLayout from "@layouts/TopLayout.astro";
+import BottomLayout from "../../astro/layouts/BottomLayout.astro";
+import PageLayout from "../../astro/layouts/PageLayout.astro";
+import TopLayout from "../../astro/layouts/TopLayout.astro";
+import {Hashnode} from "../../hashnode";
 
-// Create the static blog pages
-export async function getStaticPaths() {
-	const posts = await getCollection("blog");
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
-}
-
-// Get the requested post
-type Props = CollectionEntry<"blog">;
-const post = Astro.props;
-const { title, summary } = post.data;
+export const prerender = false;
+const {slug} = Astro.params;
+const post = await Hashnode.getPost(slug)
+if (!post) return Astro.redirect("/404")
 ---
 
-<PageLayout title={title} description={summary}>
+<PageLayout title={post.title} description={post.brief}>
   <TopLayout>
     <div class="animate">
-      <ArticleTopLayout entry={post}/>
+      <!--<ArticleTopLayout entry={post}/>-->
     </div>
   </TopLayout>
+<Fragment set:html={post.content.html}/>
   <BottomLayout>
     <div class="animate">
-      <ArticleBottomLayout entry={post} />
+      <!--<ArticleBottomLayout entry={post} />-->
     </div>
   </BottomLayout>
 </PageLayout>

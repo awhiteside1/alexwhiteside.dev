@@ -2,6 +2,7 @@
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
 		"noEmit": true,
+		"strict": true,
 		"strictNullChecks": true,
 		"baseUrl": "./",
 		"paths": {
@@ -11,9 +12,14 @@
 		"jsx": "react-jsx",
 		"plugins": [
 			{
-				"name": "@0no-co/graphqlsp",
+				"name": "gql.tada/ts-plugin",
 				"schema": "https://gql.hashnode.com",
-				"tadaOutputLocation": "./src/graphql-env.d.ts"
+				"tadaOutputLocation": "./src/hashnode/graphql/graphql-env.d.ts",
+				"tadaTurboLocation": "./src/hashnode/graphql/graphql-cache.d.ts"
+
+			},
+			{
+				"name": "@astrojs/ts-plugin"
 			}
 		]
 	},

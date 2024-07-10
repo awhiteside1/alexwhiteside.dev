@@ -1,9 +1,10 @@
 import {client} from "./client.ts";
-import {getPosts} from './queries/getPosts'
+import {getPost, getPosts} from './queries/getPosts'
 
 export const Hashnode ={
 
-    getPosts: getPosts.bind(client)
+    getPosts: getPosts.bind(client),
+    getPost: getPost.bind(client)
 
 
-}
+} as const
