@@ -1,4 +1,4 @@
-import { Client, cacheExchange, fetchExchange } from "@urql/core";
+import {cacheExchange, Client, fetchExchange} from "@urql/core";
 
 export const client = new Client({
 	url: "https://gql.hashnode.com",

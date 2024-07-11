@@ -1,6 +1,5 @@
-import { graphql, type FragmentOf, readFragment } from '../graphql'
-import type { Client } from '@urql/core'
-import type {ResultOf} from "gql.tada";
+import {type FragmentOf, graphql} from '../graphql'
+import type {Client} from '@urql/core'
 
 const commentFragment = graphql(`
 fragment comment on Comment{
@@ -76,7 +75,9 @@ export async function getPosts(this: Client) {
 	return posts.map((post) => post.node)
 }
 
-export async function getPost(this: Client, slug: string) {
+export async function getPost(this: Client, slug?: string) {
+    if(!slug) return undefined
+
 	const result = await this.query(
 		graphql(
 			`query getPost($slug: String!){

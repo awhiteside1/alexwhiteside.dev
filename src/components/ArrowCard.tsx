@@ -1,5 +1,5 @@
-import type { CollectionEntry } from "astro:content";
-import { formatDate } from "@lib/utils";
+import type {CollectionEntry} from "astro:content";
+import {formatDate} from "@lib/utils";
 
 type Props = {
 	entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;

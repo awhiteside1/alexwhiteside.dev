@@ -1,9 +1,9 @@
 //@ts-nocheck
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/utils/cn";
+import {useState} from "react";
+import {motion} from "framer-motion";
+import {cn} from "@/utils/cn";
 
 export type Tab = {
     title: string;

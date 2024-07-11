@@ -6,8 +6,10 @@ import {readFragment} from "../../hashnode/graphql";
 type Props = {
 	entry: Awaited<typeof getPost>
 };
-const details = readFragment(postDetails, entry)
 const { entry } = Astro.props;
+if(!entry){
+  Astro.redirect('/404')
+}
 
 
 ---
@@ -27,7 +29,7 @@ const { entry } = Astro.props;
       <svg class="size-5 stroke-current">
         <use href="/ui.svg#calendar"/>
       </svg>
-      {formatDate(entry.details.date)}
+      {formatDate(entry.)}
     </div>
     <div class="flex items-center gap-2">
       <svg class="size-5 stroke-current">
@@ -37,7 +39,7 @@ const { entry } = Astro.props;
     </div>
   </div>
   <h1 class="text-3xl font-semibold text-black dark:text-white mt-2">
-    {title}
+    {entry.}
   </h1>
   <div class="mt-1">
     {summary}

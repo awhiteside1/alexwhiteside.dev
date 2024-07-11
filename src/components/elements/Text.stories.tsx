@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { GradientText } from './GradientText'
+import type {Meta, StoryObj} from '@storybook/react'
+import {GradientText} from './GradientText'
 
 export default {
 	component: GradientText,

@@ -1,6 +1,5 @@
-import type { PropsWithChildren, ReactNode } from 'react'
-import type { HTMLTag } from 'astro/types'
-import { cn } from '../../utils/cn.tsx'
+import type {PropsWithChildren} from 'react'
+import {cn} from '../../utils/cn.tsx'
 
 const gradients = {
 	blue: 'from-indigo-500 via-sky-500 to-emerald-500',

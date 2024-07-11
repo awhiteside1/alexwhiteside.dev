@@ -1,6 +1,6 @@
-import type { CollectionEntry } from "astro:content";
+import type {CollectionEntry} from "astro:content";
 import ArrowCard from "@components/ArrowCard";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 type Props = {
 	tags: string[];

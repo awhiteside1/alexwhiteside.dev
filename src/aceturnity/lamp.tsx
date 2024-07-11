@@ -1,6 +1,6 @@
 'use client'
-import { cn } from '@/utils/cn'
-import { motion } from 'framer-motion'
+import {cn} from '@/utils/cn'
+import {motion} from 'framer-motion'
 import type React from 'react'
 
 export function LampDemo() {

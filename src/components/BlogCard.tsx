@@ -1,6 +1,6 @@
-import { formatDate } from '@lib/utils'
-import type { postDetails } from '@hashnode/queries/getPosts.ts'
-import {readFragment, type ResultOf} from 'gql.tada'
+import {formatDate} from '@lib/utils'
+import type {postDetails} from '@hashnode/queries/getPosts.ts'
+import {type ResultOf} from 'gql.tada'
 
 type Props = {
 	post: ResultOf<typeof postDetails>

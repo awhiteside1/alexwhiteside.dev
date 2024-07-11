@@ -1,10 +1,8 @@
-import type { CollectionEntry } from "astro:content";
-import ArrowCard from "@components/ArrowCard";
-import { cn } from "@lib/utils.ts";
-import { useEffect, useState } from "react"
+import {cn} from "@lib/utils.ts";
 import {type PostDetail, postDetails} from "@hashnode/queries/getPosts.ts";
 import {readFragment} from "../hashnode/graphql";
 import {BlogCard} from "@components/BlogCard.tsx";
+
 type Props = {
 	tags: string[];
 	data: PostDetail[];

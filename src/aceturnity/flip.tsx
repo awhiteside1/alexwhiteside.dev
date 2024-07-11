@@ -1,7 +1,7 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
-import { cn } from "../utils/cn";
+import React, {useCallback, useEffect, useState} from "react";
+import {AnimatePresence, motion} from "framer-motion";
+import {cn} from "../utils/cn";
 
 const list = {
     visible: {

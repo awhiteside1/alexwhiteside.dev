@@ -1,7 +1,7 @@
-import type { CollectionEntry } from "astro:content";
+import type {CollectionEntry} from "astro:content";
 import ArrowCard from "@components/ArrowCard";
 import Fuse from "fuse.js";
-import { type FormEventHandler, useEffect, useState} from "react";
+import {type FormEventHandler, useEffect, useState} from "react";
 
 type Props = {
 	data: CollectionEntry<"blog">[];
