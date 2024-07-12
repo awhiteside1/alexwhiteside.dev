@@ -18,13 +18,12 @@ const { title, description } = Astro.props
     <Head title={`${title}`} description={description} />
   </head>
   <body>
-  <DotBackground>
+  <DotBackground/>
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
-  </DotBackground>
     <!--<PageFind />-->
   </body>
 </html>
