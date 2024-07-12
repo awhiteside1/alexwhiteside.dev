@@ -29,7 +29,7 @@ header {
 }
 
 main {
-  @apply flex-1 py-32;
+  @apply flex-1 py-24;
 }
 
 footer {

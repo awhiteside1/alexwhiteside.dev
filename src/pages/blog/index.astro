@@ -1,14 +1,12 @@
 ---
-import Layout from "@ui/astro/layouts/Layout.astro";
-import Container from "@ui/astro/sections/Container.astro";
-import ArrowCard from "@ui/astro/components/ArrowCard.astro";
-import {Hashnode} from "../../hashnode";
+import ArrowCard from '@ui/astro/components/ArrowCard.astro'
+import Layout from '@ui/astro/layouts/Layout.astro'
+import { Hashnode } from '../../hashnode'
+import Container from '../../ui/astro/components/Container.astro'
 
-export const prerender = false;
+export const prerender = false
 
 const posts = await Hashnode.getPosts()
-
-
 ---
 
 <Layout title={""} description={""}>

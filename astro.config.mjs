@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx'
-import vercelServerless from '@astrojs/vercel/serverless'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
+import vercelServerless from '@astrojs/vercel/serverless'
 import { defineConfig, envField } from 'astro/config'
 
 // https://astro.build/config
@@ -10,7 +10,7 @@ export default defineConfig({
 	adapter: vercelServerless({
 		webAnalytics: true,
 		isr: {
-			expiration: 60 * 60 * 24
+			expiration: 60 * 60 * 24,
 		},
 	}),
 	integrations: [mdx(), sitemap(), react()],

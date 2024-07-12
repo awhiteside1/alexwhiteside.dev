@@ -1,16 +1,15 @@
 ---
-import {Hashnode} from "../../hashnode";
+import { Hashnode } from '../../hashnode'
 
-export const prerender = false;
-const {slug} = Astro.params;
+export const prerender = false
+const { slug } = Astro.params
 const post = await Hashnode.getPost(slug)
-if (!post) return Astro.redirect("/404")
+if (!post) return Astro.redirect('/404')
 
-import Layout from "@ui/astro/layouts/Layout.astro";
-import Container from "@ui/astro/sections/Container.astro";
-import BackToPrevious from "@ui/astro/components/BackToPrevious.astro";
-import FormattedDate from "@ui/astro/components/FormattedDate.astro";
-
+import BackToPrevious from '@ui/astro/components/BackToPrevious.astro'
+import FormattedDate from '@ui/astro/components/FormattedDate.astro'
+import Layout from '@ui/astro/layouts/Layout.astro'
+import Container from '../../ui/astro/components/Container.astro'
 ---
 
 <Layout title={post.title} description={post.brief}>

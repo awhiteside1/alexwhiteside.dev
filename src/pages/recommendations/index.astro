@@ -1,0 +1,38 @@
+---
+import {getCollection} from 'astro:content';
+import {filterDrafts} from "../../ui/utils/draftProdFilter";
+import Layout from "../../ui/astro/layouts/Layout.astro";
+import Container from "../../ui/astro/components/Container.astro";
+import BentoGrid from "../../ui/astro/components/bento/BentoGrid.astro";
+import BentoGridItem from "../../ui/astro/components/bento/BentoGridItem.astro";
+import GradientText from "../../ui/react/Gradient/GradientText.astro";
+
+const allBooks = await getCollection('books', filterDrafts);
+---
+
+
+<Layout title="Books" description="Books I have read">
+
+    <Container>
+
+        <GradientText size={6} color="neutral" >Recommendations</GradientText>
+        <BentoGrid>
+
+            {
+                allBooks.map(({data}) =>
+                    (
+                            <BentoGridItem variant="row" title={data.name} description={data.description}>
+                                <!--<div    class="flex flex-1 w-full h-full min-h-[6rem] rounded-lg  flex-col space-y-2">-->
+                                <img alt="Book Cover" src={data.cover} class="transition-all group-hover/bento:scale-105	 object-scale-down rounded-lg shadow-md"/>
+<!--                                </div>-->
+                            </BentoGridItem>
+                    ))
+            }
+
+        </BentoGrid>
+
+
+    </Container>
+
+
+</Layout>

@@ -15,18 +15,12 @@
 				"schema": "https://gql.hashnode.com",
 				"tadaOutputLocation": "./src/hashnode/graphql/graphql-env.d.ts",
 				"tadaTurboLocation": "./src/hashnode/graphql/graphql-cache.d.ts"
-
 			},
 			{
 				"name": "@astrojs/ts-plugin"
 			}
 		]
 	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"src/**/*.astro",
-		".storybook/**"
-	],
-	"exclude": ["dist", "node_modules","old"]
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", ".storybook/**"],
+	"exclude": ["dist", "node_modules", "old"]
 }

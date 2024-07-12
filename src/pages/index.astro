@@ -1,15 +1,21 @@
 ---
 import Layout from '@ui/astro/layouts/Layout.astro'
-import Container from '@ui/astro/sections/Container.astro'
-import Link from '@ui/astro/sections/Link.astro'
+import Container from '../ui/astro/components/Container.astro'
+import Link from '../ui/astro/components/Link.astro'
 import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
+import Badge from '../ui/astro/components/elements/Badge.astro'
 ---
 
 <Layout title="" description=""> <Container>
-    <h1 class="animate font-semibold text-black dark:text-white">
-      Introducing Astro Micro 🔬
+  <div class="space-y-4">
+    <h1 class="animate text-6xl font-semibold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">
+      Alex Whiteside
     </h1>
+  <ul class="flex flex-row gap-2"><Badge color="blue">Entrepreneur</Badge><Badge color='purple'>Software Architect</Badge><Badge color='orange'>Creator</Badge></ul>
+
+  </div>
+
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
@@ -55,25 +61,46 @@ import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
           <h2 class="font-semibold text-black dark:text-white">Latest posts</h2>
           <Link href="/blog"> See all posts </Link>
         </div>
-        <!--<ul class="not-prose flex flex-col gap-4">-->
-        <!--  {-->
-        <!--    blog.map((post) => (-->
-        <!--      <li>-->
-        <!--        <ArrowCard entry={post} />-->
-        <!--      </li>-->
-        <!--    ))-->
-        <!--  }-->
-        <!--</ul>-->
+
       </section>
 
       <section class="animate space-y-6">
 
-        <BentoGrid><BentoGridItem title="Something New" description="The quick brown fox"><div class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                                                                                               style={{
-                                                                                                 background:
-                                                                                                     "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-                                                                                                 backgroundSize: "400% 400%",
-                                                                                               }}><div class="h-full w-full rounded-lg"></div></div> </BentoGridItem></BentoGrid>
+        <BentoGrid>
+          <BentoGridItem title="Something New" description="The quick brown fox">
+            <div
+                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                style={{
+                  background:
+                      "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                  backgroundSize: "400% 400%",
+                }}>
+              <div class="h-full w-full rounded-lg"></div>
+            </div>
+          </BentoGridItem>
+          <BentoGridItem title="Bad and Younge" description="The quick brown fox">
+            <div
+                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                style={{
+                  background:
+                      "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                  backgroundSize: "400% 400%",
+                }}>
+              <div class="h-full w-full rounded-lg"></div>
+            </div>
+          </BentoGridItem>
+          <BentoGridItem title="An Old  New" description="The quick brown fox">
+            <div
+                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                style={{
+                  background:
+                      "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                  backgroundSize: "400% 400%",
+                }}>
+              <div class="h-full w-full rounded-lg"></div>
+            </div>
+          </BentoGridItem>
+        </BentoGrid>
 
       </section>
       <section class="animate space-y-6">

@@ -1,0 +1,28 @@
+---
+import {cn} from '@ui/utils/cn'
+
+const gradients = {
+    blue: 'from-indigo-500 via-sky-500 to-emerald-500',
+    orange: 'from-pink-500 via-red-500 to-orange-500',
+    neutral: 'from-gray-500 via-gray-800 to-gray-500',
+}
+
+type Props = {
+    size: number
+    color: keyof typeof gradients
+}
+
+const {size, color = 'blue'} = Astro.props
+
+const gradientClass = gradients[color]
+---
+
+<span
+        class={cn(
+            `text-${size}xl font-bold bg-gradient-to-r text-transparent bg-clip-text animate-gradient bg-300%`,
+            gradientClass
+        )}
+>
+			<slot/>
+		</span>
+
