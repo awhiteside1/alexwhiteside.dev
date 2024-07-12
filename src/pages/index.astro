@@ -5,13 +5,15 @@ import Link from '../ui/astro/components/Link.astro'
 import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
 import Badge from '../ui/astro/components/elements/Badge.astro'
+import GradientText from "../ui/react/Gradient/GradientText.astro";
 ---
 
 <Layout title="Entrepreneur, Software Architect, Creator" description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "> <Container>
   <div class="space-y-4">
-    <h1 class="animate text-6xl font-semibold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">
+    <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
+    <GradientText color="neutral" size={6}>
       Alex Whiteside
-    </h1>
+    </GradientText>
   <ul class="flex flex-row gap-2"><Badge color="blue">Entrepreneur</Badge><Badge color='purple'>Software Architect</Badge><Badge color='orange'>Creator</Badge></ul>
 
   </div>

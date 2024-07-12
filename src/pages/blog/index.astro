@@ -3,6 +3,7 @@ import ArrowCard from '@ui/astro/components/ArrowCard.astro'
 import Layout from '@ui/astro/layouts/Layout.astro'
 import { Hashnode } from '../../hashnode'
 import Container from '../../ui/astro/components/Container.astro'
+import GradientText from "../../ui/react/Gradient/GradientText.astro";
 
 export const prerender = false
 
@@ -12,6 +13,7 @@ const posts = await Hashnode.getPosts()
 <Layout title={""} description={""}>
   <Container>
     <div class="space-y-10">
+      <GradientText size={6} color="blue" >Thoughts</GradientText>
       <div class="space-y-4">
             <section class="animate space-y-4">
               <div>
