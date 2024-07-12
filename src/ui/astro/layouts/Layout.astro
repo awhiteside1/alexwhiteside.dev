@@ -1,0 +1,30 @@
+---
+import Head from "../sections/Head.astro";
+import Header from "../sections/Header.astro";
+import Footer from "../sections/Footer.astro";
+import DotBackground from './DotBackground.astro';
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={`${title}`} description={description} />
+  </head>
+  <body>
+  <DotBackground>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </DotBackground>
+    <!--<PageFind />-->
+  </body>
+</html>

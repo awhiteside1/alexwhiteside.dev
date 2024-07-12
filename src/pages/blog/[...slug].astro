@@ -1,25 +1,46 @@
 ---
-import BottomLayout from "../../astro/layouts/BottomLayout.astro";
-import PageLayout from "../../astro/layouts/PageLayout.astro";
-import TopLayout from "../../astro/layouts/TopLayout.astro";
 import {Hashnode} from "../../hashnode";
 
 export const prerender = false;
 const {slug} = Astro.params;
 const post = await Hashnode.getPost(slug)
 if (!post) return Astro.redirect("/404")
+
+import Layout from "@ui/astro/layouts/Layout.astro";
+import Container from "@ui/astro/sections/Container.astro";
+import BackToPrevious from "@ui/astro/components/BackToPrevious.astro";
+import FormattedDate from "@ui/astro/components/FormattedDate.astro";
+
 ---
 
-<PageLayout title={post.title} description={post.brief}>
-  <TopLayout>
+<Layout title={post.title} description={post.brief}>
+  <Container>
     <div class="animate">
-      <!--<ArticleTopLayout entry={post}/>-->
+      <BackToPrevious href="/blog">Back to blog</BackToPrevious>
     </div>
-  </TopLayout>
-<Fragment set:html={post.content.html}/>
-  <BottomLayout>
-    <div class="animate">
-      <!--<ArticleBottomLayout entry={post} />-->
+    <div class="my-10 space-y-1">
+      <div class="animate flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={post.publishedAt} />
+        </div>
+        &bull;
+        <div class="font-base text-sm">
+          {(post.readTimeInMinutes)} min read
+        </div>
+      </div>
+     <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+        {post.title}
+      </h1>
     </div>
-  </BottomLayout>
-</PageLayout>
+    <!--{headings.length > 0 && <TableOfContents headings={headings} />}-->
+    <article class="animate">
+        <Fragment set:html={post.content.html}/>
+      <div class="mt-24">
+        <!--<PostNavigation prevPost={prevPost} nextPost={nextPost} />-->
+      </div>
+      <div class="mt-24">
+      </div>
+    </article>
+  </Container>
+</Layout>
+

@@ -1,232 +1,109 @@
 ---
-import { getCollection } from "astro:content";
-import ArrowCard from "@components/ArrowCard";
-import MeteorShower from "../astro/MeteorShower.astro";
-import StackCard from "../astro/StackCard.astro";
-import TwinklingStars from "../astro/TwinklingStars.astro";
-import { SITE, SOCIALS } from "@consts";
-import PageLayout from "../astro/layouts/PageLayout.astro";
-import {FlipWords} from "../aceturnity/flip";
-import {GradientText} from '../components/elements/GradientText'
-const posts = (await getCollection("blog"))
-	.filter((post) => !post.data.draft)
-	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	.slice(0, 3);
-
-const projects = (await getCollection("projects"))
-	.filter((project) => !project.data.draft)
-	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	.slice(0, 3);
-
-const stack = [
-	{
-		text: "Astro",
-		icon: "astro",
-		href: "https://astro.build",
-	},
-	{
-		text: "Javascript",
-		icon: "javascript",
-		href: "https://www.javascript.com",
-	},
-	{
-		text: "Typescript",
-		icon: "typescript",
-		href: "https://www.typescriptlang.org",
-	},
-	{
-		text: "Tailwind",
-		icon: "tailwind",
-		href: "https://tailwindcss.com",
-	},
-];
-
-const phrases = ["brush my teeth.", "only rolled my own auth once.", "faced fstab and won.", "thinks in systems.","lives in Philadelphia.", "preaches volatility-based decomposition."]
-
+import Layout from '@ui/astro/layouts/Layout.astro'
+import Container from '@ui/astro/sections/Container.astro'
+import Link from '@ui/astro/sections/Link.astro'
+import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
+import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
 ---
 
-<PageLayout title="Home" description={SITE.DESCRIPTION}>
+<Layout title="" description=""> <Container>
+    <h1 class="animate font-semibold text-black dark:text-white">
+      Introducing Astro Micro 🔬
+    </h1>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <span class="animate">
+            <p>
+              Astro Micro is an accessible theme for <Link
+                href="https://astro.build/">Astro</Link
+              >. It's a fork of
+              <Link href="https://github.com/markhorn-dev"> Mark Horn's </Link> popular
+              theme <Link href="https://astro.build/themes/details/astronano/"
+                >Astro Nano</Link
+              >. Like Nano, Micro comes with zero frameworks installed.
+            </p>
+            <p>
+              Micro adds features like <Link href="https://pagefind.app/"
+                >Pagefind</Link
+              > for search, <Link href="https://giscus.app">Giscus</Link> for comments,
+              and more. For a full list of changes, see this <Link
+                href="/blog/00-micro-changelog">blog post</Link
+              >.
+            </p>
+          </span>
+          <span class="animate">
+            <p>
+              Micro still comes with everything great about Nano — full type
+              safety, a sitemap, an RSS feed, and Markdown + MDX support. Styled
+              with TailwindCSS and preconfigured with system, light, and dark
+              themes.
+            </p>
+            <p>
+              Visit
+              <Link href="https://github.com/trevortylerlee/astro-micro">
+                Astro Micro on GitHub
+              </Link>
+              to fork the repository to get started.
+            </p>
+          </span>
+        </article>
+      </section>
 
-    <!-- Light Mode: Particles -->
-    <div class='absolute inset-0 block dark:hidden'>
-        <div id='particles1' class='fixed inset-0'></div>
-        <div id='particles2' class='fixed inset-0'></div>
-        <div id='particles3' class='fixed inset-0'></div>
-    </div>
-
-    <!-- Dark Theme: Stars -->
-    <div class='absolute inset-0 bg-black hidden dark:block'>
-        <div id='stars1' class='fixed inset-0'></div>
-        <div id='stars2' class='fixed inset-0'></div>
-        <div id='stars3' class='fixed inset-0'></div>
-    </div>
-
-    <!-- Dark Theme: Twinkling Stars / Metors -->
-    <div id="galaxy" class="fixed inset-0">
-        <div class="hidden dark:block">
-            <TwinklingStars/>
-            <MeteorShower/>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h2 class="font-semibold text-black dark:text-white">Latest posts</h2>
+          <Link href="/blog"> See all posts </Link>
         </div>
+        <!--<ul class="not-prose flex flex-col gap-4">-->
+        <!--  {-->
+        <!--    blog.map((post) => (-->
+        <!--      <li>-->
+        <!--        <ArrowCard entry={post} />-->
+        <!--      </li>-->
+        <!--    ))-->
+        <!--  }-->
+        <!--</ul>-->
+      </section>
+
+      <section class="animate space-y-6">
+
+        <BentoGrid><BentoGridItem title="Something New" description="The quick brown fox"><div class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                                                                                               style={{
+                                                                                                 background:
+                                                                                                     "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                                                                                                 backgroundSize: "400% 400%",
+                                                                                               }}><div class="h-full w-full rounded-lg"></div></div> </BentoGridItem></BentoGrid>
+
+      </section>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h2 class="font-semibold text-black dark:text-white">
+            Recent projects
+          </h2>
+          <Link href="/projects"> See all projects </Link>
+        </div>
+        <!--<ul class="not-prose flex flex-col gap-4">-->
+        <!--  {-->
+        <!--    projects.map((project) => (-->
+        <!--      <li>-->
+        <!--        <ArrowCard entry={project} />-->
+        <!--      </li>-->
+        <!--    ))-->
+        <!--  }-->
+        <!--</ul>-->
+      </section>
+
+      <section class="animate space-y-4">
+        <h2 class="font-semibold text-black dark:text-white">Let's Connect</h2>
+        <article>
+          <p>
+            If you want to get in touch with me about something or just to say
+            hi, reach out on social media or send me an email.
+          </p>
+        </article>
+
+      </section>
     </div>
-
-    <script is:inline src="/js/bg.js"></script>
-
-    <!-- HERO -->
-    <section class="relative h-screen w-full">
-        <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
-            <div id="crescent"
-                 class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%'>
-                <div id="planet"
-                     class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'>
-                    <div id="blur" class='w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl'/>
-                </div>
-            </div>
-        </div>
-        <div class="animate absolute h-full w-full flex items-center justify-center">
-            <div class='relative w-full h-full flex items-center justify-center'>
-                <div class='p-5 text-center'>
-                    <p class='animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75'>
-                        👋 Hi, I'm <GradientText>Alex Whiteside</GradientText>
-                    </p>
-                <FlipWords client:load words={phrases} />
-                    <div id="ctaButtons" class='animated flex flex-wrap gap-4 justify-center mt-5'>
-                        <a href='/blog'
-                           class='py-2 px-4 rounded truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend'>
-                            Read my blog
-                        </a>
-                        <a href='/work'
-                           class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend'>
-                            View my work
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="relative bg-white dark:bg-black">
-        <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
-
-            <!-- About Section -->
-            <section class="animate">
-                <article>
-                    <p>I am a <b><i>software engineer</i></b>, <b><i>ui/ux designer</i></b>, <b><i>product
-                        planner</i></b>, <b><i>mentor</i></b>, <b><i>student</i></b>, <b><i>minimalist</i></b>, <b><i>eternal
-                        optimist</i></b>, <b><i>crypto enthusiast</i></b> and <b><i>sarcasm connoisseur</i></b>.</p>
-                    <p>I love to both build and break things. I am motivated by challenging projects with self-guided
-                        research and dynamic problem solving. My true passion is crafting creative front end designs
-                        with unique takes on color, typography and motion.</p>
-                    <p>During my career</p>
-                    <p>I have built products ranging from marketing and ecommerce websites to complex enterprise apps
-                        with focus on delivering fast, elegant code along with delightful user interfaces.</p>
-                    <p>Now</p>
-                    <p>I currently work as a software engineer at StreamlineFS, where I do product planning, design and
-                        development.</p>
-                </article>
-            </section>
-
-            <!-- Blog Preview Section -->
-            <section class="animate">
-                <div class="space-y-4">
-                    <div class="flex justify-between">
-                        <p class="font-semibold text-black dark:text-white">
-                            Recent posts
-                        </p>
-                        <a href="/blog"
-                           class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                All posts
-              </span>
-                        </a>
-                    </div>
-                    <ul class="space-y-4">
-                        {posts.map((post) => (
-                                <li>
-                                    <ArrowCard entry={post}/>
-                                </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Tech Stack Section -->
-            <section class="animate">
-                <div class="space-y-4">
-                    <p class="font-semibold text-black dark:text-white">
-                        Website build with
-                    </p>
-                    <div class="flex flex-wrap items-center gap-2 mt-5">
-                        {stack.map(item => (
-                                <StackCard
-                                        text={item.text}
-                                        icon={item.icon}
-                                        href={item.href}
-                                />
-                        ))}
-                    </div>
-                    <div>
-                        Performing reactivity and statefulness, special guest
-                        <a href="https://www.solidjs.com/" target="_blank"
-                           class="w-fit group underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                SolidJS
-              </span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Project Preview Section -->
-            <section class="animate">
-                <div class="space-y-4">
-                    <div class="flex justify-between">
-                        <p class="font-semibold text-black dark:text-white">
-                            Recent projects
-                        </p>
-                        <a href="/projects"
-                           class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                All projects
-              </span>
-                        </a>
-                    </div>
-                    <ul class="space-y-4">
-                        {projects.map((project) => (
-                                <li>
-                                    <ArrowCard entry={project}/>
-                                </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section class="animate">
-                <div>
-                    <p class="font-semibold text-black dark:text-white">
-                        Let's Connect
-                    </p>
-                    <p>
-                        Reach out to me via email or on social media.
-                    </p>
-                    <div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
-                        {SOCIALS.map(social => (
-                                <div class="col-span-1 flex items-center gap-1">
-                <span class="whitespace-nowrap truncate">
-                  {social.NAME}
-                </span>
-                                </div>
-                                <div class="col-span-3 truncate">
-                                    <a href={social.HREF} target="_blank"
-                                       class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-                  <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                    {social.TEXT}
-                  </span>
-                                    </a>
-                                </div>
-                        ))}
-                    </div>
-            </section>
-        </div>
-    </div>
-</PageLayout>
+  </Container>
+</Layout>

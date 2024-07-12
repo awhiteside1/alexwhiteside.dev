@@ -1,32 +1,30 @@
 ---
+import Layout from "@ui/astro/layouts/Layout.astro";
+import Container from "@ui/astro/sections/Container.astro";
+import ArrowCard from "@ui/astro/components/ArrowCard.astro";
+import {Hashnode} from "../../hashnode";
+
 export const prerender = false;
 
-import { getCollection } from "astro:content";
-import Blog from "@components/Blog";
-import { BLOG } from "@consts";
-import BottomLayout from "../../astro/layouts/BottomLayout.astro";
-import PageLayout from "../../astro/layouts/PageLayout.astro";
-import TopLayout from "../../astro/layouts/TopLayout.astro";
-import {Hashnode} from "../../hashnode";
-import {LampDemo}from '../../aceturnity/lamp'
+const posts = await Hashnode.getPosts()
 
-const out =  await Hashnode.getPosts()
-debugger;
-const tags = [] as string[];
+
 ---
 
-<PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
-  <TopLayout>
-    <div class="animate page-heading">
-      {BLOG.TITLE}
+<Layout title={""} description={""}>
+  <Container>
+    <div class="space-y-10">
+      <div class="space-y-4">
+            <section class="animate space-y-4">
+              <div>
+                <ul class="not-prose flex flex-col gap-4">
+                  {posts.map(post=>  <li>
+                    <ArrowCard entry={post} />
+                  </li>)}
+                </ul>
+              </div>
+            </section>
+      </div>
     </div>
-  </TopLayout>
-  <LampDemo client:load ></LampDemo>
-  <BottomLayout>
-    <div class="animate">
-      <Blog client:load tags={tags} data={out} />
-    </div>
-  </BottomLayout>
-</PageLayout>
-
-
+  </Container>
+</Layout>
