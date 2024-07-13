@@ -1,13 +1,13 @@
 ---
-import {getCollection} from 'astro:content';
-import {filterDrafts} from "../../ui/utils/draftProdFilter";
-import Layout from "../../ui/astro/layouts/Layout.astro";
-import Container from "../../ui/astro/components/Container.astro";
-import BentoGrid from "../../ui/astro/components/bento/BentoGrid.astro";
-import BentoGridItem from "../../ui/astro/components/bento/BentoGridItem.astro";
-import GradientText from "../../ui/react/Gradient/GradientText.astro";
+import { getCollection } from 'astro:content'
+import Container from '../../ui/astro/components/Container.astro'
+import BentoGrid from '../../ui/astro/components/bento/BentoGrid.astro'
+import BentoGridItem from '../../ui/astro/components/bento/BentoGridItem.astro'
+import Layout from '../../ui/astro/layouts/Layout.astro'
+import GradientText from '../../ui/react/Gradient/GradientText.astro'
+import { filterDrafts } from '../../ui/utils/draftProdFilter'
 
-const allBooks = await getCollection('books', filterDrafts);
+const allBooks = await getCollection('books', filterDrafts)
 ---
 
 

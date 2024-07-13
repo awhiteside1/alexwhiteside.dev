@@ -1,3 +1,5 @@
-export const filterDrafts =  ({ data }: {data:any}) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
+export const filterDrafts = ({
+	data,
+}: { data: { draft: boolean | unknown } }) => {
+	return import.meta.env.PROD ? data.draft !== true : true
 }

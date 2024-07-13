@@ -1,18 +1,18 @@
 ---
-import {cn} from '@ui/utils/cn'
+import { cn } from '@ui/utils/cn'
 
 interface Props {
-    title: string
-    description: string
-    variant?: 'row' | 'col'
+	title: string
+	description: string
+	variant?: 'row' | 'col'
 }
 
 const variants = {
-    row: 'flex-row col-span-2',
-    col: 'flex-col col-span-1'
+	row: 'flex-row col-span-2',
+	col: 'flex-col col-span-1',
 }
 
-const {title, description, variant = "col"} = Astro.props
+const { title, description, variant = 'col' } = Astro.props
 ---
 <div
         class={cn(

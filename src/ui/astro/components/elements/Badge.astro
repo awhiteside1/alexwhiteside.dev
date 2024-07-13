@@ -4,16 +4,17 @@ type Props = {
 	color: keyof typeof colors
 }
 
-
-const colors={
-    red: `bg-red-50 text-red-700 ring-red-50 hover:bg-red-200  dark:bg-red-800 dark:text-red-100`,
-    green: `bg-green-50 text-green-700 ring-green-50 hover:bg-green-200  dark:bg-green-800 dark:text-green-100`,
-    blue: `bg-blue-50 text-blue-700 ring-blue-50 dark:bg-blue-800 dark:text-blue-100 hover:bg-blue-200 `,
-    purple: `bg-purple-50 text-purple-700 ring-purple-50 hover:bg-purple-200 dark:bg-purple-800 dark:text-purple-100`,
-    orange: `bg-orange-50 text-orange-700 ring-orange-50 hover:bg-orange-200 dark:bg-orange-800 dark:text-orange-100`,
-    teal: `bg-teal-50 text-teal-700 ring-teal-50 hover:bg-teal-200 dark:bg-teal-800 dark:text-teal-100`
+const colors = {
+	red: 'bg-red-50 text-red-700 ring-red-50 hover:bg-red-200  dark:bg-red-800 dark:text-red-100',
+	green:
+		'bg-green-50 text-green-700 ring-green-50 hover:bg-green-200  dark:bg-green-800 dark:text-green-100',
+	blue: 'bg-blue-50 text-blue-700 ring-blue-50 dark:bg-blue-800 dark:text-blue-100 hover:bg-blue-200 ',
+	purple:
+		'bg-purple-50 text-purple-700 ring-purple-50 hover:bg-purple-200 dark:bg-purple-800 dark:text-purple-100',
+	orange:
+		'bg-orange-50 text-orange-700 ring-orange-50 hover:bg-orange-200 dark:bg-orange-800 dark:text-orange-100',
+	teal: 'bg-teal-50 text-teal-700 ring-teal-50 hover:bg-teal-200 dark:bg-teal-800 dark:text-teal-100',
 }
-
 ---
 
     <span class={cn("cursor-pointer transition-all duration-300 inline-flex items-center rounded-md  px-2 py-1 text-sm font-medium",colors[Astro.props.color])}>
