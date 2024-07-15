@@ -4,29 +4,26 @@ import Link from '../components/Link.astro'
 ---
 
 <header transition:persist>
-  <Container>
-    <div class="flex flex-wrap justify-between gap-y-2">
-      <Link href="/" underline={false}>
-        <div class="font-semibold">
-          &nbsp;
+    <Container>
+        <div class="flex flex-wrap justify-between gap-y-2">
+            <Link href="/" underline={false}>
+                <div class="font-semibold">&nbsp;</div>
+            </Link>
+            <nav class="flex items-center gap-1 text-sm">
+                <Link href="/">home</Link>
+                <span>
+                    {`/`}
+                </span>
+                <Link href="/background">background</Link>
+                <span>
+                    {`/`}
+                </span>
+                <Link href="/blog">thoughts</Link>
+                <span>
+                    {`/`}
+                </span>
+                <Link href="/recommendations">recommendations</Link>
+            </nav>
         </div>
-      </Link>
-      <nav class="flex items-center gap-1 text-sm">
-        <Link href="/">home</Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/background">background</Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/blog">thoughts</Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/recommendations">recommendations</Link>
-
-      </nav>
-    </div>
-  </Container>
+    </Container>
 </header>

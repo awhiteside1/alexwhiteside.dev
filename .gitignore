@@ -5,3 +5,4 @@ dist/
 .env
 .vercel/
 *storybook.log
+.DS_Store

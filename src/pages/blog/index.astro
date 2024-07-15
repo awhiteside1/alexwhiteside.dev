@@ -10,21 +10,25 @@ export const prerender = false
 const posts = await Hashnode.getPosts()
 ---
 
-<Layout title={""} description={""}>
-  <Container>
-    <div class="space-y-10">
-      <GradientText size={6} color="blue" >Thoughts</GradientText>
-      <div class="space-y-4">
-            <section class="animate space-y-4">
-              <div>
-                <ul class="not-prose flex flex-col gap-4">
-                  {posts.map(post=>  <li>
-                    <ArrowCard entry={post} />
-                  </li>)}
-                </ul>
-              </div>
-            </section>
-      </div>
-    </div>
-  </Container>
+<Layout title={''} description={''}>
+    <Container>
+        <div class="space-y-10">
+            <GradientText size={6} color="blue">Thoughts</GradientText>
+            <div class="space-y-4">
+                <section class="animate space-y-4">
+                    <div>
+                        <ul class="not-prose flex flex-col gap-4">
+                            {
+                                posts.map((post) => (
+                                    <li>
+                                        <ArrowCard entry={post} />
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </Container>
 </Layout>

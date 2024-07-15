@@ -13,33 +13,33 @@ import Container from '../../ui/astro/components/Container.astro'
 ---
 
 <Layout title={post.title} description={post.brief}>
-  <Container>
-    <div class="animate">
-      <BackToPrevious href="/blog">Back to blog</BackToPrevious>
-    </div>
-    <div class="my-10 space-y-1">
-      <div class="animate flex items-center gap-1.5">
-        <div class="font-base text-sm">
-          <FormattedDate date={post.publishedAt} />
+    <Container>
+        <div class="animate">
+            <BackToPrevious href="/blog">Back to blog</BackToPrevious>
         </div>
-        &bull;
-        <div class="font-base text-sm">
-          {(post.readTimeInMinutes)} min read
+        <div class="my-10 space-y-1">
+            <div class="animate flex items-center gap-1.5">
+                <div class="font-base text-sm">
+                    <FormattedDate date={post.publishedAt} />
+                </div>
+                &bull;
+                <div class="font-base text-sm">
+                    {post.readTimeInMinutes} min read
+                </div>
+            </div>
+            <h1
+                class="animate text-3xl font-semibold text-black dark:text-white"
+            >
+                {post.title}
+            </h1>
         </div>
-      </div>
-     <h1 class="animate text-3xl font-semibold text-black dark:text-white">
-        {post.title}
-      </h1>
-    </div>
-    <!--{headings.length > 0 && <TableOfContents headings={headings} />}-->
-    <article class="animate">
-        <Fragment set:html={post.content.html}/>
-      <div class="mt-24">
-        <!--<PostNavigation prevPost={prevPost} nextPost={nextPost} />-->
-      </div>
-      <div class="mt-24">
-      </div>
-    </article>
-  </Container>
+        <!--{headings.length > 0 && <TableOfContents headings={headings} />}-->
+        <article class="animate">
+            <Fragment set:html={post.content.html} />
+            <div class="mt-24">
+                <!--<PostNavigation prevPost={prevPost} nextPost={nextPost} />-->
+            </div>
+            <div class="mt-24"></div>
+        </article>
+    </Container>
 </Layout>
-

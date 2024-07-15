@@ -1,25 +1,23 @@
 ---
+
 ---
 
 <script is:inline>
-
     function onScroll() {
         if (window.scrollY > 0) {
-            document.documentElement.classList.add("scrolled");
+            document.documentElement.classList.add('scrolled')
         } else {
-            document.documentElement.classList.remove("scrolled");
+            document.documentElement.classList.remove('scrolled')
         }
     }
 
-
     function init() {
-        onScroll();
+        onScroll()
 
-        const backToPrev = document.getElementById("back-to-prev");
-        backToPrev?.addEventListener("click", () => window.history.back());
+        const backToPrev = document.getElementById('back-to-prev')
+        backToPrev?.addEventListener('click', () => window.history.back())
     }
 
-    document.addEventListener("DOMContentLoaded", () => init());
-    document.addEventListener("astro:after-swap", () => init());
-
+    document.addEventListener('DOMContentLoaded', () => init())
+    document.addEventListener('astro:after-swap', () => init())
 </script>

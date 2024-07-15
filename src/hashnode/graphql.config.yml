@@ -1,2 +1,2 @@
-schema: "https://gql.hashnode.com"
+schema: 'https://gql.hashnode.com'
 documents: '**/*.ts'
