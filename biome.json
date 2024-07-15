@@ -21,10 +21,11 @@
 		}
 	},
 	"formatter": {
-		"enabled": true
+		"enabled": false
 	},
 	"javascript": {
 		"formatter": {
+			"enabled": false,
 			"quoteStyle": "single",
 			"semicolons": "asNeeded"
 		}

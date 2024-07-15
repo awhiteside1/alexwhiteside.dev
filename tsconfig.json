@@ -21,6 +21,6 @@
 			}
 		]
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", ".storybook/**"],
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", ".storybook/*"],
 	"exclude": ["dist", "node_modules", "old"]
 }

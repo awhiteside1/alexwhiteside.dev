@@ -14,23 +14,22 @@ const allBooks = await getCollection('books', filterDrafts)
 <Layout title="Books" description="Books I have read">
 
     <Container>
-
+<div class="space-y-4">
         <GradientText size={6} color="neutral" >Recommendations</GradientText>
+
         <BentoGrid>
 
             {
                 allBooks.map(({data}) =>
                     (
                             <BentoGridItem variant="row" title={data.name} description={data.description}>
-                                <!--<div    class="flex flex-1 w-full h-full min-h-[6rem] rounded-lg  flex-col space-y-2">-->
-                                <img alt="Book Cover" src={data.cover} class="transition-all w-20 group-hover/bento:scale-105 object-scale-down rounded-lg shadow-md"/>
-<!--                                </div>-->
+                                <img alt="Book Cover" src={data.cover} class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"/>
                             </BentoGridItem>
                     ))
             }
 
         </BentoGrid>
-
+    </div>
 
     </Container>
 
