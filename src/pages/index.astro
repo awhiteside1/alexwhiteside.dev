@@ -5,13 +5,11 @@ import Link from '../ui/astro/components/Link.astro'
 import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
 import Badge from '../ui/astro/components/elements/Badge.astro'
-import GradientText from '../ui/react/Gradient/GradientText.astro'
+import GradientText from "../ui/react/Gradient/GradientText.astro";
 ---
 
-<Layout
-    title="Entrepreneur, Software Architect, Creator"
-    description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
->
+<Layout title="Entrepreneur, Software Architect, Creator"
+        description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. ">
     <Container>
         <div class="space-y-4">
             <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
@@ -19,127 +17,75 @@ import GradientText from '../ui/react/Gradient/GradientText.astro'
                 Alex Whiteside
             </GradientText>
             <ul class="flex flex-row gap-2">
-                <Badge color="blue">Entrepreneur</Badge><Badge color="purple"
-                    >Software Architect</Badge
-                ><Badge color="orange">Creator</Badge>
+                <Badge color="blue"text='Entrepreneur'><p class="text-sm">I've build apps in a garage, launched on stage at Techcrunch Distrupt and learned a number of things along the way.   </p></Badge>
+                <Badge color='purple' text='Software Architect'><p class="text-sm">I've designed, evolved and led implementation of complex systems to serve millions of users in highly regulated industries.   </p></Badge>
+                <Badge color='orange' text='Leader'><p class="text-sm">I lead by example and try to raise the bar and help others meet or exceed it. </p></Badge>
             </ul>
+
         </div>
 
         <div class="space-y-16">
             <section>
                 <article class="space-y-4">
-                    <span class="animate">
-                        <p>
-                            Astro Micro is an accessible theme for <Link
-                                href="https://astro.build/">Astro</Link
-                            >. It's a fork of
-                            <Link href="https://github.com/markhorn-dev">
-                                Mark Horn's
-                            </Link> popular theme <Link
-                                href="https://astro.build/themes/details/astronano/"
-                                >Astro Nano</Link
-                            >. Like Nano, Micro comes with zero frameworks
-                            installed.
-                        </p>
-                        <p>
-                            Micro adds features like <Link
-                                href="https://pagefind.app/">Pagefind</Link
-                            > for search, <Link href="https://giscus.app"
-                                >Giscus</Link
-                            > for comments, and more. For a full list of changes,
-                            see this <Link href="/blog/00-micro-changelog"
-                                >blog post</Link
-                            >.
-                        </p>
-                    </span>
-                    <span class="animate">
-                        <p>
-                            Micro still comes with everything great about Nano —
-                            full type safety, a sitemap, an RSS feed, and
-                            Markdown + MDX support. Styled with TailwindCSS and
-                            preconfigured with system, light, and dark themes.
-                        </p>
-                        <p>
-                            Visit
-                            <Link
-                                href="https://github.com/trevortylerlee/astro-micro"
-                            >
-                                Astro Micro on GitHub
-                            </Link>
-                            to fork the repository to get started.
-                        </p>
-                    </span>
+          <span class="animate">
+           <p> Over the last 10+ yearsc</p>
+          </span>
                 </article>
             </section>
 
             <section class="animate space-y-6">
-                <div
-                    class="flex flex-wrap items-center justify-between gap-y-2"
-                >
-                    <h2 class="font-semibold text-black dark:text-white">
-                        Latest posts
-                    </h2>
-                    <Link href="/blog"> See all posts </Link>
+                <div class="flex flex-wrap items-center justify-between gap-y-2">
+                    <h2 class="font-semibold text-black dark:text-white">Latest posts</h2>
+                    <Link href="/blog"> See all posts</Link>
                 </div>
+
             </section>
 
             <section class="animate space-y-6">
+
                 <BentoGrid>
-                    <BentoGridItem
-                        title="Something New"
-                        description="The quick brown fox"
-                    >
+                    <BentoGridItem title="Something New" description="The quick brown fox">
                         <div
-                            class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                            style={{
-                                background:
-                                    'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
-                                backgroundSize: '400% 400%',
-                            }}
-                        >
+                                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                                style={{
+                                    background:
+                                        "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                                    backgroundSize: "400% 400%",
+                                }}>
                             <div class="h-full w-full rounded-lg"></div>
                         </div>
                     </BentoGridItem>
-                    <BentoGridItem
-                        title="Bad and Younge"
-                        description="The quick brown fox"
-                    >
+                    <BentoGridItem title="Bad and Younge" description="The quick brown fox">
                         <div
-                            class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                            style={{
-                                background:
-                                    'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
-                                backgroundSize: '400% 400%',
-                            }}
-                        >
+                                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                                style={{
+                                    background:
+                                        "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                                    backgroundSize: "400% 400%",
+                                }}>
                             <div class="h-full w-full rounded-lg"></div>
                         </div>
                     </BentoGridItem>
-                    <BentoGridItem
-                        title="An Old  New"
-                        description="The quick brown fox"
-                    >
+                    <BentoGridItem title="An Old  New" description="The quick brown fox">
                         <div
-                            class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                            style={{
-                                background:
-                                    'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
-                                backgroundSize: '400% 400%',
-                            }}
-                        >
+                                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
+                                style={{
+                                    background:
+                                        "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                                    backgroundSize: "400% 400%",
+                                }}>
                             <div class="h-full w-full rounded-lg"></div>
                         </div>
                     </BentoGridItem>
                 </BentoGrid>
+
             </section>
             <section class="animate space-y-6">
-                <div
-                    class="flex flex-wrap items-center justify-between gap-y-2"
-                >
+                <div class="flex flex-wrap items-center justify-between gap-y-2">
                     <h2 class="font-semibold text-black dark:text-white">
                         Recent projects
                     </h2>
-                    <Link href="/projects"> See all projects </Link>
+                    <Link href="/projects"> See all projects</Link>
                 </div>
                 <!--<ul class="not-prose flex flex-col gap-4">-->
                 <!--  {-->
@@ -153,16 +99,14 @@ import GradientText from '../ui/react/Gradient/GradientText.astro'
             </section>
 
             <section class="animate space-y-4">
-                <h2 class="font-semibold text-black dark:text-white">
-                    Let's Connect
-                </h2>
+                <h2 class="font-semibold text-black dark:text-white">Let's Connect</h2>
                 <article>
                     <p>
-                        If you want to get in touch with me about something or
-                        just to say hi, reach out on social media or send me an
-                        email.
+                        If you want to get in touch with me about something or just to say
+                        hi, reach out on social media or send me an email.
                     </p>
                 </article>
+
             </section>
         </div>
     </Container>
