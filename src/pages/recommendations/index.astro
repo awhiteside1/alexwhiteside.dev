@@ -23,7 +23,7 @@ const allBooks = await getCollection('books', filterDrafts)
                     (
                             <BentoGridItem variant="row" title={data.name} description={data.description}>
                                 <!--<div    class="flex flex-1 w-full h-full min-h-[6rem] rounded-lg  flex-col space-y-2">-->
-                                <img alt="Book Cover" src={data.cover} class="transition-all group-hover/bento:scale-105	 object-scale-down rounded-lg shadow-md"/>
+                                <img alt="Book Cover" src={data.cover} class="transition-all w-20 group-hover/bento:scale-105 object-scale-down rounded-lg shadow-md"/>
 <!--                                </div>-->
                             </BentoGridItem>
                     ))

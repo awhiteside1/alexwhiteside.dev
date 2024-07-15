@@ -9,7 +9,7 @@ const books = defineCollection({
 		cover: z.string().url(),
 		description: z.string(),
 		kind: z.string(),
-		date: z.coerce.date(),
+		date: z.coerce.date().optional(),
 		draft: z.boolean().default(false),
 	}),
 })
