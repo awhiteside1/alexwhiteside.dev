@@ -8,7 +8,7 @@ import { defineConfig, envField } from 'astro/config'
 export default defineConfig({
 	site: 'https://alexwhiteside.dev',
 	adapter: vercelServerless({
-		webAnalytics: true,
+		webAnalytics: {enabled:true},
 		isr: {
 			expiration: 60 * 60 * 24,
 		},
