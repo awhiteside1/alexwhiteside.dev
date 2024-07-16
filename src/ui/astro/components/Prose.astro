@@ -1,0 +1,11 @@
+---
+import { cn } from '@ui/utils/cn'
+import type { HTMLAttributes } from 'astro/types'
+// use a `type`
+type Props = HTMLAttributes<'div'>
+const props = Astro.props
+---
+
+<div class={cn(props.class, 'prose dark:prose-invert')} {...props}>
+    <slot />
+</div>

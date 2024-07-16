@@ -14,30 +14,29 @@ const books = defineCollection({
     }),
 })
 
-const tech = defineCollection({
+// const tech = defineCollection({
+//     type: 'content',
+//     schema: z.object({
+//         name: z.string(),
+//         author: z.string(),
+//         url: z.string().url(),
+//         description: z.string(),
+//         kind: z.string(),
+//         date: z.coerce.date(),
+//         draft: z.boolean().default(false),
+//     }),
+// })
+
+const work = defineCollection({
     type: 'content',
     schema: z.object({
-        name: z.string(),
-        author: z.string(),
-        url: z.string().url(),
-        description: z.string(),
-        kind: z.string(),
-        date: z.coerce.date(),
-        draft: z.boolean().default(false),
+        title: z.string(),
+        company: z.string(),
+        from: z.coerce.date(),
+        to: z.coerce.date().optional(),
+        stack: z.string().transform((value) => value.split(' ')),
+        logo: z.string().url(),
     }),
 })
 
-//
-// const projects = defineCollection({
-//   type: "content",
-//   schema: z.object({
-//     title: z.string(),
-//     description: z.string(),
-//     date: z.coerce.date(),
-//     draft: z.boolean().optional(),
-//     demoURL: z.string().optional(),
-//     repoURL: z.string().optional(),
-//   }),
-// });
-
-export const collections = { books, tech }
+export const collections = { books, work }

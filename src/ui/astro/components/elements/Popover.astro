@@ -1,19 +1,25 @@
 ---
+
 ---
 
-<script type="module"
-        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/components/tooltip/tooltip.js"/>
+<script
+    type="module"
+    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/components/tooltip/tooltip.js"
+></script>
 
 <sl-tooltip placement="bottom">
     <div slot="content">
-        <div class="rounded-xl bg-gray-600 border-2 border-gray-500 p-3 text-white"><slot name="content"/></div>
+        <div
+            class="rounded-xl bg-gray-600 border-2 border-gray-500 p-3 text-white"
+        >
+            <slot name="content" />
+        </div>
     </div>
-    <slot/>
+    <slot />
 </sl-tooltip>
 
-
 <style>
-    sl-tooltip:not(:defined) > div[slot="content"] {
+    sl-tooltip:not(:defined) > div[slot='content'] {
         display: none;
     }
 </style>

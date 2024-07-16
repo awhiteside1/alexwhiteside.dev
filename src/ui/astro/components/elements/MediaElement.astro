@@ -1,0 +1,28 @@
+---
+type Props = {
+    logo: string
+    title: string
+    subtitle: string
+}
+
+const { logo, title, subtitle } = Astro.props
+---
+
+<div class="flex gap-4 col-span-4 items-center content-center">
+    <div
+        class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+    >
+        <img src={logo} alt="" class="h-10 w-10 object-cover rounded-full" />
+    </div>
+    <div class="flex flex-auto flex-wrap">
+        <dd
+            class="p-0 m-0 w-full flex-none text-lg font-medium text-zinc-900 dark:text-zinc-100"
+        >
+            {title}
+        </dd>
+
+        <dd class="p-0 m-0 text-sm text-zinc-400 dark:text-zinc-500">
+            {subtitle}
+        </dd>
+    </div>
+</div>

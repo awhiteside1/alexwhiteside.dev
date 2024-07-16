@@ -1,0 +1,49 @@
+---
+import { getEntry } from 'astro:content'
+import { Temporal } from 'temporal-polyfill'
+import { generateInterval } from '@ui/utils/interval'
+type Props = {
+    slug: string
+}
+
+const work = await getEntry('work', Astro.props.slug)
+if (!work) return Astro.redirect('/404')
+const data = work.data
+const { Content, headings } = await work.render()
+
+const from = Temporal.PlainDate.from(data.from.toISOString().split('T')[0])
+const to = data.to
+    ? Temporal.PlainDate.from(data.to.toISOString().split('T')[0])
+    : undefined
+
+const interval = [from, to]
+    .map((date) =>
+        date
+            ? date.toLocaleString('en-US', { month: 'long', year: 'numeric' })
+            : 'Present'
+    )
+    .join(' - ')
+---
+
+{
+    work && (
+        <>
+            <div class="group relative flex flex-col md:items-end md:col-span-1">
+                <p class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 md:text-right m-0">
+                    {data.title}
+                </p>
+                <p class="text-xs m-1">
+                    {generateInterval(data.from, data.to, {
+                        year: 'numeric',
+                        month: 'short',
+                    })}
+                </p>
+            </div>
+            <div class="group relative flex flex-col items-start md:col-span-3">
+                <div class="relative z-10 text-sm text-zinc-800 dark:text-zinc-300">
+                    <Content />
+                </div>
+            </div>
+        </>
+    )
+}

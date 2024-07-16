@@ -1,7 +1,40 @@
 ---
+import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
 import Container from '../ui/astro/components/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
 import GradientText from '../ui/react/Gradient/GradientText.astro'
+import { getCollection } from 'astro:content'
+import { group, mapValues, min, max, first, sift } from 'radash'
+import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
+import { generateInterval, byDate } from '@ui/utils/interval'
+const allWork = await getCollection('work')
+const grouped = group(allWork, (w) => w.data.company)
+const byCompany = mapValues(
+    grouped,
+    (group) =>
+        group && {
+            roles: group?.toSorted(byDate((role) => role.data.from)),
+            company: first(sift(group.map((x) => x.data.company))),
+            logo: first(sift(group.map((x) => x.data.logo))),
+            from: group
+                .map((x) => x.data.from)
+                .toSorted()
+                .toReversed()
+                .shift(),
+            to: group
+                .map((x) => x.data.to)
+                .toSorted()
+                .shift(),
+        }
+)
+const sortedByCompany = Object.values(byCompany).toSorted(
+    byDate((x) => x?.from)
+)
+
+const groupedWork = group(allWork, (work) => work.data.company)
+const work = allWork
+    .toSorted((entry) => entry.data.from.getUTCMilliseconds())
+    .reverse()
 ---
 
 <Layout
@@ -9,35 +42,41 @@ import GradientText from '../ui/react/Gradient/GradientText.astro'
     description="Multiple startup exists in Fintech, Edtech, and more."
 >
     <Container>
-        <GradientText color="orange" size={6}>Background</GradientText>
+        <div class="space-y-6">
+            <GradientText color="orange" size={6}>Background</GradientText>
 
-        <div>
-            * 🏠 Home: Originally Florida -&gt; Sydney -&gt; SF -&gt; NYC -&gt;
-            Philly, with chunks of time (6+ months) in India and Croatia * 🎓
-            Education: Physics/Electrical Eng - dropped out with ~2 semesters
-            left, because VC money required I move to Australia 🇦🇺 * 🥷 Founded
-            some startups, including: * an ed-tech platform that used robots to
-            improve learning outcomes for middle/high school physics - partnered
-            with University, used by 15+ schools in India/UAE/US (RILE) * a
-            fintech site/app and simulation engine for credit card rewards -
-            150k+ users, SaaS licensed engine - acquired by Even Financial
-            (Birch) * 👨‍💻 Post acquisition, worked for Even Financial as we
-            scaled from 15 people to becoming public (acquired by MoneyLion) *
-            Joined as frontend lead: rebuilt MVP in React, migrated network of
-            50+ partners, expanded to Savings and Credit Cards, grew FE team
-            from 2 to 8, helped define product strategy. * Formalized and ran
-            "Launch Operations", an org-wide process for coordinating rollouts
-            and partner launches between engineering, marketing and sales
-            leadership. * Established and directed product and engineering for
-            all direct to consumer products and brands, including Fiona, Birch,
-            Leaplife, and most R&D projects. Run as a set of mini startups, at
-            its peak had 40+ staff (design/dev/pm), operated out of Croatia. *
-            Launched consumer signup, loan search history, messaging
-            (email/sms), credit score integrations, SEO optimized structured
-            content, and media buying integrations (SEM/Social) * Worked with
-            network frontend teams as "Customer #1" to ensure new features were
-            releasable (docs/reporting/positive user metrics), shared learnings
-            from feature trials and proven tech (SSR, Next, Auth, CMS).
+            <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+                Over the last decade I've spent most of my time in Fintech and
+                Edtech as a (very) hands on technical leader.
+            </p>
+
+            <div>
+                <div class="flex max-w-4xl flex-col gap-6">
+                    {
+                        sortedByCompany.map(
+                            (company) =>
+                                company &&
+                                company.logo &&
+                                company.company &&
+                                company.from && (
+                                    <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
+                                        <MediaElement
+                                            logo={company.logo}
+                                            title={company.company}
+                                            subtitle={generateInterval(
+                                                company.from,
+                                                company.to
+                                            )}
+                                        />
+                                        {company?.roles.map((entry) => (
+                                            <WorkCard slug={entry.slug} />
+                                        ))}
+                                    </article>
+                                )
+                        )
+                    }
+                </div>
+            </div>
         </div>
     </Container>
 </Layout>
