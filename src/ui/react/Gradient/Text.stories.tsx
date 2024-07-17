@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import GradientText from './GradientText.astro'
+import GradientText from './GradientText.astro?raw'
 
 export default {
-    component: GradientText,
-} as Meta<typeof GradientText>
+    component: 'GradientText',
+} 
 
 export const Example: StoryObj<typeof GradientText> = {
-    render: (props) => <GradientText {...props}>Hello World</GradientText>,
+    render: (props) => <code>{GradientText}</code>,
     args: {
-        size: 6,
-        color: 'orange',
+        // size: 6,
+        // color: 'orange',
     },
 }
