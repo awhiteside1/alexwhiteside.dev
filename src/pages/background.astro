@@ -2,9 +2,9 @@
 import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
 import Container from '../ui/astro/components/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
-import GradientText from '../ui/react/Gradient/GradientText.astro'
+import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import { getCollection } from 'astro:content'
-import { group, mapValues, min, max, first, sift } from 'radash'
+import { group, mapValues, first, sift } from 'radash'
 import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
 import { generateInterval, byDate } from '@ui/utils/interval'
 const allWork = await getCollection('work')
@@ -31,10 +31,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
     byDate((x) => x?.from)
 )
 
-const groupedWork = group(allWork, (work) => work.data.company)
-const work = allWork
-    .toSorted((entry) => entry.data.from.getUTCMilliseconds())
-    .reverse()
+
 ---
 
 <Layout

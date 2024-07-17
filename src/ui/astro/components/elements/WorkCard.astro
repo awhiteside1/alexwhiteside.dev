@@ -1,6 +1,5 @@
 ---
 import { getEntry } from 'astro:content'
-import { Temporal } from 'temporal-polyfill'
 import { generateInterval } from '@ui/utils/interval'
 type Props = {
     slug: string
@@ -9,20 +8,9 @@ type Props = {
 const work = await getEntry('work', Astro.props.slug)
 if (!work) return Astro.redirect('/404')
 const data = work.data
-const { Content, headings } = await work.render()
+const { Content } = await work.render()
 
-const from = Temporal.PlainDate.from(data.from.toISOString().split('T')[0])
-const to = data.to
-    ? Temporal.PlainDate.from(data.to.toISOString().split('T')[0])
-    : undefined
 
-const interval = [from, to]
-    .map((date) =>
-        date
-            ? date.toLocaleString('en-US', { month: 'long', year: 'numeric' })
-            : 'Present'
-    )
-    .join(' - ')
 ---
 
 {
