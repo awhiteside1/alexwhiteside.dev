@@ -1,0 +1,84 @@
+
+// import * as memfs from 'memfs';
+ import fs from 'node:fs/promises'
+import path from 'node:path'
+import {createApp, eventHandler, setHeader, appendCorsHeaders} from 'h3'
+import {objectify} from 'radash'
+// import {getDirname} from './dir'
+// const __dirname = getDirname(import.meta.url)
+// import {toSnapshotSync} from 'memfs/lib/snapshot'
+
+// // function readGitIgnore(){
+// // const file = path.join(process.cwd(), '.gitignore')
+// //    const contents =  fs.readFileSync(file)
+// //    const string = Buffer.from(contents).toString('utf-8')
+// //    return string.split('\n')
+
+// // }
+
+// // const ignores = readGitIgnore()
+// // Function to recursively read directory contents and populate memfs volume
+// function readDirectoryContents(dir:string, root = '/') {
+//     const items = fs.readdirSync(dir);
+//     for (const item of items) {
+//         if(item.startsWith(".")) continue
+//         if(item.includes("node_modules")) continue
+//         const itemPath = path.join(dir, item);
+//         const stats = fs.statSync(itemPath);
+//         const memPath = path.join(root, item);
+    
+//         if (stats.isDirectory()) {
+//             memfs.fs.mkdirSync(memPath);
+//           readDirectoryContents(itemPath, memPath);
+//         } else {
+//           const fileContent = fs.readFileSync(itemPath);
+//           memfs.fs.writeFileSync(memPath, fileContent);
+//         }
+//       }
+//   }
+
+
+// // Initialize an in-memory file system
+
+
+//   const rootDir = process.cwd(); // Specify the root directory
+//   readDirectoryContents(rootDir);
+  
+//   memfs.vol.
+// const json = memfs.vol.toJSON()
+
+ 
+//   
+  
+
+
+import { snapshot } from '@webcontainer/snapshot';
+const rootDir = path.join(process.cwd(), 'src');
+
+
+export const app = createApp()
+app.use('/',eventHandler(evt=>appendCorsHeaders(evt, {
+    origin: '*',
+    preflight: {
+     statusCode: 204,
+    },
+ methods: '*',
+})))
+app.use('/snapshot', eventHandler(async (evt)=>{
+    setHeader(evt, 'content-type', 'application/octet-stream')
+    return snapshot(rootDir)
+}))
+app.use('/root', eventHandler(async(evt) => {
+
+    return readProjectFiles()
+
+}))
+
+
+async function readProjectFiles (){
+const root = process.cwd()
+    const files = await fs.readdir(root, {withFileTypes:true})
+    const realFiles = await Promise.all(files.filter(file=> file.isFile()).map(async(file)=> ({name: file.name, contents: (await fs.readFile(path.join(file.parentPath, file.name))).toString('utf-8') } )))
+    const data =objectify(realFiles, file=> file.name, file =>({file:{contents:file.contents}}))
+    return data
+}

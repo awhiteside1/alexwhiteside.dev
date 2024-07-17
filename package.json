@@ -13,9 +13,14 @@
 		"lint": "biome check ",
 		"lint:fix": "biome check --write --unsafe",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"server":"tsx src/test/server.ts"
 	},
 	"dependencies": {
+		"memfs": "4.9.3",
+		"defu":"6.1.4",
+		"@codesandbox/nodebox":"0.1.9",
+		 "@webcontainer/api": "^1.2.0",
 		"@astrojs/check": "^0.7.0",
 		"@astrojs/mdx": "^3.1.2",
 		"@astrojs/react": "^3.6.0",
@@ -41,6 +46,9 @@
 		"typescript": "^5.5.2"
 	},
 	"devDependencies": {
+		"h3":"1.12.0",
+		"@webcontainer/snapshot":"0.1.0",
+		"tsx":"4.16.2",
 		"@0no-co/graphqlsp": "^1.12.8",
 		"@astrojs/node": "^8.3.1",
 		"@astrojs/ts-plugin": "^1.9.0",

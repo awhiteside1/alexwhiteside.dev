@@ -1,6 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import {resolve} from 'node:path'
 import tsconfigPaths from "vite-tsconfig-paths";
+import defu from 'defu'
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -14,9 +15,14 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
 
+    
+  },
+  core: {
+    crossOriginIsolated: true,
   },
   viteFinal:(config)=>{
     config.plugins?.push(tsconfigPaths({root:resolve(__dirname, '..')}))
+    
     return config
 }
 };
