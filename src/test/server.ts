@@ -1,5 +1,5 @@
 
-// import * as memfs from 'memfs';
+ import memfs from 'memfs';
  import fs from 'node:fs/promises'
 import path from 'node:path'
 import {createApp, eventHandler, setHeader, appendCorsHeaders} from 'h3'
@@ -18,24 +18,24 @@ import {objectify} from 'radash'
 
 // // const ignores = readGitIgnore()
 // // Function to recursively read directory contents and populate memfs volume
-// function readDirectoryContents(dir:string, root = '/') {
-//     const items = fs.readdirSync(dir);
-//     for (const item of items) {
-//         if(item.startsWith(".")) continue
-//         if(item.includes("node_modules")) continue
-//         const itemPath = path.join(dir, item);
-//         const stats = fs.statSync(itemPath);
-//         const memPath = path.join(root, item);
+async function readDirectoryContents(dir:string, root = '/') {
+    const items =  await fs.readdir(dir);
+    for (const item of items) {
+        if(item.startsWith(".")) continue
+        if(item.includes("node_modules")) continue
+        const itemPath = path.join(dir, item);
+        const stats = await fs.stat(itemPath);
+        const memPath = path.join(root, item);
     
-//         if (stats.isDirectory()) {
-//             memfs.fs.mkdirSync(memPath);
-//           readDirectoryContents(itemPath, memPath);
-//         } else {
-//           const fileContent = fs.readFileSync(itemPath);
-//           memfs.fs.writeFileSync(memPath, fileContent);
-//         }
-//       }
-//   }
+        if (stats.isDirectory()) {
+            memfs.fs.mkdirSync(memPath);
+         await readDirectoryContents(itemPath, memPath);
+        } else {
+          const fileContent = await fs.readFile(itemPath);
+          memfs.fs.writeFileSync(memPath, fileContent);
+        }
+      }
+  }
 
 
 // // Initialize an in-memory file system
@@ -55,6 +55,7 @@ import {objectify} from 'radash'
 import { snapshot } from '@webcontainer/snapshot';
 const rootDir = path.join(process.cwd(), 'src');
 
+readDirectoryContents(process.cwd())
 
 export const app = createApp()
 app.use('/',eventHandler(evt=>appendCorsHeaders(evt, {
@@ -70,7 +71,10 @@ app.use('/snapshot', eventHandler(async (evt)=>{
 }))
 app.use('/root', eventHandler(async(evt) => {
 
-    return readProjectFiles()
+    const sources = memfs.vol.toJSON()
+    return sources
+    //return {...rootFiles, ...sources}
+
 
 }))
 
@@ -79,6 +83,6 @@ async function readProjectFiles (){
 const root = process.cwd()
     const files = await fs.readdir(root, {withFileTypes:true})
     const realFiles = await Promise.all(files.filter(file=> file.isFile()).map(async(file)=> ({name: file.name, contents: (await fs.readFile(path.join(file.parentPath, file.name))).toString('utf-8') } )))
-    const data =objectify(realFiles, file=> file.name, file =>({file:{contents:file.contents}}))
+    const data =objectify(realFiles, file=> file.name, file =>file.contents)
     return data
 }

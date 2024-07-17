@@ -18,7 +18,7 @@ const config: StorybookConfig = {
     
   },
   core: {
-    crossOriginIsolated: true,
+    crossOriginIsolated: false,
   },
   viteFinal:(config)=>{
     config.plugins?.push(tsconfigPaths({root:resolve(__dirname, '..')}))
