@@ -10,7 +10,7 @@ import Prose from '@ui/astro/components/Prose.astro'
 import Social from '@ui/astro/sections/Social.astro'
 import { getCollection } from 'astro:content'
 import { byNumber } from '@ui/utils/interval'
-import TechIcon from '@ui/astro/components/elements/TechIcon.astro'
+import MdxSection from '@ui/astro/sections/MdxSection.astro'
 
 const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.data.order))
 ---
@@ -20,12 +20,13 @@ const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.da
     description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
 >
     <Container>
-        <div class="space-y-4">
+        <div class="space-y-6">
             <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
-            <GradientText color="neutral" size={6}>
+           <div class="space-y-2">
+                <GradientText color="neutral"  size={6}>
                 Alex Whiteside
             </GradientText>
-            <ul class="flex flex-row gap-2">
+            <ul class="flex flex-row gap-2 animate">
                 {
                     titles.map((title) => (
                         <Badge color={title.data.color} text={title.data.title} className={title.data.className}>
@@ -34,22 +35,18 @@ const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.da
                     ))
                 }
             </ul>
-
+        </div>
             <div class="space-y-16">
                 <section>
-                    <article class="space-y-4">
-                        <span class="animate">
-                            <Prose> 
-                                I'm a hands-on, technical leader  who turns ideas into robust solutions. I have over 10 years of experience building web applications used by millions of <TechIcon name="consumers" /> and hundreds of <TechIcon name="enterprises" />. We heavily leveraged <TechIcon name="react" version='original' />, including RSC, deployed onto <TechIcon name="kubernetes" /> with persistance backed by <TechIcon name="mongodb"  />.
-                                
-                                As senior leadership in both engineering and product capacities, I have a unique perspective that spans departments.  Combined with a natural teaching ability, I  helps align departments with limited overlap, such as sales and engineering.  
-                                
-                            </Prose>
+                    <article class="space-y-6 animate">
+                        <span class="">
+                            <MdxSection page="home" name="intro" className='text-lg' />
                         </span>
                     </article>
+                    <Social />
+
                 </section>
-                <Social />
-                <section class="space-y-6">
+                <section class="space-y-6 animate">
                     <div
                         class="flex flex-wrap items-center justify-between gap-y-2"
                     >
@@ -60,7 +57,7 @@ const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.da
                     </div>
                 </section>
 
-                <section class="space-y-6">
+                <section class="space-y-6 animate">
                     <BentoGrid>
                         <BentoGridItem
                             title="Something New"

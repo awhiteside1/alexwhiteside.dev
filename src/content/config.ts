@@ -50,5 +50,14 @@ const titles = defineCollection({
     }),
 })
 
+const sections = defineCollection({
+    type: 'content',
+    schema: z.object({
+        page: z.enum(['home', 'blog', 'background', 'books']).optional(),
+        name: z.string().optional(),
+        classes: z.string().optional()
+    }),
+})
 
-export const collections = { books, work, titles }
+
+export const collections = { books, work, titles, sections }

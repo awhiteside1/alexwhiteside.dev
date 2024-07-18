@@ -45,6 +45,16 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<noscript>
+<style>
+.animate:not(.show){
+    opacity: 1;
+}
+
+</style>
+
+</noscript>
+
 <ViewTransitions />
 
 <script is:inline>

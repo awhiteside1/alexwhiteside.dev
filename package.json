@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"dev:network": "astro dev --host",
-		"start": "astro dev",
+		"start": "node ./dist/server/entry.mjs",
 		"build": "gql.tada turbo && astro check && astro build",
 		"preview": "astro preview",
 		"preview:network": "astro dev --host",

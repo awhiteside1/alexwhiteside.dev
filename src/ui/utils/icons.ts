@@ -6,6 +6,8 @@ interface Options {
 
 import { parallel, sift, first } from "radash";
 
+
+
 const sources = {
   tech: ({ name, version = "plain" }) =>
     `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${version}.svg`,
@@ -36,11 +38,21 @@ const fetchIcon = async (url: string) => {
 }
 
   if(url.startsWith('local:')){
-    const name = url.replace('local:', '')
-    try{
-   const data = await import(`./icons/${name}.svg?raw`)
-   if(data.default) return data.default
-    }catch(err){}
+    const name = url.replace('local:', '').toLowerCase()
+    let data = await tryLoadLocal(name)
+    if(data) return data
+    if(name.endsWith('s')){
+      data = await tryLoadLocal(name.slice(0,-1))
+      if(data) return data
+    }
   }
   return undefined;
 };
+
+const tryLoadLocal=async(name:string)=>{
+  try{
+   const data = await import(`./icons/${name}.svg?raw`)
+   if(data.default) return data.default
+  }catch(err){}
+  return undefined
+}

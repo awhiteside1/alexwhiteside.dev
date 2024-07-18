@@ -9,4 +9,6 @@
     "editor.fontWeight": "400",
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.lineHeight": 1.2,
+    "typescript.preferences.preferTypeOnlyAutoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
 }
