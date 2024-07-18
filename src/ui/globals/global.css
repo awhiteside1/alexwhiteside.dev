@@ -12,6 +12,24 @@ html.dark {
     color-scheme: dark;
 }
 
+
+@font-face { font-family: "InterVariable"; font-style: normal;  font-weight: 100 900; font-display: swap; src: url("/fonts/InterSmall.woff2") format("woff2"); }
+
+  @font-face {
+    font-family: 'Concourse';
+    src: url('/fonts/concourse-caps.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+
+  @layer utilities {
+    .font-concourse {
+      font-family: "Concourse" ;
+    }
+  }
+
 html,
 body {
     @apply size-full;
@@ -22,6 +40,10 @@ body {
     @apply flex flex-col;
     @apply text-black/75 dark:text-white/75;
 }
+
+@supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif; }
+  }
 
 header {
     @apply fixed left-0 right-0 top-0 z-50 py-4;
@@ -115,4 +137,13 @@ pre {
 
 .copy-code:active {
     @apply scale-90 transition-transform;
+}
+
+.derek{
+    @apply shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)];
+}
+
+.subtle{
+
+    @apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
 }

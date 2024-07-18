@@ -28,7 +28,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Atkinson', ...defaultTheme.fontFamily.sans],
+				sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+				concourse: ['Concourse', ...defaultTheme.fontFamily.sans],
 			},
 			backgroundSize: {
 				'300%': '300%',

@@ -17,10 +17,10 @@ const { Content } = await work.render()
     work && (
         <>
             <div class="group relative flex flex-col md:items-end md:col-span-1">
-                <p class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 md:text-right m-0">
+                <p class="text-xl font-medium tracking-tight text-zinc-800 dark:text-zinc-100 md:text-right m-0">
                     {data.title}
                 </p>
-                <p class="text-xs m-1">
+                <p class="text-sm m-1">
                     {generateInterval(data.from, data.to, {
                         year: 'numeric',
                         month: 'short',
@@ -28,7 +28,7 @@ const { Content } = await work.render()
                 </p>
             </div>
             <div class="group relative flex flex-col items-start md:col-span-3">
-                <div class="relative z-10 text-sm text-zinc-800 dark:text-zinc-300">
+                <div class="relative z-10 text-base text-zinc-800 dark:text-zinc-300">
                     <Content />
                 </div>
             </div>

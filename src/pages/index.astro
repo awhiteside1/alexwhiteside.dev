@@ -8,10 +8,15 @@ import Badge from '../ui/astro/components/elements/Badge.astro'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Prose from '@ui/astro/components/Prose.astro'
 import Social from '@ui/astro/sections/Social.astro'
+import { getCollection } from 'astro:content'
+import { byNumber } from '@ui/utils/interval'
+import TechIcon from '@ui/astro/components/elements/TechIcon.astro'
+
+const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.data.order))
 ---
 
 <Layout
-    title="Entrepreneur, Software Architect, Creator"
+    title="Software Architect, Entrepreneur, Creative"
     description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
 >
     <Container>
@@ -21,38 +26,38 @@ import Social from '@ui/astro/sections/Social.astro'
                 Alex Whiteside
             </GradientText>
             <ul class="flex flex-row gap-2">
-               
-                <Badge color="purple" text="Software Architect"
-                    ><p class="text-sm">
-                        I've designed, evolved and led implementation of complex
-                        systems to serve millions of users in highly regulated
-                        industries.
-                    </p></Badge
-                > <Badge color="blue" text="Entrepreneur"
-                ><p class="text-sm">
-                    I've build apps in a garage, launched on stage at
-                    Techcrunch Distrupt and learned a number of things along
-                    the way.
-                </p></Badge
-            >
-                <Badge color="orange" text="Creative"
-                    ><p class="text-sm">
-                        I lead by example and try to raise the bar and help
-                        others meet or exceed it.
-                    </p></Badge
-                >
+                {
+                    titles.map((title) => (
+                        <Badge color={title.data.color} text={title.data.title} className={title.data.className}>
+                                <p class="text-sm font-medium">{title.data.short}</p>
+                        </Badge>
+                    ))
+                }
             </ul>
 
             <div class="space-y-16">
                 <section>
                     <article class="space-y-4">
                         <span class="animate">
-                            <Prose>Proven technologist with 10+ years experience building solutions for significant problems.      </Prose>
+                            <Prose> 
+                                Alex is a hands-on, technical leader  who turns ideas into robust solutions. He brings 10+ years of deep product and technical experience building financial product search tools used by millions of consumers and hundreds of enterprise clients. This wide range of  perspective  Alex  bridge  between department's  
+
+                                By speaking the language of both engineering and sales,  
+                                
+                                at communicating with engineers and sales   from   conveying  technical concepts and   technical ICs  and align with   in their communicator at home in the board room or the   to   at every level of the enterprise  
+                                
+                                Over the last decade, he's brought to market  perspective   deep product and technical understanding of  perspectives, 
+                                
+                                both a technical alignment at applies systems thinking to thoughtful design systematic design
+                                <TechIcon name="words"  /> matter <TechIcon name="systems"  />  
+
+                            Recently, I've enjoyed working with <TechIcon name="react" version='original' />, <TechIcon name="kubernetes" /> and <TechIcon name="human"  />, <TechIcon name="mongodb"  />
+                            </Prose>
                         </span>
                     </article>
                 </section>
                 <Social />
-                <section class="animate space-y-6">
+                <section class="space-y-6">
                     <div
                         class="flex flex-wrap items-center justify-between gap-y-2"
                     >
@@ -63,7 +68,7 @@ import Social from '@ui/astro/sections/Social.astro'
                     </div>
                 </section>
 
-                <section class="animate space-y-6">
+                <section class="space-y-6">
                     <BentoGrid>
                         <BentoGridItem
                             title="Something New"
@@ -112,7 +117,7 @@ import Social from '@ui/astro/sections/Social.astro'
                         </BentoGridItem>
                     </BentoGrid>
                 </section>
-                <section class="animate space-y-6">
+                <section class="space-y-6">
                     <div
                         class="flex flex-wrap items-center justify-between gap-y-2"
                     >
@@ -138,9 +143,7 @@ import Social from '@ui/astro/sections/Social.astro'
                     </h2>
                     <article>
                         <p>
-                            If you want to get in touch with me about something
-                            or just to say hi, reach out on social media or send
-                            me an email.
+                            "Luck is the residue of design"
                         </p>
                     </article>
                 </section>

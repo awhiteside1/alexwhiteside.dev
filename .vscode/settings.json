@@ -2,5 +2,11 @@
     "IDX.aI.enableInlineCompletion": true,
     "IDX.aI.enableCodebaseIndexing": true,
     "typescript.tsdk": "node_modules/typescript/lib",
-    "typescript.enablePromptUseWorkspaceTsdk": true
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 22,
+    "editor.fontWeight": "400",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.lineHeight": 1.2,
 }

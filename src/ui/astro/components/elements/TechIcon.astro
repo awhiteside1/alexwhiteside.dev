@@ -1,0 +1,21 @@
+---
+import { titleCase } from 'scule';
+import {resolveIcon} from '@ui/utils/icons'
+type Props={
+    name: string
+    version?: string
+}
+
+function replaceFillsWithCurrentColor(svgString:string) {
+    return svgString.replace(/fill="[^"]*"/g, 'fill="currentColor"');
+}
+
+const {name, version}=Astro.props
+let icon = await resolveIcon({name,version })
+icon = replaceFillsWithCurrentColor(icon)
+---
+<span class="inline-flex rounded-md bg-zinc-100 text-zinc-900  transition-all dark:bg-zinc-800  px-1 py-1 text-sm cursor-default dark:text-zinc-100 	 ">
+<span class="h-[1em] w-[1em] mr-1" set:html={icon}/>
+<span class="self-end leading-none	">{titleCase(name)}</span>
+</button>
+

@@ -29,3 +29,14 @@ export const byDate =
 
         return b1 - a1
     }
+
+
+    export const byNumber =
+    <T,>(fn: (input: T) => number | undefined) =>
+    (a: T | undefined, b: T | undefined) => {
+        if (!b || !a) return 0
+
+        const [a1, b1] = [a, b].map(fn).map((num) => num ?? Number.MAX_SAFE_INTEGER)
+
+        return  a1-b1
+    }
