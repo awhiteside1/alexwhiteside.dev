@@ -1,8 +1,8 @@
 import mdx from '@astrojs/mdx'
+import nodeBuilder from '@astrojs/node'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import vercelServerless from '@astrojs/vercel/serverless'
-import nodeBuilder from '@astrojs/node'
 import { defineConfig, envField } from 'astro/config'
 
 const vercel = vercelServerless({

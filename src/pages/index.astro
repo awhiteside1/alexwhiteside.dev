@@ -1,16 +1,16 @@
 ---
+import { getCollection } from 'astro:content'
+import Prose from '@ui/astro/components/Prose.astro'
 import Layout from '@ui/astro/layouts/Layout.astro'
+import MdxSection from '@ui/astro/sections/MdxSection.astro'
+import Social from '@ui/astro/sections/Social.astro'
+import { byNumber } from '@ui/utils/interval'
 import Container from '../ui/astro/components/Container.astro'
 import Link from '../ui/astro/components/Link.astro'
 import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
 import Badge from '../ui/astro/components/elements/Badge.astro'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
-import Prose from '@ui/astro/components/Prose.astro'
-import Social from '@ui/astro/sections/Social.astro'
-import { getCollection } from 'astro:content'
-import { byNumber } from '@ui/utils/interval'
-import MdxSection from '@ui/astro/sections/MdxSection.astro'
 
 const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.data.order))
 ---

@@ -1,12 +1,12 @@
 ---
-import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
-import Container from '../ui/astro/components/Container.astro'
-import Layout from '../ui/astro/layouts/Layout.astro'
-import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import { getCollection } from 'astro:content'
-import { group, mapValues, first, sift } from 'radash'
 import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
-import { generateInterval, byDate } from '@ui/utils/interval'
+import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
+import { byDate, generateInterval } from '@ui/utils/interval'
+import { first, group, mapValues, sift } from 'radash'
+import Container from '../ui/astro/components/Container.astro'
+import GradientText from '../ui/astro/components/elements/GradientText.astro'
+import Layout from '../ui/astro/layouts/Layout.astro'
 const allWork = await getCollection('work')
 const grouped = group(allWork, (w) => w.data.company)
 const byCompany = mapValues(

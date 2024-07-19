@@ -11,4 +11,10 @@
     "terminal.integrated.lineHeight": 1.2,
     "typescript.preferences.preferTypeOnlyAutoImports": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.codeActionsOnSave": {
+        "quickfix.biome": "explicit"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    }
 }
