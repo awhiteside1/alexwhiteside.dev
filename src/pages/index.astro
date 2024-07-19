@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '@ui/astro/layouts/Layout.astro'
-import MdxSection from '@ui/astro/sections/MdxSection.astro'
+import MdxSection from '@ui/astro/components/mdx/MdxSection.astro'
 import Social from '@ui/astro/sections/Social.astro'
 import { byNumber } from '@ui/utils/interval'
-import Container from '../ui/astro/components/Container.astro'
-import Link from '../ui/astro/components/Link.astro'
+import Container from '../ui/astro/components/global/Container.astro'
+import Link from '../ui/astro/components/text/Link.astro'
 import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
 import Badge from '../ui/astro/components/elements/Badge.astro'
@@ -25,7 +25,7 @@ const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.da
                 <GradientText color="neutral"  size={6}>
                 Alex Whiteside
             </GradientText>
-            <ul class="flex flex-row gap-2 animate">
+            <ul class="flex flex-row gap-2">
                 {
                     titles.map((title) => (
                         <Badge color={title.data.color} text={title.data.title} className={title.data.className}>

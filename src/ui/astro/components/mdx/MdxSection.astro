@@ -1,6 +1,6 @@
 ---
 import {getCollection} from 'astro:content'
-import Prose from '@ui/astro/components/Prose.astro'
+import Prose from '@ui/astro/components/text/Prose.astro'
 const sections = await getCollection('sections')
 type Page = typeof sections[number]['data']['page']
 
