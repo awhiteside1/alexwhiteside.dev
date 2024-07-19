@@ -11,7 +11,7 @@
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
-    pkgs.corepack_latest
+    #pkgs.corepack_latest
     pkgs.nodejs
     pkgs.pnpm
   ];
