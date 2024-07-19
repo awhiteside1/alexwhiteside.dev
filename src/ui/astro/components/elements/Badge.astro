@@ -2,7 +2,6 @@
 import { cn } from '@ui/utils/cn'
 import {get} from 'radash'
 import {titleCase} from 'scule'
-import Popover from './Popover.astro'
 type Props = {
     color: keyof typeof colors | string
     text: string
@@ -24,7 +23,6 @@ const classColor = get(colors, Astro.props.color, 'blue')
 const {className = "", text} = Astro.props
 ---
 
-<Popover>
     <span
         class={cn(
             'cursor-pointer transition-all duration-300 inline-flex items-center rounded-md  px-2 py-1 text-sm font-bold',
@@ -33,5 +31,3 @@ const {className = "", text} = Astro.props
     >
         {titleCase(text)}
     </span>
-    <slot slot="content" />
-</Popover>
