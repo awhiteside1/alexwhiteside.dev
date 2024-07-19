@@ -28,4 +28,10 @@ This project provides a no-risk playground to see how I feel after actually usin
 
 This is intentionally not a complete list of tech used in this repo, if you are interested in that, the Gemini AI chat can help you out in the web IDE environment above. 
 
+## Credit
 
+This project originally was based on the [AstroSphere](https://astro-sphere-demo.vercel.app/) template, thinking I'd follow their UI a lot more than I did. Almost no significant parts remain in use. 
+
+Some components were borrowed wholesale from the tailwind experts at:
+- https://ui.aceternity.com/
+- https://tailwindui.com/  

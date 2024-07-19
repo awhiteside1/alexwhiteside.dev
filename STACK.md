@@ -44,6 +44,4 @@ Unless the UI will be nearly all AI maintainable, which I'm on the fence about b
 
 A pain to setup with PNPM, but otherwise has promise. Much preferred to codespaces or devcontainer based setups. 
 
-
-
 ## The Failed Experiments 
