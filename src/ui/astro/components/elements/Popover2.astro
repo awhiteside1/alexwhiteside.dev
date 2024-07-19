@@ -1,0 +1,66 @@
+---
+
+
+
+
+
+---
+
+  <div class="popover-parent">  
+   <slot />
+    <div class="popover-content absolute transition-all duration-100 p-2 bg-slate-300 text-black" style="opacity: 0;"><slot name="content"></slot></div>
+        
+  </div>
+
+  
+  <script>
+    import { computePosition, offset, flip, shift, autoUpdate } from '@floating-ui/dom';
+  
+    const initializePopover = (parent: HTMLElement, reference: HTMLElement, popover: HTMLElement) => {
+        let hideTimeout: NodeJS.Timeout;
+
+      const showPopover = () => {
+        hideTimeout && clearTimeout(hideTimeout);
+        popover.style.opacity = '1';
+        updatePosition();
+        cleanup = autoUpdate(reference, popover, updatePosition);
+      };
+  
+      const hidePopover = () => {
+        hideTimeout = setTimeout(() => {
+          popover.style.opacity = '0';
+          if (cleanup) {
+          cleanup();
+        }
+        },1000);
+      };
+  
+      const updatePosition = () => {
+        computePosition(reference, popover, {
+          middleware: [offset(10), flip(), shift()],
+        }).then(({ x, y }) => {
+          Object.assign(popover.style, {
+            left: `${x}px`,
+            top: `${y}px`,
+          });
+        });
+      };
+  
+      let cleanup: Function;
+  
+      parent.addEventListener('mouseenter', showPopover);
+      parent.addEventListener('mouseleave', hidePopover);
+    };
+  
+    document.querySelectorAll('.popover-parent').forEach((parentElement) => {
+        if(!(parentElement instanceof HTMLElement)) return
+
+        const target = parentElement.querySelector('.popover-content')
+        const trigger = parentElement.querySelector(':not(.popover-content)')
+        if(!(target instanceof HTMLElement && trigger instanceof HTMLElement)) return
+
+        trigger.style.cursor = 'pointer';
+      initializePopover(parentElement, trigger, target);
+    });
+  </script>
+  
