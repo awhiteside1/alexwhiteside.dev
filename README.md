@@ -1,9 +1,8 @@
 # Portfolio & Blog 
 
-[AlexWhiteside.dev](https://alexwhiteside.dev)
+This repo powers [AlexWhiteside.dev](https://alexwhiteside.dev), with automatic builds and deploys from main via Vercel. 
 
-
-
+You can spin up a free web IDE that handles all setup for you and exposes a live preview environment via Google IDX. 
 
 <a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Fawhiteside1%2Falexwhiteside.dev">
   <picture>
@@ -20,33 +19,13 @@
   </picture>
 </a>
 
+## Purpose
 
-## Stack
+Provide a convenient yet customizable space to publish posts about things I've learned, what I've done, and resources I wish I had found earlier in my carrer. 
 
-### Project
+## Chosen Tech 
+This project provides a no-risk playground to see how I feel after actually using some technologies I've avoided or dismissed, yet seem to be all the rage. I'll keep a log of these experiments, as well as call out the non-experimental tech I think is significant in [STACK.md](./STACK.md) 
 
-| Stack Element    | Tool Used   |
-| ---------------- | ----------- |
-| Package Manager  | PNPM        |
-| Linting          | Biome       |
-| Visual Docs      | Storybook   |
-| Framework        | Astro       |
-| Client Framework | React       |
-| Styling          | TailwindCSS |
-
-### Runtime
-
-| Stack Element | Tool Used  |
-| ------------- | ---------- |
-| CMS           | HashNode   |
-| Hosting       | Vercel     |
-| CDN/DNS       | Cloudflare |
+This is intentionally not a complete list of tech used in this repo, if you are interested in that, the Gemini AI chat can help you out in the web IDE environment above. 
 
 
-
-
-
-
-## Commands
-
-```pnpm dev```
