@@ -1,0 +1,15 @@
+---
+import { fetchStarredRepos } from "@github/api"
+import Grid from "../components/cards/grid.astro"
+import SimpleCard from "../components/cards/simple.astro"
+import TechIcon from "../components/elements/TechIcon.astro"
+
+const starredRepos = await fetchStarredRepos()
+
+---
+
+<Grid>
+    {starredRepos.map((repo) => (
+        <SimpleCard title={`@${repo.owner.login}/${repo.name}`} subtitle={repo.description} url={repo.html_url}></SimpleCard>
+    ))}
+</Grid>

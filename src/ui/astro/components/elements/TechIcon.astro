@@ -1,6 +1,5 @@
 ---
 import {resolveIcon} from '@ui/utils/icons'
-import { titleCase } from 'scule';
 /**
  * Renders a badge with icon that adapts to the current text styles, sourced from a collection of icon libraries. 
  */
@@ -31,8 +30,9 @@ let icon = await resolveIcon({name: name.toLowerCase(),version })
 icon = replaceFillsWithCurrentColor(icon)
 const display = label ?? name
 ---
+<span>
 <span class="inline-flex rounded-md bg-zinc-100 text-zinc-9000  transition-all dark:bg-zinc-800  px-1 py-1 text-sm cursor-default dark:text-zinc-100 	 ">
 <span class="h-[1em] w-[1em] mr-1" set:html={icon}/>
 <span class="self-end leading-none	">{display}</span>
-</button>
+</span>
 
