@@ -6,3 +6,4 @@ dist/
 .vercel/
 *storybook.log
 .DS_Store
+.vercel
