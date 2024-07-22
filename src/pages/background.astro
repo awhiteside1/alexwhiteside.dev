@@ -65,6 +65,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
                                                 company.to
                                             )}
                                         />
+                                    <div class="col-span-4 mb-4"/>
                                         {company?.roles.map((entry) => (
                                             <WorkCard slug={entry.slug} />
                                         ))}
