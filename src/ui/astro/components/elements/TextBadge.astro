@@ -34,7 +34,8 @@ function getColorFromHash(text:string) {
   const hash = hashString(text);
   const colorKeys = Object.keys(colors);
   const colorIndex = Math.abs(hash) % colorKeys.length;
-  return colors[colorKeys[colorIndex]];
+  const index =  colorKeys[colorIndex] as keyof typeof colors;
+  return colors[index]
 }
 
 const {text, color} = Astro.props
