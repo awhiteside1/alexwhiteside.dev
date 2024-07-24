@@ -86,8 +86,6 @@ const sortedByCompany = Object.values(byCompany).toSorted(
 </Layout>
 
 <script>
-    import { fade } from 'astro:transitions'
-
     const getBackdrop = () => {
         const background = document.getElementById('sticky-backdrop')
         if (!background) throw new Error('No Background Element Found')
@@ -138,10 +136,13 @@ const sortedByCompany = Object.values(byCompany).toSorted(
 
     const updateOpacity = () => {
         const overlap = calculateOverlap()
-        console.log(`[overlap]\t\t${overlap.toFixed(2)}`)
         requestAnimationFrame(() => {
+            try{
             const background = getBackdrop()
-            background.style.opacity = toOpacity(overlap)
+                background.style.opacity = toOpacity(overlap)
+            } catch (e) {
+                console.error(e)
+            }
         })
     }
 
@@ -150,10 +151,14 @@ const sortedByCompany = Object.values(byCompany).toSorted(
             isTicking = true
 
             requestAnimationFrame(() => {
-                const position = measureSignificantSectionLocation()
-                if (Math.abs(position - significantSectionLocation) > 3) {
-                    significantSectionLocation = position
-                    updateOpacity()
+                try {
+                    const position = measureSignificantSectionLocation()
+                    if (Math.abs(position - significantSectionLocation) > 3) {
+                        significantSectionLocation = position
+                        updateOpacity()
+                    }
+                } catch (e) {
+                    console.error(e)
                 }
                 isTicking = false
             })
