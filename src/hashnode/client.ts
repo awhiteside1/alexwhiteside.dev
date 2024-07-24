@@ -1,8 +1,8 @@
-import { Client, cacheExchange, fetchExchange } from '@urql/core'
+import { Client, fetchExchange } from '@urql/core'
 
 export const client = new Client({
     url: 'https://gql.hashnode.com',
-    exchanges: [cacheExchange, fetchExchange],
+    exchanges: [fetchExchange],
     fetchOptions: () => {
         return {
             headers: { Authorization: import.meta.env.HASHNODE },
