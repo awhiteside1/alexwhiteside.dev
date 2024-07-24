@@ -10,6 +10,7 @@ const query = graphql(`
                 readTimeInMinutes
                 canonicalUrl
                 title
+                updatedAt
                 subtitle
                 brief
                 tags {
