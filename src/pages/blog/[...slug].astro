@@ -2,8 +2,11 @@
 import { Hashnode } from '../../hashnode'
 
 export const prerender = false
+
 const { slug } = Astro.params
 const post = await Hashnode.getPost(slug)
+console.log(JSON.stringify(post, null, 2))
+
 if (!post) return Astro.redirect('/404')
 
 import BackToPrevious from '@ui/astro/components/navigation/BackToPrevious.astro'

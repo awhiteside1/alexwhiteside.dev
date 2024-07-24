@@ -8,7 +8,7 @@ export const prerender = false
 const isValidRequest = (request: Request) => {
     const isJson = request.headers.get('Content-Type') === 'application/json'
     const isHashnode = request.headers.get('x-hashnode-signature') !== undefined
-    console.log({isHashnode, isJson})
+    console.log({ isHashnode, isJson })
     return isJson && isHashnode
 }
 
@@ -26,19 +26,34 @@ export const POST: APIRoute = async ({ request }) => {
                 return new Response(null, { status: 200 })
             }
 
-            await fetch(`https://alexwhiteside.dev/blog/${post.slug}`, {
-                method: 'GET',
-                headers: {
-                    'x-prerender-revalidate': bypassToken,
-                },
-            })
+            const results = await Promise.allSettled([
+                fetch(`https://alexwhiteside.dev/blog/${post.slug}`, {
+                    method: 'GET',
+                    headers: {
+                        'x-prerender-revalidate': bypassToken,
+                    },
+                }),
 
-            await fetch('https://alexwhiteside.dev/blog', {
-                method: 'GET',
-                headers: {
-                    'x-prerender-revalidate': bypassToken,
-                },
-            })
+                fetch('https://alexwhiteside.dev/blog', {
+                    method: 'GET',
+                    headers: {
+                        'x-prerender-revalidate': bypassToken,
+                    },
+                }),
+            ])
+            console.table(
+                results.map((r) =>
+                    r.status === 'fulfilled'
+                        ? {
+                              status: r.status,
+                              url: r.value.url,
+                              headers: Object.fromEntries(
+                                  r.value.headers.entries()
+                              ),
+                          }
+                        : { status: r.status, reason: r.reason }
+                )
+            )
         }
     } catch (e) {
         console.error(e)

@@ -22,7 +22,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧙‍♂️</text></svg>"
 />
 <meta name="generator" content={Astro.generator} />
-
+<meta name="lastUpdate" content={new Date().toISOString()} />
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
@@ -55,11 +55,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 
 <ViewTransitions />
 
-<style>
-    * {
-        transition-duration: 0ms !important ;
-    }
-</style>
 
 <script is:inline>
     function init() {
