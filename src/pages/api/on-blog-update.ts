@@ -32,6 +32,13 @@ export const POST: APIRoute = async ({ request }) => {
                     'x-prerender-revalidate': bypassToken,
                 },
             })
+
+            await fetch('https://alexwhiteside.dev/blog', {
+                method: 'GET',
+                headers: {
+                    'x-prerender-revalidate': bypassToken,
+                },
+            })
         }
     } catch (e) {
         console.error(e)
