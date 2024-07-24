@@ -55,9 +55,8 @@ const sortedByCompany = Object.values(byCompany).toSorted(
                                 company &&
                                 company.logo &&
                                 company.company &&
-                                company.from && (
-                                    <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
-                                        <MediaElement
+                                company.from && (<>
+                                  <MediaElement
                                             logo={company.logo}
                                             title={company.company}
                                             subtitle={generateInterval(
@@ -70,6 +69,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
                                             <WorkCard slug={entry.slug} />
                                         ))}
                                     </article>
+                                    </>
                                 )
                         )
                     }
