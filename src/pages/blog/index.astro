@@ -8,6 +8,7 @@ import Container from '../../ui/astro/components/global/Container.astro'
 export const prerender = false
 
 const posts = await Hashnode.getPosts()
+console.log(JSON.stringify(posts, null, 2))
 ---
 
 <Layout title={''} description={''}>
