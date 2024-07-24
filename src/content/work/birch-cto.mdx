@@ -1,0 +1,37 @@
+---
+title: Cofounder & CTO
+company: Birch Finance
+logo: https://s3-us-west-2.amazonaws.com/cbi-image-service-prd/modified/f2c14924-384c-4ca6-b8b7-118455a81c22.png?w=96
+from: 2016-10-01
+to: 2018-06-02
+stack: typescript react nextjs loopback4
+---
+import TechIcon from '@ui/astro/components/elements/TechIcon.astro'
+
+Developed and maintained all software for Birch Finance, a Credit Card Rewards focused PFM (Personal Finance Manager) 
+- Administrative backend for customer support, card data entry and compliance management
+- Medium scale (500 GB+) dynamic web scraping platform for flights, hotels, and other reward point valuations
+- <TechIcon name="Spring" /> API Backend  which allowed for account creation, simulation of transactions for reward value, and all released features
+- Responsive web application using <TechIcon name="jquery" /> 
+- Native iOS App using <TechIcon name="swift" />
+- <TechIcon name="flutter" /> based Android App and select iOS Views
+
+Architected a universal credit card data model and transaction simulation engine that supported the 250+ most popular credit cards
+- Included over 400 parameters which could be provided via reference and updated in real time  for compliance
+- Supported all forms of earning caps, multipliers, benefits and other complex features, aligned by MCCs (Merchant Category Code)
+- Integrated transaction aggregation via Yodlee, Plaid, Finicity and Basiq
+- Evolved recommendation engine from single card (10<sup>3</sup> combinations) to full wallet (10<sup>17</sup> combinations) and real time
+    - leveraged <TechIcon name="Redis" /> for incremental caching of results
+    - distributed compute via <TechIcon name="amazonwebservices" label="Lambda" />
+    - created testing infrastructure for analyts to validate model changes
+     
+
+Decoupled the Birch simulation engine and licensed/exposed it to multiple large clients
+- Quantas Money (SaaS, 5 million+ users) 
+- Success.ly (full whitelabel)
+- T-Mobile (manual analysis)
+
+
+
+
+
