@@ -7,7 +7,7 @@ export const prerender = false
 
 const isValidRequest = (request: Request) => {
     const isJson = request.headers.get('Content-Type') === 'application/json'
-    const isHashnode = request.headers.get('x-hashnode-signature') === undefined
+    const isHashnode = request.headers.get('x-hashnode-signature') !== undefined
     console.log({isHashnode, isJson})
     return isJson && isHashnode
 }
