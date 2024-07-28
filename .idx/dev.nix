@@ -32,7 +32,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["pnpm" "dev" "--port" "$PORT"];
+          command = ["pnpm" "dev" "--port" "$PORT" "--host"];
           manager = "web";
           env = {
             PORT = "$PORT";
@@ -50,6 +50,7 @@
       };
       # Runs when the workspace is (re)started
       onStart = {
+        build="pnpm build";
         # Example: start a background task to watch and re-build backend code
         # watch-backend = "npm run watch-backend";
       };

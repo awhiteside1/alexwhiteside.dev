@@ -29,13 +29,15 @@ export const resolveIcon = async (options: Options):Promise<string> => {
 };
 
 const fetchIcon = async (url: string) => {
+  try{
   if(url.startsWith('http')){
   const response = await fetch(url);
   if (response.ok) {
     const data = await response.text();
     if (data) return data;
   }
-}
+  }}catch(err){
+  }
 
   if(url.startsWith('local:')){
     const name = url.replace('local:', '').toLowerCase()
