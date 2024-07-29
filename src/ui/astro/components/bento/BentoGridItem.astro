@@ -5,6 +5,7 @@ interface Props {
     title: string
     description: string
     variant?: 'row' | 'col'
+    url?: string
 }
 
 const variants = {
@@ -12,22 +13,22 @@ const variants = {
     col: 'flex-col col-span-1',
 }
 
-const { title, description, variant = 'col' } = Astro.props
+const { title, description, variant = 'col' , url} = Astro.props
 ---
+<a href={url}  class={cn([
+    'row-span-1 cursor-pointer rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-evenly gap-4 flex ',
+    variants[variant]]
+) }>
 
-<div
-    class={cn(
-        'row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between gap-4 flex ',
-        variants[variant]
-    )}
->
-    <slot />
+
+
+    <slot class="flex-grow" />
 
     <div
-        class="group-hover/bento:translate-x-2 transition duration-200 flex flex-col"
+        class="group-hover/bento:translate-x-2 transition duration-200 flex flex-col flex-grow"
     >
         <div
-            class="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2"
+            class="font-sans font-bold  text-neutral-600 dark:text-neutral-200 mb-2 mt-2"
         >
             {title}
         </div>
@@ -37,4 +38,5 @@ const { title, description, variant = 'col' } = Astro.props
             {description}
         </div>
     </div>
-</div>
+
+</a>

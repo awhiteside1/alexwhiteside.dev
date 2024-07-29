@@ -10,6 +10,9 @@ const getPostsQuery = graphql(`
                 edges {
                     node {
                         slug
+                        coverImage{
+                            url
+                        }
                         publishedAt
                         readTimeInMinutes
                         canonicalUrl

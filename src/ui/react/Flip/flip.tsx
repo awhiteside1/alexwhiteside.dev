@@ -29,6 +29,8 @@ export const FlipWords = ({
     duration?: number
     className?: string
 }) => {
+
+    const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), '')
     const [currentWord, setCurrentWord] = useState(words[0])
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
@@ -50,6 +52,8 @@ export const FlipWords = ({
     }, [isAnimating, duration, startAnimation, currentWord])
 
     return (
+        <div className="inline-block">
+            <div className='px-2 h-0 opacity-0 invisible'>{longestWord}</div>
         <AnimatePresence
             onExitComplete={() => {
                 setIsAnimating(false)
@@ -102,5 +106,6 @@ export const FlipWords = ({
                 ))}
             </motion.span>
         </AnimatePresence>
+        </div>
     )
 }

@@ -5,6 +5,6 @@ type Props = HTMLAttributes<'div'>
 const props = Astro.props
 ---
 
-<div class={cn(props.class, 'prose dark:prose-invert')} {...props}>
+<div class={cn(props.class, 'prose lg:prose-lg dark:prose-invert')} {...props}>
     <slot />
 </div>

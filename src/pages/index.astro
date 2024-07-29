@@ -10,8 +10,16 @@ import Badge from '../ui/astro/components/elements/Badge.astro'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Link from '../ui/astro/components/text/Link.astro'
+import { Hashnode } from '@hashnode'
+import Square from '@ui/astro/components/bento/Square.astro'
+import { FlipWords } from '@ui/react/Flip/flip'
 
-const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.data.order))
+const titles = (await getCollection('titles')).toSorted(
+    byNumber((title) => title.data.order)
+)
+
+const posts = await Hashnode.getPosts()
+
 ---
 
 <Layout
@@ -21,30 +29,34 @@ const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.da
     <Container>
         <div class="space-y-6">
             <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
-           <div class="space-y-2">
-                <GradientText color="neutral"  size={6}>
-                Alex Whiteside
-            </GradientText>
-            <ul class="flex flex-row gap-2">
-                {
-                    titles.map((title) => (
-                        <Badge color={title.data.color} text={title.data.title} className={title.data.className}>
-                                <p class="text-sm font-medium">{title.data.short}</p>
-                        </Badge>
-                    ))
-                }
-            </ul>
-        </div>
+            <div class="space-y-4">
+                <GradientText color="neutral" size={6}>
+                    Alex Whiteside
+                </GradientText>
+                <ul class="flex flex-row gap-2">
+                    {
+                        titles.map((title) => (
+                            <Badge
+                                color={title.data.color}
+                                text={title.data.title}
+                                className={title.data.className}
+                            >
+                                <p class="text-sm font-medium">
+                                    {title.data.short}
+                                </p>
+                            </Badge>
+                        ))
+                    }
+                </ul>
+            </div>
             <div class="space-y-16">
                 <section>
-                    <article class="space-y-6 animate">
+                    <article class="space-y-8 animate">
                         <span class="">
-                            <MdxSection page="home" name="intro" className='text-lg' />
+                            <MdxSection page="home" name="intro" />
                         </span>
                         <Social />
                     </article>
-                  
-
                 </section>
                 <section class="space-y-6 animate">
                     <div
@@ -55,85 +67,33 @@ const titles = (await getCollection('titles')).toSorted(byNumber(title=>title.da
                         </h2>
                         <Link href="/blog"> See all posts</Link>
                     </div>
-                </section>
 
-                <section class="space-y-6 animate">
                     <BentoGrid>
+                        {posts.map(post => (
                         <BentoGridItem
-                            title="Something New"
-                            description="The quick brown fox"
+                            title={post.title}
+                            description={""}
+                            url={post.url}
                         >
-                            <div
-                                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                                style={{
-                                    background:
-                                        'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
-                                    backgroundSize: '400% 400%',
-                                }}
-                            >
-                                <div class="h-full w-full rounded-lg"></div>
-                            </div>
+                          {post.coverImage?.url ? <img src={post.coverImage.url} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
                         </BentoGridItem>
-                        <BentoGridItem
-                            title="Bad and Younge"
-                            description="The quick brown fox"
-                        >
-                            <div
-                                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                                style={{
-                                    background:
-                                        'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
-                                    backgroundSize: '400% 400%',
-                                }}
-                            >
-                                <div class="h-full w-full rounded-lg"></div>
-                            </div>
-                        </BentoGridItem>
-                        <BentoGridItem
-                            title="An Old  New"
-                            description="The quick brown fox"
-                        >
-                            <div
-                                class="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-                                style={{
-                                    background:
-                                        'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
-                                    backgroundSize: '400% 400%',
-                                }}
-                            >
-                                <div class="h-full w-full rounded-lg"></div>
-                            </div>
-                        </BentoGridItem>
+                        ))}
+                       
                     </BentoGrid>
-                </section>
-                <section class="space-y-6">
-                    <div
-                        class="flex flex-wrap items-center justify-between gap-y-2"
-                    >
-                        <h2 class="font-semibold text-black dark:text-white">
-                            Recent projects
-                        </h2>
-                        <Link href="/projects"> See all projects</Link>
-                    </div>
-                    <!--<ul class="not-prose flex flex-col gap-4">-->
-                    <!--  {-->
-                    <!--    projects.map((project) => (-->
-                    <!--      <li>-->
-                    <!--        <ArrowCard entry={project} />-->
-                    <!--      </li>-->
-                    <!--    ))-->
-                    <!--  }-->
-                    <!--</ul>-->
                 </section>
 
                 <section class="animate space-y-4">
-                    <h2 class="font-semibold text-black dark:text-white">
-                        Let's Connect
-                    </h2>
-                    <article>
-                        <p>
-                            "Luck is the residue of design"
-                        </p>
+                  
+                    <article class="text-xl flex justify-center">
+                        <div>
+                        <span>Always ready to </span>
+                        <FlipWords  client:idle words={[  'change the world',
+                        'make a dent in the universe',
+                        'throw out the rundown',
+                        'build useful stuff',
+                        'solve meaningful problems']} duration={4000}></FlipWords><br/>
+                        Just <a href="email:hello@alexwhiteside.dev"> say the word. </a>
+                    </div>
                     </article>
                 </section>
             </div>

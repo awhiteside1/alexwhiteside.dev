@@ -24,14 +24,12 @@ const classColor = get(colors, Astro.props.color, 'blue')
 const {className = "", text} = Astro.props
 ---
 
-<Popover>
+
     <span
         class={cn(
-            'cursor-pointer transition-all duration-300 inline-flex items-center rounded-md  px-2 py-1 text-sm font-bold',
+            'cursor-default transition-all duration-300 inline-flex items-center rounded-md  px-2 py-1 text-sm font-bold',
             classColor,  className
         )}
     >
         {titleCase(text)}
     </span>
-    <slot slot="content" />
-</Popover>
