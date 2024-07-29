@@ -16,7 +16,7 @@ const variants = {
 const { title, description, variant = 'col' , url} = Astro.props
 ---
 <a href={url}  class={cn([
-    'row-span-1 cursor-pointer rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-evenly gap-4 flex ',
+    'row-span-1 cursor-pointer rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-zinc-100 justify-evenly gap-4 flex ',
     variants[variant]]
 ) }>
 
