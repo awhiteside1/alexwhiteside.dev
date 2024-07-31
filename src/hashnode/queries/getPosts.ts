@@ -6,9 +6,11 @@ import { graphql } from '../graphql'
 const getPostsQuery = graphql(`
     query getPosts {
         publication(host: "alexwhiteside.dev/blog") {
+            id
             posts(first: 10) {
                 edges {
                     node {
+                        id
                         slug
                         coverImage{
                             url

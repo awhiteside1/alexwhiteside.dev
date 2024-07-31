@@ -4,8 +4,10 @@ import { graphql } from '../graphql'
 const query = graphql(`
     query getPost($slug: String!) {
         publication(host: "alexwhiteside.dev/blog") {
+            id
             post(slug: $slug) {
                 slug
+                id
                 publishedAt
                 readTimeInMinutes
                 canonicalUrl

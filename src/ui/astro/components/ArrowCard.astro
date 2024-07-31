@@ -21,7 +21,7 @@ const selectable = cn(fades, selectableLight, selectableDark)
 const card = cn(container,  rounded)
 ---
 
-<a href={`/blog/${entry.slug}`} class={cn(card, selectable, 'pr-10', 'bg-cover','bg-center')} style={`background-image: url(${entry.coverImage?.url});`}>
+<a href={`/blog/${entry.slug}`} class={cn(card, selectable, 'pr-10', 'bg-cover','bg-center', 'backgroundImage')} style={`background-image: url(${entry.coverImage?.url});`}>
     <div class="flex flex-1 flex-col truncate gap-2 max-w-md ">
         <div class="font-semibold text-white text-lg">
             {entry.title}

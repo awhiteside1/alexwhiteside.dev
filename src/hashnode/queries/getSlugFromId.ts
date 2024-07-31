@@ -4,6 +4,7 @@ import { graphql } from '../graphql'
 const query = graphql(`
     query getPostFromId($id: ID!) {
             post(id: $id) {
+                id
                 slug  
                 url
              
