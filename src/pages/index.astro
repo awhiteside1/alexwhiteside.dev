@@ -21,7 +21,7 @@ const titles = (await getCollection('titles')).toSorted(
 )
 
 let posts = await Hashnode.getPosts()
-posts=shuffle(posts)
+posts=shuffle(posts).slice(0, 3)    
 ---
 
 <Layout
