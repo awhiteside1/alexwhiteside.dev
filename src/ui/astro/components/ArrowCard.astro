@@ -9,7 +9,7 @@ type Props = {
 const { entry } = Astro.props
 
 // @todo: Decide if i hate this more than it all being on one line and in the markup
-const container = 'not-prose group relative flex flex-nowrap'
+const container = 'not-prose group relative flex flex-nowrap relative'
 const fades = 'transition-colors duration-300 ease-in-out'
 const border = 'border border-black/15 dark:border-white/20'
 const selectableLight =
@@ -18,15 +18,15 @@ const selectableDark =
     'dark:bg-black dark:hover:bg-gray-700/50 dark:hover:text-white dark:focus-visible:bg-gray-200/50 dark:focus-visible:text-white'
 const rounded = 'rounded-lg px-4 py-3'
 const selectable = cn(fades, selectableLight, selectableDark)
-const card = cn(container, border, rounded)
+const card = cn(container,  rounded)
 ---
 
-<a href={`/blog/${entry.slug}`} class={cn(card, selectable, 'pr-10')}>
-    <div class="flex flex-1 flex-col truncate">
-        <div class="font-semibold">
+<a href={`/blog/${entry.slug}`} class={cn(card, selectable, 'pr-10', 'bg-cover','bg-center')} style={`background-image: url(${entry.coverImage?.url});`}>
+    <div class="flex flex-1 flex-col truncate gap-2 max-w-md ">
+        <div class="font-semibold text-white text-lg">
             {entry.title}
         </div>
-        <div class="text-sm text-wrap">
+        <div class="text-sm leading-relaxed text-wrap line-clamp-3">
             {entry.brief}
         </div>
     </div>

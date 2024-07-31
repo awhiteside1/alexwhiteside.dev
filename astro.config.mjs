@@ -9,7 +9,7 @@ const vercel = vercelServerless({
 	webAnalytics: {enabled:true},
 	isr: {
 		bypassToken:'87734ad8259d67c3c11747d3e4e112d01234',
-		expiration: 60,
+		expiration: 1,
 	},
 })
 

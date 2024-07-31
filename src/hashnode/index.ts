@@ -1,9 +1,9 @@
-import { client } from './client'
+import {  makeClient } from './client'
 import { getPost, getPosts } from './queries'
 import { getPostByID } from './queries'
 
 export const Hashnode = {
-    getPosts: getPosts(client),
-    getPostByID: getPostByID(client),
-    getPost: getPost(client),
+    getPosts: getPosts(makeClient),
+    getPostByID: getPostByID(makeClient),
+    getPost: getPost(makeClient),
 }

@@ -33,7 +33,8 @@ const getPostsQuery = graphql(`
     }
 `)
 
-export const getPosts = (client: Client) => async () => {
+export const getPosts = (makeClient: () => Client) => async () => {
+    const client = makeClient()
     const result = await client.query(getPostsQuery, {}).toPromise()
     const posts = result.data?.publication?.posts.edges ?? []
     return posts.map((post) => post.node)

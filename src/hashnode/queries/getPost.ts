@@ -41,8 +41,9 @@ const query = graphql(`
     }
 `)
 
-export const getPost = (client: Client) => async (slug?: string) => {
+export const getPost = (makeClient: () => Client) => async (slug?: string) => {
     if (!slug) return undefined
+    const client = makeClient()
 
     const result = await client.query(query, { slug }).toPromise()
     if (result.error || !result.data?.publication?.post) return undefined

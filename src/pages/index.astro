@@ -12,13 +12,16 @@ import Container from '../ui/astro/components/global/Container.astro'
 import Link from '../ui/astro/components/text/Link.astro'
 import { Hashnode } from '@hashnode'
 import Square from '@ui/astro/components/bento/Square.astro'
+import { shuffle } from 'radash'
+
+export const prerender = false
 
 const titles = (await getCollection('titles')).toSorted(
     byNumber((title) => title.data.order)
 )
 
-const posts = await Hashnode.getPosts()
-
+let posts = await Hashnode.getPosts()
+posts=shuffle(posts)
 ---
 
 <Layout
@@ -72,7 +75,7 @@ const posts = await Hashnode.getPosts()
                         <BentoGridItem
                             title={post.title}
                             description={""}
-                            url={post.url}
+                            url={`/blog/${post.slug}`}
                         >
                           {post.coverImage?.url ? <img src={post.coverImage.url} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
                         </BentoGridItem>
