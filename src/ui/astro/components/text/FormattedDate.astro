@@ -4,7 +4,12 @@ interface Props {
 }
 
 let { date } = Astro.props
-date = new Date(date)
+try{
+    date = new Date(date)
+    date.toISOString()
+} catch (e) {
+ date=new Date()
+}
 ---
 
 <time datetime={date.toISOString()}>

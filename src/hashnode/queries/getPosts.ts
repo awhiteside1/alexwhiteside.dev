@@ -13,6 +13,7 @@ const getPostsQuery = graphql(`
                         coverImage{
                             url
                         }
+                        updatedAt
                         publishedAt
                         readTimeInMinutes
                         canonicalUrl

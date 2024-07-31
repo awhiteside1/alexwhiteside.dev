@@ -9,6 +9,9 @@ const query = graphql(`
                 publishedAt
                 readTimeInMinutes
                 canonicalUrl
+                coverImage {
+                    url
+                }
                 title
                 updatedAt
                 subtitle

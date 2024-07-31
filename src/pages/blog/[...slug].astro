@@ -7,43 +7,29 @@ const { slug } = Astro.params
 const post = await Hashnode.getPost(slug)
 
 if (!post) return Astro.redirect('/404')
-console.log(JSON.stringify({title:post.title, publishedAt: post.publishedAt, lastUpdate: post.updatedAt}, null, 2))
-
 
 import BackToPrevious from '@ui/astro/components/navigation/BackToPrevious.astro'
-import FormattedDate from '@ui/astro/components/text/FormattedDate.astro'
 import Layout from '@ui/astro/layouts/Layout.astro'
 import Container from '../../ui/astro/components/global/Container.astro'
+import BlogHero from '@ui/astro/layouts/BlogHero.astro'
 ---
 
 <Layout title={post.title} description={post.brief}>
     <Container>
-        <div class="animate">
-            <BackToPrevious href="/blog">Back to blog</BackToPrevious>
-        </div>
-        <div class="my-10 space-y-1">
-            <div class="animate flex items-center gap-1.5">
-                <div class="font-base text-sm">
-                    <FormattedDate date={post.publishedAt} />
-                </div>
-                &bull;
-                <div class="font-base text-sm">
-                    {post.readTimeInMinutes} min read
-                </div>
+        <div class="relative animate mb-8">
+           
+            <BlogHero
+                title={post.title}
+                date={post.publishedAt}
+                coverImage={post.coverImage?.url}
+            /> 
+            <div class="absolute top-6 left-6 hidden md:block">
+                <BackToPrevious href="/blog">Back to blog</BackToPrevious>
             </div>
-            <h1
-                class="animate text-3xl font-semibold text-black dark:text-white"
-            >
-                {post.title}
-            </h1>
         </div>
         <!--{headings.length > 0 && <TableOfContents headings={headings} />}-->
         <article class="animate">
             <Fragment set:html={post.content.html} />
-            <div class="mt-24">
-                <!--<PostNavigation prevPost={prevPost} nextPost={nextPost} />-->
-            </div>
-            <div class="mt-24"></div>
         </article>
     </Container>
 </Layout>
