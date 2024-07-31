@@ -7,21 +7,21 @@ import { FlipWords } from '@ui/react/Flip/flip'
 
 <footer class="animate">
     <Container>
-<div class="w-full space-y-6">
-        <article class="text-2xl flex justify-center">
-            <div class=" dark:border-zinc-700 border-t-2 bg-white shadow-md dark:bg-black rounded-lg p-6">
-            <span>Trying to </span>
-            <FlipWords  client:idle words={[  'change the world?',
-            'make a dent in the universe?',
-            'throw out the rundown?',
-            'build useful stuff?',
-            'solve meaningful problems?']} duration={4000}></FlipWords><br/>
-        <span class="text-lg">I am, let's <a href="email:hello@alexwhiteside.dev">talk</a>.</span></span>
+<div class="w-full">
+        <article class="text-xl font-medium flex justify-center">
+            <div class=" dark:border-zinc-700  bg-slate-50/[0.7] shadow-md dark:bg-zinc-900/[0.7] rounded-xl p-6 max-w-full overflow-hidden">
+            <span>Interested in </span>
+            <FlipWords  client:idle words={[  'changing the world?',
+            'making a dent in the universe?',
+            'building valuable products?',
+            'solving meaningful problems?']} duration={4000}></FlipWords>
+            <br/>
+        <div class="text-base pt-2">I am, <a href="email:hello@alexwhiteside.dev"> let's talk</a>.</div></span>
         </div>
         </article>
 
 
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between mt-16">
             <div>&copy; {new Date().getFullYear()} • Alex Whiteside</div>
             <ThemePicker />
         </div>

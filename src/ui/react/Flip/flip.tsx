@@ -28,18 +28,15 @@ export const FlipWords = ({
     }, [currentWord, words])
 
     useEffect(() => {
-        if (!isAnimating)
+            if (!isAnimating)
             setTimeout(() => {
-                console.log(
-                    `[${performance.now() - start}] Next Animation ${currentWord} at `
-                )
                 startAnimation()
             }, duration)
-    }, [isAnimating, duration, startAnimation, currentWord])
+    }, [isAnimating, duration, startAnimation])
 
     return (
-        <div className="inline-block">
-            <div className="px-2 h-0 opacity-0 invisible">{longestWord}</div>
+        <div className="inline-block relative">
+            <div className="px-2 h-1 opacity-0 invisible">{longestWord}</div>
             <AnimatePresence
                 onExitComplete={() => {
                     setIsAnimating(false)
@@ -55,7 +52,7 @@ export const FlipWords = ({
                         y: 0,
                     }}
                     transition={{
-                        duration: 0.4,
+                        duration: 4,
                         ease: 'easeInOut',
                         type: 'spring',
                         stiffness: 100,
