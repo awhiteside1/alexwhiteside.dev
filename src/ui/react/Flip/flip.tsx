@@ -3,7 +3,6 @@ import { cn } from '@ui/utils/cn'
 import { AnimatePresence, motion } from 'framer-motion'
 import React, { useCallback, useEffect, useState } from 'react'
 
-const start = performance.now()
 export const FlipWords = ({
     words,
     duration = 4000,
