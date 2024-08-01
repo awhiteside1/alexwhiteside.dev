@@ -77,7 +77,7 @@ posts=shuffle(posts).slice(0, 3)
                             description={""}
                             url={`/blog/${post.slug}`}
                         >
-                          {post.coverImage?.url ? <img alt="Blog Image"  src={`https://alexwhiteside.dev/cdn-cgi/image/width=150,quality=75/${post.coverImage.url}`} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
+                          {post.coverImage?.url ? <img alt="Blog Image"  src={`https://alexwhiteside.dev/cdn-cgi/image/width=150,quality=75,format=avif/${post.coverImage.url}`} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
                         </BentoGridItem>
                         ))}
                        
