@@ -12,6 +12,10 @@ import BackToPrevious from '@ui/astro/components/navigation/BackToPrevious.astro
 import Layout from '@ui/astro/layouts/Layout.astro'
 import Container from '../../ui/astro/components/global/Container.astro'
 import BlogHero from '@ui/astro/layouts/BlogHero.astro'
+import { chain } from '@hashnode/markdown'
+
+const html = chain.process(post.content.markdown)
+
 
 ---
 
@@ -28,9 +32,8 @@ import BlogHero from '@ui/astro/layouts/BlogHero.astro'
                 <BackToPrevious href="/blog">Back to blog</BackToPrevious>
             </div>
         </div>
-        <!--{headings.length > 0 && <TableOfContents headings={headings} />}-->
-        <article class="animate ">
-            <Fragment set:html={post.content.html} />
+        <article class="animate">
+            <Fragment set:html={html} />
         </article>
     </Container>
 </Layout>

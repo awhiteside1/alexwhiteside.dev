@@ -25,7 +25,7 @@ const query = graphql(`
                 url
                 reactionCount
                 content {
-                    html
+                    markdown
                 }
                 features {
                     tableOfContents {

@@ -46,7 +46,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
             &nbsp;
         </div>
         <div class="space-y-6">
-            <GradientText color="orange" size={6}>Background</GradientText>
+            <GradientText color="orange" class="text-6xl">Background</GradientText>
 
             <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
                 Over the last decade I've spent most of my time in Fintech and
@@ -176,7 +176,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
         }
     }
     
-    document.addEventListener('astro:page-load', (ev) => initializeScroll())
+    document.addEventListener('astro:page-load', () => initializeScroll())
 
     
 </script>

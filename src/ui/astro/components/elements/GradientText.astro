@@ -11,11 +11,11 @@ const gradients = {
 }
 
 type Props = {
-    size: number
+    class: string
     color: keyof typeof gradients
 }
 
-const { size, color = 'blue' } = Astro.props
+const {  color = 'blue' } = Astro.props
 
 const gradientClass = gradients[color]
 
@@ -44,7 +44,10 @@ const observer = new IntersectionObserver((entries) => {
 const initializeGradients =()=>{
     const elements = document.getElementsByClassName('perf-gradient-text')
     for (const element of elements) {
-        observer.observe(element)
+        if(element instanceof HTMLElement && !element.dataset.gradient) {
+            element.dataset.gradient = 'true'
+            observer.observe(element)
+        }
     }
 }
 
@@ -57,8 +60,8 @@ document.addEventListener('astro:page-load', () => initializeGradients())
 <span
 id={id}
     class={cn('perf-gradient-text',
-        `text-${size}xl font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
-        gradientClass
+        `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
+        gradientClass, Astro.props.class
     )}
 >
     <slot />
