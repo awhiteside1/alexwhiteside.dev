@@ -5,11 +5,12 @@ logo: https://asset.brandfetch.io/idsfleZtdK/idcMViISrZ.png?updated=166851567341
 from: 2023-01-01
 stack: typescript react payloadcms h3 nextjs
 ---
+import TechIcon from '@ui/astro/components/elements/TechIcon.astro'
 
 Designed and led development on a platform to support our B2B2C customizable widgets and affiliate pages (1k+ partners, 2m+ monthly users)
 
 -   Determined biggest bottleneck to be managing configuration schemas and app isolation
--   Defined a standards based protocol for apps (docker images) to attach their schemas as OCI Artifacts
--   Implemented a control plane using PayloadCMS, Kubernetes and H3 for configuration, which would discover Apps in the registry and load their schemas for use.
--   Implemented a lightweight routing service (h3) which would resolve and forward the correct configuration to the appropriate app
+-   Defined a standards based protocol for <TechIcon  name="docker" /> apps  to attach their schemas as OCI Artifacts
+-   Implemented a control plane using PayloadCMS, <TechIcon  name="kubernetes" /> and H3 for configuration, which would discover Apps in the registry and load their schemas for use.
+-   Implemented a lightweight routing service <TechIcon  name="typescript" /> which would resolve and forward the correct configuration to the appropriate app
 -   Onboarded 10+ FE Eng to deploy using the system and deploy their own apps, as well as Product / Account Managers to migrate partners

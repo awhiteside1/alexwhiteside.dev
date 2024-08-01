@@ -1,18 +1,24 @@
 ---
+const dark = `
+   <g>
+  <path d="m87.883 46.473h6.25c1.7266 0 3.125 1.7266 3.125 3.125 0 1.7266-1.3984 3.125-3.125 3.125h-6.25c-1.7266 0-3.125-1.7266-3.125-3.125 0-1.7266 1.3984-3.125 3.125-3.125z"/>
+  <path d="m74.848 18.398 4.7578-4.0547c1.3125-1.1211 3.4961-0.71484 4.4062 0.35156 1.1172 1.3125 0.96094 3.2852-0.35156 4.4023l-4.7578 4.0547c-1.3125 1.1211-3.4961 0.71484-4.4062-0.35156-1.1172-1.3125-0.96094-3.2852 0.35156-4.4023z"/>
+  <path d="m74.496 77.195c1.1172-1.3125 3.3398-1.2578 4.4062-0.35156l4.7578 4.0547c1.3125 1.1211 1.4727 3.0898 0.35156 4.4023-1.1172 1.3125-3.3398 1.2578-4.4062 0.35156l-4.7578-4.0547c-1.3125-1.1211-1.4727-3.0898-0.35156-4.4023z"/>
+  <path d="m6.2266 47.277h6.25c1.7266 0 3.125 1.7266 3.125 3.125 0 1.7266-1.3984 3.125-3.125 3.125h-6.25c-1.7266 0-3.125-1.7266-3.125-3.125 0-1.7266 1.3984-3.125 3.125-3.125z"/>
+  <path d="m16.695 80.898 4.7578-4.0547c1.3125-1.1211 3.4961-0.71484 4.4062 0.35156 1.1172 1.3125 0.96094 3.2852-0.35156 4.4023l-4.7578 4.0547c-1.3125 1.1211-3.4961 0.71484-4.4062-0.35156-1.1172-1.3125-0.96094-3.2852 0.35156-4.4023z"/>
+  <path d="m16.344 14.699c1.1172-1.3125 3.3398-1.2578 4.4062-0.35156l4.7578 4.0547c1.3125 1.1211 1.4727 3.0898 0.35156 4.4023-1.1172 1.3125-3.3398 1.2578-4.4062 0.35156l-4.7578-4.0547c-1.3125-1.1211-1.4727-3.0898-0.35156-4.4023z"/>
+  <path d="m50 6.25c1.7266 0 3.125 1.7266 3.125 3.125v81.25c0 1.7266-1.3984 3.125-3.125 3.125s-3.125-1.7266-3.125-3.125v-81.25c0-1.7266 1.3984-3.125 3.125-3.125z"/>
+  <path d="m50 78.125c-15.508 0-28.125-12.617-28.125-28.125s12.617-28.125 28.125-28.125v6.25c-12.059 0-21.875 9.8164-21.875 21.875s9.8164 21.875 21.875 21.875z"/>
+  <path d="m60.039 72.664c-0.62891-1.4141-0.13281-3.0938 1.1953-3.8906 6.5391-3.918 10.641-11.027 10.641-18.773s-4.0859-14.824-10.594-18.746c-1.3242-0.80078-1.8203-2.4766-1.1875-3.8906 0.76562-1.7148 2.8789-2.3945 4.4883-1.4141 8.3281 5.0547 13.543 14.156 13.543 24.055 0 9.8984-5.2422 19.047-13.602 24.09-1.6094 0.97266-3.7227 0.28906-4.4844-1.4297z"/>
+  <path d="m50 75c-13.805 0-25-11.195-25-25s11.195-25 25-25"/>
+ </g>
+`
+
+
 const shapes = {
-    dark: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>',
-    light: `<circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`,
-    system: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>`,
+    dark: dark,
+    light: dark,
+    system: dark,
 }
 ---
 
@@ -116,27 +122,26 @@ const shapes = {
     updateTheme()
 </script>
 
-<span id="theme-picker">
+<span id="theme-picker" class="relative">
     {
         Object.entries(shapes).map(([name, path]) => (
             <button
                 data-shape={name}
+                title={`${name} theme`}
                 aria-label={`${name} theme`}
-                class="group flex size-9 items-center justify-center rounded  border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+                class="group flex p-1 items-center justify-center rounded   hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
             >
                 <svg
+                height="1rem" width="1rem"
                     xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:stroke-black group-focus-visible:animate-pulse group-focus-visible:stroke-black group-hover:dark:stroke-white dark:group-focus-visible:stroke-white"
-                    set:html={path}
+                    viewBox="0 0 100 100" 
+                    fill="currentColor"
+                    class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:fill-black group-focus-visible:animate-pulse group-focus-visible:fill-black group-hover:dark:fill-white dark:group-focus-visible:fill-white"
+                    set:html={dark}
                 ></svg>
+
+            <p class="text-xs absolute -bottom-4 invisible group-hover:visible" >{name}</p>
+
             </button>
         ))
     }
