@@ -23,7 +23,7 @@ const withIcons = await Promise.all(
 )
 ---
 
-<div class="mt-6 flex gap-6">
+<span class="inline-flex gap-6">
     {
         withIcons.map((link) => (
             <Icon href={link.href}>
@@ -31,4 +31,4 @@ const withIcons = await Promise.all(
             </Icon>
         ))
     }
-</div>
+</span>

@@ -1,6 +1,7 @@
 ---
 import Container from '../components/global/Container.astro'
 import Link from '../components/text/Link.astro'
+import ThemePicker from '../components/global/ThemePicker.astro'
 ---
 
 <header transition:persist>
@@ -21,6 +22,7 @@ import Link from '../components/text/Link.astro'
                     {`/`}
                 </span>
                 <Link href="/recommendations">recommendations</Link>
+                <div class="flex items-center justify-center"><ThemePicker /></div>
             </nav>
         </div>
     </Container>

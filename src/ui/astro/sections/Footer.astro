@@ -2,6 +2,7 @@
 import Container from '../components/global/Container.astro'
 import ThemePicker from '../components/global/ThemePicker.astro'
 import { FlipWords } from '@ui/react/Flip/flip'
+import Social from './Social.astro'
 
 ---
 
@@ -16,14 +17,16 @@ import { FlipWords } from '@ui/react/Flip/flip'
             'building valuable products?',
             'solving meaningful problems?']} duration={4000}></FlipWords>
             <br/>
-        <div class="text-base pt-2">I am, <a href="email:hello@alexwhiteside.dev"> let's talk</a>.</div></span>
+        <div class="text-base pt-2">I am, <a href="email:hello@alexwhiteside.dev"> let's talk</a>. </div></span>
+        
         </div>
+        
         </article>
 
 
         <div class="flex items-center justify-between mt-16">
             <div>&copy; {new Date().getFullYear()} • Alex Whiteside</div>
-            <ThemePicker />
+            <Social/>
         </div>
     </div>
     </Container>
