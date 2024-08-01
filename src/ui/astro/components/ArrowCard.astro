@@ -2,6 +2,7 @@
 import { cn } from '@ui/utils/cn'
 import type { PostItem } from '../../../hashnode/queries'
 import FormattedDate from './text/FormattedDate.astro'
+import { optimizeImage } from '@ui/utils/optimizeImage'
 
 type Props = {
     entry: PostItem
@@ -20,10 +21,11 @@ const selectableDark =
 const rounded = 'rounded-lg px-4 py-4'
 const selectable = cn(fades, selectableLight, selectableDark)
 const card = cn(container,  rounded)
-
+const image = entry.coverImage?.url ?? 'https://picsum.photos/200/300'
+const imageUrl =optimizeImage(image, "thumb")
 const style = {
     "mask-image":"linear-gradient(to right, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))",
-    "background-image": `url(${entry.coverImage?.url})`,
+    "background-image": `url(${imageUrl})`,
     "background-size": "cover",
     "background-position": "center"
 }
