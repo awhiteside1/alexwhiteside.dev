@@ -22,7 +22,6 @@ export const FlipWords = ({
     const [isInView, setIsInView] = useState(false)
     const componentRef = useRef(null)
 
-    // thanks for the fix Julian - https://github.com/Julian-AT
     const startAnimation = useCallback(() => {
         const word = words[words.indexOf(currentWord) + 1] || words[0]
         setCurrentWord(word)

@@ -4,16 +4,10 @@ import MdxSection from '@ui/astro/components/mdx/MdxSection.astro'
 import Layout from '@ui/astro/layouts/Layout.astro'
 import Social from '@ui/astro/sections/Social.astro'
 import { byNumber } from '@ui/utils/interval'
-import BentoGrid from '../ui/astro/components/bento/BentoGrid.astro'
-import BentoGridItem from '../ui/astro/components/bento/BentoGridItem.astro'
 import Badge from '../ui/astro/components/elements/Badge.astro'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
-import Link from '../ui/astro/components/text/Link.astro'
-import { Hashnode } from '@hashnode'
-import Square from '@ui/astro/components/bento/Square.astro'
-import { shuffle } from 'radash'
-import { optimizeImage } from '@ui/utils/optimizeImage'
+import RecentPosts from '@ui/astro/sections/RecentPosts.astro'
 
 export const prerender = false
 
@@ -21,8 +15,6 @@ const titles = (await getCollection('titles')).toSorted(
     byNumber((title) => title.data.order)
 )
 
-let posts = await Hashnode.getPosts()
-posts=shuffle(posts).slice(0, 3)    
 ---
 
 <Layout
@@ -61,29 +53,7 @@ posts=shuffle(posts).slice(0, 3)
                         <Social />
                     </article>
                 </section>
-                <section class="space-y-6 animate">
-                    <div
-                        class="flex flex-wrap items-center justify-between gap-y-2"
-                    >
-                        <h2 class="font-semibold text-black dark:text-white">
-                            Latest posts
-                        </h2>
-                        <Link href="/blog"> See all posts</Link>
-                    </div>
-
-                    <BentoGrid>
-                        {posts.map(post => (
-                        <BentoGridItem
-                            title={post.title}
-                            description={""}
-                            url={`/blog/${post.slug}`}
-                        >
-                          {post.coverImage?.url ? <img alt="Blog Image"   loading="lazy"  src={optimizeImage(post.coverImage.url, "thumb")} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
-                        </BentoGridItem>
-                        ))}
-                       
-                    </BentoGrid>
-                </section>
+               <RecentPosts />
 
             </div>
         </div>

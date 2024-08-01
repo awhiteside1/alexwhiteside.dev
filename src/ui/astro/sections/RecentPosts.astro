@@ -1,0 +1,42 @@
+---
+import { byDate } from '@ui/utils/interval'
+import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
+import BentoGridItem from '@/ui/astro/components/bento/BentoGridItem.astro'
+import Link from '@/ui/astro/components/text/Link.astro'
+import { Hashnode } from '@hashnode'
+import Square from '@ui/astro/components/bento/Square.astro'
+import { optimizeImage } from '@ui/utils/optimizeImage'
+
+let posts = await Hashnode.getPosts()
+posts = posts.toSorted(byDate((x) => new Date(x.publishedAt))).slice(0, 3)
+---
+
+<section class="space-y-6 animate">
+    <div class="flex flex-wrap items-center justify-between gap-y-2">
+        <h2 class="font-semibold text-black dark:text-white">Latest posts</h2>
+        <Link href="/blog"> See all posts</Link>
+    </div>
+
+    <BentoGrid>
+        {
+            posts.map((post) => (
+                <BentoGridItem
+                    title={post.title}
+                    description={''}
+                    url={`/blog/${post.slug}`}
+                >
+                    {post.coverImage?.url ? (
+                        <img
+                            alt="Blog Image"
+                            loading="lazy"
+                            src={optimizeImage(post.coverImage.url, 'thumb')}
+                            class="object-cover aspect-auto rounded-lg "
+                        />
+                    ) : (
+                        <Square />
+                    )}
+                </BentoGridItem>
+            ))
+        }
+    </BentoGrid>
+</section>

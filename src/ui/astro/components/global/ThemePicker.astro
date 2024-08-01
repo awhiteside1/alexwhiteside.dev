@@ -93,8 +93,11 @@ const shapes = {
             } else {
                 colorTheme = 'light'
             }
+            window.document.documentElement.classList.add('system')
         }
-        toggleTheme([theme, colorTheme].filter(Boolean))
+        if( !document.documentElement.classList.contains(colorTheme)){
+           toggleTheme([theme, colorTheme].filter(Boolean))
+        }
     }
 
     function initialize() {
@@ -114,8 +117,11 @@ const shapes = {
                     updateTheme()
                 }
             })
+         
 
-        updateTheme()
+                updateTheme()  
+               
+        
     }
     document.addEventListener('DOMContentLoaded', () => initialize())
     document.addEventListener('astro:after-swap', () => initialize())
