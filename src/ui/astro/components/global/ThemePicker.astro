@@ -84,6 +84,7 @@ const shapes = {
         updateTheme()
     }
 
+
     const updateTheme = () => {
         const theme = localStorage.getItem('theme')
         let colorTheme
@@ -109,7 +110,12 @@ const shapes = {
         for (const button of buttons) {
             button.addEventListener('click', handleThemeButtonClick)
         }
-
+               
+        
+    }
+    document.addEventListener('astro:after-swap', () => initialize())
+    document.addEventListener('astro:page-load', () => {
+        
         window
             .matchMedia('(prefers-color-scheme: dark)')
             .addEventListener('change', () => {
@@ -117,14 +123,9 @@ const shapes = {
                     updateTheme()
                 }
             })
-         
-
-                updateTheme()  
-               
-        
-    }
-    document.addEventListener('DOMContentLoaded', () => initialize())
-    document.addEventListener('astro:after-swap', () => initialize())
+        updateTheme()
+        initialize()
+  }, { once: true });
 </script>
 
 <span id="theme-picker" class="relative">

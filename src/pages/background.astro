@@ -38,6 +38,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
 >
     <Container>
         <div
+        
             id="sticky-backdrop"
             style="opacity: 0;"
             class="z-40 fixed top-11 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
@@ -85,7 +86,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
     </Container>
 </Layout>
 
-<script>
+<script >
     const getBackdrop = () => {
         const background = document.getElementById('sticky-backdrop')
         if (!background) throw new Error('No Background Element Found')
@@ -146,7 +147,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
         })
     }
 
-    addEventListener('scroll', () => {
+    const listener =() => {
         if (!isTicking) {
             isTicking = true
 
@@ -158,10 +159,24 @@ const sortedByCompany = Object.values(byCompany).toSorted(
                         updateOpacity()
                     }
                 } catch (e) {
-                    console.error(e)
+                    removeEventListener('scroll', listener)
                 }
                 isTicking = false
             })
         }
-    })
+    }
+
+    const initializeScroll = ()=>{
+        const backdropEl = document.getElementById('sticky-backdrop')
+
+        if(backdropEl && !backdropEl.dataset.initialized){
+            console.log('initializing scroll')
+            addEventListener('scroll', listener)
+            backdropEl.dataset.initialized = 'true'
+        }
+    }
+    
+    document.addEventListener('astro:page-load', (ev) => initializeScroll())
+
+    
 </script>

@@ -6,6 +6,7 @@ import GradientText from '../../ui/astro/components/elements/GradientText.astro'
 import Container from '../../ui/astro/components/global/Container.astro'
 import Layout from '../../ui/astro/layouts/Layout.astro'
 import { filterDrafts } from '../../ui/utils/draftProdFilter'
+import { optimizeImage } from '@ui/utils/optimizeImage'
 
 const allBooks = await getCollection('books', filterDrafts)
 ---
@@ -26,7 +27,7 @@ const allBooks = await getCollection('books', filterDrafts)
                         >
                             <img
                                 alt="Book Cover"
-                                src={data.cover}
+                                src={optimizeImage(data.cover, "thumb")}
                                 class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"
                             />
                         </BentoGridItem>

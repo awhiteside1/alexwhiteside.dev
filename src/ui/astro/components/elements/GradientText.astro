@@ -49,8 +49,8 @@ const initializeGradients =()=>{
 }
 
 // Start observing the elements when they're available in the DOM
-document.addEventListener('DOMContentLoaded', () =>initializeGradients())
-document.addEventListener('astro:after-swap', () => initializeGradients())
+// document.addEventListener('DOMContentLoaded', () =>initializeGradients())
+document.addEventListener('astro:page-load', () => initializeGradients())
 </script>
 
 

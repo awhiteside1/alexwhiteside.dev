@@ -14,21 +14,21 @@ html.dark {
 
 
 @font-face { font-family: "InterVariable"; font-style: normal;  font-weight: 100 900; font-display: swap; src: url("/fonts/InterSmall.woff2") format("woff2"); }
-
+/* 
   @font-face {
     font-family: 'Concourse';
     src: url('/fonts/concourse-caps.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-  }
+  } */
 
 
-  @layer utilities {
+  /* @layer utilities {
     .font-concourse {
       font-family: "Concourse" ;
     }
-  }
+  } */
 
 html,
 body {
