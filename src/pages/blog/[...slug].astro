@@ -23,7 +23,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=0, must-revalidate"
             <BlogHero
                 title={post.title}
                 date={post.publishedAt}
-                coverImage={post.coverImage?.url}
+                coverImage={post.coverImage!.url}
             /> 
             <div class="absolute top-6 left-6 hidden md:block">
                 <BackToPrevious href="/blog">Back to blog</BackToPrevious>

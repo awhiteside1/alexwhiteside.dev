@@ -13,6 +13,7 @@ import Link from '../ui/astro/components/text/Link.astro'
 import { Hashnode } from '@hashnode'
 import Square from '@ui/astro/components/bento/Square.astro'
 import { shuffle } from 'radash'
+import { optimizeImage } from '@ui/utils/optimizeImage'
 
 export const prerender = false
 
@@ -77,7 +78,7 @@ posts=shuffle(posts).slice(0, 3)
                             description={""}
                             url={`/blog/${post.slug}`}
                         >
-                          {post.coverImage?.url ? <img alt="Blog Image"  src={`https://alexwhiteside.dev/cdn-cgi/image/width=150,quality=75,format=avif/${post.coverImage.url}`} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
+                          {post.coverImage?.url ? <img alt="Blog Image"  src={optimizeImage(post.coverImage.url, "thumb")} class="object-cover aspect-auto rounded-lg " />:  <Square/>}
                         </BentoGridItem>
                         ))}
                        

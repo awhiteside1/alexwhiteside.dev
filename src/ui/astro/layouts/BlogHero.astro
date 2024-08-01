@@ -1,10 +1,11 @@
 ---
 import FormattedDate from '../components/text/FormattedDate.astro';
+import { optimizeImage } from '@ui/utils/optimizeImage';
 
 interface Props {
   title: string;
   date: string;
-  coverImage?: string;
+  coverImage: string;
 }
 
 const { title, date, coverImage } = Astro.props;
@@ -12,7 +13,7 @@ const { title, date, coverImage } = Astro.props;
 
 <div class="relative w-full aspect-[5/3] min-h-[14rem]  max-h-[40vh] sm:aspect-[21/9] rounded-xl overflow-hidden">
   <img
-    src={coverImage}
+    src={optimizeImage(coverImage, "large")}
     alt={title}
     class="w-full h-full object-cover"
   />
