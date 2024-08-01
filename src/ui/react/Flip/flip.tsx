@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@ui/utils/cn'
 import { AnimatePresence, motion } from 'framer-motion'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 
 export const FlipWords = ({
     words,
@@ -19,6 +19,9 @@ export const FlipWords = ({
     const [currentWord, setCurrentWord] = useState(words[0])
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
+    const [isInView, setIsInView] = useState(false)
+    const componentRef = useRef(null)
+
     // thanks for the fix Julian - https://github.com/Julian-AT
     const startAnimation = useCallback(() => {
         const word = words[words.indexOf(currentWord) + 1] || words[0]
@@ -27,14 +30,34 @@ export const FlipWords = ({
     }, [currentWord, words])
 
     useEffect(() => {
-            if (!isAnimating)
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting)
+            },
+            { threshold: 0.1 }
+        )
+
+        if (componentRef.current) {
+            observer.observe(componentRef.current)
+        }
+
+        return () => {
+            if (componentRef.current) {
+                observer.unobserve(componentRef.current)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (isInView && !isAnimating) {
             setTimeout(() => {
                 startAnimation()
             }, duration)
-    }, [isAnimating, duration, startAnimation])
+        }
+    }, [isAnimating, isInView, duration, startAnimation])
 
     return (
-        <div className="inline-block relative">
+        <div className="inline-block relative" ref={componentRef}>
             <div className="px-2 h-1 opacity-0 invisible">{longestWord}</div>
             <AnimatePresence
                 onExitComplete={() => {

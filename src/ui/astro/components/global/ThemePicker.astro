@@ -109,7 +109,7 @@ const shapes = {
 
         window
             .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', (event) => {
+            .addEventListener('change', () => {
                 if (localStorage.theme === 'system') {
                     updateTheme()
                 }
@@ -119,7 +119,6 @@ const shapes = {
     }
     document.addEventListener('DOMContentLoaded', () => initialize())
     document.addEventListener('astro:after-swap', () => initialize())
-    updateTheme()
 </script>
 
 <span id="theme-picker" class="relative">
