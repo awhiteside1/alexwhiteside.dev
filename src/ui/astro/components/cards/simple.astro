@@ -8,7 +8,7 @@ type Props={
 const { subtitle, url,stars=0}=Astro.props
 
 ---
-    <div class="group relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-4 py-4 shadow-sm focus-within:ring-2 hover:ring-4 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+    <div class="group relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white dark:border-gray-700 dark:bg-zinc-900 px-4 py-4 shadow-sm  hover:ring-2 ring-zinc-300">
         <a href={url} class="focus:outline-none flex flex-col self-stretch justify-between gap-2 grow">
         <div class="flex flex-row justify-between align-middle">  <slot name="title"></slot>{stars > 0 &&<p class="text-sm text-zinc-500">{stars.toLocaleString()} ⭐️</p>}</div>
           <div class="flex flex-grow"><p class="line-clamp-3 text-sm text-gray-500">{subtitle}</p></div>

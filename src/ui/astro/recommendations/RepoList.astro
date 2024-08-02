@@ -1,0 +1,30 @@
+---
+import type { RepoPartial } from "@github/getRepos";
+import Grid from "../components/cards/grid.astro";
+import Simple from "../components/cards/simple.astro";
+import TextBadge from "../components/elements/TextBadge.astro";
+type Props={
+    starredRepos: RepoPartial[]
+}
+
+
+
+---
+<Grid>
+    {
+        Astro.props.starredRepos.toSpliced(6).map((repo) => (
+            <Simple
+                subtitle={repo.description}
+                url={repo.url}
+                stars={repo.stargazers_count}
+            >
+
+                <p slot="title" class="text-md font-medium"><span class="text-gray-800 dark:text-zinc-50">{repo.name}</span></div>
+                <div slot="badges" class="flex flex-row gap-2 flex-wrap overflow-clip max-h-6">
+                    <TextBadge text={repo.language} />
+                    {repo.topics.map((topic) => <TextBadge color='gray' text={topic} />)}
+                </div>
+            </SimpleCard>
+        ))
+    }
+</Grid>

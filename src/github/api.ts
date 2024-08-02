@@ -1,9 +1,10 @@
 const username = 'awhiteside1';
 const token = process.env.GITHUB;
+import { parseLinkHeader } from './parseLink';
 import type { Repository } from './types';
 
-export const fetchStarredRepos = async () => {
-    const url = `https://api.github.com/users/${username}/starred`;
+export const fetchStarredRepos = async (page=1): Promise<{ links: ReturnType<typeof parseLinkHeader>; data: Array<Repository>; }> => {
+    const url = `https://api.github.com/users/${username}/starred?page=${page}`;
 
     try {
         const response = await fetch(url, {
@@ -16,8 +17,12 @@ export const fetchStarredRepos = async () => {
         if (!response.ok) {
             throw new Error(`Failed to fetch starred repositories: ${response.status}`);
         }
+        const parsed = parseLinkHeader(response.headers)
         const starredRepos: Array<Repository> = await response.json();
-       return starredRepos
+       return {
+        data: starredRepos, 
+        links: parsed
+       }
     } catch (error: unknown) {
         if (error instanceof Error) {
             console.error(error.message);
@@ -25,5 +30,5 @@ export const fetchStarredRepos = async () => {
             console.error('An unknown error occurred');
         }
     }
-    return []
+    return {data: [], links: {}}
 };

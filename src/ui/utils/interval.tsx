@@ -32,11 +32,11 @@ export const byDate =
 
 
     export const byNumber =
-    <T,>(fn: (input: T) => number | undefined) =>
+    <T,>(fn: (input: T) => number | undefined, reverse = false) =>
     (a: T | undefined, b: T | undefined) => {
         if (!b || !a) return 0
 
         const [a1, b1] = [a, b].map(fn).map((num) => num ?? Number.MAX_SAFE_INTEGER)
 
-        return  a1-b1
+        return  reverse ? b1-a1 : a1-b1
     }

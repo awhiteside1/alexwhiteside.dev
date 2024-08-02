@@ -2,6 +2,11 @@
 import Container from "@ui/astro/components/global/Container.astro";
 import BlogHero from "@ui/astro/layouts/BlogHero.astro";
 import Layout from "@ui/astro/layouts/Layout.astro";
+import Recommendations from "@ui/astro/recommendations/Recommendations.astro";
+
+export const prerender = false
+
+const tab = Astro.url.searchParams.get("tab") ?? 'purpose'
 
 
 ---
@@ -11,7 +16,8 @@ import Layout from "@ui/astro/layouts/Layout.astro";
 
 <Container>
 
-  <BlogHero title="test" date="test" coverImage="https://cdn.hashnode.com/res/hashnode/image/upload/v1722452181034/15bb72d6-e93f-46ca-bb84-1de6ef1e19e8.jpeg" />
+  <Recommendations tab={tab} />
+  
 
 </Container>
 </Layout>

@@ -1,6 +1,6 @@
 import svgToDataUri from 'mini-svg-data-uri'
 import defaultTheme from 'tailwindcss/defaultTheme'
-
+import tailwindForms from '@tailwindcss/forms'
 import typographyPlugin from '@tailwindcss/typography'
 
 const flattenColorPalette = (colors) =>
@@ -60,6 +60,7 @@ export default {
 		},
 	},
 	plugins: [
+		tailwindForms,
 		typographyPlugin,
 		({ matchUtilities, theme }) => {
 			matchUtilities(

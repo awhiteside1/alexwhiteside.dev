@@ -47,4 +47,4 @@ const colorClasses = color ? colors[color] : colorHash
 
 ---
 
-{text && <span class={cn(["inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset ", colorClasses])}>{Astro.props.text}</span>}
+{text && <span class={cn(["inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ring-1 ring-inset dark:invert", colorClasses])}>{Astro.props.text}</span>}

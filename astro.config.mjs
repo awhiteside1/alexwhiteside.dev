@@ -23,6 +23,7 @@ export default defineConfig({
 	integrations: [mdx(), sitemap(), react()],
 	output: 'hybrid',
 	experimental: {
+		serverIslands: true,
 		env: {
 			schema: {
 				HASHNODE: envField.string({ context: 'server', access: 'secret' }),

@@ -1,0 +1,42 @@
+---
+import type { Repository } from "@github/types"
+import { cn } from "@lib/utils"
+import { select } from "radash"
+import {tabs} from "./RecKinds"
+import Fallback from "./Fallback.astro"
+import Language from "./Language.astro"
+type Props={
+tab: string
+
+}
+const selected = Astro.props.tab
+
+
+const selectedTab = Object.keys(tabs).find(key=> key.toLowerCase()===selected.toLowerCase()) ?? 'Purpose' as keyof typeof tabs
+
+
+
+
+---
+
+<div class="border-b border-gray-200 pb-5 sm:pb-0">
+    <h3 class=" font-semibold leading-none text-4xl pb-4 ">Recommendataions</h3>
+    <div class="mt-3 sm:mt-4">
+      <!-- Dropdown menu on small screens -->
+      <div class="sm:hidden">
+        <label for="current-tab" class="sr-only">Method</label>
+        <select id="current-tab" name="current-tab" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-zinc-700">
+         {Object.keys(tabs).map(option=>(<option {...{selected: option===selectedTab}}>{option}</option>))}
+        </select>
+      </div>
+      <!-- Tabs at small breakpoint and up -->
+      <div class="hidden sm:block">
+        <nav class="-mb-px flex space-x-8">
+            {Object.keys(tabs).map(option=>(<a href={`/recommendations/${option.toLowerCase()}`} class={cn("whitespace-nowrap border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-gray-5000 hover:border-gray-300", option===selectedTab && "border-indigo-500 font-bold hover:border-indigo-600")}>{option}</a>))}
+          </nav>
+      </div>
+    </div>
+  </div>
+
+
+  
