@@ -15,19 +15,38 @@ import BlogHero from '@ui/astro/layouts/BlogHero.astro'
 import { chain } from '@hashnode/markdown'
 
 const html = chain.process(post.content.markdown)
-
-
 ---
+
+<style is:global>
+    @media screen and (min-width: 600px) {
+        .inline-float-right {
+            float: right ;
+            width: 60%;
+            margin-left: 1.5rem;
+            margin-right: 0;
+        }
+
+        .inline-float-left {
+            float: left ;
+            width: 60%;
+            margin-right: 1.5rem;
+            margin-left: 0;
+        }
+
+        .inline-small {
+            padding: 1rem 20% ;
+        }
+    }
+</style>
 
 <Layout title={post.title} description={post.brief}>
     <Container>
         <div class="relative animate mb-8">
-           
             <BlogHero
                 title={post.title}
                 date={post.publishedAt}
                 coverImage={post.coverImage!.url}
-            /> 
+            />
             <div class="absolute top-6 left-6 hidden md:block">
                 <BackToPrevious href="/blog">Back to blog</BackToPrevious>
             </div>

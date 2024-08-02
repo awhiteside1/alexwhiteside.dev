@@ -9,7 +9,7 @@ import { byDate } from '@ui/utils/interval'
 export const prerender = false
 
 let posts = await Hashnode.getPosts()
-posts=posts.sort(byDate(x=>new Date(x.publishedAt))).reverse()
+posts=posts.sort(byDate(x=>new Date(x.publishedAt)))
 
 ---
 

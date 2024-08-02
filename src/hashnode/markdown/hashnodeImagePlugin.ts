@@ -13,10 +13,10 @@ export const hashnodeImageFixer = () => (tree: Root) => {
           first.value.startsWith('![') &&
           third.value.trim().startsWith('align=')
         ) {
-          const altText = first.value.slice(2, -1);
+          const altText = first.value.slice(2, -2);
           const url = second.url;
           const align = third.value.match(/align="([^"]+)"/)?.[1] || '';
-  
+        
           node.children = [{
             type: 'image',
             url,
