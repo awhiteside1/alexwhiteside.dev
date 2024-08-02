@@ -20,6 +20,17 @@ export const generateInterval = (
     return interval
 }
 
+export const byString= <T,>(fn: (input: T) => string | undefined, reverse=false) =>
+    (a: T | undefined, b: T | undefined) => {
+    const A = a ? fn(a) || "" : ""
+        const B = b ? fn(b) || "" : ""
+
+   const comparision =  A>B ? 1 : -1
+        const factor = reverse ? -1 : 1
+        return  comparision * factor
+
+    }
+
 export const byDate =
     <T,>(fn: (input: T) => Date | undefined) =>
     (a: T | undefined, b: T | undefined) => {

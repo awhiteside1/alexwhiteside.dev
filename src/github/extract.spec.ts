@@ -1,10 +1,15 @@
 
 import { describe, expect, it } from 'vitest'
-import type { Repository } from './types'
-import { createTable } from './createTable'
+import { getStarredRepos } from './getRepos'
+import { processRepository, summarizeData } from './llm/processRepository'
 describe('extract', () => {
   it('should create a table', async () => {
-    const repos = new Array<Repository>()
-    const table = await createTable()
-  },{timeout: 100000000})
+
+    const repos = await getStarredRepos(false)
+    for (const repo of repos) {
+      await processRepository(repo)
+    }
+    await summarizeData()
+
+  }, { timeout: 100000000 })
 })
