@@ -1,24 +1,10 @@
-import fs from 'node:fs'
-import { toInt } from 'radash'
+
 import { describe, expect, it } from 'vitest'
-import { fetchStarredRepos } from './api'
 import type { Repository } from './types'
+import { createTable } from './createTable'
 describe('extract', () => {
-  it('should extract data from the response', async () => {
+  it('should create a table', async () => {
     const repos = new Array<Repository>()
-    let response = await fetchStarredRepos()
-    do {
-        repos.push(...response.data)
-        const page = toInt(response.links.next.page)
-        response = await fetchStarredRepos(page)
-    
-    }while ("next" in response.links) 
-
-    const data =  repos.map(({url, name, full_name, stargazers_count, description, language, topics, pushed_at, updated_at,id }) => ({url, name, full_name, stargazers_count, description, language, topics, pushed_at, updated_at,id}))
-    const output = JSON.stringify(data)
-    fs.writeFileSync('repos.json', output)
-
-
-
-  }, {timeout:100000})
+    const table = await createTable()
+  },{timeout: 100000000})
 })

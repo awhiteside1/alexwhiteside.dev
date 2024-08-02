@@ -3,13 +3,13 @@ import { cn } from "@lib/utils"
 
 import {tabs} from "./RecKinds"
 type Props={
-tab: string
+tab?: string
 
 }
 const selected = Astro.props.tab
 
 
-const selectedTab = Object.keys(tabs).find(key=> key.toLowerCase()===selected.toLowerCase()) ?? 'Purpose' as keyof typeof tabs
+const selectedTab =  selected ? Object.keys(tabs).find(key=> key.toLowerCase()===selected.toLowerCase()) ?? 'Purpose' as keyof typeof tabs : undefined
 
 
 

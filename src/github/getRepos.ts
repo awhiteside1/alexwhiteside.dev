@@ -1,11 +1,11 @@
 import fs from 'node:fs'
-import { byNumber } from "@ui/utils/interval"
+import { byNumber } from "../ui/utils/interval"
 import { group, listify, toInt } from "radash"
 import { fetchStarredRepos } from "./api"
 import type { Repository } from "./types"
 
 
-const getStarredRepos=async()=>{
+export const getStarredRepos=async(all=true)=>{
 
     const repos = new Array<Repository>()
     let response = await fetchStarredRepos()
@@ -14,9 +14,9 @@ const getStarredRepos=async()=>{
         const page = toInt(response.links.next.page)
         response = await fetchStarredRepos(page)
     
-    }while ("next" in response.links) 
+    }while ("next" in response.links && all) 
 
-    const data =  repos.map(({url, name, full_name, stargazers_count, description, language, topics, pushed_at, updated_at,id }) => ({url, name, full_name, stargazers_count, description, language, topics, pushed_at, updated_at,id}))
+    const data =  repos.map(({url, name, full_name, stargazers_count, description, html_url, language, topics, pushed_at, updated_at,id, homepage,  default_branch }) => ({url, name, html_url,homepage,  full_name, stargazers_count, description, language, topics, pushed_at, updated_at,id, readme_url: `https://raw.githubusercontent.com/${full_name}/${default_branch}/README.md`}))
     return data
 }
 
