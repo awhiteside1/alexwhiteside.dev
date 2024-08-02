@@ -1,4 +1,4 @@
-import {Field, Float32, Int32, Schema, Utf8} from "@apache-arrow/esnext-esm";
+import {Field, Float32, Int32, List, Schema, Utf8, Vector} from "@apache-arrow/esnext-esm";
 import {LanceSchema} from "@lancedb/lancedb/embedding";
 import {connectToDB, embeddingFunction} from "./init.ts";
 
@@ -10,7 +10,7 @@ const repoSchema = new Schema([
     new Field("json", new Utf8()),
     new Field("description", new Utf8()),
     new Field("language", new Utf8()),
-    new Field("topics", new Utf8()),
+    new Field("topics", new List(new Field("topic", new Utf8())),),
 
 
 ])
@@ -44,6 +44,8 @@ export const init=async ()=>{
     return { topics, repositories, resourceParts, resources };
 
 }
+
+
 
  
 

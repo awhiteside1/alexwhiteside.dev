@@ -51,6 +51,8 @@
 		"request": "^2.88.2",
 		"scule": "1.3.0",
 		"sharp": "^0.33.2",
+		"surrealdb.js": "1.0.0-beta.9",
+		"surrealdb.node": "1.0.0-beta.1",
 		"tailwind-merge": "^2.3.0",
 		"type-fest": "^4.21.0",
 		"typescript": "^5.5.2",

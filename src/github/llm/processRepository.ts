@@ -68,3 +68,29 @@ const summarizeTable = (name:string,data: unknown [] )=>{
     ])
     console.log('\n\n=======================\n\n')
 }
+
+import { embeddingFunction } from './init';
+
+export const findRelatedRepos = async (query: string) => {
+  if (!tables) {
+    tables = await init();
+  }
+
+
+
+  const topics = await tables.topics.search(query).postfilter().where("_distance < 400").select(['text']).limit(15).toArrow()
+    const matchTags = topics.toArray().flatMap((topic) => topic.toJSON())
+    // Extracting the columns
+    const tagsColumn = await tables.repositories.query().select(['topics', 'id']).toArrow()
+    const matchTagsColumn = topics.select(['text']);
+
+// Create a set of the match tags for faster lookup
+    const matchTagsSet = new Set(matchTagsColumn.toArray());
+
+
+
+// Filter the table
+    const filteredTable = tables.repositories.query().where(`id in ${JSON.stringify(matchTagsSet)}`).toArray();
+    return filteredTable
+
+}

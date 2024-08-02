@@ -1,7 +1,7 @@
 
 import { describe, expect, it } from 'vitest'
 import { getStarredRepos } from './getRepos'
-import { processRepository, summarizeData } from './llm/processRepository'
+import { findRelatedRepos, processRepository, summarizeData } from './llm/processRepository'
 describe('extract', () => {
   it('should create a table', async () => {
 
@@ -12,4 +12,10 @@ describe('extract', () => {
     await summarizeData()
 
   }, { timeout: 100000000 })
+
+
+  it('should find related repos', async () => {
+    const repos = await findRelatedRepos('react')
+    console.table(repos)
+  })
 })
