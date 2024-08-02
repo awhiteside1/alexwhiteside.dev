@@ -1,8 +1,8 @@
 import { cn } from '@lib/utils'
 import { optimizeImage } from '@ui/utils/optimizeImage'
-import type { Image, Paragraph } from 'mdast'
+import type { Image } from 'mdast'
 import type { Root } from 'mdast'
-import { last, replace, set } from 'radash'
+import { replace, set } from 'radash'
 import { visit } from 'unist-util-visit'
 import {CONTINUE, visitParents} from 'unist-util-visit-parents'
 
