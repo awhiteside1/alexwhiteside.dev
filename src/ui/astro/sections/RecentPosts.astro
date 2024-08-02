@@ -1,10 +1,10 @@
 ---
-import { byDate } from '@ui/utils/interval'
-import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '@/ui/astro/components/bento/BentoGridItem.astro'
 import Link from '@/ui/astro/components/text/Link.astro'
 import { Hashnode } from '@hashnode'
+import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
 import Square from '@ui/astro/components/bento/Square.astro'
+import { byDate } from '@ui/utils/interval'
 import { optimizeImage } from '@ui/utils/optimizeImage'
 
 let posts = await Hashnode.getPosts()

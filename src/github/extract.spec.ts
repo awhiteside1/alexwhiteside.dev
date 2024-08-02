@@ -1,9 +1,8 @@
+import fs from 'node:fs'
+import { toInt } from 'radash'
 import { describe, expect, it } from 'vitest'
-import { parseLinkHeader } from './parseLink'
 import { fetchStarredRepos } from './api'
 import type { Repository } from './types'
-import { toInt } from 'radash'
-import fs from 'node:fs'
 describe('extract', () => {
   it('should extract data from the response', async () => {
     const repos = new Array<Repository>()

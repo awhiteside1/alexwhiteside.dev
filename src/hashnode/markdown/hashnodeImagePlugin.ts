@@ -1,5 +1,5 @@
+import type { Paragraph, Root } from 'mdast'
 import {visit} from 'unist-util-visit'
-import type { Root, Paragraph } from 'mdast'
 
 // Custom plugin to handle aligned images
 export const hashnodeImageFixer = () => (tree: Root) => {

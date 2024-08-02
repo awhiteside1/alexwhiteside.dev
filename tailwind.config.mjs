@@ -1,7 +1,7 @@
-import svgToDataUri from 'mini-svg-data-uri'
-import defaultTheme from 'tailwindcss/defaultTheme'
 import tailwindForms from '@tailwindcss/forms'
 import typographyPlugin from '@tailwindcss/typography'
+import svgToDataUri from 'mini-svg-data-uri'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const flattenColorPalette = (colors) =>
 	Object.assign(

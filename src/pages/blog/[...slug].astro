@@ -8,11 +8,11 @@ const post = await Hashnode.getPost(slug)
 
 if (!post) return Astro.redirect('/404')
 
+import { chain } from '@hashnode/markdown'
 import BackToPrevious from '@ui/astro/components/navigation/BackToPrevious.astro'
+import BlogHero from '@ui/astro/layouts/BlogHero.astro'
 import Layout from '@ui/astro/layouts/Layout.astro'
 import Container from '../../ui/astro/components/global/Container.astro'
-import BlogHero from '@ui/astro/layouts/BlogHero.astro'
-import { chain } from '@hashnode/markdown'
 
 const html = chain.process(post.content.markdown)
 ---
