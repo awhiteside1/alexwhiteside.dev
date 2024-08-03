@@ -1,6 +1,9 @@
 import type {VercelRequest, VercelResponse} from '@vercel/node'
 import lancedb from "@lancedb/lancedb";
 
+import { awsCredentialsProvider } from '@vercel/functions/oidc';
+
+
 const getSecrets = () => {
     const NOMIC_API_LEY = process.env.NOMIC_API
     const S3_SECRET = process.env.CLOUDFLARE_S3_SECRET
@@ -14,12 +17,12 @@ export default async function (request: VercelRequest, response: VercelResponse)
     if (!term) return response.status(400).json({error: 'Missing term'})
     const termString = typeof term === 'string' ? term : term[0]
     try {
-        const connection = await lancedb.connect('s3://alexwhitesidedev/', {
+
+        const credentials = awsCredentialsProvider({roleArn: process.env.AWS_ROLE_ARN})
+
+        const connection = await lancedb.connect('s3://alexwhitesidedev/lancedb/', {
             storageOptions: {
-                awsAccessKeyId: "e211da2bae41c27edf7b98498f1c4e2a",
-                endpoint: "https://4e48ace160a6411277cc07341caa999d.r2.cloudflarestorage.com",
-                awsSecretAccessKey: getSecrets().S3_SECRET!,
-                region: "auto",
+                region: "us-east-1",
             }
         })
         console.log(await connection.tableNames())

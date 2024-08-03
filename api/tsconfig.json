@@ -5,7 +5,7 @@
     "lib": ["esnext","dom"],
     "types": ["@types/node"],
     "outDir": "../dist",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "strict": true
   }
