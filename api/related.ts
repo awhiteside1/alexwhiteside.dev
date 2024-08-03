@@ -1,11 +1,13 @@
 import type {VercelRequest, VercelResponse} from '@vercel/node'
 import lancedb from "@lancedb/lancedb";
 
-const NOMIC_API_LEY = process.env.NOMIC_API
-const S3_SECRET = process.env.CLOUDFLARE_S3_SECRET
-if (!NOMIC_API_LEY) throw new Error('Missing NOMIC API')
-if (!S3_SECRET) throw new Error('Missing S3 Secret API')
-
+const getSecrets = ()=> {
+    const NOMIC_API_LEY = process.env.NOMIC_API
+    const S3_SECRET = process.env.CLOUDFLARE_S3_SECRET
+    if (!NOMIC_API_LEY) throw new Error('Missing NOMIC API')
+    if (!S3_SECRET) throw new Error('Missing S3 Secret API')
+    return {NOMIC_API_LEY, S3_SECRET}
+}
 
 export default async function (request: VercelRequest, response: VercelResponse) {
     const {term} = request.query;
@@ -16,7 +18,7 @@ export default async function (request: VercelRequest, response: VercelResponse)
         storageOptions: {
             awsAccessKeyId: "e211da2bae41c27edf7b98498f1c4e2a",
             endpoint: "https://4e48ace160a6411277cc07341caa999d.r2.cloudflarestorage.com",
-            awsSecretAccessKey: S3_SECRET!,
+            awsSecretAccessKey: getSecrets().S3_SECRET!,
             awsRegion: 'auto'
         }
     })
@@ -35,7 +37,7 @@ export const fetchEmbedding = async (term: string) => {
         {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${NOMIC_API_LEY}`,
+                'Authorization': `Bearer ${getSecrets().NOMIC_API_LEY}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
