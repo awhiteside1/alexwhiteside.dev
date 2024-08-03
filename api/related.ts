@@ -18,18 +18,17 @@ export default async function (request: VercelRequest, response: VercelResponse)
     const termString = typeof term === 'string' ? term : term[0]
     try {
 
-        const credentials = awsCredentialsProvider({roleArn: process.env.AWS_ROLE_ARN})
+        awsCredentialsProvider({ roleArn: process.env.AWS_ROLE_ARN })
 
         const connection = await lancedb.connect('s3://alexwhitesidedev/lancedb/', {
             storageOptions: {
                 region: "us-east-1",
             }
         })
-        console.log(await connection.tableNames())
 
         const table = await connection.openTable('cache')
         const results = await table.query().nearestTo(await fetchEmbedding(termString)).column('embedding').distanceType('cosine').limit(10).select(['repos', 'original']).bypassVectorIndex().toArray()
-        console.log(results)
+        response.setHeader('Cache-Control', 'public,max-age=1800,s-maxage=86400,stale-while-revalidate=59')
         return response.status(200).json(results)
     } catch (err) {
         console.error(err)
@@ -40,7 +39,7 @@ export default async function (request: VercelRequest, response: VercelResponse)
 
 
 const fetchEmbedding = async (term: string) => {
-    const response = await fetch(`https://api-atlas.nomic.ai/v1/embedding/text`,
+    const response = await fetch('https://api-atlas.nomic.ai/v1/embedding/text',
         {
             method: 'POST',
             headers: {
