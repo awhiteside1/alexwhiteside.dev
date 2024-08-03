@@ -1,6 +1,8 @@
 import {byString} from '../../ui/utils/interval.tsx'
 import type {RepoPartial} from '../getRepos.ts'
 import {init} from './schema.ts'
+import {makeArrowTable} from '@lancedb/lancedb'
+import {Float32} from "@apache-arrow/esnext-esm";
 
 let tables: Awaited<ReturnType<typeof init>>
 
@@ -43,6 +45,18 @@ export const processRepository = async (repo: RepoPartial) => {
     return newRepoRecord
 }
 
+
+export const addCompressedData = async (data: {embedding:number[], original:string, repos: Array<string>}[])=>{
+    if(!tables){
+        tables = await init()
+    }
+
+    const table = makeArrowTable(data,{vectorColumns:{embedding:{type:new Float32() }}})
+   return tables.db.createTable("cache", table, {mode:'overwrite'})
+
+
+}
+
 export const summarizeData = async () => {
     if (!tables) {
         tables = await init()
@@ -75,7 +89,7 @@ export const findRelatedRepos = async (query: string) => {
 
 
 
-  const topics = await tables.topics.search(query).postfilter().where("_distance < 400").select(['text']).limit(15).toArrow()
+  const topics = await tables.topics.search(query).postfilter().select(['text']).limit(15).toArrow()
     //const matchTags = topics.toArray().flatMap((topic) => topic.toJSON())
     // Extracting the columns
     //const tagsColumn = await tables.repositories.query().select(['topics', 'id']).toArrow()

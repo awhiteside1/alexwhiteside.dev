@@ -34,31 +34,31 @@ export const repoSchema = new Schema([
 
 
 
+//
+// const schema = LanceSchema({
+//   vector: func.vectorField({datatype: new Float32(), dims: 768}),
+//   text: func.sourceField(new Utf8()),
+//   repository:new Int32(),
+// });
+//
+// const topicsTable = await db.createEmptyTable("topics", schema, { mode: "overwrite" });
 
-const schema = LanceSchema({
-  vector: func.vectorField({datatype: new Float32(), dims: 768}),
-  text: func.sourceField(new Utf8()),
-  repository:new Int32(),
-});
-
-const topicsTable = await db.createEmptyTable("topics", schema, { mode: "overwrite" });
 
 
-
-export const createTable = async () => {
-  const repos = await getStarredRepos(false)
-  for (const repo of repos) {
-    for (const topic of repo.topics) {
-      try{
-      await topicsTable.add([{ text: topic, repository: repo.id }])
-    }catch(e){
-      console.log(e)
-    }
-    }
-  }
-  console.log("added topics")
-
-  const results = await topicsTable.search("lock").limit(1).toArray();
-  console.log(results[0].text);
-
-}
+// export const createTable = async () => {
+//   const repos = await getStarredRepos(false)
+//   for (const repo of repos) {
+//     for (const topic of repo.topics) {
+//       try{
+//       await topicsTable.add([{ text: topic, repository: repo.id }])
+//     }catch(e){
+//       console.log(e)
+//     }
+//     }
+//   }
+//   console.log("added topics")
+//
+//   const results = await topicsTable.search("lock").limit(1).toArray();
+//   console.log(results[0].text);
+//
+// }

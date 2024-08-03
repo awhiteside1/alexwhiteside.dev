@@ -1,6 +1,7 @@
-import {Field, Float32, Int32, List, Schema, Utf8} from "@apache-arrow/esnext-esm";
+import {Field, FixedSizeList, Float32, Int32, Schema, Utf8} from "@apache-arrow/esnext-esm";
 import {LanceSchema} from "@lancedb/lancedb/embedding";
 import {connectToDB, embeddingFunction} from "./init.ts";
+import {List} from "@apache-arrow/esnext-esm";
 
 
 const repoSchema = new Schema([
@@ -10,14 +11,17 @@ const repoSchema = new Schema([
     new Field("json", new Utf8()),
     new Field("description", new Utf8()),
     new Field("language", new Utf8()),
-    new Field("topics", new List(new Field("topic", new Utf8())),),
+    new Field("topics", new List(new Field("topic", new Utf8())))
 
 
 ])
 
+
+
 const topicsSchema = LanceSchema({
     vector: embeddingFunction.vectorField({datatype: new Float32(), dims: 768}),
     text: embeddingFunction.sourceField(new Utf8()),
+    repos: new Utf8()
 });
 
 const resourcesPartSchema = LanceSchema({
@@ -33,6 +37,13 @@ const resourcesSchema = LanceSchema({
 });
 
 
+const cacheSchema = LanceSchema({
+    vector:         new FixedSizeList(768, new Field("item", new Float32())),
+    text: new Utf8(),
+    repos: new List(new Field("topic", new Utf8()))
+
+});
+
 
 export const init=async ()=>{
     const db = await connectToDB()
@@ -41,7 +52,8 @@ export const init=async ()=>{
     const resources= await db.createEmptyTable("resources", resourcesSchema, { mode: "create", existOk:true });
     const resourceParts= await db.createEmptyTable("resource_parts", resourcesPartSchema, { mode: "create", existOk:true });
 
-    return { topics, repositories, resourceParts, resources };
+
+    return { topics, repositories, resourceParts, resources ,db};
 
 }
 

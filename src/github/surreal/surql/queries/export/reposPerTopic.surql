@@ -1,0 +1,1 @@
+select embedding, original, <-resource<-repository.details.full_name as repos from text
