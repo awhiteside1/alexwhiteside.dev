@@ -4,7 +4,6 @@ import {addCompressedData, findRelatedRepos, processRepository, summarizeData} f
 import { createDb } from './surreal/init'
 import { fetchReposByTopicAll } from './surreal/surql/queries/export'
 import {parallel} from "radash";
-import {fetchEmbedding} from "../../api/related.ts";
 import {connectToDB} from "./llm/init.ts";
 import {OllamaEmbeddings} from "./llm/Ollama.ts";
 import lancedb from "@lancedb/lancedb";
@@ -33,7 +32,7 @@ describe('extract', () => {
     const table = await connection.openTable('cache')
 
  //   await table.optimize()
-    const t2=await table.query().nearestTo(await fetchEmbedding('css')).column('embedding').distanceType('cosine').limit(5).select(['repos', 'original']).bypassVectorIndex().toArray()
+    const t2=await table.query().nearestTo(embedding).column('embedding').distanceType('cosine').limit(5).select(['repos', 'original']).bypassVectorIndex().toArray()
     console.log(t2)
     //const repos = await findRelatedRepos('react')
     //console.table(repos)
