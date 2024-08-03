@@ -1,6 +1,5 @@
-import reposByTagRaw from './repoByTag.surql?raw'
 import {PreparedQuery, type RecordId, type Surreal} from "surrealdb.js";
-import {get} from "radash";
+import reposByTagRaw from './repoByTag.surql?raw'
 
 export type IntoVector =
     | Float32Array

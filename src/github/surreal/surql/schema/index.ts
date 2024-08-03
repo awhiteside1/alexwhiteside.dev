@@ -1,7 +1,7 @@
+import {PreparedQuery} from "surrealdb.js";
 import repositoryDefinitionRaw from './repository.surql?raw'
 import resourceDefinitionRaw from './resource.surql?raw'
 import textDefinitionRaw from './text.surql?raw'
-import {PreparedQuery, surql} from "surrealdb.js";
 
 
 export const repositoryDefinition = new PreparedQuery(repositoryDefinitionRaw)

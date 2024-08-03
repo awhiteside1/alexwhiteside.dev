@@ -1,7 +1,7 @@
 const username = 'awhiteside1';
 const token = process.env.GITHUB;
-import { parseLinkHeader } from './parseLink';
-import type { Repository } from './types';
+import {parseLinkHeader} from './parseLink';
+import type {Repository} from './types';
 
 export const fetchStarredRepos = async (page=1): Promise<{ links: ReturnType<typeof parseLinkHeader>; data: Array<Repository>; }> => {
     const url = `https://api.github.com/users/${username}/starred?page=${page}`;

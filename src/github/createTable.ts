@@ -1,9 +1,9 @@
-import  lancedb from "@lancedb/lancedb";
-import  {Schema, Field, Int32, Utf8,Vector, Float32} from "@apache-arrow/esnext-esm";
-import { LanceSchema, getRegistry, register } from "@lancedb/lancedb/embedding";
-import type { EmbeddingFunction } from "@lancedb/lancedb/embedding";
-import { OllamaEmbeddings } from "./llm/Ollama";
-import { getStarredRepos } from "./getRepos";
+import {Field, Float32, Int32, Schema, Utf8} from "@apache-arrow/esnext-esm";
+import lancedb from "@lancedb/lancedb";
+import type {EmbeddingFunction} from "@lancedb/lancedb/embedding";
+import {LanceSchema, getRegistry } from "@lancedb/lancedb/embedding";
+import {getStarredRepos} from "./getRepos";
+import {OllamaEmbeddings} from "./llm/Ollama";
 
 const registry = getRegistry()
 
@@ -14,7 +14,7 @@ const registry = getRegistry()
 const uri = "/tmp/lancedb/";
 const db = await lancedb.connect(uri);
 
-const repoSchema = new Schema([
+export const repoSchema = new Schema([
     new Field("id", new Int32()),
     new Field("name", new Utf8()),
     new Field("url", new Utf8()),
@@ -26,10 +26,6 @@ const repoSchema = new Schema([
 
   ])
 
-  const wordsSchema = LanceSchema({
-    text: func.sourceField(new Utf8()),
-    vector: func.vectorField({datatype: new Float32(), dims: 768}),
-  });
 
 
 

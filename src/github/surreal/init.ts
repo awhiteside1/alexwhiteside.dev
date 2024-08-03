@@ -1,5 +1,5 @@
-import { Surreal } from 'surrealdb.js'
-import { surrealdbNodeEngines } from 'surrealdb.node'
+import {Surreal} from 'surrealdb.js'
+import {surrealdbNodeEngines} from 'surrealdb.node'
 
 export const createDb = async (namespace="default", database="public") => {
     // Enable the WebAssembly engines

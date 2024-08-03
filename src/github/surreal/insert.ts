@@ -1,7 +1,7 @@
-import { surql, type Surreal } from 'surrealdb.js'
-import type { RepoPartial } from "../getRepos.ts";
-import { SurrealTables } from "./surql/queries/tables";
-import { OllamaEmbeddings } from "../llm/Ollama.ts";
+import type {Surreal} from 'surrealdb.js'
+import type {RepoPartial} from "../getRepos.ts";
+import {OllamaEmbeddings} from "../llm/Ollama.ts";
+import {SurrealTables} from "./surql/queries/tables";
 
 export const insertRepository = async (db: Surreal, repo: RepoPartial) => {
     try {

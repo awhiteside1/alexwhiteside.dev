@@ -1,7 +1,7 @@
+import {describe, it} from 'vitest'
+import {getStarredRepos} from './getRepos'
+import {findRelatedRepos, processRepository, summarizeData} from './llm/processRepository'
 
-import { describe, expect, it } from 'vitest'
-import { getStarredRepos } from './getRepos'
-import { findRelatedRepos, processRepository, summarizeData } from './llm/processRepository'
 describe('extract', () => {
   it('should create a table', async () => {
 

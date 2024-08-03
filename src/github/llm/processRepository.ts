@@ -1,7 +1,6 @@
-import {Table} from "@lancedb/lancedb";
-import { byDate, byString } from '../../ui/utils/interval.tsx'
-import type { RepoPartial } from '../getRepos.ts'
-import { init } from './schema.ts'
+import {byString} from '../../ui/utils/interval.tsx'
+import type {RepoPartial} from '../getRepos.ts'
+import {init} from './schema.ts'
 
 let tables: Awaited<ReturnType<typeof init>>
 
@@ -69,8 +68,6 @@ const summarizeTable = (name:string,data: unknown [] )=>{
     console.log('\n\n=======================\n\n')
 }
 
-import { embeddingFunction } from './init';
-
 export const findRelatedRepos = async (query: string) => {
   if (!tables) {
     tables = await init();
@@ -79,9 +76,9 @@ export const findRelatedRepos = async (query: string) => {
 
 
   const topics = await tables.topics.search(query).postfilter().where("_distance < 400").select(['text']).limit(15).toArrow()
-    const matchTags = topics.toArray().flatMap((topic) => topic.toJSON())
+    //const matchTags = topics.toArray().flatMap((topic) => topic.toJSON())
     // Extracting the columns
-    const tagsColumn = await tables.repositories.query().select(['topics', 'id']).toArrow()
+    //const tagsColumn = await tables.repositories.query().select(['topics', 'id']).toArrow()
     const matchTagsColumn = topics.select(['text']);
 
 // Create a set of the match tags for faster lookup

@@ -1,12 +1,11 @@
-import {type Surreal, surql } from 'surrealdb.js'
-import { beforeAll, describe, it } from 'vitest'
-import { createDb } from './init.ts'
-import { initSchema } from './schemas.ts'
-import {insertRepository} from "./insert.ts";
 import {parallel} from "radash";
+import type {Surreal} from 'surrealdb.js'
+import {beforeAll, describe, it} from 'vitest'
 import {getStarredRepos} from "../getRepos.ts";
-import {fetchReposByTopicIntent} from "./surql/queries/semantic";
-import { OllamaEmbeddings } from '../llm/Ollama.ts';
+import {createDb} from './init.ts'
+import {insertRepository} from "./insert.ts";
+import {initSchema} from './schemas.ts'
+
 describe('Surreal', () => {
     let db: Surreal
     beforeAll(async () => {
@@ -23,5 +22,5 @@ describe('Surreal', () => {
 // console.log(repos)
 
 
-    },{timeout:500000})
+    })
 })

@@ -1,12 +1,5 @@
-
-import { Float32 } from "@apache-arrow/esnext-esm";
-import  lancedb from "@lancedb/lancedb";
-import {
-  LanceSchema,
-  getRegistry,
-  EmbeddingFunction,
-  register,
-} from "@lancedb/lancedb/embedding";
+import {Float32} from "@apache-arrow/esnext-esm";
+import {EmbeddingFunction, register,} from "@lancedb/lancedb/embedding";
 import {Ollama} from 'ollama'
 
 const client = new Ollama({

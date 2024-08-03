@@ -1,8 +1,8 @@
 import fs from 'node:fs'
-import { byNumber } from "../ui/utils/interval"
-import { group, listify, toInt } from "radash"
-import { fetchStarredRepos } from "./api"
-import type { Repository } from "./types"
+import {group, listify, toInt} from "radash"
+import {byNumber} from "../ui/utils/interval"
+import {fetchStarredRepos} from "./api"
+import type {Repository} from "./types"
 
 
 export const getStarredRepos=async(all=true)=>{
