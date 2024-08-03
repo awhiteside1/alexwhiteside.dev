@@ -22,10 +22,17 @@
 			}
 		]
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", ".storybook/*", "vite.config.ts"],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.astro",
+		".storybook/*",
+		"vite.config.ts"
+	],
 	"exclude": ["dist", "node_modules", "old"],
-	"references": [{
-		"path": "./api/tsconfig.json"
-	}
+	"references": [
+		{
+			"path": "./api/tsconfig.json"
+		}
 	]
 }
