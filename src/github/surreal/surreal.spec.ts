@@ -1,9 +1,12 @@
 import {type Surreal, surql } from 'surrealdb.js'
 import { beforeAll, describe, it } from 'vitest'
 import { createDb } from './init.ts'
-import {insert} from "./insert.ts";
 import { initSchema } from './schemas.ts'
-
+import {insertRepository} from "./insert.ts";
+import {parallel} from "radash";
+import {getStarredRepos} from "../getRepos.ts";
+import {fetchReposByTopicIntent} from "./surql/queries/semantic";
+import { OllamaEmbeddings } from '../llm/Ollama.ts';
 describe('Surreal', () => {
     let db: Surreal
     beforeAll(async () => {
@@ -11,10 +14,14 @@ describe('Surreal', () => {
     })
     it('should ', async () => {
         await initSchema(db)
+         const repos = await getStarredRepos()
+        await parallel(3,repos,repo=> insertRepository(db, repo))
+//         const embedding = new OllamaEmbeddings()
+//         const embeddingResult = await embedding.computeQueryEmbeddings('visual styles')
+//
+//         const repos = await  fetchReposByTopicIntent(db, embeddingResult)
+// console.log(repos)
 
-    const result =  await   db.query(insert, {name:'squirrel'})
 
-     const output =   await db.query(surql`SELECT * FROM resource WHERE repository.name = $name fetch repository; `, {name:'squirrel'})
-console.log(output)
-    })
+    },{timeout:500000})
 })

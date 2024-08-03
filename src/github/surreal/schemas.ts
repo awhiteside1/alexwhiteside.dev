@@ -1,25 +1,16 @@
-import { type Surreal, surql } from 'surrealdb.js'
-
+import {surql, type Surreal} from 'surrealdb.js'
+import {repositoryDefinition, resourceDefinition, textDefinition} from "./surql/schema";
+import {get} from "radash";
 export const initSchema = async (db: Surreal) => {
-    const query = surql`
-DEFINE TABLE repository SCHEMAFULL;
 
-DEFINE FIELD name ON TABLE repository TYPE string;
-DEFINE FIELD uuid ON TABLE repository VALUE rand::uuid::v7();
-DEFINE FIELD url ON TABLE repository TYPE string   ASSERT string::is::url($value);
-DEFINE FIELD details ON TABLE repository FLEXIBLE;
-DEFINE FIELD githubId on TABLE repository TYPE int;
-DEFINE FIELD created on TABLE repository VALUE time::now();
-
-#------
-
-
-DEFINE TABLE resource SCHEMAFULL;
-DEFINE FIELD uuid ON TABLE resource VALUE rand::uuid::v7();
-DEFINE FIELD source ON TABLE resource TYPE string;
-DEFINE FIELD created on TABLE resource TYPE datetime VALUE time::now();
-DEFINE FIELD repository on TABLE resource TYPE record<repository>
-`
-
-    await db.query(query)
+    const info =(await db.query(surql`INFO for DB`))[0]
+    if(!get(info,"tables.repository")){
+        await db.query(repositoryDefinition)
+    }
+    if(!get(info,"tables.text")){
+        await db.query(textDefinition)
+    }
+    if(!get(info,"tables.resource")){
+        await db.query(resourceDefinition)
+    }
 }
