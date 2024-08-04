@@ -23,7 +23,7 @@ export const optimizeImagePlugin = () => {
             node = set(node, 'data.hProperties.className', className)
         
           }catch(e){
-            console.log(e)
+
           }
         }
       })

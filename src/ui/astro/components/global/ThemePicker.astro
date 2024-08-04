@@ -13,34 +13,13 @@ const dark = `
   <path d="m50 75c-13.805 0-25-11.195-25-25s11.195-25 25-25"/>
  </g>
 `
-
-
-const shapes = {
-    dark: dark,
-    light: dark,
-    system: dark,
-}
 ---
 
-<style>
-    [data-shape] {
-        display: none;
-    }
-
-    :root.dark [data-shape='dark'],
-    :root.system [data-shape='system'],
-    :root.light [data-shape='light'] {
-        display: flex;
-    }
-    :root.system [data-shape='light'],
-    :root.system [data-shape='dark'] {
-        display: none;
-    }
-</style>
-
 <script is:inline>
-
-    function toggleTheme(theme) {
+    function forceThemeChange(theme) {
+        if (document.documentElement.classList.contains(theme)) {
+            return
+        }
         const css = document.createElement('style')
 
         css.appendChild(
@@ -59,96 +38,85 @@ const shapes = {
         document.head.appendChild(css)
         document.documentElement.classList.remove('dark')
         document.documentElement.classList.remove('light')
-        document.documentElement.classList.remove('system')
-        document.documentElement.classList.add(...theme)
+        document.documentElement.classList.add(theme)
 
         window.getComputedStyle(css).opacity
         document.head.removeChild(css)
     }
 
-    const handleThemeButtonClick = () => {
-        const theme = localStorage.getItem('theme') ?? 'system'
-        let nextTheme = 'system'
-        switch (theme) {
-            case 'system':
-                nextTheme = 'dark'
-                break
-            case 'dark':
-                nextTheme = 'light'
-                break
-            case 'light':
-                nextTheme = 'system'
-                break
-        }
-        localStorage.setItem('theme', nextTheme)
-        updateTheme()
+    const getSystemModeValue = () => {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
     }
 
+    document.addEventListener('astro:before-swap', (ev) => {
+        const systemMode = getSystemModeValue()
+        const userSetMode = localStorage.getItem('theme') // defaults to undefined, thus systemMode is used
+        let darkMode = systemMode === 'dark'
+        if (userSetMode) {
+            // If user sets a theme honor it ignoring system
+            darkMode = userSetMode === 'dark' // userSetMode is either 'dark' or 'light'
+        }
+        if (darkMode) {
+            ev.newDocument.documentElement.classList.add('dark')
+        }
+    })
 
-    const updateTheme = () => {
-        const theme = localStorage.getItem('theme')
-        let colorTheme
-        if (theme === 'system') {
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                colorTheme = 'dark'
-            } else {
-                colorTheme = 'light'
-            }
-            window.document.documentElement.classList.add('system')
-        }
-        if( !document.documentElement.classList.contains(colorTheme)){
-           toggleTheme([theme, colorTheme].filter(Boolean))
-        }
+    const themeOrder = { system: 'dark', dark: 'light', light: 'system' }
+    const themeText = {
+        system: '🎨 Using your preferences ',
+        dark: '😎 Shades Deployed',
+        light: '🤩 Shining Bright',
     }
-
-    function initialize() {
-        const buttons =
+    let labelTimeout
+    document.addEventListener(
+        'astro:page-load',
+        () => {
+            console.log('astro:pageload')
             document
                 .getElementById('theme-picker')
-                ?.getElementsByTagName('button') ?? []
+                .addEventListener('click', () => {
+                    const currentSetting = localStorage.theme ?? 'system'
+                    let nextSetting = themeOrder[currentSetting]
+            
+                
+                    if (nextSetting === 'system') {
+                        localStorage.removeItem('theme')
+                        nextSetting = getSystemModeValue()
+                    } else {
+                        localStorage.setItem('theme', nextSetting)
+                    }
+                    forceThemeChange(nextSetting)
+                })
+        },
+        { once: true }
+    )
 
-        for (const button of buttons) {
-            button.addEventListener('click', handleThemeButtonClick)
+    if (window?.hacks?.theme === undefined) {
+        Object.assign(window, { hacks: { theme: true } })
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else if (
+            getSystemModeValue() === 'dark' &&
+            localStorage.theme !== 'light'
+        ) {
+            document.documentElement.classList.add('dark')
         }
-               
-        
     }
-    document.addEventListener('astro:after-swap', () => initialize())
-    document.addEventListener('astro:page-load', () => {
-        
-        window
-            .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', () => {
-                if (localStorage.theme === 'system') {
-                    updateTheme()
-                }
-            })
-        updateTheme()
-        initialize()
-  }, { once: true });
 </script>
 
-<span id="theme-picker" class="relative">
-    {
-        Object.entries(shapes).map(([name, path]) => (
-            <button
-                data-shape={name}
-                title={`${name} theme`}
-                aria-label={`${name} theme`}
-                class="group flex p-1 items-center justify-center rounded   hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-            >
-                <svg
-                height="1rem" width="1rem"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 100 100" 
-                    fill="currentColor"
-                    class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:fill-black group-focus-visible:animate-pulse group-focus-visible:fill-black group-hover:dark:fill-white dark:group-focus-visible:fill-white"
-                    set:html={dark}
-                ></svg>
-
-            <p class="text-xs absolute -bottom-4 invisible group-hover:visible" >{name}</p>
-
-            </button>
-        ))
-    }
-</span>
+<button
+    title={`Switch theme`}
+    id="theme-picker"
+    aria-label={`Switch theme`}
+    class="group flex p-2 aspect-square items-center justify-center rounded hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 w-10 h-10"
+>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 100 100"
+        fill="currentColor"
+        class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:fill-black group-focus-visible:animate-pulse group-focus-visible:fill-black group-hover:dark:fill-white dark:group-focus-visible:fill-white h-full w-full"
+        set:html={dark}
+    />
+</button>

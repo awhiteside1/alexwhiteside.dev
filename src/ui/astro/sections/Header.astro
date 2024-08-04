@@ -2,29 +2,44 @@
 import Container from '../components/global/Container.astro'
 import ThemePicker from '../components/global/ThemePicker.astro'
 import Link from '../components/text/Link.astro'
+
+const links = [
+    { href: '/', text: 'About' },
+    { href: '/background', text: 'Career' },
+    { href: '/blog', text: 'Thoughts' },
+    { href: '/blog', text: 'Inspiration' },
+]
 ---
 
-<header transition:persist>
+
+<script>
+  import 'vanilla-hamburger/squash-burger.js';
+</script>
+<header transition:persist class="bg-neutral-50/80 dark:bg-zinc-800">
     <Container>
-        <div class="flex justify-end w-full">
-        
-            <nav class="flex items-center gap-1 text-sm lg:text-base font-medium">
-                <Link href="/">home</Link>
-                <span>
-                    {`/`}
-                </span>
-                <Link href="/background">background</Link>
-                <span>
-                    {`/`}
-                </span>
-                <Link href="/blog">thoughts</Link>
-                <span>
-                    {`/`}
-                </span>
-                <Link href="/recommendations">recommendations</Link>
-                {'/'}
-                <div class="flex items-center justify-center"><ThemePicker /></div>
-            </nav>
+        <div class="relative w-full ">
+            <div class="relative flex h-12 md:h-14 items-center justify-between">
+                <div class="flex flex-shrink-0 items-center">
+                    <h1>Alex Whiteside</h1>
+                </div>
+                <nav class="">
+                    <div class="gap-4 hidden md:flex flex-row align-baseline">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        {
+                            links.map((link) => (
+                                <a
+                                    href={link.href}
+                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100    dark:hover:bg-zinc-700 dark:hover:text-white">
+                                    {link.text}
+                                </a>
+                            ))
+                        }
+                        <ThemePicker />
+                    </div>
+                    <squash-burger class="md:hidden" size="24"></squash-burger>
+
+                </nav>
+            </div>
         </div>
     </Container>
 </header>

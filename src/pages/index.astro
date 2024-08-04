@@ -8,6 +8,7 @@ import { byNumber } from '@ui/utils/interval'
 import Badge from '../ui/astro/components/elements/Badge.astro'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
+import Flat from '@ui/astro/recommendations/Flat.astro'
 
 export const prerender = false
 
@@ -21,10 +22,10 @@ const titles = (await getCollection('titles')).toSorted(
     title="Software Architect, Entrepreneur, Creative"
     description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
 >
-    <Container>
-        <div class="space-y-6">
+    <Container class="gap-8 px-6 md:px-0">
             <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
-            <div class="space-y-4">
+                <div class="grid grid-cols-5 grid-rows-6">
+            <Flat>
                 <GradientText color="neutral" class="text-6xl">
                     Alex Whiteside
                 </GradientText>
@@ -43,19 +44,17 @@ const titles = (await getCollection('titles')).toSorted(
                         ))
                     }
                 </ul>
-            </div>
-            <div class="space-y-16">
-                <section>
+            </Flat>
+                    <Flat>
                     <article class="space-y-8 animate">
                         <span class="">
                             <MdxSection page="home" name="intro" />
                         </span>
                         <Social />
                     </article>
-                </section>
+                    </Flat>
+                </div>
                <RecentPosts />
 
-            </div>
-        </div>
     </Container>
 </Layout>

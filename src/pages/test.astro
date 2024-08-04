@@ -1,4 +1,5 @@
 ---
+import HomeGrid from "@ui/astro/components/bento/HomeGrid.astro";
 import Container from "@ui/astro/components/global/Container.astro";
 import Layout from "@ui/astro/layouts/Layout.astro";
 import Recommendations from "@ui/astro/recommendations/Recommendations.astro";
@@ -15,7 +16,7 @@ const tab = Astro.url.searchParams.get("tab") ?? 'purpose'
 
 <Container>
 
-  <Recommendations tab={tab} />
+<HomeGrid/>
   
 
 </Container>

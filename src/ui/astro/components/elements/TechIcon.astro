@@ -1,9 +1,9 @@
 ---
 import {resolveIcon} from '@ui/utils/icons'
 /**
- * Renders a badge with icon that adapts to the current text styles, sourced from a collection of icon libraries. 
+ * Renders a badge with icon that adapts to the current text styles, sourced from a collection of icon libraries.
  */
-type Props={
+type Props = {
     /**
      * The name of the technology or concept to render. Must exist in an icon library (https://devicon.dev/ or the icons folder)
      * @example "react"
@@ -14,25 +14,24 @@ type Props={
      */
     version?: string
     /**
-     * Overrides the display label for the badge as provided     
+     * Overrides the display label for the badge as provided
      */
-    label?:string
+    label?: string
 }
 
-function replaceFillsWithCurrentColor(svgString:string) {
+function replaceFillsWithCurrentColor(svgString: string) {
     let filledString = svgString.replace(/fill="[^"]*"/g, 'fill="currentColor"')
-    filledString= filledString.replace(/\<svg/, '<svg fill="currentColor" ')
+    filledString = filledString.replace(/\<svg/, '<svg fill="currentColor" ')
     return filledString;
 }
 
-const {name, version, label}=Astro.props
-let icon = await resolveIcon({name: name.toLowerCase(),version })
+const {name, version, label} = Astro.props
+let icon = await resolveIcon({name: name.toLowerCase(), version})
 icon = replaceFillsWithCurrentColor(icon)
 const display = label ?? name
 ---
-<span>
-<span  style="baseline-source:last;" class="inline-flex rounded-md bg-zinc-100 text-zinc-9000  transition-all dark:bg-zinc-800  px-1 py-1 cursor-default dark:text-zinc-100">
-<span class="h-[1em] w-[1em] mr-1" set:html={icon}/>
+<span style="baseline-source:last;"
+      class="inline-flex rounded-md bg-zinc-100 text-zinc-9000  transition-all dark:bg-zinc-800  px-1 py-1 cursor-default dark:text-zinc-100">
+<span class="h-[1em] w-[1em] mr-1" aria-hidden="true" set:html={icon}/>
 <span class="self-end leading-none	">{display}</span>
 </span>
-

@@ -1,8 +1,8 @@
+import {Float32} from "@apache-arrow/esnext-esm";
+import {makeArrowTable} from '@lancedb/lancedb'
 import {byString} from '../../ui/utils/interval.tsx'
 import type {RepoPartial} from '../getRepos.ts'
 import {init} from './schema.ts'
-import {makeArrowTable} from '@lancedb/lancedb'
-import {Float32} from "@apache-arrow/esnext-esm";
 
 let tables: Awaited<ReturnType<typeof init>>
 

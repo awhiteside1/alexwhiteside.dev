@@ -1,0 +1,56 @@
+
+---
+import Square from "./Square.astro";
+
+
+---
+
+
+<style>
+
+ .homeGrid {
+    display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    position: relative;
+    min-height: 600px;;
+}
+
+
+.title{
+    grid-area: 2 / 1 / 6 /9;
+    
+}
+
+.pop{
+grid-area: 2 / 9 / 6 / -1;
+z-index: 4;
+
+}
+
+.big{
+grid-area: 6 / 2 / -1 /-1;
+
+}
+
+
+</style>
+
+
+
+
+
+<div class="homeGrid">
+    <div class="title bg-white border border-neutral-300 rounded-xl shadow-lg p-2 ">
+       <Square  />
+    </div>
+    <div class="pop bg-gradient-to-br from-red-50 to-black  rounded-xl shadow-lg pt-2">
+              <div class="w-full h-full bg-gradient-to-t from-orange-500 to-neutral-50 transition-all duration-300 ease-linear border rounded-lg scale-105 translate-y-2 translate-x-1"></div>
+    </div>
+    <div class="big  rounded-xl shadow-lg p-2  bg-gradient-to-br from-slate-400 to-orange-300">
+              <div class="w-full h-full bg-white transition-all duration-300 ease-linear border translate-x-4  hover:-translate-y-4 rounded-lg"></div>
+    </div>
+</div>
+
+

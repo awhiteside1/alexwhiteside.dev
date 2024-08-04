@@ -1,4 +1,22 @@
 ---
+import { cn } from '@lib/utils';
+
+type Props={
+    class?: string;
+}
+
 ---
 
-<div class="mx-auto max-w-screen-md px-3"><slot /></div>
+<div class={cn("mx-auto max-w-screen-md px-4 flex flex-col ", Astro.props.class)} ><slot /></div>
+<style>
+    .dark #theme-picker-label{
+
+        content: "😎 Sunglasses Activated";
+    }
+
+</style>
+<!--<p-->
+<!--        id="theme-picker-label"-->
+<!--        class="text-sm  w-screen  p-2 font-medium  transition-all ease-in-out  duration-500  opacity-100 bg-amber-400  left-0 right-0 top-0  text-nowrap capitalize "-->
+<!--&gt;-->
+<!--</p>-->

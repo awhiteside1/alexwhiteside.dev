@@ -21,7 +21,8 @@
 		}
 	},
 	"formatter": {
-		"enabled": false
+		"enabled": true,
+		"formatWithErrors": true
 	},
 	"javascript": {
 		"formatter": {
