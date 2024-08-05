@@ -2,8 +2,9 @@
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Footer from '../sections/Footer.astro'
 import Head from '../sections/Head.astro'
-import Header from '../sections/Header.astro'
+import Header from '../sections/navigation/Header.astro'
 import DotBackground from './DotBackground.astro'
+import Burger from '../sections/navigation/Burger.astro';
 
 type Props = {
     title: string
@@ -20,7 +21,8 @@ const { title, description } = Astro.props
     </head>
     <body>
         <DotBackground />
-        <Header />
+        <Header><Burger slot="navigation" /></Header>
+        
         <main>
             <slot />
         </main>

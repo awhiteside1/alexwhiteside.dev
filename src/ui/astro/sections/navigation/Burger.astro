@@ -1,0 +1,59 @@
+---
+import { cn } from '@lib/utils'
+import BurgerSvg from './BurgerSvg.astro'
+import icons from './icons.svg?raw'
+const pathname = new URL(Astro.request.url).pathname;
+const links = [
+    { text: 'Home', href: '/', icon: 'person', current: false },
+    { text: 'Blog', href: '/blog', icon: 'blog', current: false },
+    { text: 'Work', href: '/background', icon: 'work', current: false },
+    { text: 'Reccommendations', href: '/recommendations', icon: 'sparkle', current: false },
+]
+
+const link = links.find(link=>link.href===pathname)
+if(link){
+    link.current=true
+}
+
+---
+
+<div class="hidden"><Fragment set:html={icons}/></div>
+
+
+
+<div class="fixed top-0 left-0 right-0 mx-auto max-w-screen-md">
+    <BurgerSvg transition:persist>
+        <nav slot="content" class=" z-50 flex flex-1 flex-col p-4 translate-x-1 -translate-y-2 bg-neutral-200/80 backdrop-blur-sm rounded-lg " aria-label="Sidebar" >
+            <ul role="list" class="-mx-2 space-y-1  overflow-hidden transition-all duration-200 ease-in-out  ">
+                {
+                    links.map((link) => (
+                    
+                        <li>
+                            <a
+                                href={link.href}
+                                class={cn(
+                                    'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
+                                    link.current && 'bg-gray-50 text-indigo-600'
+                                )}
+                            >
+                                <svg
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    class="h-6 w-6 shrink-0 "
+                                >
+                                    <use xlink:href={`#${link.icon}`} />
+                                </svg>
+                                {link.text}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+        
+    </BurgerSvg>
+
+
+
+</div>

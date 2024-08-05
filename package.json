@@ -60,6 +60,7 @@
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0",
 		"unist-util-visit-parents": "^6.0.1",
+		"vanilla-hamburger": "^0.2.3",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {

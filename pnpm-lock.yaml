@@ -140,6 +140,9 @@ importers:
       unist-util-visit-parents:
         specifier: ^6.0.1
         version: 6.0.1
+      vanilla-hamburger:
+        specifier: ^0.2.3
+        version: 0.2.3
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -5832,6 +5835,9 @@ packages:
 
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
+
+  vanilla-hamburger@0.2.3:
+    resolution: {integrity: sha512-tzzU/2MojrQuJoaDa7OSUYPd8MkyJsFH3B3j1/NMN4HQoW/77qvDaOHsDu6c0tqXuok3/MRggaW54tFuFBNbbg==}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -12812,6 +12818,8 @@ snapshots:
   uuidv7@0.6.3: {}
 
   v8-compile-cache-lib@3.0.1: {}
+
+  vanilla-hamburger@0.2.3: {}
 
   vary@1.1.2: {}
 
