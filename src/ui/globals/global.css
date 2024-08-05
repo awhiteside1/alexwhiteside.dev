@@ -171,16 +171,51 @@ pre {
 
 :root{
     --max-font-size: max(calc(1vw + 1em), 2rem);
+    --border: #e5e7eb
+}
+
+
+
+
+.scroll-bg {
+    animation: bgProgress auto linear;
+    animation-timeline: scroll(root);
+    animation-range: 0vh 20vh;
+    background: white;
+    border-bottom: 1px solid;
+    border-bottom-color: var(--border);
+}
+
+@keyframes bgProgress {
+    from {
+       background: transparent;
+       border-bottom-color: transparent
+    }
+
+    40%{
+        background: rgba(255, 255, 255, 0.2);
+        border-bottom-color: transparent
+    }
+
+    50%{
+       background: rgba(255, 255, 255, 0.95);
+       border-bottom-color: var(--border);
+
+    }
+    to {
+        
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom-color: var(--border);
+    }
 }
 
 .scroll-scale {
     animation: scaleProgress auto linear;
     animation-timeline: scroll(root);
-    transform-origin: left;
+    transform-origin: top ;
     font-size: var(--max-font-size);
     animation-range: 0vh 20vh;
 }
-
 @keyframes scaleProgress {
     from {
         font-size: max(calc(3vw + 1em), 3rem);

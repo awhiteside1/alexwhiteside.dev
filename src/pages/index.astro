@@ -21,10 +21,10 @@ const titles = (await getCollection('titles')).toSorted(
     title="Software Architect, Entrepreneur, Creative"
     description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
 >
-
-<GradientText slot="title"  color="neutral" class="text-6xl">
-    Alex Whiteside
-</GradientText>
+<div slot="before" class="scroll-scale  text-3xl z-[100] translate-y-4"><GradientText color="neutral">Alex</GradientText></div>
+<div class="scroll-scale" slot="title"><GradientText color="neutral" >
+ Whiteside
+</GradientText></div>
 
     <Container>
         <div class="space-y-6">
