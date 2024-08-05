@@ -6,10 +6,14 @@ html {
     overflow-y: auto;
     color-scheme: light;
     scroll-padding-top: 100px;
+    --border: #e5e7eb;
+    --menu-bg: 255, 255, 255;
 }
 
 html.dark {
     color-scheme: dark;
+    --menu-bg: 0,0,0;
+    --border: #373737;
 }
 
 @font-face {
@@ -171,8 +175,9 @@ pre {
 
 :root{
     --max-font-size: max(calc(1vw + 1em), 2rem);
-    --border: #e5e7eb
+   
 }
+
 
 
 
@@ -181,7 +186,7 @@ pre {
     animation: bgProgress auto linear;
     animation-timeline: scroll(root);
     animation-range: 0vh 20vh;
-    background: white;
+    background: rgb(var(--menu-bg));
     border-bottom: 1px solid;
     border-bottom-color: var(--border);
 }
@@ -193,18 +198,18 @@ pre {
     }
 
     40%{
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(var(--menu-bg), 0.2);
         border-bottom-color: transparent
     }
 
     50%{
-       background: rgba(255, 255, 255, 0.95);
+       background: rgba(var(--menu-bg), 0.95);
        border-bottom-color: var(--border);
 
     }
     to {
         
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(var(--menu-bg), 0.95);
         border-bottom-color: var(--border);
     }
 }
