@@ -4,7 +4,8 @@ import { uid } from 'radash'
 
 const gradients = {
     blue: 'from-indigo-500 via-sky-500 to-emerald-500',
-    orange: 'from-pink-500 via-red-500 to-orange-500',
+    orange: 'from-orange-500  to-red-500',
+    pink: 'from-pink-500 to-red-400',
     neutral: 'from-gray-500 to-gray-700 dark:from-gray-100 dark:to-gray-400',
     teal: 'from-emerald-400 to-cyan-400',
     slate: 'from-slate-500 to-slate-800 dark:from-slate-200 dark:to-slate-400'
@@ -60,7 +61,7 @@ document.addEventListener('astro:page-load', () => initializeGradients())
 
 <div
 id={id}
-    class={cn(animate &&'perf-gradient-text',  `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
+    class={cn(animate &&'perf-gradient-text',  `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300% leading-none py-2`,
         gradientClass, Astro.props.class
     )}
 >

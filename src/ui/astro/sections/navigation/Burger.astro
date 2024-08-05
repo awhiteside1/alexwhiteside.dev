@@ -2,13 +2,12 @@
 import { cn } from '@lib/utils'
 import BurgerSvg from './BurgerSvg.astro'
 import icons from './icons.svg?raw'
-import { M } from 'vitest/dist/chunks/reporters.C_zwCd4j.js';
 const pathname = new URL(Astro.request.url).pathname;
 const links = [
     { text: 'About Me', href: '/', icon: 'person', current: false, hover: 'hover:text-indigo-500', active:'text-indigo-600' },
     { text: 'Writing', href: '/blog', icon: 'blog', current: false, hover: 'hover:text-blue-500', active:'text-blue-600' },
     { text: 'Career', href: '/background', icon: 'work', current: false, hover: 'hover:text-pink-500' , active:'text-pink-600' },
-    { text: 'Picks', href: '/recommendations', icon: 'sparkle', current: false, hover: 'hover:text-orange-500', active:'text-orange-600' },
+    { text: 'Links', href: '/recommendations', icon: 'sparkle', current: false, hover: 'hover:text-orange-500', active:'text-orange-600' },
 ]
 console.log(pathname)
 const link = links.find(link=>link.href===pathname)
