@@ -57,12 +57,12 @@ document.addEventListener('astro:page-load', () => initializeGradients())
 </script>
 
 
-<span
+<div
 id={id}
-    class={cn('perf-gradient-text',
+    class={cn('perf-gradient-text', 'scroll-scale',
         `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
         gradientClass, Astro.props.class
     )}
 >
     <slot />
-</span>
+</div>

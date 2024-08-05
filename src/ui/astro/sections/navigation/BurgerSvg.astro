@@ -12,7 +12,7 @@ const BAR_HEIGHT = Math.round(SIZE/12);
 
 
 
-<div class="flex flex-col gap-4 items-end w-fit absolute top-16 right-4 z-50">
+<div class="flex flex-col items-end w-0 ">
 <button type="button" id="burger-menu" data-active="true" class="group peer w-fit flex flex-row justify-end items-center px-4 py-2 gap-2 text-black backdrop-blur-sm bg-slate-600/30 rounded-md ">
     <p>Menu</p>
 
@@ -27,7 +27,7 @@ const BAR_HEIGHT = Math.round(SIZE/12);
         </div>
     </span>
 </button>
-<div  class="opacity-0 -translate-y-2 transition duration-300 ease-in-out peer-data-[active=true]:opacity-100 peer-data-[active=true]:translate-y-0 ">
+<div  class=" max-h-0 overflow-visible opacity-0 translate-y-2 transition duration-300 ease-in-out peer-data-[active=true]:opacity-100 peer-data-[active=true]:translate-y-6 ">
 <slot name="content" />
 </div>
 </div>

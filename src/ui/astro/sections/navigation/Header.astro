@@ -4,9 +4,12 @@
 ---
 
 
-<div class="sticky top-50 flex content-end">
 
-    <div class="sticky top-0 flex items-center justify-between"><h1 class="text-6xl font-bold">Alex Whiteside</h1><slot name="navigation"/></div>
+<div class="min-h-12 mt-12">{''}</div>
+<div class="sticky top-0 flex content-end bg-white z-50">
+
+    <div class="sticky top-0  max-w-screen-md mx-auto w-full">
+        <div class="flex flex-row items-center justify-between px-3"><slot name="title"></slot><div class="relative flex align-middle"><slot name="navigation"/></div></div></div>
 
 
 </div>

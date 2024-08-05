@@ -12,8 +12,13 @@ html.dark {
     color-scheme: dark;
 }
 
-
-@font-face { font-family: "InterVariable"; font-style: normal;  font-weight: 100 900; font-display: swap; src: url("/fonts/InterSmall.woff2") format("woff2"); }
+@font-face {
+    font-family: 'InterVariable';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('/fonts/InterSmall.woff2') format('woff2');
+}
 /* 
   @font-face {
     font-family: 'Concourse';
@@ -23,8 +28,7 @@ html.dark {
     font-display: swap;
   } */
 
-
-  /* @layer utilities {
+/* @layer utilities {
     .font-concourse {
       font-family: "Concourse" ;
     }
@@ -32,7 +36,7 @@ html.dark {
 
 html,
 body {
-    @apply size-full;
+    @apply w-full;
 }
 
 body {
@@ -42,26 +46,28 @@ body {
 }
 
 @supports (font-variation-settings: normal) {
-    :root { font-family: InterVariable, sans-serif; }
-  }
+    :root {
+        font-family: InterVariable, sans-serif;
+    }
+}
 
 header {
     @apply fixed left-0 right-0 top-0 z-50 py-6;
     /* @apply saturate-200 backdrop-blur-sm;*/
 }
 
-header::after{
-    content: "";
+header::after {
+    content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
- 
+
     mask: linear-gradient(to top, transparent, black 35%);
     backdrop-filter: blur(4px);
 }
 
 main {
-    @apply flex-1 py-20 lg:py-24;
+    @apply flex-1;
 }
 
 footer {
@@ -149,19 +155,33 @@ pre {
     @apply scale-90 transition-transform;
 }
 
-.derek{
+.derek {
     @apply shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)];
 }
 
-.subtle{
-
+.subtle {
     @apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
 }
 
-#sticky-backdrop{
+#sticky-backdrop {
+    content: '';
+    mask: linear-gradient(to top, transparent, black 35%);
+    backdrop-filter: blur(4px);
+}
 
-        content: "";
-        mask: linear-gradient(to top, transparent, black 35%);
-        backdrop-filter: blur(4px);
+.scroll-scale {
+    animation: scaleProgress auto linear;
+    animation-timeline: scroll(root);
+    transform-origin: left;
+    font-size: calc(2vw + 1em);
+    animation-range: 0vh 20vh;
+}
 
+@keyframes scaleProgress {
+    from {
+        font-size: calc(5vw + 1em);
+    }
+    to {
+        font-size: calc(2vw + 1em);
+    }
 }

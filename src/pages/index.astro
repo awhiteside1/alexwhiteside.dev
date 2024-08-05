@@ -21,13 +21,17 @@ const titles = (await getCollection('titles')).toSorted(
     title="Software Architect, Entrepreneur, Creative"
     description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
 >
+
+<GradientText slot="title"  color="neutral" class="text-6xl">
+    Alex Whiteside
+</GradientText>
+
     <Container>
         <div class="space-y-6">
             <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
             <div class="space-y-4">
-                <GradientText color="neutral" class="text-6xl">
-                    Alex Whiteside
-                </GradientText>
+                
+        
                 <ul class="flex flex-row flex-wrap gap-2">
                     {
                         titles.map((title) => (
