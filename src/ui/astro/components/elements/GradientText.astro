@@ -59,7 +59,7 @@ document.addEventListener('astro:page-load', () => initializeGradients())
 
 <div
 id={id}
-    class={cn('perf-gradient-text', 'scroll-scale',
+    class={cn('perf-gradient-text', 'scroll-scale py-1',
         `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
         gradientClass, Astro.props.class
     )}
