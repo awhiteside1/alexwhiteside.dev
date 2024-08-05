@@ -1,6 +1,6 @@
-import {Field, Float32, Int32, List, Utf8} from "@apache-arrow/esnext-esm";
+import { Field, Float32, List, Utf8 } from "@apache-arrow/esnext-esm";
 import {LanceSchema} from "@lancedb/lancedb/embedding";
-import {PreparedQuery, type RecordId, type Surreal} from "surrealdb.js";
+import { PreparedQuery, type Surreal } from "surrealdb.js";
 import {embeddingFunction} from "../../../../llm/init";
 import reposPerTopicRaw from './reposPerTopic.surql?raw'
 

@@ -1,12 +1,8 @@
-import lancedb from "@lancedb/lancedb";
-import {parallel} from "radash";
 import {describe, it} from 'vitest'
 import {getStarredRepos} from './getRepos'
 import {OllamaEmbeddings} from "./llm/Ollama.ts";
 import {connectToDB} from "./llm/init.ts";
-import {addCompressedData, findRelatedRepos, processRepository, summarizeData} from './llm/processRepository'
-import { createDb } from './surreal/init'
-import { fetchReposByTopicAll } from './surreal/surql/queries/export'
+import { processRepository, summarizeData } from './llm/processRepository';
 
 describe('extract', () => {
   it('should create a table', async () => {
@@ -17,7 +13,7 @@ describe('extract', () => {
     }
     await summarizeData()
 
-  }, { timeout: 100000000 })
+  })
 
 
   it('should find related repos', async () => {
@@ -36,5 +32,5 @@ describe('extract', () => {
     console.log(t2)
     //const repos = await findRelatedRepos('react')
     //console.table(repos)
-  },{ timeout: 100000000 })
+  })
 })
