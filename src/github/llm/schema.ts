@@ -1,7 +1,7 @@
 import {Field, FixedSizeList, Float32, Int32, Schema, Utf8} from "@apache-arrow/esnext-esm";
+import {List} from "@apache-arrow/esnext-esm";
 import {LanceSchema} from "@lancedb/lancedb/embedding";
 import {connectToDB, embeddingFunction} from "./init.ts";
-import {List} from "@apache-arrow/esnext-esm";
 
 
 const repoSchema = new Schema([

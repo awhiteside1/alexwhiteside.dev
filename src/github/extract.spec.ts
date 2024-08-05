@@ -1,12 +1,12 @@
+import lancedb from "@lancedb/lancedb";
+import {parallel} from "radash";
 import {describe, it} from 'vitest'
 import {getStarredRepos} from './getRepos'
+import {OllamaEmbeddings} from "./llm/Ollama.ts";
+import {connectToDB} from "./llm/init.ts";
 import {addCompressedData, findRelatedRepos, processRepository, summarizeData} from './llm/processRepository'
 import { createDb } from './surreal/init'
 import { fetchReposByTopicAll } from './surreal/surql/queries/export'
-import {parallel} from "radash";
-import {connectToDB} from "./llm/init.ts";
-import {OllamaEmbeddings} from "./llm/Ollama.ts";
-import lancedb from "@lancedb/lancedb";
 
 describe('extract', () => {
   it('should create a table', async () => {

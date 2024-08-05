@@ -1,5 +1,5 @@
-import fun from '../../api/related'
 import {describe,it} from "vitest";
+import fun from '../../api/related'
 
 describe('fdssf', () => {
     it('should ', async() => {
