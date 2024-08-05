@@ -2,14 +2,15 @@
 import { cn } from '@lib/utils'
 import BurgerSvg from './BurgerSvg.astro'
 import icons from './icons.svg?raw'
+import { M } from 'vitest/dist/chunks/reporters.C_zwCd4j.js';
 const pathname = new URL(Astro.request.url).pathname;
 const links = [
-    { text: 'Home', href: '/', icon: 'person', current: false },
-    { text: 'Blog', href: '/blog', icon: 'blog', current: false },
-    { text: 'Work', href: '/background', icon: 'work', current: false },
-    { text: 'Reccommendations', href: '/recommendations', icon: 'sparkle', current: false },
+    { text: 'About Me', href: '/', icon: 'person', current: false, hover: 'hover:text-indigo-500', active:'text-indigo-600' },
+    { text: 'Writing', href: '/blog', icon: 'blog', current: false, hover: 'hover:text-blue-500', active:'text-blue-600' },
+    { text: 'Career', href: '/background', icon: 'work', current: false, hover: 'hover:text-pink-500' , active:'text-pink-600' },
+    { text: 'Picks', href: '/recommendations', icon: 'sparkle', current: false, hover: 'hover:text-orange-500', active:'text-orange-600' },
 ]
-
+console.log(pathname)
 const link = links.find(link=>link.href===pathname)
 if(link){
     link.current=true
@@ -22,8 +23,8 @@ if(link){
 
 
     <BurgerSvg transition:persist>
-        <nav slot="content" class=" flex flex-1 flex-col p-4 translate-x-1 -translate-y-2 bg-neutral-200/80 backdrop-blur-sm rounded-lg " aria-label="Sidebar" >
-            <ul role="list" class="-mx-2 space-y-1  overflow-hidden transition-all duration-200 ease-in-out  ">
+        <nav slot="content" class=" flex flex-1 flex-col py-2 px-4 translate-x-1 -translate-y-2 bg-white border shadow-md  backdrop-blur-sm rounded-xl  " aria-label="Sidebar" >
+            <ul role="list" class=" -mx-2 space-y-1   transition-all duration-200 ease-in-out  ">
                 {
                     links.map((link) => (
                     
@@ -31,8 +32,8 @@ if(link){
                             <a
                                 href={link.href}
                                 class={cn(
-                                    'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
-                                    link.current && 'bg-gray-50 text-indigo-600'
+                                    'group text-nowrap flex gap-x-3 rounded-lg p-2 pr-3 text-sm font-semibold leading-6 text-neutral-700  hover:text-sky-6000',
+                                    link.current ? link.active:'text-neutral-600', [link.hover, 'hover:bg-zinc-100 border border-white hover:shadow-inner '].join(' ')
                                 )}
                             >
                                 <svg

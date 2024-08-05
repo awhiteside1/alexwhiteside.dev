@@ -11,11 +11,12 @@ const gradients = {
 }
 
 type Props = {
-    class: string
+    animate?: boolean
+    class?: string
     color: keyof typeof gradients
 }
 
-const {  color = 'blue' } = Astro.props
+const {  color = 'blue' , animate = false} = Astro.props
 
 const gradientClass = gradients[color]
 
@@ -59,8 +60,7 @@ document.addEventListener('astro:page-load', () => initializeGradients())
 
 <div
 id={id}
-    class={cn('perf-gradient-text', 'scroll-scale py-1',
-        `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
+    class={cn(animate &&'perf-gradient-text',  `font-bold bg-gradient-to-r text-transparent bg-clip-text bg-300%`,
         gradientClass, Astro.props.class
     )}
 >

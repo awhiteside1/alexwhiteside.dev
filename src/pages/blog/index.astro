@@ -14,7 +14,9 @@ posts=posts.sort(byDate(x=>new Date(x.publishedAt)))
 ---
 
 <Layout title={''} description={''}>
-    <GradientText slot="title" class="text-6xl" color="blue">Thoughts</GradientText>
+    <div slot="before" class="text-3xl z-[100] translate-y-4"><GradientText slot="before" color="blue">Thoughts and</GradientText></div>
+
+    <div class="scroll-scale"  slot="title">  <GradientText slot="title"  color="blue">Writing</GradientText></div>
 
     <Container>
         <div class="space-y-10">

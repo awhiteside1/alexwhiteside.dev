@@ -169,19 +169,26 @@ pre {
     backdrop-filter: blur(4px);
 }
 
+:root{
+    --max-font-size: max(calc(1vw + 1em), 2rem);
+}
+
 .scroll-scale {
     animation: scaleProgress auto linear;
     animation-timeline: scroll(root);
     transform-origin: left;
-    font-size: calc(2vw + 1em);
+    font-size: var(--max-font-size);
     animation-range: 0vh 20vh;
 }
 
 @keyframes scaleProgress {
     from {
-        font-size: calc(5vw + 1em);
+        font-size: max(calc(3vw + 1em), 3rem);
+    }
+    50%{
+        font-size: max(calc(vw + 1em), 3rem);
     }
     to {
-        font-size: calc(2vw + 1em);
+        font-size: var(--max-font-size);
     }
 }

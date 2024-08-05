@@ -36,14 +36,16 @@ const sortedByCompany = Object.values(byCompany).toSorted(
     title="Background & Experience"
     description="Multiple startup exists in Fintech, Edtech, and more."
 >
-<GradientText slot="title" color="orange" class="text-6xl">Experience</GradientText>
+<div slot="before" class="text-3xl z-[100] translate-y-4"><GradientText slot="before" color="orange">Career & </GradientText></div>
+
+<div class="scroll-scale" slot="title"><GradientText  color="orange" >Background</GradientText></div>
 
     <Container>
         <div
         
             id="sticky-backdrop"
             style="opacity: 0;"
-            class="z-40 fixed top-11 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
+            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
         >
             &nbsp;
         </div>

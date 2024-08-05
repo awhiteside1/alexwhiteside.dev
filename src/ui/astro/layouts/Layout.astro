@@ -21,7 +21,7 @@ const { title, description } = Astro.props
     </head>
     <body>
         <DotBackground />
-        <Header><slot slot="title" name="title"></slot><Burger slot="navigation" /></Header>
+        <Header><slot slot="before" name="before"></slot> <slot slot="title" name="title"></slot><Burger slot="navigation" /></Header>
         
         <main>
             <slot />
