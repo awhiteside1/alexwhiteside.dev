@@ -7,7 +7,7 @@
 		"dev:network": "astro dev --host",
 		"start": "node ./dist/server/entry.mjs",
 		"build": "gql.tada turbo && astro check && astro build",
-		"preview": "astro preview",
+		"preview": "astro preview --host",
 		"preview:network": "astro dev --host",
 		"astro": "astro",
 		"lint": "biome check ",

@@ -46,25 +46,25 @@ const { title, description } = Astro.props
                         {
                             target: document.documentElement,
                             edge: 'start',
-                            threshold: 0,
                         },
                         {
                             target: document.documentElement,
                             edge: 'start',
-                            threshold: 0.2,
                         },
                     ],
                 })
-
 
                 const elements = document.getElementsByClassName('scroll-scale')
                 for (let i = 0; i < elements.length; i++) {
                     const $header = elements.item(i)
 
                     $header.animate(
-                        {
-                            fontSize: ['calc(4vw + 1em)', 'calc(1vw + 1em)'],
-                        },
+                        [
+                            { fontSize: 'max(calc(3vw + 1em), 2.8rem)' },
+                            { fontSize: 'max(calc(3vw + 1em), 2.8rem)' },
+                            { fontSize: 'var(--max-font-size)' },
+                        ],
+
                         {
                             fill: 'both',
                             timeline: scrollTimeline,
@@ -75,41 +75,39 @@ const { title, description } = Astro.props
                 }
 
                 const bgElements = document.getElementsByClassName('scroll-bg')
-                for(let i = 0; i < bgElements.length; i++){
-                    const $bg = bgElements.item(i);
+                for (let i = 0; i < bgElements.length; i++) {
+                    const $bg = bgElements.item(i)
                     $bg.animate(
-                    [
+                        [
+                            {
+                                background: 'transparent',
+                                borderBottomColor: 'transparent',
+                            },
+                            {
+                                background: 'rgba(var(--menu-bg), 0.2)',
+                                borderBottomColor: 'transparent',
+                                offset: 0.4,
+                            },
+                            {
+                                background: 'rgba(var(--menu-bg), 0.75)',
+                                borderBottomColor: 'rgba(var(--border), 0.2)',
+                                offset: 0.5,
+                            },
+                            {
+                                background: 'rgba(var(--menu-bg), 0.9)',
+                                borderBottomColor: 'rgb(var(--border), 1)',
+                            },
+                        ],
                         {
-                            background: 'transparent',
-                            borderBottomColor: 'transparent',
-                        },
-                        {
-                            background: 'rgba(var(--menu-bg), 0.2)',
-                            borderBottomColor: 'transparent',
-                            offset: 0.4,
-                        },
-                        {
-                            background: 'rgba(var(--menu-bg), 0.95)',
-                            borderBottomColor: 'var(--border)',
-                            offset: 0.5,
-                        },
-                        {
-                            background: 'rgba(var(--menu-bg), 0.95)',
-                            borderBottomColor: 'var(--border)',
-                        },
-                    ],
-                    {
-                        duration: 1,
-                        fill: 'both',
-                        rangeStart: '0px',
-                        rangeEnd: '200px',
-                        timeline: scrollTimeline,
-                    }
-                )
-
+                            duration: 1,
+                            fill: 'both',
+                            rangeStart: '0px',
+                            rangeEnd: '200px',
+                            timeline: scrollTimeline,
+                        }
+                    )
                 }
 
-        
                 document.addEventListener('astro:after-swap', () =>
                     initScrollTimeline()
                 )

@@ -18,13 +18,13 @@ const selectableLight =
     'bg-white  hover:text-black focus-visible:bg-gray-200/50 focus-visible:text-black '
 const selectableDark =
     'dark:bg-black dark:hover:bg-gray-700/50 dark:hover:text-white dark:focus-visible:bg-gray-200/50 dark:focus-visible:text-white'
-const rounded = 'rounded-lg px-4 py-4'
+const rounded = 'rounded-lg px-5 py-5'
 const selectable = cn(fades, selectableLight, selectableDark)
 const card = cn(container,  rounded)
 const image = entry.coverImage?.url ?? 'https://picsum.photos/200/300'
 const imageUrl =optimizeImage(image, "thumb")
 const style = {
-    "mask-image":"linear-gradient(to right, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))",
+    "mask-image":"linear-gradient(to right, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))",
     "background-image": `url(${imageUrl})`,
     "background-size": "cover",
     "background-position": "center"
@@ -34,7 +34,7 @@ const style = {
 <a href={`/blog/${entry.slug}`} class={cn(card, selectable, 'lg:pr-10',  'flex-row', 'justify-between',  'items-center', 'gap-1')}>
     <div style={style} class="absolute inset-0 z-0 rounded-lg   "/>
     <div class="flex flex-1 flex-col truncate max-w-md z-10 ">
-        <div class="text-xs opacity-50 font-medium group-hover:opacity-80 transition-all  duration-300">
+        <div class="text-xs opacity-60 font-medium group-hover:opacity-80 transition-all  duration-300">
             <FormattedDate date={entry.publishedAt} />
         </div>
         <div class="font-medium dark:text-zinc-100 text-lg text-balance">

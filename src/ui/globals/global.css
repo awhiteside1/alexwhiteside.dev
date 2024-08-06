@@ -6,14 +6,14 @@ html {
     overflow-y: auto;
     color-scheme: light;
     scroll-padding-top: 100px;
-    --border: #e5e7eb;
+    --border: 229, 231, 235;
     --menu-bg: 255, 255, 255;
 }
 
 html.dark {
     color-scheme: dark;
     --menu-bg: 0,0,0;
-    --border: #373737;
+    --border: 55, 55, 55;
 }
 
 @font-face {
@@ -188,7 +188,7 @@ pre {
     animation-range: 0vh 20vh; */
     background: rgb(var(--menu-bg));
     border-bottom: 1px solid;
-    border-bottom-color: var(--border);
+    border-bottom-color: rgb(var(--border));
 }
 /*
 @keyframes bgProgress {

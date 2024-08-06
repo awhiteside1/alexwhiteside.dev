@@ -19,11 +19,8 @@ posts=posts.sort(byDate(x=>new Date(x.publishedAt)))
     <div class="scroll-scale"  slot="title">  <GradientText slot="title"  color="blue">Writing</GradientText></div>
 
     <Container>
-        <div class="space-y-10">
-            <div class="space-y-4">
-                <section class="animate space-y-4">
-                    <div>
-                        <ul class="not-prose flex flex-col gap-4">
+                <section class="animate mt-4">
+                        <ul class="flex flex-col gap-6 mr-2">
                             {
                                 posts.map((post) => (
                                     <li>
@@ -32,9 +29,6 @@ posts=posts.sort(byDate(x=>new Date(x.publishedAt)))
                                 ))
                             }
                         </ul>
-                    </div>
                 </section>
-            </div>
-        </div>
     </Container>
 </Layout>
