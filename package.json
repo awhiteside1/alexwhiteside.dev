@@ -40,6 +40,7 @@
 		"fuse.js": "^7.0.0",
 		"gql.tada": "^1.8.2",
 		"mini-svg-data-uri": "^1.4.4",
+		"nodejs-polars": "^0.14.0",
 		"ollama": "^0.5.6",
 		"radash": "^12.1.0",
 		"react": "^18.3.1",

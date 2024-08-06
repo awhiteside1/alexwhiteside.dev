@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1722790123636,
+      "tag": "0000_sparkling_liz_osborn",
+      "breakpoints": true
+    }
+  ]
+}
