@@ -1,46 +1,34 @@
 ---
-const dark = `
-   <g>
-  <path d="m87.883 46.473h6.25c1.7266 0 3.125 1.7266 3.125 3.125 0 1.7266-1.3984 3.125-3.125 3.125h-6.25c-1.7266 0-3.125-1.7266-3.125-3.125 0-1.7266 1.3984-3.125 3.125-3.125z"/>
-  <path d="m74.848 18.398 4.7578-4.0547c1.3125-1.1211 3.4961-0.71484 4.4062 0.35156 1.1172 1.3125 0.96094 3.2852-0.35156 4.4023l-4.7578 4.0547c-1.3125 1.1211-3.4961 0.71484-4.4062-0.35156-1.1172-1.3125-0.96094-3.2852 0.35156-4.4023z"/>
-  <path d="m74.496 77.195c1.1172-1.3125 3.3398-1.2578 4.4062-0.35156l4.7578 4.0547c1.3125 1.1211 1.4727 3.0898 0.35156 4.4023-1.1172 1.3125-3.3398 1.2578-4.4062 0.35156l-4.7578-4.0547c-1.3125-1.1211-1.4727-3.0898-0.35156-4.4023z"/>
-  <path d="m6.2266 47.277h6.25c1.7266 0 3.125 1.7266 3.125 3.125 0 1.7266-1.3984 3.125-3.125 3.125h-6.25c-1.7266 0-3.125-1.7266-3.125-3.125 0-1.7266 1.3984-3.125 3.125-3.125z"/>
-  <path d="m16.695 80.898 4.7578-4.0547c1.3125-1.1211 3.4961-0.71484 4.4062 0.35156 1.1172 1.3125 0.96094 3.2852-0.35156 4.4023l-4.7578 4.0547c-1.3125 1.1211-3.4961 0.71484-4.4062-0.35156-1.1172-1.3125-0.96094-3.2852 0.35156-4.4023z"/>
-  <path d="m16.344 14.699c1.1172-1.3125 3.3398-1.2578 4.4062-0.35156l4.7578 4.0547c1.3125 1.1211 1.4727 3.0898 0.35156 4.4023-1.1172 1.3125-3.3398 1.2578-4.4062 0.35156l-4.7578-4.0547c-1.3125-1.1211-1.4727-3.0898-0.35156-4.4023z"/>
-  <path d="m50 6.25c1.7266 0 3.125 1.7266 3.125 3.125v81.25c0 1.7266-1.3984 3.125-3.125 3.125s-3.125-1.7266-3.125-3.125v-81.25c0-1.7266 1.3984-3.125 3.125-3.125z"/>
-  <path d="m50 78.125c-15.508 0-28.125-12.617-28.125-28.125s12.617-28.125 28.125-28.125v6.25c-12.059 0-21.875 9.8164-21.875 21.875s9.8164 21.875 21.875 21.875z"/>
-  <path d="m60.039 72.664c-0.62891-1.4141-0.13281-3.0938 1.1953-3.8906 6.5391-3.918 10.641-11.027 10.641-18.773s-4.0859-14.824-10.594-18.746c-1.3242-0.80078-1.8203-2.4766-1.1875-3.8906 0.76562-1.7148 2.8789-2.3945 4.4883-1.4141 8.3281 5.0547 13.543 14.156 13.543 24.055 0 9.8984-5.2422 19.047-13.602 24.09-1.6094 0.97266-3.7227 0.28906-4.4844-1.4297z"/>
-  <path d="m50 75c-13.805 0-25-11.195-25-25s11.195-25 25-25"/>
- </g>
-`
 
-
-const shapes = {
-    dark: dark,
-    light: dark,
-    system: dark,
-}
 ---
 
-<style>
-    [data-shape] {
-        display: none;
-    }
-
-    :root.dark [data-shape='dark'],
-    :root.system [data-shape='system'],
-    :root.light [data-shape='light'] {
-        display: flex;
-    }
-    :root.system [data-shape='light'],
-    :root.system [data-shape='dark'] {
-        display: none;
-    }
-</style>
-
+<button
+    title={`Switch theme`}
+    id="theme-picker"
+    aria-label={`Switch theme`}
+    class="group flex justify-start rounded-lg hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 h-10 -mx-2 text-sm font-semibold leading-6 text-nowrap min-w-[160px] gap-3 px-2 items-center"
+>
+    <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        class="h-6 w-6 shrink-0"
+        class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:fill-black group-focus-visible:animate-pulse group-focus-visible:fill-black group-hover:dark:fill-white dark:group-focus-visible:fill-white h-full w-full"
+    >
+        <use xlink:href="#moon"></use>
+    </svg>
+    <p class="capitalize" id="theme-label"></p>
+</button>
 <script is:inline>
-
-    function toggleTheme(theme) {
+    function forceThemeChange(theme) {
+        if (
+            Array.from(document.documentElement.classList.values()).filter(
+                (e) => ['dark', 'light', 'system'].includes(e)
+            ).length > 1
+        ) {
+        } else if (document.documentElement.classList.contains(theme)) {
+            return
+        }
         const css = document.createElement('style')
 
         css.appendChild(
@@ -60,95 +48,80 @@ const shapes = {
         document.documentElement.classList.remove('dark')
         document.documentElement.classList.remove('light')
         document.documentElement.classList.remove('system')
-        document.documentElement.classList.add(...theme)
+        document.documentElement.classList.add(theme)
 
         window.getComputedStyle(css).opacity
         document.head.removeChild(css)
     }
 
-    const handleThemeButtonClick = () => {
-        const theme = localStorage.getItem('theme') ?? 'system'
-        let nextTheme = 'system'
-        switch (theme) {
-            case 'system':
-                nextTheme = 'dark'
-                break
-            case 'dark':
-                nextTheme = 'light'
-                break
-            case 'light':
-                nextTheme = 'system'
-                break
-        }
-        localStorage.setItem('theme', nextTheme)
-        updateTheme()
+    const getSystemModeValue = () => {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light'
     }
 
-
-    const updateTheme = () => {
-        const theme = localStorage.getItem('theme')
-        let colorTheme
-        if (theme === 'system') {
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                colorTheme = 'dark'
-            } else {
-                colorTheme = 'light'
-            }
-            window.document.documentElement.classList.add('system')
+    document.addEventListener('astro:before-swap', (ev) => {
+        const systemMode = getSystemModeValue()
+        const userSetMode = localStorage.getItem('theme') // defaults to undefined, thus systemMode is used
+        let darkMode = systemMode === 'dark'
+        if (userSetMode) {
+            // If user sets a theme honor it ignoring system
+            darkMode = userSetMode === 'dark' // userSetMode is either 'dark' or 'light'
         }
-        if( !document.documentElement.classList.contains(colorTheme)){
-           toggleTheme([theme, colorTheme].filter(Boolean))
+        if (darkMode) {
+            ev.newDocument.documentElement.classList.add('dark')
         }
-    }
+    })
 
-    function initialize() {
-        const buttons =
-            document
-                .getElementById('theme-picker')
-                ?.getElementsByTagName('button') ?? []
-
-        for (const button of buttons) {
-            button.addEventListener('click', handleThemeButtonClick)
+    const themeOrder = { system: 'dark', dark: 'light', light: 'system' }
+    const setupThemePicker = () => {
+        if (document.getElementById('theme-picker')?.dataset.setup === 'true') {
+            return undefined
         }
-               
-        
-    }
-    document.addEventListener('astro:after-swap', () => initialize())
-    document.addEventListener('astro:page-load', () => {
-        
-        window
-            .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', () => {
-                if (localStorage.theme === 'system') {
-                    updateTheme()
+        document.getElementById('theme-picker').dataset.setup = true
+
+        document
+            .getElementById('theme-picker')
+            .addEventListener('click', () => {
+                const currentSetting = localStorage.theme ?? 'system'
+                let nextSetting = themeOrder[currentSetting]
+                document.getElementById('theme-label').innerText =
+                    nextSetting + ' Theme'
+
+                if (nextSetting === 'system') {
+                    localStorage.removeItem('theme')
+                    nextSetting = getSystemModeValue()
+                } else {
+                    localStorage.setItem('theme', nextSetting)
                 }
+                forceThemeChange(nextSetting)
             })
-        updateTheme()
-        initialize()
-  }, { once: true });
-</script>
-
-<span id="theme-picker" class="relative">
-    {
-        Object.entries(shapes).map(([name, path]) => (
-            <button
-                data-shape={name}
-                title={`${name} theme`}
-                aria-label={`${name} theme`}
-                class="group flex p-1 items-center justify-center rounded   hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-            >
-                <svg
-                height="1rem" width="1rem"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 100 100" 
-                    fill="currentColor"
-                    class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:fill-black group-focus-visible:animate-pulse group-focus-visible:fill-black group-hover:dark:fill-white dark:group-focus-visible:fill-white"
-                    set:html={dark}
-                ></svg>
-
-            <p class="text-xs absolute -bottom-4 invisible group-hover:visible" >{name}</p>
-
-            </button>
-        ))
+        document.getElementById('theme-picker').dataset.setup = true
     }
-</span>
+
+    document.addEventListener('astro:after-swap', () => setupThemePicker())
+    document.addEventListener('astro:page-load', () => setupThemePicker())
+
+    if (window?.hacks?.theme === undefined) {
+        Object.assign(window, { hacks: { theme: true } })
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark')
+        } else if (
+            getSystemModeValue() === 'dark' &&
+            localStorage.theme !== 'light'
+        ) {
+            document.documentElement.classList.add('dark')
+        }
+        setTimeout(() => {
+            const nextSetting = localStorage.theme ?? 'System'
+            document.getElementById('theme-label').innerText =
+                nextSetting + ' Theme'
+        }, 500)
+    }
+
+    document.addEventListener('astro:after-swap', (ev) => {
+        const nextSetting = localStorage.theme ?? 'System'
+        document.getElementById('theme-label').innerText =
+            nextSetting + ' Theme'
+    })
+</script>
