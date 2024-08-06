@@ -11,7 +11,7 @@ const links = [
     { text: 'Links', href: '/recommendations', icon: 'sparkle', current: false, hover: 'hover:text-orange-500 dark:hover:text-orange-400', active:'text-orange-600 dark:text-orange-400' },
 ]
 console.log(pathname)
-const link = links.find(link=>link.href===pathname)
+const link = links.find(link=>link.href.includes(pathname))
 if(link){
     link.current=true
 }
