@@ -82,7 +82,8 @@
 
         document
             .getElementById('theme-picker')
-            .addEventListener('click', () => {
+            .addEventListener('click', (evt) => {
+                evt.stopPropagation()
                 const currentSetting = localStorage.theme ?? 'system'
                 let nextSetting = themeOrder[currentSetting]
                 document.getElementById('theme-label').innerText =
