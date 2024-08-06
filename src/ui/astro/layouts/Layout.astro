@@ -114,11 +114,30 @@ const { title, description } = Astro.props
                     initScrollTimeline()
                 )
             }
+
+            window.initScrollTimeline = initScrollTimeline
         </script>
 
-        <script
+        <script is:inline>
+
+            function appendPolyfill(){
+                const script = document.createElement('script')
+                script.onload = ()=> window.initScrollTimeline()
+                script.src = '/js/scroll-timeline.js'
+                script.async = true
+                document.body.appendChild(script)
+            }
+            if (window.ScrollTimeline === undefined) {
+                console.log('loading polyfill')
+                appendPolyfill()
+            } else {
+                window.initScrollTimeline()
+            }
+        </script>
+
+        <!-- <script async
             onload="initScrollTimeline()"
             src="/js/scroll-timeline.js"
-        ></script>
+        ></script> -->
     </body>
 </html>
