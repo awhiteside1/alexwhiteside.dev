@@ -183,14 +183,14 @@ pre {
 
 
 .scroll-bg {
-    animation: bgProgress auto linear;
+    /* animation: bgProgress auto linear;
     animation-timeline: scroll(root);
-    animation-range: 0vh 20vh;
+    animation-range: 0vh 20vh; */
     background: rgb(var(--menu-bg));
     border-bottom: 1px solid;
     border-bottom-color: var(--border);
 }
-
+/*
 @keyframes bgProgress {
     from {
        background: transparent;
@@ -214,13 +214,7 @@ pre {
     }
 }
 
-.scroll-scale {
-    animation: scaleProgress auto linear;
-    animation-timeline: scroll(root);
-    transform-origin: top ;
-    font-size: var(--max-font-size);
-    animation-range: 0vh 20vh;
-}
+
 @keyframes scaleProgress {
     from {
         font-size: max(calc(3vw + 1em), 3rem);
@@ -231,4 +225,10 @@ pre {
     to {
         font-size: var(--max-font-size);
     }
+} */
+
+.scroll-scale {
+    transform-origin: top left ;
+    font-size: var(--max-font-size);
+    animation-range: 0vh 20vh;
 }
