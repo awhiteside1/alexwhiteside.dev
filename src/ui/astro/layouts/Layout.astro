@@ -36,7 +36,13 @@ const { title, description } = Astro.props
         <!--<PageFind />-->
 
         <script is:inline>
+            let initializedScrollTimeline = false
+
             function initScrollTimeline() {
+                if (initializedScrollTimeline) return
+                initializedScrollTimeline = true
+                const registeredAnimations = []
+
                 // Some elements we'll need
 
                 //@ts-ignore
@@ -59,45 +65,50 @@ const { title, description } = Astro.props
                 for (let i = 0; i < elements.length; i++) {
                     const $header = elements.item(i)
 
-                    $header.animate(
-                        [
-                            {
-                                fontSize:
-                                    'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
-                            },
-                            {
-                                fontSize:
-                                    'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
-                                offset: 0.6,
-                            },
-                            { fontSize: 'var(--max-font-size)' },
-                        ],
+                    registeredAnimations.push(
+                        $header.animate(
+                            [
+                                {
+                                    fontSize:
+                                        'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
+                                },
+                                {
+                                    fontSize:
+                                        'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
+                                    offset: 0.6,
+                                },
+                                { fontSize: 'var(--max-font-size)' },
+                            ],
 
-                        {
-                            fill: 'both',
-                            timeline: scrollTimeline,
-                            rangeStart: '0px',
-                            rangeEnd: '200px',
-                        }
+                            {
+                                fill: 'both',
+                                timeline: scrollTimeline,
+                                rangeStart: '0px',
+                                rangeEnd: '200px',
+                            }
+                        )
                     )
+
                     $header.classList.remove('load')
                 }
 
                 const scrollAppend =
                     document.getElementsByClassName('scroll-append')
                 for (let i = 0; i < scrollAppend.length; i++) {
-                    scrollAppend.item(i).animate(
-                        [
-                            { width: 0, opacity: 0, offset: 0.8 },
-                            { width: '3.5ch', opacity: 1 },
-                        ],
-                        {
-                            duration: 1,
-                            fill: 'both',
-                            rangeStart: '100px',
-                            rangeEnd: '200px',
-                            timeline: scrollTimeline,
-                        }
+                    registeredAnimations.push(
+                        scrollAppend.item(i).animate(
+                            [
+                                { width: 0, opacity: 0, offset: 0.8 },
+                                { width: '3.5ch', opacity: 1 },
+                            ],
+                            {
+                                duration: 1,
+                                fill: 'both',
+                                rangeStart: '100px',
+                                rangeEnd: '200px',
+                                timeline: scrollTimeline,
+                            }
+                        )
                     )
                     scrollAppend.item(i).classList.remove('load')
                 }
@@ -105,47 +116,63 @@ const { title, description } = Astro.props
                 const bgElements = document.getElementsByClassName('scroll-bg')
                 for (let i = 0; i < bgElements.length; i++) {
                     const $bg = bgElements.item(i)
-                    $bg.animate(
-                        [
+                    registeredAnimations.push(
+                        $bg.animate(
+                            [
+                                {
+                                    background: 'transparent',
+                                    borderBottomColor: 'transparent',
+                                },
+                                {
+                                    background: 'transparent',
+                                    borderBottomColor: 'transparent',
+                                    offset: 0.3,
+                                },
+                                {
+                                    background: 'rgba(var(--menu-bg), 0.2)',
+                                    borderBottomColor: 'transparent',
+                                    offset: 0.7,
+                                },
+                                {
+                                    background: 'rgba(var(--menu-bg), 0.75)',
+                                    borderBottomColor:
+                                        'rgba(var(--border), 0.2)',
+                                    offset: 0.9,
+                                },
+                                {
+                                    background: 'rgba(var(--menu-bg), 0.9)',
+                                    borderBottomColor: 'rgb(var(--border), 1)',
+                                },
+                            ],
                             {
-                                background: 'transparent',
-                                borderBottomColor: 'transparent',
-                            },
-                            {
-                                background: 'transparent',
-                                borderBottomColor: 'transparent',
-                                offset: 0.3,
-                            },
-                            {
-                                background: 'rgba(var(--menu-bg), 0.2)',
-                                borderBottomColor: 'transparent',
-                                offset: 0.7,
-                            },
-                            {
-                                background: 'rgba(var(--menu-bg), 0.75)',
-                                borderBottomColor: 'rgba(var(--border), 0.2)',
-                                offset: 0.9,
-                            },
-                            {
-                                background: 'rgba(var(--menu-bg), 0.9)',
-                                borderBottomColor: 'rgb(var(--border), 1)',
-                            },
-                        ],
-                        {
-                            duration: 1,
-                            fill: 'both',
-                            rangeStart: '0px',
-                            rangeEnd: '200px',
-                            timeline: scrollTimeline,
-                        }
+                                duration: 1,
+                                fill: 'both',
+                                rangeStart: '0px',
+                                rangeEnd: '200px',
+                                timeline: scrollTimeline,
+                            }
+                        )
                     )
                     $bg.classList.remove('load')
                 }
 
-                document.addEventListener('astro:after-swap', () =>
-                    initScrollTimeline()
-                )
+                const beforeSwap = () => {
+                    registeredAnimations.forEach((animation) => {
+                        animation.cancel()
+                    })
+                    initializedScrollTimeline = false
+                    document.removeEventListener(
+                        'astro:before-swap',
+                        beforeSwap
+                    )
+                }
+
+                document.addEventListener('astro:before-swap', beforeSwap)
             }
+
+            document.addEventListener('astro:after-swap', () => {
+                initScrollTimeline()
+            })
 
             window.initScrollTimeline = initScrollTimeline
         </script>
@@ -162,13 +189,9 @@ const { title, description } = Astro.props
                 console.log('loading polyfill')
                 appendPolyfill()
             } else {
+                console.log('init scroll timeline invoked')
                 window.initScrollTimeline()
             }
         </script>
-
-        <!-- <script async
-            onload="initScrollTimeline()"
-            src="/js/scroll-timeline.js"
-        ></script> -->
     </body>
 </html>

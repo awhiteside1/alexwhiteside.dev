@@ -26,7 +26,9 @@ const newTabs = listify(tabs, (key, value) => ({
                 class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-zinc-700">
                 {
                     newTabs.map((option) => (
-                        <option {...{ selected: option.selected }}>
+                        <option
+                            value={option.href}
+                            {...{ selected: option.selected }}>
                             {option.name}
                         </option>
                     ))
@@ -53,3 +55,22 @@ const newTabs = listify(tabs, (key, value) => ({
         </div>
     </div>
 </div>
+
+<script>
+    import { navigate } from 'astro:transitions/client'
+
+    function setupSelect() {
+        document
+            .getElementById('current-tab')
+            ?.addEventListener('change', (event) => {
+                const select = event.target as HTMLSelectElement
+                const value = select.value
+                console.log(value)
+                navigate(value)
+            })
+    }
+    document.addEventListener('astro:after-swap', () => {
+        setupSelect()
+    })
+    setupSelect()
+</script>

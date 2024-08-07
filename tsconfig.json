@@ -29,10 +29,5 @@
 		".storybook/*",
 		"vite.config.ts"
 	],
-	"exclude": ["dist", "node_modules", "old"],
-	"references": [
-		{
-			"path": "./api/tsconfig.json"
-		}
-	]
+	"exclude": ["dist", "node_modules", "old"]
 }
