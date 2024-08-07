@@ -4,7 +4,6 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import vercelServerless from '@astrojs/vercel/serverless';
 import { defineConfig, envField } from 'astro/config';
-import playformInline from "@playform/inline";
 const vercel = vercelServerless({
   webAnalytics: {
     enabled: true
@@ -23,7 +22,7 @@ const isVercel = () => process.env.VERCEL !== undefined;
 export default defineConfig({
   site: 'https://alexwhiteside.dev',
   adapter: isVercel() ? vercel : node,
-  integrations: [mdx(), sitemap(), react(), playformInline()],
+  integrations: [mdx(), sitemap(), react()],
   output: 'hybrid',
   experimental: {
     serverIslands: true,

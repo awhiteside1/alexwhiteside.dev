@@ -1,17 +1,31 @@
 ---
-import { cn } from "@lib/utils"
+import { cn } from '@lib/utils'
 
 const gradient = [
     'bg-gradient-to-r from-red-400 to-red-900',
     'bg-gradient-to-br from-sky-400 to-blue-500',
-    'bg-gradient-to-br from-orange-400 to-rose-400'
+    'bg-gradient-to-br from-orange-400 to-rose-400',
 ]
+
+type Props = {
+    color?: 'random' | 'loading'
+}
 
 const randomGradient = gradient[Math.floor(Math.random() * gradient.length)]
 
+const loadingGradient = 'bg-slate-200 dark:bg-slate-700 animate-pulse'
+
+const { color = 'random' } = Astro.props
+const classes = [
+    color === 'random' && randomGradient,
+    color === 'loading' && [loadingGradient, 'animate-pulse'],
+]
 ---
+
 <div
-class={cn(["flex flex-1 w-full h-fit min-h-[6rem] flex-col space-y-2  rounded-lg",randomGradient])}
->
-<div class={cn(["h-full w-full rounded-lg aspect-square", randomGradient])}></div>
+    class={cn([
+        'flex flex-1 w-full h-fit min-h-[6rem] flex-col space-y-2  rounded-lg',
+        classes,
+    ])}>
+    <div class={cn(['h-full w-full rounded-lg aspect-square', classes])}></div>
 </div>

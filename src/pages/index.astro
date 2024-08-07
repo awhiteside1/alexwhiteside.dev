@@ -8,6 +8,9 @@ import { byNumber } from '@ui/utils/interval'
 import Badge from '../ui/astro/components/elements/Badge.astro'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
+import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
+import BentoGridItem from '@ui/astro/components/bento/BentoGridItem.astro'
+import PostsFallback from '@ui/astro/sections/PostsFallback.astro'
 
 const titles = (await getCollection('titles')).toSorted(
     byNumber((title) => title.data.order)
@@ -57,7 +60,11 @@ const titles = (await getCollection('titles')).toSorted(
                         <Social />
                     </article>
                 </section>
-                <RecentPosts server:defer />
+                <RecentPosts server:defer>
+                    <div slot="fallback">
+                        <PostsFallback />
+                    </div>
+                </RecentPosts>
             </div>
         </div>
     </Container>

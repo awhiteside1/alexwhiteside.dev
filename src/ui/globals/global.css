@@ -238,7 +238,7 @@ pre {
 }
 
 .scroll-scale.load{
-    font-size: max(calc(3vw + 1em), 2.8rem);
+    font-size: min(max(calc(4vw + 1em), 2.8rem), 4rem)
 }
 
 .scroll-append{
