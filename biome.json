@@ -8,6 +8,7 @@
 			"src/hashnode/graphql/**",
 			".vercel/**",
 			".*/**",
+			"**/*.js",
 			"public/**"
 		]
 	},
