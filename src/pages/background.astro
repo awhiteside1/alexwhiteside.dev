@@ -34,23 +34,23 @@ const sortedByCompany = Object.values(byCompany).toSorted(
 
 <Layout
     title="Background & Experience"
-    description="Multiple startup exists in Fintech, Edtech, and more."
->
-<div slot="before" class="text-3xl z-[100] translate-y-4"><GradientText slot="before" color="pink">Career & </GradientText></div>
+    description="Multiple startup exists in Fintech, Edtech, and more.">
+    <div slot="before" class="text-3xl z-[100] translate-y-4">
+        <GradientText color="pink">Career & </GradientText>
+    </div>
 
-<div class="scroll-scale load" slot="title"><GradientText  color="pink" >Background</GradientText></div>
+    <div class="scroll-scale load" slot="title">
+        <GradientText color="pink">Background</GradientText>
+    </div>
 
     <Container>
         <div
-        
             id="sticky-backdrop"
             style="opacity: 0;"
-            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
-        >
+            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300">
             &nbsp;
         </div>
         <div class="space-y-6">
-
             <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
                 Over the last decade I've spent most of my time in Fintech and
                 Edtech as a (very) hands on technical leader.
@@ -89,7 +89,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
     </Container>
 </Layout>
 
-<script >
+<script>
     const getBackdrop = () => {
         const background = document.getElementById('sticky-backdrop')
         if (!background) throw new Error('No Background Element Found')
@@ -141,8 +141,8 @@ const sortedByCompany = Object.values(byCompany).toSorted(
     const updateOpacity = () => {
         const overlap = calculateOverlap()
         requestAnimationFrame(() => {
-            try{
-            const background = getBackdrop()
+            try {
+                const background = getBackdrop()
                 background.style.opacity = toOpacity(overlap)
             } catch (e) {
                 console.error(e)
@@ -150,7 +150,7 @@ const sortedByCompany = Object.values(byCompany).toSorted(
         })
     }
 
-    const listener =() => {
+    const listener = () => {
         if (!isTicking) {
             isTicking = true
 
@@ -169,17 +169,15 @@ const sortedByCompany = Object.values(byCompany).toSorted(
         }
     }
 
-    const initializeScroll = ()=>{
+    const initializeScroll = () => {
         const backdropEl = document.getElementById('sticky-backdrop')
 
-        if(backdropEl && !backdropEl.dataset.initialized){
+        if (backdropEl && !backdropEl.dataset.initialized) {
             console.log('initializing scroll')
             addEventListener('scroll', listener)
             backdropEl.dataset.initialized = 'true'
         }
     }
-    
-    document.addEventListener('astro:page-load', () => initializeScroll())
 
-    
+    document.addEventListener('astro:page-load', () => initializeScroll())
 </script>

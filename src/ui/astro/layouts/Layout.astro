@@ -39,6 +39,7 @@ const { title, description } = Astro.props
             function initScrollTimeline() {
                 // Some elements we'll need
 
+                //@ts-ignore
                 const scrollTimeline = new ScrollTimeline({
                     source: document.documentElement,
                     axis: 'block',
@@ -60,8 +61,15 @@ const { title, description } = Astro.props
 
                     $header.animate(
                         [
-                            { fontSize: 'max(calc(3vw + 1em), 2.8rem)' },
-                            { fontSize: 'max(calc(3vw + 1em), 2.8rem)' },
+                            {
+                                fontSize:
+                                    'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
+                            },
+                            {
+                                fontSize:
+                                    'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
+                                offset: 0.6,
+                            },
                             { fontSize: 'var(--max-font-size)' },
                         ],
 
@@ -75,6 +83,25 @@ const { title, description } = Astro.props
                     $header.classList.remove('load')
                 }
 
+                const scrollAppend =
+                    document.getElementsByClassName('scroll-append')
+                for (let i = 0; i < scrollAppend.length; i++) {
+                    scrollAppend.item(i).animate(
+                        [
+                            { width: 0, opacity: 0, offset: 0.8 },
+                            { width: '3.5ch', opacity: 1 },
+                        ],
+                        {
+                            duration: 1,
+                            fill: 'both',
+                            rangeStart: '100px',
+                            rangeEnd: '200px',
+                            timeline: scrollTimeline,
+                        }
+                    )
+                    scrollAppend.item(i).classList.remove('load')
+                }
+
                 const bgElements = document.getElementsByClassName('scroll-bg')
                 for (let i = 0; i < bgElements.length; i++) {
                     const $bg = bgElements.item(i)
@@ -85,14 +112,19 @@ const { title, description } = Astro.props
                                 borderBottomColor: 'transparent',
                             },
                             {
+                                background: 'transparent',
+                                borderBottomColor: 'transparent',
+                                offset: 0.3,
+                            },
+                            {
                                 background: 'rgba(var(--menu-bg), 0.2)',
                                 borderBottomColor: 'transparent',
-                                offset: 0.4,
+                                offset: 0.7,
                             },
                             {
                                 background: 'rgba(var(--menu-bg), 0.75)',
                                 borderBottomColor: 'rgba(var(--border), 0.2)',
-                                offset: 0.5,
+                                offset: 0.9,
                             },
                             {
                                 background: 'rgba(var(--menu-bg), 0.9)',
@@ -119,10 +151,9 @@ const { title, description } = Astro.props
         </script>
 
         <script is:inline>
-
-            function appendPolyfill(){
+            function appendPolyfill() {
                 const script = document.createElement('script')
-                script.onload = ()=> window.initScrollTimeline()
+                script.onload = () => window.initScrollTimeline()
                 script.src = '/js/scroll-timeline.js'
                 script.async = true
                 document.body.appendChild(script)

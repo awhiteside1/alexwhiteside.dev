@@ -9,26 +9,29 @@ import Container from '../../ui/astro/components/global/Container.astro'
 export const prerender = false
 
 let posts = await Hashnode.getPosts()
-posts=posts.sort(byDate(x=>new Date(x.publishedAt)))
-
+posts = posts.sort(byDate((x) => new Date(x.publishedAt)))
 ---
 
 <Layout title={''} description={''}>
-    <div slot="before" class="text-3xl z-[100] translate-y-4"><GradientText slot="before" color="blue">Thoughts and</GradientText></div>
+    <div slot="before" class="text-3xl z-[100] translate-y-4">
+        <GradientText color="blue">Thoughts and</GradientText>
+    </div>
 
-    <div class="scroll-scale load"  slot="title">  <GradientText slot="title"  color="blue">Writing</GradientText></div>
+    <div class="scroll-scale load" slot="title">
+        <GradientText slot="title" color="blue">Writing</GradientText>
+    </div>
 
     <Container>
-                <section class="animate mt-4">
-                        <ul class="flex flex-col gap-6 mr-2">
-                            {
-                                posts.map((post) => (
-                                    <li>
-                                        <ArrowCard entry={post} />
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                </section>
+        <section class="animate mt-4">
+            <ul class="flex flex-col gap-6 mr-2">
+                {
+                    posts.map((post) => (
+                        <li>
+                            <ArrowCard entry={post} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
     </Container>
 </Layout>

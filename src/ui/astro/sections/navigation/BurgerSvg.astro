@@ -7,33 +7,27 @@
         type="button"
         id="burger-menu"
         data-active="true"
-        class="group peer flex flex-row justify-end items-center px-4 py-2 ring-inset gap-1 text-neutral-800 backdrop-blur-sm bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-200 rounded-lg shadow-inner"
-    >
+        class="group peer flex flex-row justify-end items-center px-4 py-2 ring-inset gap-1 text-neutral-800 backdrop-blur-sm bg-gradient-to-bl from-neutral-200 to-neutral-50 dark:bg-neutral-900 dark:text-neutral-200 rounded-lg shadow-inner">
         <p class="text-sm">Menu</p>
 
         <span
             id="burger-menu-icon"
-            class="relative top-0 left-0 h-6 w-6 scale-75"
-        >
+            class="relative top-0 left-0 h-6 w-6 scale-75">
             <div
-                class="absolute top-1 left-0 h-[3px] w-full origin-center transition bg-current group-data-[active=true]:rotate-45 group-data-[active=true]:translate-y-2"
-            >
+                class="absolute top-1 left-0 h-[3px] w-full origin-center transition bg-current group-data-[active=true]:rotate-45 group-data-[active=true]:translate-y-2">
             </div>
             <div
-                class="absolute top-4 left-0 h-[3px] w-full origin-center transition bg-current group-data-[active=true]:-rotate-45 group-data-[active=true]:-translate-y-1"
-            >
+                class="absolute top-4 left-0 h-[3px] w-full origin-center transition bg-current group-data-[active=true]:-rotate-45 group-data-[active=true]:-translate-y-1">
             </div>
         </span>
     </button>
     <div
-        class="max-h-0 overflow-visible opacity-0 translate-y-2 transition duration-300 ease-in-out peer-data-[active=true]:opacity-100 peer-data-[active=true]:translate-y-8 peer-data-[active=false]:pointer-events-none"
-    >
+        class="max-h-0 overflow-visible opacity-0 translate-y-2 transition duration-300 ease-in-out peer-data-[active=true]:opacity-100 peer-data-[active=true]:translate-y-8 peer-data-[active=false]:pointer-events-none">
         <slot name="content" />
     </div>
 </div>
 
 <script is:inline>
-
     const closeBurger = () => {
         const burgerMenu = document.getElementById('burger-menu')
         burgerMenu.dataset.active = 'false'
@@ -44,16 +38,13 @@
             event.stopPropagation()
             burgerMenu.dataset.active =
                 burgerMenu.dataset.active === 'true' ? 'false' : 'true'
-            if(burgerMenu.dataset.active === 'true'){
+            if (burgerMenu.dataset.active === 'true') {
                 document.body.addEventListener('click', closeBurger)
-            }else{ 
+            } else {
                 document.body.removeEventListener('click', closeBurger)
-
             }
-
         })
         burgerMenu.dataset.active = 'false'
-    
     }
     document.addEventListener('astro:after-swap', () => initBurger())
     initBurger()

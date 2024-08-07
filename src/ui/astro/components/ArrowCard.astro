@@ -11,7 +11,8 @@ type Props = {
 const { entry } = Astro.props
 
 // @todo: Decide if i hate this more than it all being on one line and in the markup
-const container = 'not-prose group relative flex flex-nowrap relative translate-x-0 hover:translate-x-2 transition-all duration-300'
+const container =
+    'not-prose group relative flex flex-nowrap relative translate-x-0 hover:translate-x-2 transition-all duration-300'
 const fades = 'ease-in-out'
 // const border = 'border border-black/15 dark:border-white/20'
 const selectableLight =
@@ -20,21 +21,34 @@ const selectableDark =
     'dark:bg-black dark:hover:bg-gray-700/50 dark:hover:text-white dark:focus-visible:bg-gray-200/50 dark:focus-visible:text-white'
 const rounded = 'rounded-lg px-5 py-5'
 const selectable = cn(fades, selectableLight, selectableDark)
-const card = cn(container,  rounded)
+const card = cn(container, rounded)
 const image = entry.coverImage?.url ?? 'https://picsum.photos/200/300'
-const imageUrl =optimizeImage(image, "thumb")
+const imageUrl = optimizeImage(image, 'thumb')
 const style = {
-    "mask-image":"linear-gradient(to right, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))",
-    "background-image": `url(${imageUrl})`,
-    "background-size": "cover",
-    "background-position": "center"
+    'mask-image':
+        'linear-gradient(to right, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))',
+    'background-image': `url(${imageUrl})`,
+    'background-size': 'cover',
+    'background-position': 'center',
 }
 ---
 
-<a href={`/blog/${entry.slug}`} class={cn(card, selectable, 'lg:pr-10',  'flex-row', 'justify-between',  'items-center', 'gap-1')}>
-    <div style={style} class="absolute inset-0 z-0 rounded-lg   "/>
-    <div class="flex flex-1 flex-col truncate max-w-md z-10 ">
-        <div class="text-xs opacity-60 font-medium group-hover:opacity-80 transition-all  duration-300">
+<a
+    href={`/blog/${entry.slug}`}
+    class={cn(
+        card,
+        selectable,
+        'lg:pr-10',
+        'flex-row',
+        'justify-between',
+        'items-center',
+        'gap-1',
+        '-mx-2'
+    )}>
+    <div style={style} class="absolute inset-0 z-0 rounded-lg"></div>
+    <div class="flex flex-1 flex-col truncate max-w-md z-10">
+        <div
+            class="text-xs opacity-60 font-medium group-hover:opacity-80 transition-all duration-300">
             <FormattedDate date={entry.publishedAt} />
         </div>
         <div class="font-medium dark:text-zinc-100 text-lg text-balance">
@@ -43,26 +57,24 @@ const style = {
         <div class="text-sm leading-relaxed text-wrap line-clamp-3 pt-1">
             {entry.subtitle}
         </div>
-       
     </div>
-    <div class=" z-20 rounded-full bg-white dark:bg-black w-10 h-10 flex items-center justify-center">
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        class=" size-5 fill-none stroke-current stroke-2 "
-    >
-        <line
-            x1="5"
-            y1="12"
-            x2="19"
-            y2="12"
-            class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100 group-focus-visible:translate-x-0 group-focus-visible:scale-x-100"
-        ></line>
-        <polyline
-            points="12 5 19 12 12 19"
-            class="-translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-focus-visible:translate-x-0"
-        ></polyline>
-    </svg>
+    <div
+        class="z-20 rounded-full bg-white dark:bg-black w-10 h-10 flex items-center justify-center">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-5 fill-none stroke-current stroke-2">
+            <line
+                x1="5"
+                y1="12"
+                x2="19"
+                y2="12"
+                class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100 group-focus-visible:translate-x-0 group-focus-visible:scale-x-100"
+            ></line>
+            <polyline
+                points="12 5 19 12 12 19"
+                class="-translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-focus-visible:translate-x-0"
+            ></polyline>
+        </svg>
     </div>
-
 </a>

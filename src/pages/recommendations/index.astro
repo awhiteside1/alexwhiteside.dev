@@ -1,5 +1,4 @@
 ---
-
 import GradientText from '@ui/astro/components/elements/GradientText.astro'
 import Container from '../../ui/astro/components/global/Container.astro'
 import Layout from '../../ui/astro/layouts/Layout.astro'
@@ -9,19 +8,24 @@ import Flat from '@ui/astro/recommendations/Flat.astro'
 import Recommendations2 from '@ui/astro/recommendations/Recommendations.astro'
 ---
 
-<Layout title="Recommendations" description="Books, Blogs and Codebases I've found interesting">
-    <div slot="before" class="text-3xl z-[100] translate-y-4"><GradientText slot="before" color="orange">Favorite</GradientText></div>
+<Layout
+    title="Recommendations"
+    description="Books, Blogs and Codebases I've found interesting">
+    <div slot="before" class="text-3xl z-[100] translate-y-4">
+        <GradientText slot="before" color="orange"
+            >Things I consider</GradientText
+        >
+    </div>
 
-    <div class="scroll-scale load"  slot="title">  <GradientText slot="title"  color="orange">Links</GradientText></div>
+    <div class="scroll-scale load" slot="title">
+        <GradientText slot="title" color="orange">Awesome</GradientText>
+    </div>
 
     <Container>
         <div class="space-y-4">
-          
+            <Recommendations2 />
 
-        <Recommendations2></Recommendations2>
-
-
-       <Flat> <Books></Books></Flat>
+            <Flat> <Books /></Flat>
         </div>
     </Container>
 </Layout>

@@ -174,8 +174,7 @@ pre {
 }
 
 :root{
-    --max-font-size: max(calc(1vw + 1em), 2rem);
-   
+    --max-font-size: max(calc(1vw + 1em), 1.5rem);  
 }
 
 
@@ -240,4 +239,11 @@ pre {
 
 .scroll-scale.load{
     font-size: max(calc(3vw + 1em), 2.8rem);
+}
+
+.scroll-append{
+    width: 0;
+    display: inline-flex;
+    opacity: 0;
+    color:black;
 }

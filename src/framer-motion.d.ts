@@ -6,3 +6,7 @@ declare module 'framer-motion' {
         children?: React.ReactNode
     }
 }
+
+declare global {
+    interface Window { initScrollTimeline: () => void; }
+}
