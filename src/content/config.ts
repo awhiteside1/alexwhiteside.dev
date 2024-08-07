@@ -3,7 +3,9 @@ import { defineCollection, z } from 'astro:content'
 const books = defineCollection({
     type: 'content',
     schema: z.object({
+        topic: z.string().optional(),
         name: z.string(),
+        featured: z.boolean().default(false),
         author: z.string(),
         url: z.string().url(),
         cover: z.string().url(),

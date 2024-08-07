@@ -39,11 +39,13 @@ const groups = await getStarredReposByLanguage()
                             </h1>
                         </div>
                         <div class="flex items-center gap-x-4 sm:gap-x-6">
-                            <button
+                            <a
                                 type="button"
-                                class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">
-                                Collapse
-                            </button>
+                                target="_blank"
+                                href={`https://github.com/awhiteside1?tab=stars&language=${group.language}`}
+                                class=" text-sm font-semibold  p-3 text-gray-900 transition hover:bg-gray-100 bg-white shadow-inner shadow-gray-300 rounded-lg">
+                                View All
+                            </a>
                         </div>
                     </div>
                 </div>

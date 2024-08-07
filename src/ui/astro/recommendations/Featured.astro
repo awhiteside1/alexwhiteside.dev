@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content'
+import { filterFeatured } from '@ui/utils/draftProdFilter'
+import BookCard from './BookCard.astro'
+const featured = await getCollection('books', filterFeatured)
+---
+
+<div class="flex flex-col gap-4">
+    <BookCard books={featured} />
+</div>

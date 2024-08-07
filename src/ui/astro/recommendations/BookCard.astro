@@ -1,0 +1,25 @@
+---
+import BentoGridItem from '@/ui/astro/components/bento/BentoGridItem.astro'
+import { optimizeImage } from '@ui/utils/optimizeImage'
+import type { CollectionEntry } from 'astro:content'
+type Props = {
+    books?: CollectionEntry<'books'>[]
+}
+
+const { books = [] } = Astro.props
+---
+
+{
+    books.map(({ data }) => (
+        <BentoGridItem
+            variant="row"
+            title={data.name}
+            description={data.description}>
+            <img
+                alt="Book Cover"
+                src={optimizeImage(data.cover, 'thumb')}
+                class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"
+            />
+        </BentoGridItem>
+    ))
+}
