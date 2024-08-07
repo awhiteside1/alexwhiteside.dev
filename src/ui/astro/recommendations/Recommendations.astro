@@ -1,38 +1,55 @@
 ---
-import { cn } from "@lib/utils"
+import { cn } from '@lib/utils'
 
-import {tabs} from "./RecKinds"
-type Props={
-tab?: string
+import { tabs } from './RecKinds'
+import { listify } from 'radash'
 
-}
-const selected = Astro.props.tab
+const pathname = Astro.props.pathname
 
+const slug = pathname.replace('/recommendations', '')
 
-const selectedTab =  selected ? Object.keys(tabs).find(key=> key.toLowerCase()===selected.toLowerCase()) ?? 'Purpose' as keyof typeof tabs : undefined
-
-
-
-
+const newTabs = listify(tabs, (key, value) => ({
+    selected: value.slug === slug,
+    name: key,
+    href: `/recommendations${value.slug}`,
+}))
 ---
 
 <div class="border-b border-gray-200 pb-5 sm:pb-0">
     <div class="mt-3 sm:mt-4">
-      <!-- Dropdown menu on small screens -->
-      <div class="sm:hidden">
-        <label for="current-tab" class="sr-only">Method</label>
-        <select id="current-tab" name="current-tab" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-zinc-700">
-         {Object.keys(tabs).map(option=>(<option {...{selected: option===selectedTab}}>{option}</option>))}
-        </select>
-      </div>
-      <!-- Tabs at small breakpoint and up -->
-      <div class="hidden sm:block">
-        <nav class="-mb-px flex space-x-8">
-            {Object.keys(tabs).map(option=>(<a href={`/recommendations/${option.toLowerCase()}`} class={cn("whitespace-nowrap border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-gray-5000 hover:border-gray-300", option===selectedTab && "border-indigo-500 font-bold hover:border-indigo-600")}>{option}</a>))}
-          </nav>
-      </div>
+        <!-- Dropdown menu on small screens -->
+        <div class="sm:hidden">
+            <label for="current-tab" class="sr-only">Method</label>
+            <select
+                id="current-tab"
+                name="current-tab"
+                class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-zinc-700">
+                {
+                    newTabs.map((option) => (
+                        <option {...{ selected: option.selected }}>
+                            {option.name}
+                        </option>
+                    ))
+                }
+            </select>
+        </div>
+        <!-- Tabs at small breakpoint and up -->
+        <div class="hidden sm:block">
+            <nav class="-mb-px flex space-x-8">
+                {
+                    newTabs.map(({ selected, href, name }) => (
+                        <a
+                            href={href}
+                            class={cn(
+                                'whitespace-nowrap border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-gray-5000 hover:border-gray-300',
+                                selected &&
+                                    'border-indigo-500 font-bold hover:border-indigo-600'
+                            )}>
+                            {name}
+                        </a>
+                    ))
+                }
+            </nav>
+        </div>
     </div>
-  </div>
-
-
-  
+</div>

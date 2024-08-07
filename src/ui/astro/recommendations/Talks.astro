@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
+import BentoGridItem from '@ui/astro/components/bento/BentoGridItem.astro'
+import { filterDrafts } from '@ui/utils/draftProdFilter'
+import { optimizeImage } from '@ui/utils/optimizeImage'
+
+const allBooks = await getCollection('books', filterDrafts)
+---
+
+<BentoGrid>
+    {
+        allBooks.map(({ data }) => (
+            <BentoGridItem
+                variant="row"
+                title={data.name}
+                description={data.description}>
+                <img
+                    alt="Book Cover"
+                    src={optimizeImage(data.cover, 'thumb')}
+                    class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"
+                />
+            </BentoGridItem>
+        ))
+    }
+</BentoGrid>

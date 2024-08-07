@@ -1,8 +1,8 @@
 
 export const tabs = {
-    "Purpose":{ },
-    "Language":{ },
-    "Kind": {},
-    "Ecosystem": {  },
-    "LLM": {},
-}
+    "Featured": { slug: "" },
+    "Code": { slug: "/code" },
+    "Books": { slug: "/books" },
+    "Blogs": { slug: "/blogs" },
+    "Talks": { slug: "/talks" },
+} as const

@@ -1,0 +1,30 @@
+---
+import GradientText from '../components/elements/GradientText.astro'
+import Container from '../components/global/Container.astro'
+import Layout from '../layouts/Layout.astro'
+import Recommendations from './Recommendations.astro'
+---
+
+<Layout
+    title="Recommendations"
+    description="Books, Blogs and Codebases I've found interesting">
+    <div slot="before" class="text-3xl z-[100] translate-y-4">
+        <GradientText slot="before" color="orange"
+            >Things I consider</GradientText
+        >
+    </div>
+
+    <div class="scroll-scale load" slot="title">
+        <GradientText slot="title" color="orange">Awesome</GradientText>
+    </div>
+
+    <Container>
+        <p class="text-base my-2">
+            This is a collection of books, repositories, blogs, tools and
+            anything else I've flagged as interesting or of significant quality
+            since 2019. Content ranges from Neuroscience to Kubernetes.
+        </p>
+        <Recommendations pathname={Astro.props.pathname} />
+        <slot />
+    </Container>
+</Layout>
