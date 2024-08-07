@@ -1,22 +1,16 @@
 ---
-import Container from "@ui/astro/components/global/Container.astro";
-import Layout from "@ui/astro/layouts/Layout.astro";
-import Burger from "@ui/astro/sections/navigation/Burger.astro";
-
+import RevealBento from '@components/RevealBento.astro'
+import Layout from '@ui/astro/layouts/Layout.astro'
+import Container from '@ui/astro/components/global/Container.astro'
 export const prerender = false
-
-const tab = Astro.url.searchParams.get("tab") ?? 'purpose'
-
-
 ---
 
-
-<Layout title="test" description="test">
-
-<Container>
-
-<Burger/>
-  
-
-</Container>
+<Layout
+    title="Bento Grid Preview"
+    description="Preview of the new bento grid layout">
+    <Container
+        ><div class="bg-white">
+            <RevealBento />
+        </div></Container
+    >
 </Layout>

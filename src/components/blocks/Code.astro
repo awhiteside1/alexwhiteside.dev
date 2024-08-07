@@ -1,0 +1,308 @@
+---
+
+---
+
+<section class="wrapper">
+    <div class="container">
+        <div class="one" data-depth="0.9">
+            <div class="content">
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+            </div>
+        </div>
+
+        <div class="two" data-depth="0.60">
+            <div class="content">
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+            </div>
+        </div>
+
+        <div class="three" data-depth="0.40">
+            <div class="content">
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+                <span class="piece animate-pause group-hover/bento:animate-play"
+                ></span>
+            </div>
+        </div>
+    </div>
+</section>
+<style lang="scss">
+    .piece {
+        animation-play-state: paused;
+    }
+
+    $m-01: #fb8a8a;
+    $m-02: #ffedc0;
+
+    $bg-01: #695681;
+    $bg-02: #36184f;
+    $bg-03: #32243e;
+
+    $g-01: linear-gradient(90deg, #ffedc0 0%, #ff9d87 100%);
+    $g-02: linear-gradient(90deg, #8077ea 13.7%, #eb73ff 94.65%);
+
+    $cubic: cubic-bezier(0.4, 0.35, 0, 1.53);
+    $cubic2: cubic-bezier(0.18, 0.89, 0.32, 1.15);
+
+    @mixin sm {
+        @media screen and (max-width: 799px) {
+            @content;
+        }
+    }
+
+    @mixin height {
+        @media screen and (max-height: 660px) {
+            @content;
+        }
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        .container {
+            margin: 0 auto;
+            transition: all 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            // All elements' containers
+            .one,
+            .two,
+            .three,
+            .circle {
+                width: 60%;
+                height: 60%;
+                top: 20% !important;
+                left: 20% !important;
+
+                .content {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    animation: content 0.8s cubic-bezier(1, 0.14, 0.25, 1)
+                        backwards;
+
+                    @keyframes content {
+                        0% {
+                            width: 0;
+                        }
+                    }
+
+                    // Pieces
+                    .piece {
+                        width: 200px;
+                        height: 80px;
+                        display: flex;
+                        position: absolute;
+                        border-radius: 80px;
+                        z-index: 2;
+
+                        animation: pieceLeft 8s cubic-bezier(1, 0.14, 0.25, 1)
+                            infinite both;
+
+                        @keyframes pieceLeft {
+                            0% {
+                            }
+
+                            50% {
+                                left: 80%;
+                                width: 10%;
+                            }
+
+                            100% {
+                            }
+                        }
+
+                        @keyframes pieceRight {
+                            0% {
+                            }
+
+                            50% {
+                                right: 80%;
+                                width: 10%;
+                            }
+
+                            100% {
+                            }
+                        }
+                    }
+                }
+
+                @include sm {
+                    width: 90%;
+                    height: 90%;
+                    top: 5% !important;
+                    left: 5% !important;
+                    min-width: 280px;
+                    min-height: 280px;
+                }
+
+                @include height {
+                    min-width: 280px;
+                    min-height: 280px;
+                    width: 60%;
+                    height: 60%;
+                    top: 20% !important;
+                    left: 20% !important;
+                }
+            }
+
+            // Text and Button container
+
+            // The 404 Number
+
+            // Container 1
+            .one {
+                .content {
+                    // Smaller Circle
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        width: 600px;
+                        height: 600px;
+                        //       background-color: rgba($bg-02, 0.3);
+                        //  border-radius: 100%;
+                        //box-shadow: $circleShadow;
+                        animation: circle 0.8s 0.4s
+                            cubic-bezier(1, 0.06, 0.25, 1) backwards;
+
+                        @include sm {
+                            width: 300px;
+                            height: 300px;
+                        }
+                    }
+
+                    .piece {
+                        background: $g-02;
+
+                        &:nth-child(1) {
+                            right: 15%;
+                            top: 18%;
+                            height: 30px;
+                            width: 120px;
+                            animation-delay: 0.5s;
+                            animation-name: pieceRight;
+                        }
+
+                        &:nth-child(2) {
+                            left: 15%;
+                            top: 45%;
+                            width: 150px;
+                            height: 50px;
+                            animation-delay: 1s;
+                            animation-name: pieceLeft;
+                        }
+
+                        &:nth-child(3) {
+                            left: 10%;
+                            top: 75%;
+                            height: 20px;
+                            width: 70px;
+                            animation-delay: 1.5s;
+                            animation-name: pieceLeft;
+                        }
+                    }
+                }
+            }
+
+            // Container 2
+            .two {
+                .content {
+                    .piece {
+                        background: $g-01;
+
+                        &:nth-child(1) {
+                            left: 0%;
+                            top: 25%;
+                            height: 40px;
+                            width: 120px;
+                            animation-delay: 2s;
+                            animation-name: pieceLeft;
+                        }
+
+                        &:nth-child(2) {
+                            right: 15%;
+                            top: 35%;
+                            width: 180px;
+                            height: 50px;
+                            animation-delay: 2.5s;
+                            animation-name: pieceRight;
+                        }
+
+                        &:nth-child(3) {
+                            right: 10%;
+                            top: 80%;
+                            height: 20px;
+                            width: 160px;
+                            animation-delay: 3s;
+                            animation-name: pieceRight;
+                        }
+                    }
+                }
+            }
+
+            // Container 3
+            .three {
+                .content {
+                    .piece {
+                        background: $m-01;
+
+                        &:nth-child(1) {
+                            left: 25%;
+                            top: 35%;
+                            height: 20px;
+                            width: 80px;
+                            animation-name: pieceLeft;
+                            animation-delay: 3.5s;
+                        }
+
+                        &:nth-child(2) {
+                            right: 10%;
+                            top: 55%;
+                            width: 140px;
+                            height: 40px;
+                            animation-name: pieceRight;
+                            animation-delay: 4s;
+                        }
+
+                        &:nth-child(3) {
+                            left: 40%;
+                            top: 68%;
+                            height: 20px;
+                            width: 80px;
+                            animation-name: pieceLeft;
+                            animation-delay: 4.5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+</style>

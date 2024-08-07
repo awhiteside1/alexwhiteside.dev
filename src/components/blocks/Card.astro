@@ -1,0 +1,52 @@
+---
+import { cn } from '@ui/utils/cn'
+
+interface Props {
+    flex?: 'row' | 'col' | 'square'
+    url?: string
+    size?: 'sm' | 'md' | 'lg'
+}
+
+const variants = {
+    row: {
+        main: 'flex-row',
+        sizes: {
+            sm: 'col-span-2 row-span-1',
+            md: 'col-span-4 row-span-2',
+            lg: 'col-span-4 row-span-4',
+        },
+    },
+    square: {
+        main: 'flex-col aspect-square',
+        sizes: {
+            sm: 'col-span-2 row-span-3',
+            md: 'col-span-3 row-span-3',
+            lg: 'col-span-4 row-span-4',
+        },
+    },
+    col: {
+        main: 'flex-col',
+        sizes: {
+            sm: 'col-span-1 row-span-2',
+            md: 'col-span-2 row-span-3',
+            lg: 'col-span-4 row-span-4',
+        },
+    },
+}
+
+const { flex = 'col', url, size = 'md' } = Astro.props
+const variant = variants[flex]
+const classes = [variant.main, variant.sizes[size]]
+---
+
+<a
+    href={url}
+    class={cn([
+        'relative row-span-1 cursor-pointer rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none  dark:bg-black dark:border-white/[0.2] bg-white border border-zinc-100 gap-4 flex min-h-48 ',
+        ...classes,
+    ])}>
+    <div class="absolute top-0 bottom-0 left-0 right-0 w-full h-full">
+        <slot name="background" />
+    </div>
+    <slot />
+</a>
