@@ -2,10 +2,14 @@
 import AwesomeLayout from '@ui/astro/recommendations/AwesomeLayout.astro'
 import Books2 from '@ui/astro/recommendations/Books.astro'
 import Fallback from '@ui/astro/recommendations/Fallback.astro'
+import Flat from '@ui/astro/recommendations/Flat.astro'
 ---
 
 <AwesomeLayout pathname="/recommendations/books">
+    <Flat>
+
     <Books2 server:defer>
         <Fallback slot="fallback" />
     </Books2>
+    </Flat>
 </AwesomeLayout>
