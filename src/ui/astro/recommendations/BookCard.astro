@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import BentoGridItem from '@/ui/astro/components/bento/BentoGridItem.astro'
 import { optimizeImage } from '@ui/utils/optimizeImage'
 type Props = {
-    books?: CollectionEntry<'books'>[]
+    books?: CollectionEntry<'awesome'>[]
 }
 
 const { books = [] } = Astro.props
@@ -14,7 +14,8 @@ const { books = [] } = Astro.props
         <BentoGridItem
             variant="row"
             title={data.name}
-            description={data.description}>
+            description={data.description}
+        >
             <img
                 alt="Book Cover"
                 src={optimizeImage(data.cover, 'thumb')}
