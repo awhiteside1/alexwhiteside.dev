@@ -1,8 +1,10 @@
-import { defineCollection, z } from 'astro:content'
+import { defineCollection } from 'astro/content/runtime'
+import { z } from 'astro/zod'
 
-const books = defineCollection({
+const awesome = defineCollection({
     type: 'content',
     schema: z.object({
+        related: z.array(z.string()).default([]),
         topic: z.string().optional(),
         name: z.string(),
         featured: z.boolean().default(false),
@@ -10,7 +12,6 @@ const books = defineCollection({
         url: z.string().url(),
         cover: z.string().url(),
         description: z.string(),
-        kind: z.string(),
         date: z.coerce.date().optional(),
         draft: z.boolean().default(false),
     }),
@@ -48,7 +49,7 @@ const titles = defineCollection({
         color: z.string(),
         short: z.string(),
         order: z.number(),
-        className: z.string().optional()
+        className: z.string().optional(),
     }),
 })
 
@@ -57,9 +58,8 @@ const sections = defineCollection({
     schema: z.object({
         page: z.enum(['home', 'blog', 'background', 'books']).optional(),
         name: z.string().optional(),
-        classes: z.string().optional()
+        classes: z.string().optional(),
     }),
 })
 
-
-export const collections = { books, work, titles, sections }
+export const collections = { awesome, work, titles, sections }

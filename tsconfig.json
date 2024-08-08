@@ -27,7 +27,9 @@
 		"src/**/*.tsx",
 		"src/**/*.astro",
 		".storybook/*",
-		"vite.config.ts"
+		"vite.config.ts",
+		".plop/plopfile.ts",
+		".plop/**/*.ts"
 	],
 	"exclude": ["dist", "node_modules", "old"]
 }

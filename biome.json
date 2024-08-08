@@ -7,7 +7,9 @@
 			".astro/**",
 			"src/hashnode/graphql/**",
 			".vercel/**",
-			".*/**",
+			".idx/**",
+			".devcontainer/**",
+			".vscode/**",
 			"**/*.js",
 			"public/**"
 		]
@@ -22,11 +24,11 @@
 		}
 	},
 	"formatter": {
-		"enabled": false
+		"enabled": true
 	},
 	"javascript": {
 		"formatter": {
-			"enabled": false,
+			"enabled": true,
 			"quoteStyle": "single",
 			"semicolons": "asNeeded"
 		}

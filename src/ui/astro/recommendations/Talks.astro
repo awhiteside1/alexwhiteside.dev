@@ -4,8 +4,12 @@ import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '@ui/astro/components/bento/BentoGridItem.astro'
 import { filterDrafts } from '@ui/utils/draftProdFilter'
 import { optimizeImage } from '@ui/utils/optimizeImage'
+import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
 
-const allBooks = await getCollection('books', filterDrafts)
+const allBooks = await getCollection(
+    'awesome',
+    combineFilters(filterDrafts, filterByPath('talks'))
+)
 ---
 
 <BentoGrid>
@@ -14,7 +18,8 @@ const allBooks = await getCollection('books', filterDrafts)
             <BentoGridItem
                 variant="row"
                 title={data.name}
-                description={data.description}>
+                description={data.description}
+            >
                 <img
                     alt="Book Cover"
                     src={optimizeImage(data.cover, 'thumb')}

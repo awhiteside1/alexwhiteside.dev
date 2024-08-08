@@ -30,7 +30,7 @@ const links = [
         active: 'text-pink-600 dark:text-pink-400',
     },
     {
-        text: 'Awesome',
+        text: 'Inspirations',
         href: '/recommendations',
         icon: 'sparkle',
         current: false,
@@ -52,10 +52,12 @@ if (link) {
     <nav
         slot="content"
         class="flex flex-1 flex-col py-2 px-4 translate-x-1 -translate-y-2 bg-white dark:bg-neutral-900 dark:border-neutral-700 border shadow-md backdrop-blur-sm rounded-xl"
-        aria-label="Sidebar">
+        aria-label="Sidebar"
+    >
         <ul
             role="list"
-            class="-mx-2 space-y-1 transition-all duration-200 ease-in-out">
+            class="-mx-2 space-y-1 transition-all duration-200 ease-in-out"
+        >
             {
                 links.map((link) => (
                     <li>
@@ -69,12 +71,14 @@ if (link) {
                                     link.hover,
                                     'hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-white dark:border-none hover:shadow-inner ',
                                 ].join(' ')
-                            )}>
+                            )}
+                        >
                             <svg
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
-                                class="h-6 w-6 shrink-0 ">
+                                class="h-6 w-6 shrink-0 "
+                            >
                                 <use xlink:href={`#${link.icon}`} />
                             </svg>
                             {link.text}

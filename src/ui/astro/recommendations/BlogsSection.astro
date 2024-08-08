@@ -1,17 +1,14 @@
 ---
-import {
-    combineFilters,
-    filterDrafts,
-    filterByPath,
-} from '../../utils/draftProdFilter'
-import { getCollection, type CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
 import BentoGridItem from '@ui/astro/components/bento/BentoGridItem.astro'
+import { filterDrafts } from '@ui/utils/draftProdFilter'
 import { optimizeImage } from '@ui/utils/optimizeImage'
+import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
 
 const allBooks = await getCollection(
     'awesome',
-    combineFilters(filterDrafts, filterByPath('books'))
+    combineFilters(filterDrafts, filterByPath('blogs'))
 )
 ---
 
