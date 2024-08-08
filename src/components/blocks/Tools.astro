@@ -1,0 +1,38 @@
+---
+import { cn } from '@lib/utils'
+
+const tools = [
+    { name: 'TypeScript', color: 'bg-[#007ACC]' },
+    { name: 'Kubernetes', color: 'bg-[#326CE5]' },
+    { name: 'AWS', color: 'bg-[#FF9900]' },
+    { name: 'React', color: 'bg-[#61DAFB]' },
+    { name: 'Node.js', color: 'bg-[#339933]' },
+    { name: 'Docker', color: 'bg-[#2496ED]' },
+]
+---
+
+<div class="relative w-full h-full justify-center gap-0 items-center">
+    {
+        [
+            'bg-sky-500/70',
+            'bg-sky-500/60',
+            'bg-blue-500/60',
+            'bg-blue-500/80',
+        ].map((color, index) => (
+            <div
+                style={`bottom: ${0.9 * index}rem; --disk-offset: ${index * 0.5}rem;`}
+                class={cn(
+                    'w-20 h-20 rounded-full tile absolute right-5',
+                    color
+                )}
+            />
+        ))
+    }
+</div>
+
+<style lang="scss">
+    .tile {
+        transform: rotateX(63deg) rotateZ(-45deg) translateZ(0)
+            translateX(var(--disk-offset));
+    }
+</style>

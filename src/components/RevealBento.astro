@@ -1,7 +1,8 @@
 ---
-import Stat from './blocks/Stat.astro'
+import ExperienceThree from './ExperienceThree.astro'
 import TextContent from './blocks/LowerThird.astro'
 import RetroGrid from './blocks/RetroGrid.astro'
+import Tools from './blocks/Tools.astro'
 import TopText from './blocks/TopText.astro'
 import Code from './blocks/Code.astro'
 import Pulse from './blocks/Pulse.astro'
@@ -12,49 +13,13 @@ import Card from './blocks/Card.astro'
     <div
         class="mx-auto grid max-w-4xl grid-rows-9 grid-flow-dense grid-cols-9 gap-4 aspect-square">
         <Card flex="row" size="lg">
-            <RetroGrid slot="background" />
+            <Tools slot="background" />
             <TextContent title="Hello" description="World" />
         </Card>
-        <Card flex="square" size="sm">
-            <div
-                class="w-full h-full bg-gradient-to-tr from-blue-500 to-cyan-600 shadow-inner shadow-neutral-600/70"
-                slot="background">
-            </div>
-            <Stat unit="years" class="text-white"
-                ><span slot="stat">10<small>+</small></span><span slot="after">
-                    Experience
-                </span></Stat
-            >
-        </Card>
-        <Card flex="square" size="sm">
-            <div
-                class="w-full h-full bg-gradient-to-tr from-cyan-500 to-emerald-500 shadow-inner shadow-neutral-600/70"
-                slot="background">
-            </div>
-            <Stat unit="Ideas" class="text-white"
-                ><span slot="before">Turning</span><span slot="stat">
-                    <svg
-                        class="text-white w-10 h-10"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        fill="none">
-                        <use xlink:href="#moon"></use>
-                    </svg>
-                </span></Stat
-            >
-        </Card>
-        <Card flex="square" size="sm" class="hover:scale-105">
-            <div
-                class="w-full h-full bg-gradient-to-tr from-emerald-500 to-yellow-400 shadow-inner shadow-neutral-600/70"
-                slot="background">
-            </div>
-            <Stat class="text-white"
-                ><span slot="before">Into Products</span></Stat
-            >
-        </Card>
+        <ExperienceThree />
         <Card flex="col" size="lg"
             ><Code slot="background" />
-            <TopText title="Hello" description="World" />
+            <TopText title="" description="Weakly Held" />
         </Card>
         <Card flex="square" size="md">
             <Pulse slot="background" />

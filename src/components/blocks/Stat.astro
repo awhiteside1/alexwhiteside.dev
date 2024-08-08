@@ -2,27 +2,14 @@
 import { cn } from '@lib/utils'
 
 type Props = {
-    stat?: string
-    unit?: string
     class?: string
 }
-
-const { stat, unit } = Astro.props as Props
 ---
 
 <div
     class={cn(
-        'flex-grow flex flex-col items-center justify-center p-3',
+        'flex-grow flex flex-col items-start justify-around  p-4 text-white text-base font-semibold',
         Astro.props.class
     )}>
-    <slot name="before" />
-
-    <span class="text-6xl font-semibold">
-        {stat}<slot name="stat" />
-    </span>
-    {unit && <span class="text-sm ">{unit}</span>}
-    <div class="grow"></div>
-    <p class="text-sm font-medium col-span-3">
-        <slot name="after" />
-    </p>
+    <slot />
 </div>
