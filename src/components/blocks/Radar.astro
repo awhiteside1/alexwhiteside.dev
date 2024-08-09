@@ -1,0 +1,104 @@
+---
+import { cn } from '@lib/utils'
+
+interface Props {
+    mainCircleSize?: number
+    mainCircleOpacity?: number
+    numCircles?: number
+    scaleFactor?: number
+    color?: string
+    location?: 'bottom-right' | 'left-center' | 'top-right' | 'center'
+    angle?: 'perpendicular' | 'low' | 'high'
+}
+
+const {
+    mainCircleSize = 100,
+    mainCircleOpacity = 0.34,
+    numCircles = 5,
+    scaleFactor = 70,
+} = Astro.props
+
+const circles = Array.from({ length: numCircles }, (_, i) => {
+    const size = mainCircleSize + i * scaleFactor
+    const opacity = mainCircleOpacity - i * 0.03
+    const animationDelay = `${i * 0.06}s`
+    const borderStyle = 'solid'
+    const borderOpacity = 5 + i * 5
+
+    return {
+        size,
+        opacity,
+        animationDelay,
+        borderStyle,
+        borderOpacity,
+    }
+})
+---
+
+<style>
+    .radar {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+    }
+
+    .radar-center {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .radar-left-center {
+        top: 0;
+        height: 100%;
+        left: 0;
+        transform: translateX(-40%) scale(0.8);
+    }
+    .radar-bottom-right {
+        top: 0;
+        left: 0;
+        transform: translateY(-9%) translateX(-12%);
+    }
+</style>
+<div class={cn('radar', `radar-${Astro.props.location ?? 'center'}`)}>
+    <div
+        class={cn(
+            ` absolute inset-0 flex items-center justify-center [perspective:300px]`,
+            Astro.props.angle === 'perpendicular'
+                ? '[transform:rotateX(75deg)]'
+                : ''
+        )}>
+        {
+            circles.map((circle, i) => (
+                <div
+                    class={cn(
+                        ` animate-ripple absolute  rounded-md bg-foreground/25 shadow-xl border  `,
+                        Astro.props.color
+                    )}
+                    style={{
+                        width: `${circle.size}px`,
+                        height: `${circle.size}px`,
+                        opacity: circle.opacity,
+                        animationDelay: circle.animationDelay,
+                        borderStyle: circle.borderStyle,
+                        borderWidth: '1px',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%) scale(1)',
+                    }}
+                />
+            ))
+        }
+        <div
+            style={{
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%) scale(1)',
+                width: `${mainCircleSize}px`,
+                height: `${mainCircleSize}px`,
+                padding: '10px',
+            }}
+            class={`absolute text-white`}>
+            <slot name="icon" />
+        </div>
+    </div>
+</div>
