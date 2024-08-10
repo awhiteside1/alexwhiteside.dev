@@ -1,0 +1,33 @@
+---
+import {
+    CollectionFilter,
+    combineFilters,
+    filterByPath,
+} from '../../utils/draftProdFilter'
+import { getCollection } from 'astro:content'
+import { filterFeatured } from '@ui/utils/draftProdFilter'
+import BookCard from './BookCard.astro'
+import BentoGrid from '../components/bento/BentoGrid.astro'
+import { sift } from 'radash'
+import { Astro } from 'astro/env'
+
+type Props = {
+    filter: {
+        featured?: boolean
+        path?: string
+    }
+}
+
+const filter = combineFilters(
+    ...sift([
+        Astro.props.filter.featured && filterFeatured,
+        Astro.props.filter.path && filterByPath(Astro.props.filter.path),
+    ])
+)
+
+const featured = await getCollection('awesome', filter)
+---
+
+<BentoGrid>
+    <BookCard books={featured} />
+</BentoGrid>

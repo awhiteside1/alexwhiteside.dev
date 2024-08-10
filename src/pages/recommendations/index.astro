@@ -1,9 +1,12 @@
 ---
 import AwesomeLayout from '@ui/astro/recommendations/AwesomeLayout.astro'
-import Featured from '@ui/astro/recommendations/Featured.astro'
+import List from '@ui/astro/recommendations/List.astro'
 import Flat from '@ui/astro/recommendations/Flat.astro'
+import { filterByPath, filterFeatured } from '../../ui/utils/draftProdFilter'
 ---
 
 <AwesomeLayout pathname="/recommendations">
-    <Flat><Featured /></Flat>
+    <Flat>
+        <List server:defer filter={{ featured: true }} />
+    </Flat>
 </AwesomeLayout>

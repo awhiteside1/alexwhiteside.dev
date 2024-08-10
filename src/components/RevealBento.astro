@@ -9,6 +9,7 @@ import Tools from './blocks/Tools.astro'
 import TextContent from './blocks/LowerThird.astro'
 import TechIcon from '@ui/astro/components/elements/TechIcon.astro'
 import { resolveIcon } from '@ui/utils/icons'
+import Systems from './systems.astro'
 
 const typescript = await resolveIcon({ name: 'typescript' })
 
@@ -17,7 +18,9 @@ const kube = await resolveIcon({ name: 'kubernetes' })
 
 <div class="px-4 py-12">
     <div
-        class="mx-auto grid max-w-4xl grid-rows-9 grid-flow-dense grid-cols-9 gap-4 aspect-square">
+        data-kind="bento-grid"
+        class="mx-auto grid max-w-4xl grid-flow-row-dense grid-cols-3 gap-4 md:grid-cols-6 lg:grid-cols-9 auto-rows-fr"
+    >
         <Card flex="row" size="lg">
             <Tools slot="background" />
             <TextContent title="Hello" description="World" />
@@ -38,7 +41,8 @@ const kube = await resolveIcon({ name: 'kubernetes' })
                     mainCircleSize={50}
                     scaleFactor={20}
                     numCircles={3}
-                    color="bg-indigo-500/50 border-indigo-500/10">
+                    color="bg-indigo-500/50 border-indigo-500/10"
+                >
                     <span set:html={kube} slot="icon" />
                 </Radar>
                 <Radar
@@ -46,7 +50,8 @@ const kube = await resolveIcon({ name: 'kubernetes' })
                     color="bg-blue-500/50 border-blue-500/10"
                     mainCircleSize={60}
                     scaleFactor={20}
-                    numCircles={3}>
+                    numCircles={3}
+                >
                     <span set:html={typescript} slot="icon" />
                 </Radar>
             </div>
@@ -57,5 +62,6 @@ const kube = await resolveIcon({ name: 'kubernetes' })
             <div class="w-full h-full bg-blue-500" slot="background"></div>
             <TopText title="Hello" description="World" />
         </Card>
+        <Systems />
     </div>
 </div>

@@ -15,18 +15,17 @@ const { title, description } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" class="system light">
+<html lang="en" class="light">
     <head>
         <Head title={`Alex Whiteside | ${title}`} description={description} />
     </head>
-    <body>
+    <body style="min-height: 103vh">
         <DotBackground />
-        <Header
-            ><slot slot="before" name="before" />
-            <slot slot="title" name="title" /><Burger
-                slot="navigation"
-            /></Header
-        >
+        <Header>
+            <slot slot="before" name="before" />
+            <slot slot="title" name="title" />
+            <Burger slot="navigation" />
+        </Header>
 
         <main>
             <slot />
@@ -185,6 +184,7 @@ const { title, description } = Astro.props
                 script.async = true
                 document.body.appendChild(script)
             }
+
             if (window.ScrollTimeline === undefined) {
                 console.log('loading polyfill')
                 appendPolyfill()

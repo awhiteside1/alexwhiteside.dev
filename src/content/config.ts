@@ -10,7 +10,7 @@ const awesome = defineCollection({
         featured: z.boolean().default(false),
         author: z.string(),
         url: z.string().url(),
-        cover: z.string().url(),
+        cover: z.string().url().optional(),
         description: z.string(),
         date: z.coerce.date().optional(),
         draft: z.boolean().default(false),

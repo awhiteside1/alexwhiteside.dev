@@ -3,13 +3,11 @@ import AwesomeLayout from '@ui/astro/recommendations/AwesomeLayout.astro'
 import Fallback from '@ui/astro/recommendations/Fallback.astro'
 import BlogsSection from '@ui/astro/recommendations/BlogsSection.astro'
 import Flat from '@ui/astro/recommendations/Flat.astro'
+import List from '../../ui/astro/recommendations/List.astro'
 ---
 
 <AwesomeLayout pathname="/recommendations/blogs">
     <Flat>
-
-    <BlogsSection server:defer>
-        <Fallback slot="fallback" />
-    </BlogsSection>
+        <List server:defer filter={{ path: 'blogs' }} />
     </Flat>
 </AwesomeLayout>

@@ -1,6 +1,6 @@
 import type { CollectionEntry, CollectionKey } from 'astro:content'
 
-type CollectionFilter = <T extends CollectionKey>(
+export type CollectionFilter = <T extends CollectionKey>(
     entry: CollectionEntry<T>
 ) => boolean
 

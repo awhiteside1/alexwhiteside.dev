@@ -1,31 +1,16 @@
 ---
 import { getCollection } from 'astro:content'
 import BentoGrid from '@ui/astro/components/bento/BentoGrid.astro'
-import BentoGridItem from '@ui/astro/components/bento/BentoGridItem.astro'
 import { filterDrafts } from '@ui/utils/draftProdFilter'
-import { optimizeImage } from '@ui/utils/optimizeImage'
 import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
+import Talk from './cards/talk.astro'
 
-const allBooks = await getCollection(
+const talks = await getCollection(
     'awesome',
     combineFilters(filterDrafts, filterByPath('talks'))
 )
 ---
 
 <BentoGrid>
-    {
-        allBooks.map(({ data }) => (
-            <BentoGridItem
-                variant="row"
-                title={data.name}
-                description={data.description}
-            >
-                <img
-                    alt="Book Cover"
-                    src={optimizeImage(data.cover, 'thumb')}
-                    class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"
-                />
-            </BentoGridItem>
-        ))
-    }
+    {talks.map((talk) => <Talk entry={talk} />)}
 </BentoGrid>

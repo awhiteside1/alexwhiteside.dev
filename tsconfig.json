@@ -8,7 +8,7 @@
 		"paths": {
 			"@*": ["src/*"]
 		},
-		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
 		"jsx": "react-jsx",
 		"plugins": [
 			{

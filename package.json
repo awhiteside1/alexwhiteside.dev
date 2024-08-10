@@ -41,6 +41,7 @@
 		"globby": "^14.0.2",
 		"gql.tada": "^1.8.2",
 		"mini-svg-data-uri": "^1.4.4",
+		"motion": "^10.18.0",
 		"node-plop": "^0.32.0",
 		"ollama": "^0.5.6",
 		"radash": "^12.1.0",

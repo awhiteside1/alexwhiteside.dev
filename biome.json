@@ -1,37 +1,38 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
-	"files": {
-		"ignore": [
-			"*.unsafe.spec.ts",
-			"node_modules/**",
-			"dist/**",
-			".astro/**",
-			"src/hashnode/graphql/**",
-			".vercel/**",
-			".idx/**",
-			".devcontainer/**",
-			".vscode/**",
-			"**/*.js",
-			"public/**"
-		]
-	},
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	},
-	"formatter": {
-		"enabled": true
-	},
-	"javascript": {
-		"formatter": {
-			"enabled": true,
-			"quoteStyle": "single",
-			"semicolons": "asNeeded"
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
+  "files": {
+    "ignore": [
+      "*.unsafe.spec.ts",
+      "node_modules/**",
+      "dist/**",
+      "src/surreal.d.ts",
+      ".astro/**",
+      "src/hashnode/graphql/**",
+      ".vercel/**",
+      ".idx/**",
+      ".devcontainer/**",
+      ".vscode/**",
+      "**/*.js",
+      "public/**"
+    ]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "formatter": {
+    "enabled": true
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    }
+  }
 }
