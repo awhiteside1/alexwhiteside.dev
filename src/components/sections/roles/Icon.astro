@@ -1,0 +1,37 @@
+---
+interface Props {
+    svg: string
+    color?: string
+    size?: number
+    className?: string
+    style: string
+}
+
+const { svg, style, color = '#ffffff', size = 24, className = '' } = Astro.props
+---
+
+<div class={`icon-wrapper ${className}`} style={style}>
+    <svg
+        viewBox="0 0 100 100"
+        class="stroke-current w-full h-full bg-blend-lighten"
+    >
+        <use xlink:href={`#${svg}`}></use>
+    </svg>
+</div>
+
+<style define:vars={{ color, size }}>
+    .icon-wrapper {
+        background: linear-gradient(
+            135deg,
+            hsl(from var(--color) h s 30 / 0.4),
+            hsl(from var(--color) h s 70 / 0.5),
+            hsl(from var(--color) h s 30 / 0.4)
+        );
+        width: var(--size) px;
+        height: var(--size) px;
+        color: hsl(from var(--color) h s 30);
+        border-radius: calc(var(--size) * 0.2px);
+        padding: calc(var(--size) * 0.2px);
+        box-shadow: 0 2px 4px hsl(from var(--color) h s 30 / 0.5);
+    }
+</style>

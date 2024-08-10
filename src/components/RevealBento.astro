@@ -1,6 +1,6 @@
 ---
 import Radar from './blocks/Radar.astro'
-import ExperienceThree from './ExperienceThree.astro'
+import ExperienceThree from './sections/ExperienceThree.astro'
 import TopText from './blocks/TopText.astro'
 import Pulse from './blocks/Pulse.astro'
 import Card from './blocks/Card.astro'
@@ -10,6 +10,7 @@ import TextContent from './blocks/LowerThird.astro'
 import TechIcon from '@ui/astro/components/elements/TechIcon.astro'
 import { resolveIcon } from '@ui/utils/icons'
 import Systems from './systems.astro'
+import Roles from './sections/roles/Roles.astro'
 
 const typescript = await resolveIcon({ name: 'typescript' })
 
@@ -58,10 +59,7 @@ const kube = await resolveIcon({ name: 'kubernetes' })
 
             <TopText title="Hello" description="World" />
         </Card>
-        <Card flex="row" size="md">
-            <div class="w-full h-full bg-blue-500" slot="background"></div>
-            <TopText title="Hello" description="World" />
-        </Card>
+        <Roles />
         <Systems />
     </div>
 </div>

@@ -1,0 +1,52 @@
+---
+import Card from '../../blocks/Card.astro'
+import icons from './icons.svg?raw'
+import Icon from "./Icon.astro";
+const content: Array<{ icon: string; text: string, color: string }> = [
+    {icon: 'code', text: 'Software Architect', color: 'red'},
+    {icon: 'code', text: 'Entrepreneur', color: 'green'},
+    {icon: 'code', text: 'Creative', color: 'blue'},
+    {icon: 'code', text: 'Software Architect', color: 'purple'},
+]
+---
+
+<div class="hidden" set:html={icons}/>
+
+<style>
+    .RolesGrid {
+        display: grid;
+        grid-template-areas:
+            ' at ai bi  bt'
+            ' ct ci di  dt';
+        grid-template-columns: 1fr 48px 48px 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        height: 100%;
+        gap: 0.4rem;
+    }
+</style>
+
+<Card flex="row" size="md">
+    <div class="RolesGrid" slot="background">
+        {
+            content.map((data, index) => {
+                const letter = String.fromCharCode(97 + index)
+                return (
+                        <Fragment>
+                            <p
+                                    class="text-base"
+                                    style={{
+                                        gridArea: `${letter}t`,
+                                    }}
+                            >
+                                {data.text}
+                            </p>
+                            <Icon style={`grid-area: ${letter}i;`} } color={data.color} svg={data.icon} }>
+
+                            </Icon>
+                        </Fragment>
+                )
+            })
+        }
+    </div>
+</Card>
