@@ -1,6 +1,6 @@
 ---
 import {
-    CollectionFilter,
+    type CollectionFilter,
     combineFilters,
     filterByPath,
 } from '../../utils/draftProdFilter'
@@ -9,7 +9,6 @@ import { filterFeatured } from '@ui/utils/draftProdFilter'
 import BookCard from './BookCard.astro'
 import BentoGrid from '../components/bento/BentoGrid.astro'
 import { sift } from 'radash'
-import { Astro } from 'astro/env'
 
 type Props = {
     filter: {
