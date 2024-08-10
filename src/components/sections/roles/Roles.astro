@@ -5,7 +5,7 @@ import Icon from "./Icon.astro";
 const content: Array<{ icon: string; text: string, color: string }> = [
     {icon: 'code', text: 'Software Architect', color: 'red'},
     {icon: 'code', text: 'Entrepreneur', color: 'green'},
-    {icon: 'code', text: 'Creative', color: 'blue'},
+    {icon: 'code2', text: 'Creative', color: 'blue'},
     {icon: 'code', text: 'Software Architect', color: 'purple'},
 ]
 ---
@@ -20,13 +20,13 @@ const content: Array<{ icon: string; text: string, color: string }> = [
             ' ct ci di  dt';
         grid-template-columns: 1fr 48px 48px 1fr;
         grid-template-rows: 1fr 1fr;
-        align-items: center;
+        align-items: start;
         height: 100%;
         gap: 0.4rem;
     }
 </style>
 
-<Card flex="row" size="md">
+<Card flex="row" class="row-span-2 col-span-5">
     <div class="RolesGrid" slot="background">
         {
             content.map((data, index) => {
@@ -36,12 +36,14 @@ const content: Array<{ icon: string; text: string, color: string }> = [
                             <p
                                     class="text-base"
                                     style={{
+                                        textAlign: index % 2 == 1 ? 'left' : 'right',
                                         gridArea: `${letter}t`,
                                     }}
                             >
                                 {data.text}
                             </p>
-                            <Icon style={`grid-area: ${letter}i;`} } color={data.color} svg={data.icon} }>
+                            <Icon style={`grid-area: ${letter}i;`} } className="self-center" color={data.color}
+                                  svg={data.icon} }>
 
                             </Icon>
                         </Fragment>

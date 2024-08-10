@@ -1,4 +1,18 @@
 ---
+import { cn } from '../../../utils/cn'
+import { sift } from 'radash'
+type Props = {
+    background?: boolean
+}
 ---
 
-<div class="mx-auto max-w-screen-md px-4 py-1 bg-white dark:bg-black/90"><slot /></div>
+<div
+    class={cn(
+        sift([
+            'mx-auto max-w-[--max-screen-width] w-full',
+            Astro.props.background && 'bg-white dark:bg-black/90',
+        ])
+    )}
+>
+    <slot />
+</div>

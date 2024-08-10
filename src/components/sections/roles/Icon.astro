@@ -1,37 +1,87 @@
 ---
+import { cn } from '../../../lib/utils'
 interface Props {
     svg: string
     color?: string
     size?: number
     className?: string
-    style: string
+    style?: string
+    title?: string
 }
 
-const { svg, style, color = '#ffffff', size = 24, className = '' } = Astro.props
+const {
+    svg,
+    style,
+    color = '#a880ff',
+    size = 24,
+    className = '',
+    title,
+} = Astro.props
 ---
 
-<div class={`icon-wrapper ${className}`} style={style}>
-    <svg
-        viewBox="0 0 100 100"
-        class="stroke-current w-full h-full bg-blend-lighten"
-    >
-        <use xlink:href={`#${svg}`}></use>
-    </svg>
+<div class={cn(`icon-wrapper`, className)} style={style}>
+    <div class="icon-container">
+        <svg viewBox="0 0 100 100" class="icon-svg">
+            <use xlink:href={`#${svg}`}></use>
+        </svg>
+    </div>
+    {title && <h6 class="icon-title">{title}</h6>}
 </div>
 
 <style define:vars={{ color, size }}>
     .icon-wrapper {
-        background: linear-gradient(
-            135deg,
-            hsl(from var(--color) h s 30 / 0.4),
-            hsl(from var(--color) h s 70 / 0.5),
-            hsl(from var(--color) h s 30 / 0.4)
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-image: radial-gradient(
+            circle at 25%,
+            hsl(from var(--color) h 70 60 / 0.3) 0%,
+            hsl(from var(--color) h s 59 / 0.6) 100%
         );
+        border-radius: 10px;
+        padding: 8px;
+        box-shadow: 0 0 4px 2px hsl(from var(--color) h s 80 / 0.4);
+        //border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 222ms;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .icon-wrapper:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /*
+    .icon-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        background-image: linear-gradient(
+            190deg,
+            hsl(from var(--color) h s 10 / 0.1) 10.99%,
+            hsl(from var(--color) h s 30 / 0.2) 26%,
+            hsl(from var(--color) h s 30 / 0)
+        );
+
+        z-index: -2;
+    }
+    */
+
+    .icon-container {
+        position: relative;
         width: var(--size) px;
         height: var(--size) px;
-        color: hsl(from var(--color) h s 30);
-        border-radius: calc(var(--size) * 0.2px);
-        padding: calc(var(--size) * 0.2px);
-        box-shadow: 0 2px 4px hsl(from var(--color) h s 30 / 0.5);
+    }
+
+    .icon-svg {
+        width: 100%;
+        height: 100%;
+        stroke: currentColor;
+        fill: none;
+        color: hsl(from var(--color) h s 60 / 0.7);
     }
 </style>
