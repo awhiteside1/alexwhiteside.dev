@@ -1,6 +1,6 @@
 ---
-import {sift, uid} from 'radash'
-import {cn} from '../../../lib/utils'
+import { sift, uid } from 'radash'
+import { cn } from '../../../lib/utils'
 type Props = {
     elements: Array<{
         name: string
@@ -12,58 +12,44 @@ type Props = {
 }
 ---
 
-<div class="flex flex-col">
-    <p
-            class="font-bold uppercase tracking-wide text-xs opacity-70 whitespace-nowrap text-neutral-700 dark:text-neutral-400 text-right px-2 "
-            "
-    >
-        {Astro.props.title}
-    </p>
+<div class="flex flex-col grow space-y-1">
+    <!--<p-->
+    <!--    class="font-semibold uppercase tracking-wide text-xs text-neutral-500 dark:text-neutral-400 text-right px-4"-->
+    <!--&gt;-->
+    <!--    {Astro.props.title}-->
+    <!--</p>-->
     <div
-            class={cn(
-                sift([
-                    'relative flex flex-col flex-wrap gap-2 p-2  shadow-inner dark:shadow-neutral-900 bg-neutral-100 dark:bg-neutral-800 rounded-xl justify-evenly grow timeline bg-transparent shadow-none border ',
-                    Astro.props.class,
-                ])
-            )}
+        class={cn(
+            sift([
+                'relative flex flex-wrap gap-3 p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl justify-start grow ',
+                Astro.props.class,
+            ])
+        )}
     >
         {
-            Astro.props.elements.map(({of = [], name}, index) => {
+            Astro.props.elements.map(({ of = [], name }, index) => {
                 const children = [...of]
                 const hasChildren = children.length > 0
                 return (
-                        <div
-                                data-kind="collection-arrow-item"
-                                class="dark:shadow-inner bg-neutral-50 dark:bg-neutral-700  grow flex flex-col items-center justify-center rounded-xl  text-center"
-                        >
-                            <p class="text-sm text-neutral-700  dark:text-neutral-200 px-2 py-1  max-w-32 text-balance leading-tight font-medium">
-                                {name}
-                            </p>
-                            <!--{hasChildren && (-->
-                            <!--    <div class="flex flex-row gap-1 translate-y-2">-->
-                            <!--        {children.map((child) => {-->
-                            <!--            return (-->
-                            <!--                <p class="px-2 py-1 rounded-full bg-neutral-300 text-xs">-->
-                            <!--                    {child.name}-->
-                            <!--                </p>-->
-                            <!--            )-->
-                            <!--        })}-->
-                            <!--    </div>-->
-                            <!--)}-->
-                        </div>
+                    <div
+                        data-kind="collection-arrow-item"
+                        class="bg-white dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 grow flex flex-col items-center justify-center rounded-lg p-3 text-center transition-all hover:shadow-md"
+                    >
+                        <p class="text-sm text-neutral-800 dark:text-neutral-100 max-w-32 text-balance leading-tight font-medium">
+                            {name}
+                        </p>
+                        {hasChildren && (
+                            <div class="flex flex-row gap-1 mt-2">
+                                {children.map((child) => (
+                                    <p class="px-2 py-1 rounded-full bg-neutral-200 dark:bg-neutral-600 text-xs text-neutral-700 dark:text-neutral-200">
+                                        {child.name}
+                                    </p>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 )
             })
         }
     </div>
 </div>
-<script>
-    const collections = document.querySelectorAll(
-        '[data-kind=collection-arrow]'
-    )
-
-    collections.forEach((collection) => {
-        const elements = collection.querySelectorAll(
-            '[data-kind=collection-arrow-item]'
-        )
-    })
-</script>

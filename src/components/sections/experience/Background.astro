@@ -28,20 +28,22 @@ const content = {
 ---
 
 <div
-    class="col-span-12 flex flex-col md:col-[span_6/-1] row-span-1 shadow-border"
+    class="col-span-12 flex flex-col md:col-[span_6/-1] lg:col-[span_5/-1] row-span-1 shadow-border"
 >
     <div class="px-6 py-6 space-y-4">
-        <!--<Title icon="book" text="Background" />-->
+        <Title icon="building" text="Work Experience" />
 
-        <div class="w-full flex flex-row gap-4 justify-between align-middle">
+        <div
+            class="w-full flex flex-row flex-wrap gap-3 justify-between align-middle"
+        >
             <div
-                class="flex flex-col items-center justify-center w-fit p-4 mt-4 bg-neutral-100 shadow-inner dark:bg-neutral-800 rounded-xl"
+                class="flex flex-col items-center justify-center w-fit p-5 bg-neutral-100 dark:bg-neutral-800 rounded-xl"
             >
                 <div class="text-5xl">
                     10<sup class="text-3xl">+</sup>
                 </div>
                 <div class="text-base font-medium leading-tight text-center">
-                    years of<br /> experience
+                    years
                 </div>
             </div>
             <Experience
@@ -51,16 +53,16 @@ const content = {
             <Experience
                 elements={content.experiences.industries}
                 title="Industry"
-                class="flex-wrap flex-row"
+                class="flex-wrap flex-row max-h-32"
             />
         </div>
     </div>
 </div>
 
 <div
-    class="col-span-12 flex flex-col md:col-[span_6/-1] row-span-1 -col-end-1 shadow-border"
+    class="col-span-12 flex flex-col md:col-[span_6/-1] lg:col-[span_5/-1] row-span-1 -col-end-1 shadow-border"
 >
-    <div class="px-6 py-6 space-y-4">
+    <div class="px-6 pb-6 space-y-4">
         <div
             class="w-full flex flex-wrap flex-row gap-4 justify-between align-middle"
         >
