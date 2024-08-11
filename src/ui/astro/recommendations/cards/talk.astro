@@ -1,11 +1,11 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import { optimizeImage } from '../../../utils/optimizeImage'
 import BentoGridItem from '../../components/bento/BentoGridItem.astro'
-import type { CollectionEntry } from 'astro:content'
 const url = 'https://i.ytimg.com/vi/r0VgFZv7o0k/mqdefault.jpg'
 
 type Props = {
-    entry: CollectionEntry<'awesome'>
+	entry: CollectionEntry<'awesome'>
 }
 const talkData = Astro.props.entry.data
 

@@ -2,36 +2,36 @@
 import { cn } from '@lib/utils'
 
 interface Props {
-    mainCircleSize?: number
-    mainCircleOpacity?: number
-    numCircles?: number
-    scaleFactor?: number
-    color?: string
-    location?: 'bottom-right' | 'left-center' | 'top-right' | 'center'
-    angle?: 'perpendicular' | 'low' | 'high'
+	mainCircleSize?: number
+	mainCircleOpacity?: number
+	numCircles?: number
+	scaleFactor?: number
+	color?: string
+	location?: 'bottom-right' | 'left-center' | 'top-right' | 'center'
+	angle?: 'perpendicular' | 'low' | 'high'
 }
 
 const {
-    mainCircleSize = 100,
-    mainCircleOpacity = 0.34,
-    numCircles = 5,
-    scaleFactor = 70,
+	mainCircleSize = 100,
+	mainCircleOpacity = 0.34,
+	numCircles = 5,
+	scaleFactor = 70,
 } = Astro.props
 
 const circles = Array.from({ length: numCircles }, (_, i) => {
-    const size = mainCircleSize + i * scaleFactor
-    const opacity = mainCircleOpacity - i * 0.03
-    const animationDelay = `${i * 0.06}s`
-    const borderStyle = 'solid'
-    const borderOpacity = 5 + i * 5
+	const size = mainCircleSize + i * scaleFactor
+	const opacity = mainCircleOpacity - i * 0.03
+	const animationDelay = `${i * 0.06}s`
+	const borderStyle = 'solid'
+	const borderOpacity = 5 + i * 5
 
-    return {
-        size,
-        opacity,
-        animationDelay,
-        borderStyle,
-        borderOpacity,
-    }
+	return {
+		size,
+		opacity,
+		animationDelay,
+		borderStyle,
+		borderOpacity,
+	}
 })
 ---
 

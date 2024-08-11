@@ -1,14 +1,14 @@
 ---
-import { optimizeImage } from '@ui/utils/optimizeImage';
-import FormattedDate from '../components/text/FormattedDate.astro';
+import { optimizeImage } from '@ui/utils/optimizeImage'
+import FormattedDate from '../components/text/FormattedDate.astro'
 
 interface Props {
-  title: string;
-  date: string;
-  coverImage: string;
+	title: string
+	date: string
+	coverImage: string
 }
 
-const { title, date, coverImage } = Astro.props;
+const { title, date, coverImage } = Astro.props
 ---
 
 <div class="relative w-full aspect-[5/3] min-h-[14rem]  max-h-[40vh] sm:aspect-[21/9] rounded-xl overflow-hidden">

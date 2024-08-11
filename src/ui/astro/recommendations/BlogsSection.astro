@@ -7,8 +7,8 @@ import { optimizeImage } from '@ui/utils/optimizeImage'
 import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
 
 const allBooks = await getCollection(
-    'awesome',
-    combineFilters(filterDrafts, filterByPath('blogs'))
+	'awesome',
+	combineFilters(filterDrafts, filterByPath('blogs')),
 )
 ---
 

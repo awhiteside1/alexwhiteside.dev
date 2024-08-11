@@ -38,6 +38,9 @@ importers:
       '@lancedb/lancedb':
         specifier: ^0.7.1
         version: 0.7.1(apache-arrow@17.0.0)
+      '@tailwind-plugin/expose-colors':
+        specifier: ^1.1.8
+        version: 1.1.8(tailwindcss@3.4.4(ts-node@10.9.1(@types/node@22.1.0)(typescript@5.5.4)))
       '@tailwindcss/forms':
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.4(ts-node@10.9.1(@types/node@22.1.0)(typescript@5.5.4)))
@@ -2118,6 +2121,12 @@ packages:
 
   '@swc/helpers@0.5.12':
     resolution: {integrity: sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==}
+
+  '@tailwind-plugin/expose-colors@1.1.8':
+    resolution: {integrity: sha512-QHgZAvSWzfUW40gIpqVXovKRIx1zsgipcm++oZ0GIZ/Cq7qMqc199zP87lMkftKY0uZQJcoYWn3ExUlI5r7kww==}
+    engines: {node: '>=0.10'}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >=3.0.0-alpha.1'
 
   '@tailwindcss/container-queries@0.1.1':
     resolution: {integrity: sha512-p18dswChx6WnTSaJCSGx6lTmrGzNNvm2FtXmiO6AuA1V4U5REyoqwmT6kgAsIMdjo07QdAfYXHJ4hnMtfHzWgA==}
@@ -9522,6 +9531,10 @@ snapshots:
   '@swc/helpers@0.5.12':
     dependencies:
       tslib: 2.6.2
+
+  '@tailwind-plugin/expose-colors@1.1.8(tailwindcss@3.4.4(ts-node@10.9.1(@types/node@22.1.0)(typescript@5.5.4)))':
+    dependencies:
+      tailwindcss: 3.4.4(ts-node@10.9.1(@types/node@22.1.0)(typescript@5.5.4))
 
   '@tailwindcss/container-queries@0.1.1(tailwindcss@3.4.4(ts-node@10.9.1(@types/node@22.1.0)(typescript@5.5.4)))':
     dependencies:

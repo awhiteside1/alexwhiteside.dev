@@ -2,37 +2,37 @@
 import { cn } from '@ui/utils/cn'
 
 interface Props {
-    flex?: 'row' | 'col' | 'square'
-    url?: string
-    size?: 'sm' | 'md' | 'lg'
-    class?: string
+	flex?: 'row' | 'col' | 'square'
+	url?: string
+	size?: 'sm' | 'md' | 'lg'
+	class?: string
 }
 
 const variants = {
-    row: {
-        main: 'flex-col',
-        sizes: {
-            sm: 'col-span-2 row-span-1',
-            md: 'col-span-4 row-span-2',
-            lg: 'col-span-5 row-span-3',
-        },
-    },
-    square: {
-        main: 'flex-col',
-        sizes: {
-            sm: 'col-span-2 row-span-2',
-            md: 'col-span-3 row-span-3',
-            lg: 'col-span-4 row-span-4',
-        },
-    },
-    col: {
-        main: 'flex-col',
-        sizes: {
-            sm: 'col-span-1 row-span-2',
-            md: 'col-span-2 row-span-3',
-            lg: 'col-span-4 row-span-5',
-        },
-    },
+	row: {
+		main: 'flex-col',
+		sizes: {
+			sm: 'col-span-2 row-span-1',
+			md: 'col-span-4 row-span-2',
+			lg: 'col-span-5 row-span-3',
+		},
+	},
+	square: {
+		main: 'flex-col',
+		sizes: {
+			sm: 'col-span-2 row-span-2',
+			md: 'col-span-3 row-span-3',
+			lg: 'col-span-4 row-span-4',
+		},
+	},
+	col: {
+		main: 'flex-col',
+		sizes: {
+			sm: 'col-span-1 row-span-2',
+			md: 'col-span-2 row-span-3',
+			lg: 'col-span-4 row-span-5',
+		},
+	},
 }
 
 const { flex = 'col', url, size = 'md' } = Astro.props

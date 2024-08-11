@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { optimizeImage } from '../../../utils/optimizeImage'
 
 interface Props {
-    entry: CollectionEntry<'awesome'>
+	entry: CollectionEntry<'awesome'>
 }
 
 const { entry } = Astro.props
@@ -11,21 +11,21 @@ const type = entry.id.split('/')[0] as 'blogs' | 'talks' | 'books'
 let image = optimizeImage(entry.data.cover, 'med')
 let showTitle = true
 switch (type) {
-    case 'talks':
-        image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
-        break
-    case 'books':
-        showTitle = false
-        break
-    case 'blogs':
-        break
+	case 'talks':
+		image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
+		break
+	case 'books':
+		showTitle = false
+		break
+	case 'blogs':
+		break
 }
 const { url, name } = entry.data
 ---
 
 <a
     href={url}
-    class="block relative w-full h-full overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
+    class="block relative [aspect-ratio:6/9] max-h-[14rem] overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
 >
     <div class="relative w-full h-full">
         <img src={image} alt={name} class="w-full h-full object-cover" />

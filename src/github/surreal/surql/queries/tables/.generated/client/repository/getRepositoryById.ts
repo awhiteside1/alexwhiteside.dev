@@ -1,12 +1,15 @@
-import {RecordId, type Surreal} from "surrealdb.js";
+import type { RecordId, Surreal } from 'surrealdb.js'
 
-import {repositorySchema} from "../../schema/repository/repositorySchema.js";
-import type {Repository} from "../../schema/repository/repositoryTypes.js";
+import { repositorySchema } from '../../schema/repository/repositorySchema.js'
+import type { Repository } from '../../schema/repository/repositoryTypes.js'
 
-export const getRepositoryById = async function (db: Surreal, id: RecordId<string>) {
-  const key = repositorySchema.pick({ id: true }).parse({ id });
+export const getRepositoryById = async (db: Surreal, id: RecordId<string>) => {
+	const key = repositorySchema.pick({ id: true }).parse({ id })
 
-  const result = await db.query<[Repository|undefined]>("SELECT * FROM ONLY $id", { id });
+	const result = await db.query<[Repository | undefined]>(
+		'SELECT * FROM ONLY $id',
+		{ id },
+	)
 
-  return result[0];
-};
+	return result[0]
+}

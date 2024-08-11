@@ -10,25 +10,25 @@ import Layout from '../ui/astro/layouts/Layout.astro'
 const allWork = await getCollection('work')
 const grouped = group(allWork, (w) => w.data.company)
 const byCompany = mapValues(
-    grouped,
-    (group) =>
-        group && {
-            roles: group?.toSorted(byDate((role) => role.data.from)),
-            company: first(sift(group.map((x) => x.data.company))),
-            logo: first(sift(group.map((x) => x.data.logo))),
-            from: group
-                .map((x) => x.data.from)
-                .toSorted()
-                .toReversed()
-                .shift(),
-            to: group
-                .map((x) => x.data.to)
-                .toSorted()
-                .shift(),
-        }
+	grouped,
+	(group) =>
+		group && {
+			roles: group?.toSorted(byDate((role) => role.data.from)),
+			company: first(sift(group.map((x) => x.data.company))),
+			logo: first(sift(group.map((x) => x.data.logo))),
+			from: group
+				.map((x) => x.data.from)
+				.toSorted()
+				.toReversed()
+				.shift(),
+			to: group
+				.map((x) => x.data.to)
+				.toSorted()
+				.shift(),
+		},
 )
 const sortedByCompany = Object.values(byCompany).toSorted(
-    byDate((x) => x?.from)
+	byDate((x) => x?.from),
 )
 ---
 

@@ -1,14 +1,14 @@
 ---
 interface Props {
-    date: Date | string
+	date: Date | string
 }
 
 let { date } = Astro.props
-try{
-    date = new Date(date)
-    date.toISOString()
+try {
+	date = new Date(date)
+	date.toISOString()
 } catch (e) {
- date=new Date()
+	date = new Date()
 }
 ---
 

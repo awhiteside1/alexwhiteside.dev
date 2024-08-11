@@ -8,14 +8,18 @@ import Container from '../../components/global/Container.astro'
     </div>
 </Container>
 <div class="sticky top-0 flex content-end scroll-bg load z-20">
-    <div class="sticky top-0 max-w-screen-md lg:max-w-screen-lg mx-auto w-full">
-        <div class="flex flex-row items-center justify-between gap-3 px-4 py-2">
-            <div>
-                <slot name="title" />
-            </div>
-            <div class="relative flex align-middle">
-                <slot name="navigation" />
+    <Container>
+        <div class="sticky top-0 w-full">
+            <div
+                class="flex flex-row items-center justify-between gap-3 px-4 py-2"
+            >
+                <div>
+                    <slot name="title" />
+                </div>
+                <div class="relative flex align-middle">
+                    <slot name="navigation" />
+                </div>
             </div>
         </div>
-    </div>
+    </Container>
 </div>

@@ -1,0 +1,92 @@
+---
+import { cn } from '@lib/utils'
+
+type Props = {
+    text: string
+    class?: string
+    color: string
+}
+
+const { text, color } = Astro.props as Props
+
+const isTailwindColor = ['sky', 'emerald', 'orange'].includes(color)
+const colorval = isTailwindColor ? `var(--tw-${color}-500)` : color
+---
+
+<style>
+    /* Border */
+    .pill::before {
+        content: '';
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        border-radius: 999px;
+        background-image: linear-gradient(
+            var(--rotate) in oklab,
+            oklch(from var(--color) 0.6 C H) 0%,
+            oklch(from var(--color) 0.8 C H) 100%
+        );
+        position: absolute;
+        z-index: -1;
+        top: -2px;
+        left: -2px;
+        animation: spin-pill 5s ease-in-out alternate infinite;
+    }
+
+    /* Glow */
+    .pill::after {
+        position: absolute;
+        content: '';
+        top: 20%;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        margin: 5px auto;
+        transform: scale(0.8);
+        filter: blur(10px);
+        background-image: linear-gradient(
+            var(--rotate) in oklab,
+            oklch(from var(--color) 0.4 C H),
+            oklch(from var(--color) 0.6 C H) 100%
+        );
+        opacity: 1;
+        transition: opacity 0.5s;
+        animation: spin-pill 5s linear infinite;
+    }
+
+    .pill {
+        width: fit-content;
+        color: var(--color);
+    }
+</style>
+
+<div class="animate-bob">
+    <div
+        class={cn(
+            Astro.props.class,
+            `relative text-center px-4 py-1 rounded-full bg-white/80 dark:bg-black/80 pill`
+        )}
+        style={{ '--color': colorval }}
+    >
+        {text}
+    </div>
+</div>
+
+<script>
+    import { animate, stagger } from 'motion'
+
+    animate(
+        '.animate-bob',
+        {
+            transform: ['translateY(5px)', 'translateY(-5px)'],
+        },
+        {
+            duration: 2,
+            easing: ['ease-in', 'ease-out'],
+            repeat: Infinity,
+            direction: 'alternate',
+            delay: stagger(2),
+        }
+    )
+</script>

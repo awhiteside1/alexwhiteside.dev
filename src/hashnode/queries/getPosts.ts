@@ -36,13 +36,13 @@ const getPostsQuery = graphql(`
 `)
 
 export const getPosts = (makeClient: () => Client) => async () => {
-    const client = makeClient()
-    const result = await client.query(getPostsQuery, {}).toPromise()
-    const posts = result.data?.publication?.posts.edges ?? []
-    return posts.map((post) => post.node)
+	const client = makeClient()
+	const result = await client.query(getPostsQuery, {}).toPromise()
+	const posts = result.data?.publication?.posts.edges ?? []
+	return posts.map((post) => post.node)
 }
 
 type Result = ResultOf<typeof getPostsQuery>
 export type PostItem = IterableElement<
-    NonNullable<Result['publication']>['posts']['edges']
+	NonNullable<Result['publication']>['posts']['edges']
 >['node']

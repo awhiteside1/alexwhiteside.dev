@@ -1,2 +1,2 @@
-export * from './textSchema.js';
-export * from './textTypes.js';
+export * from './textSchema.js'
+export * from './textTypes.js'

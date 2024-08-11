@@ -3,9 +3,9 @@
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
-    readonly HASHNODE: string
+	readonly HASHNODE: string
 }
 
 interface ImportMeta {
-    readonly env: ImportMetaEnv
+	readonly env: ImportMetaEnv
 }

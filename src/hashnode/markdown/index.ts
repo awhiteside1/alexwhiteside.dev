@@ -3,16 +3,19 @@ import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import {unified} from 'unified'
+import { unified } from 'unified'
 import { hashnodeImageFixer } from './hashnodeImagePlugin'
-import { hoistImagesOutOfParagraphs, optimizeImagePlugin } from './imageOptimizationPlugin'
+import {
+	hoistImagesOutOfParagraphs,
+	optimizeImagePlugin,
+} from './imageOptimizationPlugin'
 
 export const chain = unified()
-  .use(remarkParse)
-  .use(hashnodeImageFixer)
-  .use(remarkGfm)
-  .use(optimizeImagePlugin)
-  .use(hoistImagesOutOfParagraphs)
-  .use(remarkRehype)
-  .use(remarkUnwrapImages)
-  .use(rehypeStringify)
+	.use(remarkParse)
+	.use(hashnodeImageFixer)
+	.use(remarkGfm)
+	.use(optimizeImagePlugin)
+	.use(hoistImagesOutOfParagraphs)
+	.use(remarkRehype)
+	.use(remarkUnwrapImages)
+	.use(rehypeStringify)

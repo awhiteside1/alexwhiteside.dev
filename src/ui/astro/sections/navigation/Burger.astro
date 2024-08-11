@@ -5,44 +5,44 @@ import BurgerSvg from './BurgerSvg.astro'
 import icons from './icons.svg?raw'
 const pathname = new URL(Astro.request.url).pathname
 const links = [
-    {
-        text: 'About Me',
-        href: '/',
-        icon: 'person',
-        current: false,
-        hover: 'hover:text-indigo-500 dark:hover:text-indigo-400',
-        active: 'text-indigo-600 dark:text-indigo-400',
-    },
-    {
-        text: 'Writing',
-        href: '/blog',
-        icon: 'blog',
-        current: false,
-        hover: 'hover:text-blue-500 dark:hover:text-blue-400',
-        active: 'text-blue-600 dark:text-blue-400',
-    },
-    {
-        text: 'Career',
-        href: '/background',
-        icon: 'work',
-        current: false,
-        hover: 'hover:text-pink-500 dark:hover:text-pink-400',
-        active: 'text-pink-600 dark:text-pink-400',
-    },
-    {
-        text: 'Inspirations',
-        href: '/recommendations',
-        icon: 'sparkle',
-        current: false,
-        hover: 'hover:text-orange-500 dark:hover:text-orange-400',
-        active: 'text-orange-600 dark:text-orange-400',
-    },
+	{
+		text: 'About Me',
+		href: '/',
+		icon: 'person',
+		current: false,
+		hover: 'hover:text-indigo-500 dark:hover:text-indigo-400',
+		active: 'text-indigo-600 dark:text-indigo-400',
+	},
+	{
+		text: 'Writing',
+		href: '/blog',
+		icon: 'blog',
+		current: false,
+		hover: 'hover:text-blue-500 dark:hover:text-blue-400',
+		active: 'text-blue-600 dark:text-blue-400',
+	},
+	{
+		text: 'Career',
+		href: '/background',
+		icon: 'work',
+		current: false,
+		hover: 'hover:text-pink-500 dark:hover:text-pink-400',
+		active: 'text-pink-600 dark:text-pink-400',
+	},
+	{
+		text: 'Inspirations',
+		href: '/recommendations',
+		icon: 'sparkle',
+		current: false,
+		hover: 'hover:text-orange-500 dark:hover:text-orange-400',
+		active: 'text-orange-600 dark:text-orange-400',
+	},
 ]
 const link = links.find(
-    (link) => pathname.split('/')[1] === link.href.split('/')[1]
+	(link) => pathname.split('/')[1] === link.href.split('/')[1],
 )
 if (link) {
-    link.current = true
+	link.current = true
 }
 ---
 

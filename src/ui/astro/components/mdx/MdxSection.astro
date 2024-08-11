@@ -1,26 +1,26 @@
 ---
-import {getCollection} from 'astro:content'
+import { getCollection } from 'astro:content'
 import Prose from '@ui/astro/components/text/Prose.astro'
 const sections = await getCollection('sections')
-type Page = typeof sections[number]['data']['page']
+type Page = (typeof sections)[number]['data']['page']
 
-type Props ={
-    name: string
-    page: NonNullable<Page>
-    prose?: boolean  
-    className?: string  
+type Props = {
+	name: string
+	page: NonNullable<Page>
+	prose?: boolean
+	className?: string
 }
 
-const {page, name, prose=true, className}=Astro.props
-const section = sections.find(section => section.data.page===page && section.data.name===name)
+const { page, name, prose = true, className } = Astro.props
+const section = sections.find(
+	(section) => section.data.page === page && section.data.name === name,
+)
 
+if (!section) return
 
-if(!section) return
-
-const {Content} = await section.render()
+const { Content } = await section.render()
 
 const Wrapper = prose ? Prose : 'div'
-
 ---
 <Wrapper class={className}>
    <Content />

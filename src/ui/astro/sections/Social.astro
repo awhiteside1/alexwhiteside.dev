@@ -1,25 +1,25 @@
 ---
 import Icon from '../components/elements/Icon.astro'
 const links = [
-    {
-        icon: 'github',
-        href: 'https://github.com/awhiteside1',
-    },
-    {
-        icon: 'linkedin',
-        href: 'https://www.linkedin.com/in/alexwhiteside/',
-    },
-    {
-        icon: 'instagram',
-        href: 'https://www.instagram.com/being_whiteside/',
-    },
+	{
+		icon: 'github',
+		href: 'https://github.com/awhiteside1',
+	},
+	{
+		icon: 'linkedin',
+		href: 'https://www.linkedin.com/in/alexwhiteside/',
+	},
+	{
+		icon: 'instagram',
+		href: 'https://www.instagram.com/being_whiteside/',
+	},
 ]
 
 const withIcons = await Promise.all(
-    links.map(async (link) => ({
-        ...link,
-        raw: await import(`./social/${link.icon}.svg?raw`),
-    }))
+	links.map(async (link) => ({
+		...link,
+		raw: await import(`./social/${link.icon}.svg?raw`),
+	})),
 )
 ---
 

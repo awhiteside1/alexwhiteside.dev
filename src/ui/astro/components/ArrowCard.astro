@@ -5,31 +5,31 @@ import type { PostItem } from '../../../hashnode/queries'
 import FormattedDate from './text/FormattedDate.astro'
 
 type Props = {
-    entry: PostItem
+	entry: PostItem
 }
 
 const { entry } = Astro.props
 
 // @todo: Decide if i hate this more than it all being on one line and in the markup
 const container =
-    'not-prose group relative flex flex-nowrap relative translate-x-0 hover:translate-x-2 transition-all duration-300'
+	'not-prose group relative flex flex-nowrap relative translate-x-0 hover:translate-x-2 transition-all duration-300'
 const fades = 'ease-in-out'
 // const border = 'border border-black/15 dark:border-white/20'
 const selectableLight =
-    'bg-white  hover:text-black focus-visible:bg-gray-200/50 focus-visible:text-black '
+	'bg-white  hover:text-black focus-visible:bg-gray-200/50 focus-visible:text-black '
 const selectableDark =
-    'dark:bg-black dark:hover:bg-gray-700/50 dark:hover:text-white dark:focus-visible:bg-gray-200/50 dark:focus-visible:text-white'
+	'dark:bg-black dark:hover:bg-gray-700/50 dark:hover:text-white dark:focus-visible:bg-gray-200/50 dark:focus-visible:text-white'
 const rounded = 'rounded-lg px-5 py-5'
 const selectable = cn(fades, selectableLight, selectableDark)
 const card = cn(container, rounded)
 const image = entry.coverImage?.url ?? 'https://picsum.photos/200/300'
 const imageUrl = optimizeImage(image, 'thumb')
 const style = {
-    'mask-image':
-        'linear-gradient(to right, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))',
-    'background-image': `url(${imageUrl})`,
-    'background-size': 'cover',
-    'background-position': 'center',
+	'mask-image':
+		'linear-gradient(to right, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.5))',
+	'background-image': `url(${imageUrl})`,
+	'background-size': 'cover',
+	'background-position': 'center',
 }
 ---
 

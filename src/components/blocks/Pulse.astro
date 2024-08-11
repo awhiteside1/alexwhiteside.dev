@@ -1,25 +1,25 @@
 ---
 interface Props {
-    mainCircleSize?: number
-    mainCircleOpacity?: number
-    numCircles?: number
-    color?: string
+	mainCircleSize?: number
+	mainCircleOpacity?: number
+	numCircles?: number
+	color?: string
 }
 
 const {
-    mainCircleSize = 50,
-    mainCircleOpacity = 0.24,
-    numCircles = 5,
+	mainCircleSize = 50,
+	mainCircleOpacity = 0.24,
+	numCircles = 5,
 } = Astro.props
 
 const circles = Array.from({ length: numCircles }, (_, i) => {
-    const size = mainCircleSize + i * 70
-    const opacity = mainCircleOpacity - i * 0.03
-    const animationDelay = `${i * 0.06}s`
-    const borderStyle = i === numCircles - 1 ? 'dashed' : 'solid'
-    const borderOpacity = 5 + i * 5
+	const size = mainCircleSize + i * 70
+	const opacity = mainCircleOpacity - i * 0.03
+	const animationDelay = `${i * 0.06}s`
+	const borderStyle = i === numCircles - 1 ? 'dashed' : 'solid'
+	const borderOpacity = 5 + i * 5
 
-    return { size, opacity, animationDelay, borderStyle, borderOpacity }
+	return { size, opacity, animationDelay, borderStyle, borderOpacity }
 })
 ---
 

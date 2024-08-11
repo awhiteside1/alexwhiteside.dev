@@ -1,32 +1,32 @@
 ---
-import {
-    type CollectionFilter,
-    combineFilters,
-    filterByPath,
-} from '../../utils/draftProdFilter'
 import { getCollection } from 'astro:content'
 import { filterFeatured } from '@ui/utils/draftProdFilter'
-import BookCard from './BookCard.astro'
-import BentoGrid from '../components/bento/BentoGrid.astro'
 import { sift } from 'radash'
+import { cn } from '../../utils/cn'
+import {
+	type CollectionFilter,
+	combineFilters,
+	filterByPath,
+} from '../../utils/draftProdFilter'
+import BookCard from './BookCard.astro'
 
 type Props = {
-    filter: {
-        featured?: boolean
-        path?: string
-    }
+	filter: {
+		featured?: boolean
+		path?: string
+	}
 }
 
 const filter = combineFilters(
-    ...sift([
-        Astro.props.filter.featured && filterFeatured,
-        Astro.props.filter.path && filterByPath(Astro.props.filter.path),
-    ])
+	...sift([
+		Astro.props.filter.featured && filterFeatured,
+		Astro.props.filter.path && filterByPath(Astro.props.filter.path),
+	]),
 )
 
 const featured = await getCollection('awesome', filter)
 ---
 
-<BentoGrid>
+<div class={cn('flex flex-wrap gap-4 w-full justify-evenly')}>
     <BookCard books={featured} />
-</BentoGrid>
+</div>

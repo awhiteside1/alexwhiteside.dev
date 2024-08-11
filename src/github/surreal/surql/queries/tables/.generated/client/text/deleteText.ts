@@ -1,7 +1,6 @@
-import {RecordId, type Surreal} from "surrealdb.js";
+import type { RecordId, Surreal } from 'surrealdb.js'
 
-import type {Text} from "../../schema/text/textTypes.js";
+import type { Text } from '../../schema/text/textTypes.js'
 
-export const deleteText = async function (db: Surreal, id: RecordId) {
-  return db.delete<Text>(id)
-};
+export const deleteText = async (db: Surreal, id: RecordId) =>
+	db.delete<Text>(id)

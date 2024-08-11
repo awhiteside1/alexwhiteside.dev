@@ -6,8 +6,8 @@ import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
 import Talk from './cards/talk.astro'
 
 const talks = await getCollection(
-    'awesome',
-    combineFilters(filterDrafts, filterByPath('talks'))
+	'awesome',
+	combineFilters(filterDrafts, filterByPath('talks')),
 )
 ---
 

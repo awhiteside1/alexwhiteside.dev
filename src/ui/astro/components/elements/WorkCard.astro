@@ -2,15 +2,13 @@
 import { getEntry } from 'astro:content'
 import { generateInterval } from '@ui/utils/interval'
 type Props = {
-    slug: string
+	slug: string
 }
 
 const work = await getEntry('work', Astro.props.slug)
 if (!work) return Astro.redirect('/404')
 const data = work.data
 const { Content } = await work.render()
-
-
 ---
 
 {

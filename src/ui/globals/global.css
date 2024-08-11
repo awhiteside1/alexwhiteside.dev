@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+
+ @property --rotate {
+        syntax: '<angle>';
+        initial-value: 132deg;
+        inherits: false;
+}
+
+ @keyframes spin-pill {
+        0% {
+            --rotate: 0deg;
+        }
+          15% {
+            --rotate: 90deg;
+        }
+          40% {
+            --rotate: 150deg;
+        }
+        60% {
+            --rotate: 210deg;
+        }
+        85% {
+            --rotate: 270deg;
+        }
+        100% {
+            --rotate: 360deg;
+        }
+    }
+
 @layer utilities {
    .animate-pause {
      animation-play-state: paused !important;

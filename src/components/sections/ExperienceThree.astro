@@ -1,28 +1,28 @@
 ---
+import { cn } from '../../lib/utils'
 import Card from '../blocks/Card.astro'
 import Stat from '../blocks/Stat.astro'
-import { cn } from '../../lib/utils'
 
 const content = [
-    {
-        card: 'col-end-[-1] row-start-1',
-        background: 'from-indigo-300 via-blue-400 to-sky-400',
-        content: `
+	{
+		card: 'col-end-[-1] row-start-1',
+		background: 'from-indigo-300 via-blue-400 to-sky-400',
+		content: `
                 
             <div class="text-5xl mt-2">10<sup class="text-3xl">+</sup></div>
             <div class="text-base font-medium leading-tight">years of experience</div>`,
-    },
-    {
-        card: 'col-end-[-1] row-start-3',
-        background: 'from-blue-300 via-sky-400 to-teal-400',
-        content: `<div class="text-sm ">Leading</div><div class="text-5xl">50+</div><div class="text-base font-medium leading-tight">engineers & designers</div>`,
-    },
-    {
-        card: 'col-end-[-1] row-start-5',
+	},
+	{
+		card: 'col-end-[-1] row-start-3',
+		background: 'from-blue-300 via-sky-400 to-teal-400',
+		content: `<div class="text-sm ">Leading</div><div class="text-5xl">50+</div><div class="text-base font-medium leading-tight">engineers & designers</div>`,
+	},
+	{
+		card: 'col-end-[-1] row-start-5',
 
-        background: 'from-cyan-400 via-emerald-400 to-green-400',
-        content: `<div class="text-sm"> Reaching</div><div class="text-5xl">2M+</div><div class="text-base font-medium">consumers</div>`,
-    },
+		background: 'from-cyan-400 via-emerald-400 to-green-400',
+		content: `<div class="text-sm"> Reaching</div><div class="text-5xl">2M+</div><div class="text-base font-medium">consumers</div>`,
+	},
 ]
 ---
 

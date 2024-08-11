@@ -44,11 +44,11 @@ const query = graphql(`
 `)
 
 export const getPost = (makeClient: () => Client) => async (slug?: string) => {
-    if (!slug) return undefined
-    const client = makeClient()
+	if (!slug) return undefined
+	const client = makeClient()
 
-    const result = await client.query(query, { slug }).toPromise()
-    if (result.error || !result.data?.publication?.post) return undefined
-    //TODO: These are for types only, consider using different fragment strategy
-    return result.data.publication.post
+	const result = await client.query(query, { slug }).toPromise()
+	if (result.error || !result.data?.publication?.post) return undefined
+	//TODO: These are for types only, consider using different fragment strategy
+	return result.data.publication.post
 }

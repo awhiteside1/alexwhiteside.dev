@@ -1,7 +1,6 @@
-import {RecordId, type Surreal} from "surrealdb.js";
+import type { RecordId, Surreal } from 'surrealdb.js'
 
-import type {Resource} from "../../schema/resource/resourceTypes.js";
+import type { Resource } from '../../schema/resource/resourceTypes.js'
 
-export const deleteResource = async function (db: Surreal, id: RecordId) {
-  return db.delete<Resource>(id)
-};
+export const deleteResource = async (db: Surreal, id: RecordId) =>
+	db.delete<Resource>(id)
