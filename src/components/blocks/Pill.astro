@@ -13,7 +13,7 @@ const isTailwindColor = ['sky', 'emerald', 'orange'].includes(color)
 const colorval = isTailwindColor ? `var(--tw-${color}-500)` : color
 ---
 
-<style>
+<style lang="scss">
     /* Border */
     .pill::before {
         content: '';
@@ -36,23 +36,27 @@ const colorval = isTailwindColor ? `var(--tw-${color}-500)` : color
     .pill::after {
         position: absolute;
         content: '';
-        top: 20%;
+        bottom: -6px;
         left: 0;
         right: 0;
         z-index: -1;
         height: 100%;
         width: 100%;
         margin: 5px auto;
-        transform: scale(0.8);
+        transform: scale(0.9);
         filter: blur(10px);
         background-image: linear-gradient(
             var(--rotate) in oklab,
-            oklch(from var(--color) 0.4 C H),
-            oklch(from var(--color) 0.6 C H) 100%
+            oklch(from var(--color) 0.9 60% H),
+            oklch(from var(--color) 0.7 80% H) 100%
         );
-        opacity: 1;
+        opacity: 0.9;
         transition: opacity 0.5s;
         animation: spin-pill 5s linear infinite;
+
+        html.dark & {
+            opacity: 1;
+        }
     }
 
     .pill {
@@ -61,11 +65,10 @@ const colorval = isTailwindColor ? `var(--tw-${color}-500)` : color
     }
 </style>
 
-<div class="animate-bob">
+<div class={cn('animate-bob', Astro.props.class)}>
     <div
         class={cn(
-            Astro.props.class,
-            `relative text-center px-4 py-1 rounded-full bg-white/80 dark:bg-black/80 pill`
+            `relative text-center px-4 py-1 rounded-full bg-white dark:bg-black/80 pill  `
         )}
         style={{ '--color': colorval }}
     >
@@ -86,7 +89,7 @@ const colorval = isTailwindColor ? `var(--tw-${color}-500)` : color
             easing: ['ease-in', 'ease-out'],
             repeat: Infinity,
             direction: 'alternate',
-            delay: stagger(2),
+            delay: stagger(1.25),
         }
     )
 </script>

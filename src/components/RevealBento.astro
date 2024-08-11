@@ -10,44 +10,46 @@ const options = {
 }
 ---
 
+<style>
+    html.light .shadow-border {
+        background: white;
+        color: black;
+        box-shadow:
+            1px 1px #efefef,
+            -1px 0px #efefef;
+    }
+
+    html.dark .shadow-border {
+        background: black;
+        color: white;
+        box-shadow:
+            1px 1px #565656,
+            -1px 0px #565656;
+    }
+</style>
+
 <div class="hidden" set:html={icons} />
 <div>
-    <div class="border-b border-gray-30 dark:border-gray-500">
+    <div class="border-x border-b border-gray-30 dark:border-gray-500">
         <div class="grid grid-cols-12 grid-flow-row grid-rows-3">
             <div
-                class="col-span-12 row-span-1 flex flex-col justify-between border-x border-gray-30 dark:border-gray-500 md:col-span-4"
+                class="col-span-12 row-span-1 flex flex-col justify-between shadow-border md:col-span-4"
             >
-                <div class="px-4 pt-4 xs:px-10 xs:pt-10 space-y-4">
+                <div class="px-6 py-6 space-y-4">
                     <Title icon="book" text="Summary" />
-                    <div class="text-2xl font-medium text-balance list-none">
-                        Accomplished technical leader and engineer who creates
-                        robust systems and sustainable organizations.
+                    <div
+                        class="text-lg leading-relaxed font-normal text-balance list-none"
+                    >
+                        Accomplished technical leader with a broad skill set,
+                        focused on developing efficient organizations and robust
+                        systems that reach millions of users.
                     </div>
                 </div>
             </div>
 
             <div
-                class="relative col-span-12 row-span-2 flex flex-column border-x border-gray-30 dark:border-gray-500 md:col-span-4 md:border-l-0 md:border-r"
+                class="group relative col-span-12 row-span-2 flex flex-column shadow-border md:col-span-4"
             >
-                <div
-                    class="flex flex-col gap-2 align-center w-full items-center justify-evenly pb-[50%]"
-                >
-                    <Pill
-                        text="Software Architect"
-                        color="sky"
-                        class="[grid-area=a]"
-                    />
-                    <div
-                        class="flex flex-row gap-2 justify-between px-4 w-full"
-                    >
-                        <Pill
-                            text="Entrepreneur"
-                            color="emerald"
-                            class="[grid-area=b]"
-                        />
-                        <Pill text="Creative" color="orange" />
-                    </div>
-                </div>
                 <div class="absolute flex bottom-0 w-full">
                     <img
                         class="brightness-110 object-contain w-full h-full"
@@ -55,74 +57,28 @@ const options = {
                         alt="Portrait"
                     />
                 </div>
+                <div
+                    class="flex flex-col gap-2 align-center w-full items-center justify-evenly px-6 pt-[10%] pb-[60%]"
+                >
+                    <Pill text="Software Architect" color="sky" />
+
+                    <Pill
+                        text="Entrepreneur"
+                        color="emerald"
+                        class="place-self-start"
+                    />
+                    <Pill
+                        text="Creative"
+                        color="orange"
+                        class="place-self-end"
+                    />
+                </div>
             </div>
 
-            <div
-                class="col-span-12 flex flex-col border-x border-gray-30 dark:border-gray-500 md:col-span-4 md:border-l-0 md:border-r"
-            >
-                <Title icon="book" text="Background" />
-                <div>10+ years of experience</div>
-            </div>
-        </div>
-        <div class="border-b border-gray-30 dark:border-gray-500 w-full">
-            <div class="grid grid-cols-12 w-full">
-                <div
-                    class="order-2 col-span-12 flex flex-col-reverse border-x border-gray-30 dark:border-gray-500 lg:order-1 lg:col-span-5 lg:flex-col xl:col-span-4"
-                >
-                    <div
-                        class="flex h-64 flex-1 flex-col items-center justify-center border-t border-gray-30 px-8 py-8 text-center dark:border-gray-500 lg:border-t-0"
-                        style="opacity:1;transform:none"
-                    >
-                    </div>
-                </div>
-                <div
-                    class="relative order-1 col-span-12 border-r border-gray-30 bg-gradient-to-br from-gray-30/50 via-white to-white dark:border-gray-500 dark:from-gray-700 dark:via-gray-1000 dark:to-gray-1000 lg:order-2 lg:col-span-7 xl:col-span-8"
-                >
-                    <div
-                        class="h-full border-l border-gray-30 bg-white/50 p-6 pr-0 transition-colors hover:bg-transparent dark:border-gray-500 dark:bg-gray-1000/20 xs:p-10 lg:border-l-0"
-                    >
-                        <div
-                            class="mx-auto flex h-full max-w-md flex-1 flex-col items-center justify-center gap-y-4"
-                            style="opacity:1;transform:none"
-                        >
-                            <div
-                                class="inline-block text-center text-3xl font-bold leading-tight"
-                            >
-                                Box
-                            </div>
-                            <div class="w-96 space-y-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid max-w-8xl grid-cols-12">
-                <div
-                    class="col-span-12 border-x border-t border-gray-30 bg-gray-5/20 bg-dotted-light bg-center p-4 dark:border-gray-500 dark:bg-transparent dark:bg-dotted-dark xs:p-8"
-                >
-                    <div
-                        class="flex items-center space-x-3"
-                        style="opacity:1;transform:none"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            class="h-4 text-green-500 dark:text-white"
-                        >
-                            <path
-                                d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                            >
-                            </path>
-                        </svg>
-                        <div
-                            class="text-sm font-bold uppercase tracking-wide text-gray-1000 dark:text-green-400"
-                        >
-                            Work
-                        </div>
-                    </div>
-                    <div class="h-[16rem]"></div>
+            <div class="col-span-12 flex flex-col md:col-span-4 shadow-border">
+                <div class="px-6 py-6 space-y-4">
+                    <Title icon="book" text="Background" />
+                    <div>10+ years of experience</div>
                 </div>
             </div>
         </div>

@@ -21,6 +21,7 @@
 </button>
 <script is:inline>
     function forceThemeChange(theme) {
+        console.log(theme)
         if (
             Array.from(document.documentElement.classList.values()).filter(
                 (e) => ['dark', 'light', 'system'].includes(e)
@@ -69,6 +70,7 @@
             darkMode = userSetMode === 'dark' // userSetMode is either 'dark' or 'light'
         }
         if (darkMode) {
+            ev.newDocument.documentElement.classList.remove('light')
             ev.newDocument.documentElement.classList.add('dark')
         }
     })
@@ -106,11 +108,13 @@
     if (window?.hacks?.theme === undefined) {
         Object.assign(window, { hacks: { theme: true } })
         if (localStorage.theme === 'dark') {
+            document.documentElement.classList.remove('light')
             document.documentElement.classList.add('dark')
         } else if (
             getSystemModeValue() === 'dark' &&
             localStorage.theme !== 'light'
         ) {
+            document.documentElement.classList.remove('light')
             document.documentElement.classList.add('dark')
         }
         setTimeout(() => {
