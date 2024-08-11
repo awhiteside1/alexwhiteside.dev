@@ -1,0 +1,24 @@
+---
+import Pill from '../blocks/Pill.astro'
+import portrait from './portrait.png'
+---
+
+<div
+    class="group relative col-span-12 row-span-2 row-start-2 flex flex-column shadow-border md:col-span-4"
+>
+    <div class="absolute flex bottom-0 w-full">
+        <img
+            class="brightness-110 object-contain w-full h-full"
+            src={portrait.src}
+            alt="Portrait"
+        />
+    </div>
+    <div
+        class="flex flex-col gap-2 align-center w-full items-center justify-evenly px-6 pt-[10%] pb-[60%]"
+    >
+        <Pill text="Software Architect" color="sky" />
+
+        <Pill text="Entrepreneur" color="emerald" class="place-self-start" />
+        <Pill text="Creative" color="orange" class="place-self-end" />
+    </div>
+</div>

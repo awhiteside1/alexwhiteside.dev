@@ -5,12 +5,41 @@ import portrait from './sections/portrait.png'
 import Title from './blocks/Title.astro'
 import icons from './sections/roles/icons.svg?raw'
 import Pill from './blocks/Pill.astro'
+import Experience from "./sections/experience/Experience.astro";
+import Background from "./sections/experience/Background.astro";
+import Face from "./sections/Face.astro";
+import Summary from "./sections/Summary.astro";
 const options = {
     borderColor: 'border-neutral-700',
 }
+
+const content = {
+    stack: [
+        {
+            name: 'Mar-tech',
+            children: [{ name: 'Salesforce' }, { name: 'SEO / SEM' }],
+        },
+        {
+            name: 'Frontend',
+            children: [{ name: 'Web Platform' }, { name: 'React' }],
+        },
+        {
+            name: 'Backend',
+            children: [
+                { name: 'Typescript' },
+                { name: 'Java' },
+                { name: 'Python' },
+            ],
+        },
+        {
+            name: 'Infrastructure',
+            children: [{ name: 'K8s' }, { name: 'TF' }],
+        },
+    ],
+}
 ---
 
-<style>
+<style is:global>
     html.light .shadow-border {
         background: white;
         color: black;
@@ -28,59 +57,17 @@ const options = {
     }
 </style>
 
+
+
+
 <div class="hidden" set:html={icons} />
 <div>
     <div class="border-x border-b border-gray-30 dark:border-gray-500">
-        <div class="grid grid-cols-12 grid-flow-row grid-rows-3">
-            <div
-                class="col-span-12 row-span-1 flex flex-col justify-between shadow-border md:col-span-4"
-            >
-                <div class="px-6 py-6 space-y-4">
-                    <Title icon="book" text="Summary" />
-                    <div
-                        class="text-lg leading-relaxed font-normal text-balance list-none"
-                    >
-                        Accomplished technical leader with a broad skill set,
-                        focused on developing efficient organizations and robust
-                        systems that reach millions of users.
-                    </div>
-                </div>
-            </div>
+        <div class="grid grid-cols-12 grid-flow-row ">
+        <Summary/>
 
-            <div
-                class="group relative col-span-12 row-span-2 flex flex-column shadow-border md:col-span-4"
-            >
-                <div class="absolute flex bottom-0 w-full">
-                    <img
-                        class="brightness-110 object-contain w-full h-full"
-                        src={portrait.src}
-                        alt="Portrait"
-                    />
-                </div>
-                <div
-                    class="flex flex-col gap-2 align-center w-full items-center justify-evenly px-6 pt-[10%] pb-[60%]"
-                >
-                    <Pill text="Software Architect" color="sky" />
+         <Face/>
 
-                    <Pill
-                        text="Entrepreneur"
-                        color="emerald"
-                        class="place-self-start"
-                    />
-                    <Pill
-                        text="Creative"
-                        color="orange"
-                        class="place-self-end"
-                    />
-                </div>
-            </div>
-
-            <div class="col-span-12 flex flex-col md:col-span-4 shadow-border">
-                <div class="px-6 py-6 space-y-4">
-                    <Title icon="book" text="Background" />
-                    <div>10+ years of experience</div>
-                </div>
-            </div>
-        </div>
-    </div>
+         <Background/>
 </div>
+    </div>
