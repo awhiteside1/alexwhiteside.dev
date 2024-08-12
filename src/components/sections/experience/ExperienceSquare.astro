@@ -3,7 +3,7 @@ type Props = {
     icon: string
     elements: Array<{ name: string }>
 }
-const { icon, group, elements } = Astro.props
+const { icon, elements } = Astro.props
 ---
 
 <div
@@ -19,7 +19,7 @@ const { icon, group, elements } = Astro.props
     </svg>
 
     <p
-        class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 max-w-32 text-balance leading-tight font-medium"
+        class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-medium"
     >
         <slot />
     </p>
