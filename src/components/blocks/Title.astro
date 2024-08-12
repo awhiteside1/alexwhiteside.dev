@@ -1,17 +1,32 @@
 ---
+import { Astro } from 'astro/env'
+import { cn } from '../../lib/utils'
 type Props = {
     text: string
     icon: string
+    url?: string
 }
 ---
 
-<div class="flex items-center space-x-3" style="opacity:1;transform:none">
-    <svg viewBox="0 0 24 24" class="h-5 text-green-500 dark:text-white">
-        <use xlink:href={`#${Astro.props.icon}`}></use>
-    </svg>
-    <div
-        class="text-sm font-bold uppercase tracking-wide text-gray-600 dark:text-green-400"
-    >
-        {Astro.props.text}
+<a class={cn(Astro.props.url && 'cursor-pointer')} href={Astro.props.url}>
+    <div class="group flex items-center" style="opacity:1;transform:none">
+        <svg viewBox="0 0 24 24" class="h-5 text-green-500 dark:text-white">
+            <use xlink:href={`#${Astro.props.icon}`}></use>
+        </svg>
+        <div
+            class="ml-3 text-sm font-bold uppercase tracking-wide text-gray-600 dark:text-green-400"
+        >
+            {Astro.props.text}
+        </div>
+        {
+            Astro.props.url && (
+                <svg
+                    viewBox="0 0 24 24"
+                    class="ml-1 w-4 inline-flex group-hover:translate-x-2 transition duration-300"
+                >
+                    <use xlink:href="#arrow-right" />
+                </svg>
+            )
+        }
     </div>
-</div>
+</a>

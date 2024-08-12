@@ -29,16 +29,16 @@ const content = {
 ---
 
 <div
-    class="col-span-12 flex flex-col md:col-[span_6/-1] lg:col-[span_5/-1] row-span-1 shadow-border"
+    class="col-span-12 flex flex-col md:col-[span_6/-1] lg:col-[span_6/-1] row-span-1 shadow-border"
 >
-    <div class="px-6 py-6 space-y-4">
-        <Title icon="building" text="Work Experience" />
+    <div class="px-2 py-2 space-y-4">
+        <Title icon="building" text="Work Experience" url="/background" />
 
         <div
             class="w-full flex flex-row flex-wrap gap-3 justify-between align-middle"
         >
             <div
-                class="flex flex-row gap-4 items-center justify-center w-fit p-5 bg-neutral-100 dark:bg-neutral-800 rounded-xl"
+                class="flex flex-row flex-wrap gap-3 items-center justify-center p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl"
             >
                 <div class="bg-white rounded-lg p-4 flex-col flex">
                     <div class="text-5xl">
@@ -52,42 +52,47 @@ const content = {
                 </div>
 
                 <ExperienceSquare
-                    group="Companies Large and Small"
                     icon="building"
-                />
-                <ExperienceSquare group="Multiple Industries" icon="startup" />
-                <ExperienceSquare group="Senior roles " icon="startup" />
+                    elements={[
+                        { name: 'Startups' },
+                        { name: 'Public Companies' },
+                    ]}
+                    }>Large and Small Orgs</ExperienceSquare
+                >
+                <ExperienceSquare
+                    icon="industries"
+                    elements={[
+                        { name: 'FinTech' },
+                        { name: 'EdTech' },
+                        { name: 'Aerospace' },
+                    ]}>Multiple Industries</ExperienceSquare
+                >
+                <ExperienceSquare
+                    icon="senior-position"
+                    elements={[
+                        { name: 'Director of Product' },
+                        { name: 'Sr. Director of Engineering' },
+                        { name: 'Architect' },
+                    ]}>Director<sup>+</sup> Positions</ExperienceSquare
+                >
             </div>
+        </div>
 
-            <ExperienceSquare
-                group="Companies Large and Small"
-                icon="building"
-            />
-            <Experience
-                elements={content.experiences.organizations}
-                title="Size"
-            />
-            <Experience
-                elements={content.experiences.industries}
-                title="Industry"
-                class="flex-wrap flex-row max-h-32"
-            />
+        <div id="background-details" class="flex flex-row gap-3 items-center">
         </div>
     </div>
 </div>
 
-<div
-    class="col-span-12 flex flex-col md:col-[span_6/-1] lg:col-[span_5/-1] row-span-1 -col-end-1 shadow-border"
->
-    <div class="px-6 pb-6 space-y-4">
-        <div
-            class="w-full flex flex-wrap flex-row gap-4 justify-between align-middle"
-        >
-            <Experience
-                elements={content.experiences.roles}
-                title="Position"
-                class="flex-row flex-wrap"
-            />
-        </div>
-    </div>
-</div>
+<script>
+    const squares = document.querySelectorAll('[data-kind=experience-square]')
+
+    squares.forEach((sq) => {
+        sq.addEventListener('click', (evt) => {
+            evt.preventDefault()
+            const template = sq.querySelector('[data-kind=experience-detail]')
+            if (!(template instanceof HTMLTemplateElement)) return
+            const clone = template.content.cloneNode(true)
+            document.getElementById('background-details')?.appendChild(clone)
+        })
+    })
+</script>
