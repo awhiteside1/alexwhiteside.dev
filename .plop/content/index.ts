@@ -1,7 +1,7 @@
-import { globbySync } from 'globby'
-import type { ActionType } from 'plop'
-import { dash, objectify, sift } from 'radash'
-import type { PlopSetupFn } from '../helpers/types'
+import {globbySync} from 'globby'
+import type {ActionType} from 'plop'
+import {dash, objectify, sift} from 'radash'
+import type {PlopSetupFn} from '../helpers/types'
 
 const getCOllectionTypes = (path?: string) => {
 	const result = globbySync(sift(['src/content', path, '*']).join('/'), {
@@ -20,7 +20,9 @@ export const setupContentTemplate: PlopSetupFn = (plop) => {
 	plop.setGenerator('content', {
 		actions: (data = {}): Array<ActionType> => {
 			const actions: ActionType[] = []
-			const slug = dash(data.entry)
+			const name = data.entry ?? data.name ?? data.url
+			Object.assign(data, { entry: name })
+			const slug = dash(name)
 			const file = `${slug}.mdx`
 			const path = sift([
 				'../src/content',
@@ -57,15 +59,8 @@ export const setupContentTemplate: PlopSetupFn = (plop) => {
 					Object.keys(getCOllectionTypes(answers.collection)).length > 0,
 			},
 			{
-				type: 'input',
-				name: 'entry',
-				message: 'Entry Name?',
-			},
-			{
-				type: 'schema',
+				type: 'openai',
 				name: 'schema-data',
-				//@ts-ignore
-				collectionKey: 'collection',
 			},
 		],
 	})

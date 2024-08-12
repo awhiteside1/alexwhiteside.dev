@@ -31,7 +31,7 @@ const content = {
 <div
     class="col-span-12 flex flex-col md:col-[span_6/-1] lg:col-[span_6/-1] row-span-1 shadow-border"
 >
-    <div class="px-2 py-2 space-y-4">
+    <div class="px-4 py-4 space-y-4">
         <Title icon="building" text="Work Experience" url="/background" />
 
         <div
@@ -41,14 +41,12 @@ const content = {
                 class="flex flex-row flex-wrap gap-3 items-stretch justify-stretch p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl"
             >
                 <div
-                    class="bg-white aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-center rounded-lg p-4 text-center transition-all hover:shadow-md"
+                    class="bg-white h-full aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-center rounded-lg p-4 text-center transition-all hover:shadow-md"
                 >
-                    <div class="text-5xl">
-                        10<sup class="text-3xl">+</sup>
+                    <div class="text-4xl">
+                        10<sup class="text-2xl">+</sup>
                     </div>
-                    <div
-                        class="text-base font-medium leading-tight text-center"
-                    >
+                    <div class="text-sm font-medium leading-tight text-center">
                         years
                     </div>
                 </div>
@@ -59,24 +57,27 @@ const content = {
                         { name: 'Startups' },
                         { name: 'Public Companies' },
                     ]}
-                    }>Large and Small Orgs</ExperienceSquare
-                >
+                    }
+                    >Large and Small Orgs
+                </ExperienceSquare>
                 <ExperienceSquare
                     icon="industries"
                     elements={[
                         { name: 'FinTech' },
                         { name: 'EdTech' },
                         { name: 'Aerospace' },
-                    ]}>Multiple Industries</ExperienceSquare
-                >
+                    ]}
+                    >Multiple Industries
+                </ExperienceSquare>
                 <ExperienceSquare
                     icon="senior-position"
                     elements={[
                         { name: 'Director of Product' },
                         { name: 'Sr. Director of Engineering' },
                         { name: 'Architect' },
-                    ]}>Director<sup>+</sup> Positions</ExperienceSquare
-                >
+                    ]}
+                    >Director<sup>+</sup> Positions
+                </ExperienceSquare>
             </div>
         </div>
 
