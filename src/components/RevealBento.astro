@@ -20,29 +20,33 @@ const content = {}
     html.light .shadow-border {
         background: white;
         color: black;
+        --border-color: hsl(0 0% 90% / 50%);
         box-shadow:
-            1px 1px #efefef,
-            -1px 0px #efefef;
+            1px -1px var(--border-color),
+            -1px 1px var(--border-color),
+            1px 1px var(--border-color),
+            -1px -1px var(--border-color);
     }
 
     html.dark .shadow-border {
         background: black;
         color: white;
+        --border-color: hsl(0 0% 20% / 50%);
         box-shadow:
-            1px 1px #565656,
-            -1px 0px #565656;
+            1px -1px var(--border-color),
+            -1px 1px var(--border-color),
+            1px 1px var(--border-color),
+            -1px -1px var(--border-color);
     }
 </style>
 
 <div class="hidden" set:html={icons} />
 <div>
-    <div class="border-x border-b border-gray-30 dark:border-gray-500">
-        <div class="grid grid-cols-12 grid-flow-row">
-            <Summary />
+    <div class="grid grid-cols-12 grid-flow-row">
+        <Summary />
 
-            <Face />
+        <Face />
 
-            <Background />
-        </div>
+        <Background />
     </div>
 </div>
