@@ -7,3 +7,7 @@ dist/
 *storybook.log
 .DS_Store
 .vercel
+
+## Panda
+styled-system
+styled-system-studio

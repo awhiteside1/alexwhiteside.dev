@@ -3,5 +3,6 @@ export default {
 		'postcss-import': {},
 		tailwindcss: {},
 		autoprefixer: {},
+		'@pandacss/dev/postcss': {},
 	},
 }

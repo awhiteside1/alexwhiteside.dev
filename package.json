@@ -3,6 +3,7 @@
 	"type": "module",
 	"version": "1.0.0",
 	"scripts": {
+		"prepare": "panda codegen",
 		"plop": "NODE_OPTIONS='--import tsx' plop --plopfile=./.plop/plopfile.ts",
 		"dev": "astro dev",
 		"dev:network": "astro dev --host",
@@ -81,6 +82,7 @@
 		"@astrojs/vercel": "^7.7.1",
 		"@biomejs/biome": "^1.8.3",
 		"@chromatic-com/storybook": "^1.6.1",
+		"@pandacss/dev": "^0.45.0",
 		"@sebastianwessel/surql-gen": "^2.5.3",
 		"@storybook/addon-essentials": "^8.2.2",
 		"@storybook/addon-interactions": "^8.2.2",
