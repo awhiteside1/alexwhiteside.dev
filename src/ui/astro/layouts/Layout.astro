@@ -7,8 +7,8 @@ import Header from '../sections/navigation/Header.astro'
 import DotBackground from './DotBackground.astro'
 
 type Props = {
-	title: string
-	description: string
+    title: string
+    description: string
 }
 
 const { title, description } = Astro.props
@@ -20,19 +20,23 @@ const { title, description } = Astro.props
         <Head title={`Alex Whiteside | ${title}`} description={description} />
         <style>
             :root {
+                /*--100vw: 100vw;*/
+                /*--px-width: tan(atan2(var(--100vw), 1px));*/
+                /*--count-cells-wide: calc(var(--px-width / 28));*/
                 --grid-cell-size: 28px;
                 --max-screen-px: 1008px;
                 /* This shrinks the max width of the container to be a multiple of 28 */
                 --max-screen-width: round(
                     down,
                     min(100vw, var(--max-screen-px)),
-                    var(--grid-cell-size)
+                    calc(var(--grid-cell-size) * 2)
                 );
-                /* This shifts the background pattern so that it is always aligned with a multiple of 28   */
-                --grid-offset-width: calc(
-                    (round(up, 100vw, calc(var(--grid-cell-size) * 2)) - 100vw) /
-                        2 * -1
-                );
+
+                /* This can be used to offset a centered background image such that it aligns to 28px cells */
+                --bg-width-rounded: calc(100vw + var(--grid-cell-size))
+                    /* This shifts the background pattern so that it is always aligned with a multiple of 28   */
+                    /*--grid-offset-width: calc(*/
+                    /*    var(--100vw) - var(--max-screen-width)*/ /*);*/;
             }
         </style>
     </head>

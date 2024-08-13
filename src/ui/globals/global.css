@@ -2,42 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-
- @property --rotate {
-        syntax: '<angle>';
-        initial-value: 132deg;
-        inherits: false;
+@property --100vw {
+    syntax: "<length>";
+    initial-value: 0px;
+    inherits: true;
 }
 
- @keyframes spin-pill {
-        0% {
-            --rotate: 0deg;
-        }
-          15% {
-            --rotate: 90deg;
-        }
-          40% {
-            --rotate: 150deg;
-        }
-        60% {
-            --rotate: 210deg;
-        }
-        85% {
-            --rotate: 270deg;
-        }
-        100% {
-            --rotate: 360deg;
-        }
+@property --rotate {
+    syntax: '<angle>';
+    initial-value: 132deg;
+    inherits: false;
+}
+
+@keyframes spin-pill {
+    0% {
+        --rotate: 0deg;
     }
+    15% {
+        --rotate: 90deg;
+    }
+    40% {
+        --rotate: 150deg;
+    }
+    60% {
+        --rotate: 210deg;
+    }
+    85% {
+        --rotate: 270deg;
+    }
+    100% {
+        --rotate: 360deg;
+    }
+}
 
 @layer utilities {
-   .animate-pause {
-     animation-play-state: paused !important;
-   }
+    .animate-pause {
+        animation-play-state: paused !important;
+    }
 
-   .animate-play{
+    .animate-play {
         animation-play-state: running !important;
-   }
+    }
 }
 
 html {
@@ -50,7 +55,7 @@ html {
 
 html.dark {
     color-scheme: dark;
-    --menu-bg: 0,0,0;
+    --menu-bg: 0, 0, 0;
     --border: 55, 55, 55;
 }
 
@@ -61,7 +66,8 @@ html.dark {
     font-display: swap;
     src: url('/fonts/InterSmall.woff2') format('woff2');
 }
-/* 
+
+/*
   @font-face {
     font-family: 'Concourse';
     src: url('/fonts/concourse-caps.woff2') format('woff2');
@@ -128,6 +134,7 @@ article {
         @apply decoration-black/30 dark:decoration-white/30;
         @apply transition-colors duration-300 ease-in-out;
     }
+
     article a:hover {
         @apply text-black dark:text-white;
         @apply decoration-black/50 dark:decoration-white/50;
@@ -211,12 +218,9 @@ pre {
     backdrop-filter: blur(4px);
 }
 
-:root{
-    --max-font-size: max(calc(1vw + 1em), 1.5rem);  
+:root {
+    --max-font-size: max(calc(1vw + 1em), 1.5rem);
 }
-
-
-
 
 
 .scroll-bg {
@@ -228,10 +232,11 @@ pre {
     border-bottom-color: rgb(var(--border));
 }
 
-.scroll-bg.load{
+.scroll-bg.load {
     background: transparent;
     border-bottom-color: transparent;
 }
+
 /*
 @keyframes bgProgress {
     from {
@@ -270,18 +275,18 @@ pre {
 } */
 
 .scroll-scale {
-    transform-origin: top left ;
+    transform-origin: top left;
     font-size: var(--max-font-size);
     animation-range: 0vh 20vh;
 }
 
-.scroll-scale.load{
+.scroll-scale.load {
     font-size: min(max(calc(4vw + 1em), 2.8rem), 4rem)
 }
 
-.scroll-append{
+.scroll-append {
     width: 0;
     display: inline-flex;
     opacity: 0;
-    color:black;
+    color: black;
 }
