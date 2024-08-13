@@ -31,6 +31,7 @@ export const extractFromLink = async (url: string) => {
 	let pageText = ''
 	try {
 		pageText = await scrapeBodyText(url)
+		pageText = pageText.substring(0, 1000)
 	} catch (err) {
 		console.error(err)
 	}

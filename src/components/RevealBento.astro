@@ -5,38 +5,15 @@ import portrait from './sections/portrait.png'
 import Title from './blocks/Title.astro'
 import icons from './sections/roles/icons.svg?raw'
 import Pill from './blocks/Pill.astro'
-import Experience from "./sections/experience/Experience.astro";
-import Background from "./sections/experience/Background.astro";
-import Face from "./sections/Face.astro";
-import Summary from "./sections/Summary.astro";
+import Experience from './sections/experience/Experience.astro'
+import Background from './sections/experience/Background.astro'
+import Face from './sections/Face.astro'
+import Summary from './sections/Summary.astro'
 const options = {
     borderColor: 'border-neutral-700',
 }
 
-const content = {
-    stack: [
-        {
-            name: 'Mar-tech',
-            children: [{ name: 'Salesforce' }, { name: 'SEO / SEM' }],
-        },
-        {
-            name: 'Frontend',
-            children: [{ name: 'Web Platform' }, { name: 'React' }],
-        },
-        {
-            name: 'Backend',
-            children: [
-                { name: 'Typescript' },
-                { name: 'Java' },
-                { name: 'Python' },
-            ],
-        },
-        {
-            name: 'Infrastructure',
-            children: [{ name: 'K8s' }, { name: 'TF' }],
-        },
-    ],
-}
+const content = {}
 ---
 
 <style is:global>
@@ -57,17 +34,15 @@ const content = {
     }
 </style>
 
-
-
-
 <div class="hidden" set:html={icons} />
 <div>
     <div class="border-x border-b border-gray-30 dark:border-gray-500">
-        <div class="grid grid-cols-12 grid-flow-row ">
-        <Summary/>
+        <div class="grid grid-cols-12 grid-flow-row">
+            <Summary />
 
-         <Face/>
+            <Face />
 
-         <Background/>
-</div>
+            <Background />
+        </div>
     </div>
+</div>
