@@ -20,28 +20,28 @@ const html = chain.process(post.content.markdown)
 <style is:global>
     @media screen and (min-width: 600px) {
         .inline-float-right {
-            float: right ;
+            float: right;
             width: 60%;
             margin-left: 1.5rem;
             margin-right: 0;
         }
 
         .inline-float-left {
-            float: left ;
+            float: left;
             width: 60%;
             margin-right: 1.5rem;
             margin-left: 0;
         }
 
         .inline-small {
-            padding: 1rem 20% ;
+            padding: 1rem 20%;
         }
     }
 </style>
 
 <Layout title={post.title} description={post.brief}>
     <Container>
-        <div class="relative animate mb-8">
+        <div class="relative animate mb-8 mx-2 -mt-16">
             <BlogHero
                 title={post.title}
                 date={post.publishedAt}
@@ -51,7 +51,9 @@ const html = chain.process(post.content.markdown)
                 <BackToPrevious href="/blog">Back to blog</BackToPrevious>
             </div>
         </div>
-        <article class="animate">
+        <article
+            class="animate mx-4 bg-gradient-to-r from-white/[0.5] to-white/[0.5]"
+        >
             <Fragment set:html={html} />
         </article>
     </Container>

@@ -1,15 +1,13 @@
 ---
-import { getCollection } from 'astro:content'
 import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
 import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
 import { byDate, generateInterval } from '@ui/utils/interval'
-import { first, group, last, mapValues, sift } from 'radash'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
 import { getWorkContent } from '../lib/getWorkContent'
 const workContent = await getWorkContent()
-const sortedByCompany = Object.values(workContent).toSorted(
+const sortedByCompany = Array.from(workContent.values()).toSorted(
     byDate((x) => x?.from)
 )
 ---
@@ -34,7 +32,9 @@ const sortedByCompany = Object.values(workContent).toSorted(
         >
             &nbsp;
         </div>
-        <div class="space-y-6">
+        <div
+            class="space-y-6 px-2 bg-gradient-to-r from-white/[0.5] to-white/[0.5]"
+        >
             <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
                 Over the last decade I've spent most of my time in Fintech and
                 Edtech as a (very) hands on technical leader.

@@ -41,7 +41,12 @@ const { title, description } = Astro.props
             }
         </style>
     </head>
-    <body class={css({ minHeight: '104vh', position: 'relative' })}>
+    <body
+        class={css({
+            minHeight: '104vh',
+            position: 'relative',
+        })}
+    >
         <DotBackground />
 
         <Header>
