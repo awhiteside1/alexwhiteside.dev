@@ -104,9 +104,13 @@ const { icon, elements } = Astro.props
         elements.forEach((el) => {
             console.log('for each element handle setup', el.textContent)
             el.addEventListener('transitionend', (evt) => {
-                const element = evt.currentTarget
+                const element = evt.target
                 if (!(element instanceof HTMLElement)) return
-                if (evt.timeStamp - lastTimestamp < 20) return
+                if (evt.timeStamp - lastTimestamp < 20) {
+                    console.log('timestamp too similar, skipping')
+                    return
+                }
+                console.log(evt)
                 lastTimestamp = evt.timeStamp
                 if (element.classList.replace('end', 'start')) {
                 } else if (element.classList.contains('visible')) {
