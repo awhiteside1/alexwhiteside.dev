@@ -3,16 +3,14 @@ import Container from '../../components/global/Container.astro'
 ---
 
 <Container>
-    <div class="w-full flex px-4 mt-10 flex-col justify-end h-16">
+    <div class="w-full flex mt-10 flex-col justify-end h-16">
         <slot name="before" />
     </div>
 </Container>
 <div class="sticky top-0 flex content-end scroll-bg load z-20">
     <Container>
         <div class="sticky top-0 w-full">
-            <div
-                class="flex flex-row items-center justify-between gap-3 px-4 py-2"
-            >
+            <div class="flex flex-row items-center justify-between gap-3 py-2">
                 <div>
                     <slot name="title" />
                 </div>

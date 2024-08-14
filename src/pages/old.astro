@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content'
+import MdxSection from '@ui/astro/components/mdx/MdxSection.astro'
+import Layout from '@ui/astro/layouts/Layout.astro'
+import PostsFallback from '@ui/astro/sections/PostsFallback.astro'
+import RecentPosts from '@ui/astro/sections/RecentPosts.astro'
+import Social from '@ui/astro/sections/Social.astro'
+import { byNumber } from '@ui/utils/interval'
+import Badge from '../ui/astro/components/elements/Badge.astro'
+import GradientText from '../ui/astro/components/elements/GradientText.astro'
+import Container from '../ui/astro/components/global/Container.astro'
+
+const titles = (await getCollection('titles')).toSorted(
+	byNumber((title) => title.data.order),
+)
+---
+
+<Layout
+    title="Software Architect, Entrepreneur, Creative"
+    description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. ">
+    <div slot="before" class="scroll-scale load text-3xl z-[100] translate-y-4">
+        <GradientText color="neutral">Alex</GradientText>
+    </div>
+    <div class="scroll-scale load" slot="title">
+        <GradientText color="neutral"
+            ><div class="scroll-append">
+                <GradientText color="neutral" class="p-0"
+                    >Alex&nbsp;</GradientText
+                >
+            </div>Whiteside
+        </GradientText>
+    </div>
+    <Container>
+        <div class="space-y-6">
+            <!--<h1 class="animate text-6xl font-bold from-gray-400 to-gray-950 bg-gradient-to-br text-transparent bg-clip-text bg-300%">-->
+            <div class="space-y-4">
+                <ul class="flex flex-row flex-wrap gap-2">
+                    {
+                        titles.map((title) => (
+                            <Badge
+                                color={title.data.color}
+                                text={title.data.title}
+                                className={title.data.className}>
+                                <p class="text-sm font-medium">
+                                    {title.data.short}
+                                </p>
+                            </Badge>
+                        ))
+                    }
+                </ul>
+            </div>
+            <div class="space-y-16">
+                <section>
+                    <article class="space-y-8 animate">
+                        <span class="">
+                            <MdxSection page="home" name="intro" />
+                        </span>
+                        <Social />
+                    </article>
+                </section>
+                <RecentPosts server:defer>
+                    <div slot="fallback">
+                        <PostsFallback />
+                    </div>
+                </RecentPosts>
+            </div>
+        </div>
+    </Container>
+</Layout>
