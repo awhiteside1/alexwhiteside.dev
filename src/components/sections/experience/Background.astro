@@ -2,6 +2,7 @@
 import Experience from './Experience.astro'
 import Title from '../../blocks/Title.astro'
 import ExperienceSquare from './ExperienceSquare.astro'
+import { getWorkContent } from '../../../lib/getWorkContent'
 const content = {
     experiences: {
         organizations: [
@@ -26,6 +27,11 @@ const content = {
         ],
     },
 }
+
+const companies = await getWorkContent()
+const even = companies['Even Financial']
+const moneylion = companies['MoneyLion']
+const birch = companies['Birch Finance']
 ---
 
 <div
@@ -54,8 +60,8 @@ const content = {
                 <ExperienceSquare
                     icon="building"
                     elements={[
-                        { name: 'Startups' },
-                        { name: 'Public Companies' },
+                        { name: 'Startups', companies: [birch, even] },
+                        { name: 'Public Companies', companies: [moneylion] },
                     ]}
                     }
                     >Large and Small Orgs
@@ -63,7 +69,10 @@ const content = {
                 <ExperienceSquare
                     icon="industries"
                     elements={[
-                        { name: 'FinTech' },
+                        {
+                            name: 'FinTech',
+                            companies: [birch, even, moneylion],
+                        },
                         { name: 'EdTech' },
                         { name: 'Aerospace' },
                     ]}
@@ -72,9 +81,18 @@ const content = {
                 <ExperienceSquare
                     icon="senior-position"
                     elements={[
-                        { name: 'Director of Product' },
-                        { name: 'Sr. Director of Engineering' },
-                        { name: 'Architect' },
+                        {
+                            name: 'Director of Product',
+                            companies: [even],
+                        },
+                        {
+                            name: 'Sr. Director of Engineering',
+                            companies: [moneylion],
+                        },
+                        {
+                            name: 'Architect',
+                            companies: [moneylion],
+                        },
                     ]}
                     >Director<sup>+</sup> Positions
                 </ExperienceSquare>

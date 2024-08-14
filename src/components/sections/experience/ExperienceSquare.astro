@@ -6,7 +6,10 @@ import { stacked } from './styles'
 
 type Props = {
     icon: string
-    elements: Array<{ name: string }>
+    elements: Array<{
+        name: string
+        companies?: Array<{ logo: string; company: string }>
+    }>
 }
 const { icon, elements } = Astro.props
 ---
@@ -32,13 +35,34 @@ const { icon, elements } = Astro.props
         data-kind="stacked"
     >
         {
-            elements.map((element, index) => (
-                <div class={cx(stacked, 'start')}>
-                    <p class="text-xs text-neutral-200 dark:text-neutral-400 font-medium  ">
-                        {element.name}
-                    </p>
-                </div>
-            ))
+            elements.map((element, index) => {
+                return (
+                    <section
+                        class={cx(
+                            stacked,
+                            'start',
+                            'flex flex-col items-center justify-evenly text-balance'
+                        )}
+                    >
+                        {element.companies && (
+                            <div class="flex flex-row flex-wrap mx-2 max-h-8">
+                                {element.companies.map((company) => (
+                                    <div class="relative grow flex flex-none items-center justify-center rounded-full shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0  -mx-1">
+                                        <img
+                                            src={company.logo}
+                                            alt=""
+                                            class="h-full w-full aspect-square object-cover rounded-full max-h-7"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        <p class="text-xs text-neutral-200 dark:text-neutral-400 font-medium text-center ">
+                            {element.name}
+                        </p>
+                    </section>
+                )
+            })
         }
     </div>
 </Lifted>
@@ -63,27 +87,38 @@ const { icon, elements } = Astro.props
 </style>
 
 <script>
+    console.log('Script')
     document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
-        const elements = stack.querySelectorAll('div')
+        let count = 0
+        let lastTimestamp = 0
+        console.log('Script init for stack', stack.textContent)
+        const showNext = () => {
+            const element = count % elements.length
+            elements[element].classList.replace('start', 'visible')
+            console.log('showNext', count, elements[element].textContent)
+            count = count + 1
+        }
+
+        const elements = stack.querySelectorAll('section')
         elements.forEach((el) => {
+            console.log('for each element handle setup', el.textContent)
             el.addEventListener('transitionend', (evt) => {
                 const element = evt.currentTarget
                 if (!(element instanceof HTMLElement)) return
-                element.classList.replace('end', 'start')
-                if (element.classList.contains('visible')) {
+                if (evt.timeStamp - lastTimestamp < 50) return
+                lastTimestamp = evt.timeStamp
+
+                if (element.classList.replace('end', 'start')) {
+                } else if (element.classList.contains('visible')) {
                     setTimeout(
                         () => element.classList.replace('visible', 'end'),
-                        1000
+                        3000
                     )
+                } else if (element.classList.contains('start')) {
+                    setTimeout(() => showNext(), 50)
                 }
             })
         })
-        let count = 0
-        setInterval(() => {
-            elements[count++ % elements.length].classList.replace(
-                'start',
-                'visible'
-            )
-        }, 3000)
+        showNext()
     })
 </script>

@@ -3,40 +3,23 @@ import { getCollection } from 'astro:content'
 import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
 import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
 import { byDate, generateInterval } from '@ui/utils/interval'
-import { first, group, mapValues, sift } from 'radash'
+import { first, group, last, mapValues, sift } from 'radash'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
-const allWork = await getCollection('work')
-const grouped = group(allWork, (w) => w.data.company)
-const byCompany = mapValues(
-	grouped,
-	(group) =>
-		group && {
-			roles: group?.toSorted(byDate((role) => role.data.from)),
-			company: first(sift(group.map((x) => x.data.company))),
-			logo: first(sift(group.map((x) => x.data.logo))),
-			from: group
-				.map((x) => x.data.from)
-				.toSorted()
-				.toReversed()
-				.shift(),
-			to: group
-				.map((x) => x.data.to)
-				.toSorted()
-				.shift(),
-		},
-)
-const sortedByCompany = Object.values(byCompany).toSorted(
-	byDate((x) => x?.from),
+import { getWorkContent } from '../lib/getWorkContent'
+const workContent = await getWorkContent()
+const sortedByCompany = Object.values(workContent).toSorted(
+    byDate((x) => x?.from)
 )
 ---
 
 <Layout
     title="Background & Experience"
-    description="Multiple startup exists in Fintech, Edtech, and more.">
+    description="Multiple startup exists in Fintech, Edtech, and more."
+>
     <div slot="before" class="text-3xl z-[100] translate-y-4">
-        <GradientText color="pink">Career & </GradientText>
+        <GradientText color="pink">Career &</GradientText>
     </div>
 
     <div class="scroll-scale load" slot="title">
@@ -47,7 +30,8 @@ const sortedByCompany = Object.values(byCompany).toSorted(
         <div
             id="sticky-backdrop"
             style="opacity: 0;"
-            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300">
+            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
+        >
             &nbsp;
         </div>
         <div class="space-y-6">
