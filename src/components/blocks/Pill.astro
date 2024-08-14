@@ -78,18 +78,22 @@ const colorval = isTailwindColor ? `var(--tw-${color}-500)` : color
 
 <script>
     import { animate, stagger } from 'motion'
+    import { ensureInit } from '@lib/astro'
+    const setup = (document: Document) => {
+        animate(
+            '.animate-bob',
+            {
+                transform: ['translateY(5px)', 'translateY(-5px)'],
+            },
+            {
+                duration: 2,
+                easing: ['ease-in', 'ease-out'],
+                repeat: Infinity,
+                direction: 'alternate',
+                delay: stagger(1.25),
+            }
+        )
+    }
 
-    animate(
-        '.animate-bob',
-        {
-            transform: ['translateY(5px)', 'translateY(-5px)'],
-        },
-        {
-            duration: 2,
-            easing: ['ease-in', 'ease-out'],
-            repeat: Infinity,
-            direction: 'alternate',
-            delay: stagger(1.25),
-        }
-    )
+    ensureInit(setup, { pages: ['/test'] })
 </script>

@@ -17,14 +17,18 @@ type Props = {
         >
             {Astro.props.text}
         </div>
+        <div class="grow min-h-1"></div>
         {
             Astro.props.url && (
-                <svg
-                    viewBox="0 0 24 24"
-                    class="ml-1 w-4 inline-flex group-hover:translate-x-2 transition duration-300"
-                >
-                    <use xlink:href="#arrow-right" />
-                </svg>
+                <div class="text-gray-600 dark:text-green-400 uppercase tracking-wide text-sm font-bold">
+                    View All
+                    <svg
+                        viewBox="0 0 24 24"
+                        class=" w-5 inline-flex  group-hover:translate-x-1 transition duration-300 stroke-2"
+                    >
+                        <use xlink:href="#arrow-right" />
+                    </svg>
+                </div>
             )
         }
     </div>

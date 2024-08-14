@@ -81,6 +81,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 
 <script is:inline>
     function init() {
+        setup()
         animate()
         addCopyCodeButtons()
     }
@@ -93,6 +94,11 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
                 element.classList.add('show')
             }, index * 50)
         })
+    }
+
+    const setup = () => {
+        if (window.astroInitContexts != null) return
+        window.astroInitContexts = new Map()
     }
 
     function addCopyCodeButtons() {
@@ -132,5 +138,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
         }
     }
 
+    setup()
     document.addEventListener('astro:page-load', () => init())
 </script>

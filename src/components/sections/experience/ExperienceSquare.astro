@@ -87,42 +87,43 @@ const { icon, elements } = Astro.props
 </style>
 
 <script>
-    console.log('Script')
-    const stats = new Map<string, { event: string; timestamp: number }[]>()
-    document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
-        let count = 0
-        let lastTimestamp = 0
-        console.log('Script init for stack', stack.textContent)
-        const showNext = () => {
-            const element = count % elements.length
-            elements[element].classList.replace('start', 'visible')
-            console.log('showNext', count, elements[element].textContent)
-            count = count + 1
-        }
+    import { ensureInit } from '../../../lib/astro'
 
-        const elements = stack.querySelectorAll('section')
-        elements.forEach((el) => {
-            console.log('for each element handle setup', el.textContent)
-            el.addEventListener('transitionend', (evt) => {
-                const element = evt.target
-                if (!(element instanceof HTMLElement)) return
-                if (evt.timeStamp - lastTimestamp < 20) {
-                    console.log('timestamp too similar, skipping')
-                    return
-                }
-                console.log(evt)
-                lastTimestamp = evt.timeStamp
-                if (element.classList.replace('end', 'start')) {
-                } else if (element.classList.contains('visible')) {
-                    setTimeout(
-                        () => element.classList.replace('visible', 'end'),
-                        2000
-                    )
-                } else if (element.classList.contains('start')) {
-                    setTimeout(() => showNext(), 50)
-                }
+    console.log('Script')
+    const setup = (document: Document) => {
+        document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
+            let count = 0
+            let lastTimestamp = 0
+            // console.log('Script init for stack', stack.textContent)
+            const showNext = () => {
+                const element = count % elements.length
+                elements[element].classList.replace('start', 'visible')
+                count = count + 1
+            }
+
+            const elements = stack.querySelectorAll('section')
+            elements.forEach((el) => {
+                // console.log('for each element handle setup', el.textContent)
+                el.addEventListener('transitionend', (evt) => {
+                    const element = evt.target
+                    if (!(element instanceof HTMLElement)) return
+                    if (evt.timeStamp - lastTimestamp < 20) {
+                        return
+                    }
+                    lastTimestamp = evt.timeStamp
+                    if (element.classList.replace('end', 'start')) {
+                    } else if (element.classList.contains('visible')) {
+                        setTimeout(
+                            () => element.classList.replace('visible', 'end'),
+                            2000
+                        )
+                    } else if (element.classList.contains('start')) {
+                        setTimeout(() => showNext(), 50)
+                    }
+                })
             })
+            showNext()
         })
-        showNext()
-    })
+    }
+    ensureInit(setup, { pages: ['/test'] })
 </script>

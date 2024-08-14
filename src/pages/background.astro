@@ -1,11 +1,11 @@
 ---
 import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
 import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
-import {byDate, generateInterval} from '@ui/utils/interval'
+import { byDate, generateInterval } from '@ui/utils/interval'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
-import {getWorkContent} from '../lib/getWorkContent'
+import { getWorkContent } from '../lib/getWorkContent'
 const workContent = await getWorkContent()
 const sortedByCompany = Array.from(workContent.values()).toSorted(
     byDate((x) => x?.from)
@@ -13,8 +13,8 @@ const sortedByCompany = Array.from(workContent.values()).toSorted(
 ---
 
 <Layout
-        title="Background & Experience"
-        description="Multiple startup exists in Fintech, Edtech, and more."
+    title="Background & Experience"
+    description="Multiple startup exists in Fintech, Edtech, and more."
 >
     <div slot="before" class="text-3xl z-[100] translate-y-4">
         <GradientText color="pink">Career &</GradientText>
@@ -24,17 +24,15 @@ const sortedByCompany = Array.from(workContent.values()).toSorted(
         <GradientText color="pink">Background</GradientText>
     </div>
 
-    <Container class='bg-white p-2'>
+    <Container background class="p-2">
         <div
-                id="sticky-backdrop"
-                style="opacity: 0;"
-                class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
+            id="sticky-backdrop"
+            style="opacity: 0;"
+            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
         >
             &nbsp;
         </div>
-        <div
-                class="space-y-6 px-2 bg-gradient-to-r from-white/[0.5] to-white/[0.5]"
-        >
+        <div class="space-y-6 px-2">
             <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
                 Over the last decade I've spent most of my time in Fintech and
                 Edtech as a (very) hands on technical leader.
@@ -49,25 +47,25 @@ const sortedByCompany = Array.from(workContent.values()).toSorted(
                                 company.logo &&
                                 company.company &&
                                 company.from && (
-                                            <>
-                                                <MediaElement
-                                                        logo={company.logo}
-                                                        title={company.company}
-                                                        subtitle={generateInterval(
-                                                            company.from,
-                                                            company.to
-                                                        )}
-                                                />
-                                                <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
-                                                    {company?.roles.map(
-                                                        (entry: { slug: string }) => (
-                                                                <WorkCard
-                                                                        slug={entry.slug}
-                                                                />
-                                                        )
-                                                    )}
-                                                </article>
-                                            </>
+                                    <>
+                                        <MediaElement
+                                            logo={company.logo}
+                                            title={company.company}
+                                            subtitle={generateInterval(
+                                                company.from,
+                                                company.to
+                                            )}
+                                        />
+                                        <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
+                                            {company?.roles.map(
+                                                (entry: { slug: string }) => (
+                                                    <WorkCard
+                                                        slug={entry.slug}
+                                                    />
+                                                )
+                                            )}
+                                        </article>
+                                    </>
                                 )
                         )
                     }
@@ -78,6 +76,8 @@ const sortedByCompany = Array.from(workContent.values()).toSorted(
 </Layout>
 
 <script>
+    import { ensureInit } from '../lib/astro'
+
     const getBackdrop = () => {
         const background = document.getElementById('sticky-backdrop')
         if (!background) throw new Error('No Background Element Found')
@@ -157,7 +157,7 @@ const sortedByCompany = Array.from(workContent.values()).toSorted(
         }
     }
 
-    const initializeScroll = () => {
+    const initializeScroll = (document: Document) => {
         const backdropEl = document.getElementById('sticky-backdrop')
 
         if (backdropEl && !backdropEl.dataset.initialized) {
@@ -167,5 +167,5 @@ const sortedByCompany = Array.from(workContent.values()).toSorted(
         }
     }
 
-    document.addEventListener('astro:page-load', () => initializeScroll())
+    ensureInit(initializeScroll, { pages: ['/background'] })
 </script>
