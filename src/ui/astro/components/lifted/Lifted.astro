@@ -8,16 +8,19 @@ import {
     coverColor,
 } from './styles'
 import { css } from '@styles/css'
+import { draw, min } from 'radash'
 
 type Props = {
     colorInner?: string
     colorCover?: string
     minSize?: string
+    liftClearance?: 'full' | 'tight' | 'low'
 }
 const {
     colorInner = 'green',
     colorCover = 'white',
     minSize = '100px',
+    liftClearance = 'low',
 } = Astro.props
 ---
 
@@ -31,87 +34,67 @@ const {
             ...coverColor.set(colorCover),
         }}
     >
-        <div data-role="cover" class={paletteCover}>
+        <div data-role="cover" class={paletteCover({ lift: liftClearance })}>
             <slot name="cover" />
         </div>
         <div class={paletteBase}>
-            <div
-                class={css({
-                    width: '100%',
-                    height: '100%',
-                    minHeight: '100px',
-                })}
-            >
-                <slot name="inner" />
-            </div>
+            <slot name="inner" />
         </div>
     </div>
 </div>
 
 <script>
-    import { animate, type AnimationControls, timeline } from 'motion'
+    import { animate, type AnimationControls, stagger, timeline } from 'motion'
 
-    const createAnimation = (group: Element) => {
-        const cover = group.querySelector('[data-role=cover]')
-        const top = group.querySelector('[data-role=cover-top]')
-
-        if (!(cover instanceof HTMLElement)) return
-        //  if (!(top instanceof HTMLElement)) return
-        const animation = timeline(
-            [
-                [
-                    cover,
-                    { transform: ['rotateX(0deg)', 'rotateX(78deg)'] },
-                    { duration: 10 },
-                ],
-            ],
-            {
-                duration: 3,
-                persist: true,
-                defaultOptions: { easing: 'ease' },
-                autoplay: false,
-            }
-        )
-
-        return animation
-    }
-
-    const createOnHoverEnd =
-        (controls: AnimationControls): EventListenerOrEventListenerObject =>
-        (evt) => {
-            console.log(evt)
-            evt.stopPropagation()
-
-            const group = evt.currentTarget
-            console.log(group)
-            if (!(group instanceof HTMLElement)) return
-            if (group.dataset.hovered != 'true') return
-            group.dataset.hovered = 'false'
-            controls.playbackRate = -1
-            controls.play()
-            controls.finished.then(() => controls.commitStyles())
+    const controls = animate(
+        '[data-role=cover]',
+        { transform: [null, 'rotateX(40deg)', 'rotateX(0deg)'] },
+        {
+            delay: stagger(0.5),
+            duration: 1,
+            direction: 'alternate',
+            easing: 'ease-in',
+            persist: true,
         }
+    )
+    controls.finished.then(() => controls.cancel())
 
-    const createOnHover =
-        (controls: AnimationControls): EventListenerOrEventListenerObject =>
-        (evt) => {
-            evt.stopPropagation()
-            console.log('mouseover')
-
-            const group = evt.currentTarget
-            if (!(group instanceof HTMLElement)) return
-            if (group.dataset.hovered === 'true') return
-            group.dataset.hovered = 'true'
-            controls.playbackRate = 1
-            controls.play()
-            controls.finished.then(() => controls.commitStyles())
-        }
-
-    // document.querySelectorAll('[role=group]').forEach((el) => {
-    //     const animation = createAnimation(el)
-    //     if (animation) {
-    //         el.addEventListener('mouseover', createOnHover(animation))
-    //         el.addEventListener('mouseleave', createOnHoverEnd(animation))
+    // const createOnHoverEnd =
+    //     (controls: AnimationControls): EventListenerOrEventListenerObject =>
+    //     (evt) => {
+    //         console.log(evt)
+    //         evt.stopPropagation()
+    //
+    //         const group = evt.currentTarget
+    //         console.log(group)
+    //         if (!(group instanceof HTMLElement)) return
+    //         if (group.dataset.hovered != 'true') return
+    //         group.dataset.hovered = 'false'
+    //         controls.playbackRate = -1
+    //         controls.play()
+    //         controls.finished.then(() => controls.commitStyles())
     //     }
-    // })
+    //
+    // const createOnHover =
+    //     (controls: AnimationControls): EventListenerOrEventListenerObject =>
+    //     (evt) => {
+    //         evt.stopPropagation()
+    //         console.log('mouseover')
+    //
+    //         const group = evt.currentTarget
+    //         if (!(group instanceof HTMLElement)) return
+    //         if (group.dataset.hovered === 'true') return
+    //         group.dataset.hovered = 'true'
+    //         controls.playbackRate = 1
+    //         controls.play()
+    //         controls.finished.then(() => controls.commitStyles())
+    //     }
+    //
+    // // document.querySelectorAll('[role=group]').forEach((el) => {
+    // //     const animation = createAnimation(el)
+    // //     if (animation) {
+    // //         el.addEventListener('mouseover', createOnHover(animation))
+    // //         el.addEventListener('mouseleave', createOnHoverEnd(animation))
+    // //     }
+    // // })
 </script>

@@ -1,5 +1,7 @@
 ---
 import Lifted from '../../../ui/astro/components/lifted/Lifted.astro'
+import Pill from '../../blocks/Pill.astro'
+import { stacked } from './styles'
 type Props = {
     icon: string
     elements: Array<{ name: string }>
@@ -7,7 +9,7 @@ type Props = {
 const { icon, elements } = Astro.props
 ---
 
-<Lifted>
+<Lifted liftClearance="full" colorInner="">
     <div
         slot="cover"
         class="aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-center rounded-lg p-3 text-center transition-all hover:shadow-md"
@@ -22,4 +24,40 @@ const { icon, elements } = Astro.props
             <slot />
         </p>
     </div>
+    <div
+        slot="inner"
+        class="bg-radial from-zinc-900 to-zinc-200 dark:bg-neutral-900 w-full h-full relative"
+        data-kind="stacked"
+    >
+        {
+            elements.map((element, index) => (
+                <div class={stacked}>
+                    <p class="text-xs text-neutral-200 dark:text-neutral-400 font-medium  ">
+                        {element.name}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
 </Lifted>
+
+<script>
+    import { animate, stagger } from 'motion'
+
+    animate(
+        '[data-kind=stacked] > div',
+        {
+            opacity: [0, 1, 0],
+            transform: [
+                'translateX(-10px)',
+                'translateX(0px)',
+                'translateX(10px)',
+            ],
+        },
+        {
+            duration: 3,
+            delay: stagger(2),
+            repeat: In,
+        }
+    )
+</script>

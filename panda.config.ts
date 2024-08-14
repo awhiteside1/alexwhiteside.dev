@@ -1,23 +1,21 @@
 import { defineConfig, defineKeyframes } from '@pandacss/dev'
 
 const keyframes = defineKeyframes({
-    startTransition: {
+    shift: {
         '0%': {
             opacity: 0,
-            top: '200px',
-            transform: 'scale(0.5)',
-            height: 0,
+            transform: 'translateX(-10px)',
         },
-        '40%': {
+        '20%': {
             opacity: 1,
+            transform: 'translateX(-2px)',
         },
-        '100%': {
-            top: '22px',
+        '50%': { opacity: 1, transform: 'translateX(0px)' },
+        '70%': {
             opacity: 1,
-            transform: 'scale(1)',
-            height: '15px',
-            boxShadow: '0 5px 10px -2px rgba(0, 0, 0, 0.2)',
+            transform: 'translateX(2px)',
         },
+        '100%': { opacity: 0, transform: 'translateX(10px)' },
     },
 })
 

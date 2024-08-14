@@ -1,4 +1,4 @@
-import { css } from '@styles/css'
+import { css, cva } from '@styles/css'
 import { dash } from 'radash'
 import { defineStyles } from '@pandacss/dev'
 import type { CssVarKeys, CssVarValue } from '@styles/types'
@@ -41,7 +41,10 @@ export const paletteWrapper = css({
 
 export const palette = css(colors, {
     '--lifted-color-top':
-        'hsl(from var(--bg-color-main) h calc(s - 1 ) calc( l - 5)  / 100%)',
+        'hsl(from var(--bg-color-main) h calc(s - 1 ) l  / 100%)',
+    _dark: {
+        '--lifted-color-top': 'hsl(from var(--bg-color-main) h s 30  / 100%)',
+    },
     width: '100%',
     height: '100%',
     position: 'relative',
@@ -49,20 +52,17 @@ export const palette = css(colors, {
     perspective: '800px',
 })
 
-export const paletteCover = css({
+const paletteCoverBase = {
+    cursor: 'default',
+
     backgroundColor: 'var(--bg-color-main)',
-    borderRadius: '6px',
+    borderRadius: '0.5rem',
     position: 'absolute',
     width: 'inherit',
     transform: 'translateZ(1px)',
     transition: 'all',
-    transitionDuration: '1s',
-    border: '1px solid var(--lifted-color-inner)',
+    transitionDuration: '0.7s',
     transitionTimingFunction: 'ease-in-out',
-    _groupHover: {
-        border: '1px solid var(--lifted-color-top)',
-        transform: 'rotateX(73deg)',
-    },
     transformStyle: 'preserve-3d',
     height: 'inherit',
     top: 0,
@@ -80,6 +80,29 @@ export const paletteCover = css({
         backgroundColor: 'var(--lifted-color-top)',
         transform: 'rotateX(90deg) translateY(-5px) translateZ(0px)',
     },
+}
+
+export const paletteCover = cva({
+    base: paletteCoverBase,
+    variants: {
+        lift: {
+            low: {
+                _groupHover: {
+                    transform: 'rotateX(75deg)',
+                },
+            },
+            tight: {
+                _groupHover: {
+                    transform: 'rotateX(87deg)',
+                },
+            },
+            full: {
+                _groupHover: {
+                    transform: 'rotateX(93deg)',
+                },
+            },
+        },
+    },
 })
 
 export const paletteBase = css({
@@ -89,8 +112,6 @@ export const paletteBase = css({
     height: 'inherit',
     position: 'absolute',
     top: 0,
-    borderRadius: '8px',
-    padding: '15px',
-    gap: '8px',
-    display: 'flex',
+    borderRadius: '0.5rem',
+    overflow: 'hidden',
 })
