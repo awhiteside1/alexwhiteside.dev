@@ -1,7 +1,9 @@
 ---
 import Lifted from '../../../ui/astro/components/lifted/Lifted.astro'
-import Pill from '../../blocks/Pill.astro'
+
+import { css, cx } from '@styles/css'
 import { stacked } from './styles'
+
 type Props = {
     icon: string
     elements: Array<{ name: string }>
@@ -31,7 +33,7 @@ const { icon, elements } = Astro.props
     >
         {
             elements.map((element, index) => (
-                <div class={stacked}>
+                <div class={cx(stacked, 'start')}>
                     <p class="text-xs text-neutral-200 dark:text-neutral-400 font-medium  ">
                         {element.name}
                     </p>
@@ -41,23 +43,47 @@ const { icon, elements } = Astro.props
     </div>
 </Lifted>
 
-<script>
-    import { animate, stagger } from 'motion'
-
-    animate(
-        '[data-kind=stacked] > div',
-        {
-            opacity: [0, 1, 0],
-            transform: [
-                'translateX(-10px)',
-                'translateX(0px)',
-                'translateX(10px)',
-            ],
-        },
-        {
-            duration: 3,
-            delay: stagger(2),
-            repeat: In,
+<style is:global lang="scss">
+    [data-kind='stacked'] {
+        & .visible {
+            opacity: 1;
+            transform: translateX(0px);
         }
-    )
+
+        & .start {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        & .end {
+            opacity: 0;
+            transform: translateX(10px);
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
+        const elements = stack.querySelectorAll('div')
+        elements.forEach((el) => {
+            el.addEventListener('transitionend', (evt) => {
+                const element = evt.currentTarget
+                if (!(element instanceof HTMLElement)) return
+                element.classList.replace('end', 'start')
+                if (element.classList.contains('visible')) {
+                    setTimeout(
+                        () => element.classList.replace('visible', 'end'),
+                        1000
+                    )
+                }
+            })
+        })
+        let count = 0
+        setInterval(() => {
+            elements[count++ % elements.length].classList.replace(
+                'start',
+                'visible'
+            )
+        }, 3000)
+    })
 </script>
