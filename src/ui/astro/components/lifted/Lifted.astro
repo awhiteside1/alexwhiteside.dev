@@ -58,43 +58,4 @@ const {
         }
     )
     controls.finished.then(() => controls.cancel())
-
-    // const createOnHoverEnd =
-    //     (controls: AnimationControls): EventListenerOrEventListenerObject =>
-    //     (evt) => {
-    //         console.log(evt)
-    //         evt.stopPropagation()
-    //
-    //         const group = evt.currentTarget
-    //         console.log(group)
-    //         if (!(group instanceof HTMLElement)) return
-    //         if (group.dataset.hovered != 'true') return
-    //         group.dataset.hovered = 'false'
-    //         controls.playbackRate = -1
-    //         controls.play()
-    //         controls.finished.then(() => controls.commitStyles())
-    //     }
-    //
-    // const createOnHover =
-    //     (controls: AnimationControls): EventListenerOrEventListenerObject =>
-    //     (evt) => {
-    //         evt.stopPropagation()
-    //         console.log('mouseover')
-    //
-    //         const group = evt.currentTarget
-    //         if (!(group instanceof HTMLElement)) return
-    //         if (group.dataset.hovered === 'true') return
-    //         group.dataset.hovered = 'true'
-    //         controls.playbackRate = 1
-    //         controls.play()
-    //         controls.finished.then(() => controls.commitStyles())
-    //     }
-    //
-    // // document.querySelectorAll('[role=group]').forEach((el) => {
-    // //     const animation = createAnimation(el)
-    // //     if (animation) {
-    // //         el.addEventListener('mouseover', createOnHover(animation))
-    // //         el.addEventListener('mouseleave', createOnHoverEnd(animation))
-    // //     }
-    // // })
 </script>

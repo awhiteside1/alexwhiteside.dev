@@ -5,6 +5,7 @@ import type { CssVarKeys, CssVarValue } from '@styles/types'
 
 class CssVar {
     private readonly name: `--${string}`
+
     constructor(name: string) {
         this.name = `--${dash(name)}`
     }
@@ -12,9 +13,11 @@ class CssVar {
     public getName(): CssVarKeys {
         return this.name
     }
+
     public asVar() {
         return `var(${this.getName()})`
     }
+
     public set(value: CssVarValue) {
         return {
             [this.getName()]: value,
@@ -35,6 +38,9 @@ const colors = defineStyles({
 
 export const paletteWrapper = css({
     flex: 1,
+
+    minHeight: '100px',
+    aspectRatio: '1',
     display: 'flex',
     justifyContent: 'center',
 })

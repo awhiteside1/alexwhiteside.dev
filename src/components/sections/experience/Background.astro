@@ -13,7 +13,7 @@ const birch = companies.get('Birch Finance')!
     class="col-span-12 flex flex-col md:col-[span_7/-1] lg:col-[span_6/-1] row-span-1 shadow-border"
 >
     <div class="px-4 py-4 space-y-4">
-        <Title icon="building" text="Work Experience" url="/background" />
+        <Title icon="building" text="Career" url="/background" />
 
         <div
             class="w-full flex flex-row flex-wrap gap-3 justify-between align-middle"
@@ -22,28 +22,35 @@ const birch = companies.get('Birch Finance')!
                 style={{ gridAutoRows: '1fr' }}
                 class="grid w-full grid-cols-2 sm:grid-cols-4 gap-3 items-stretch justify-stretch p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl"
             >
-                <div
-                    class="bg-white h-full aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-center rounded-lg p-4 text-center transition-all hover:shadow-md"
-                >
-                    <div class="text-4xl">
-                        10<sup class="text-2xl">+</sup>
-                    </div>
-                    <div class="text-sm font-medium leading-tight text-center">
-                        years
-                    </div>
-                </div>
-
                 <ExperienceSquare
-                    icon="building"
+                    elements={[
+                        {
+                            companies: [birch, even, moneylion],
+                        },
+                    ]}
+                    }
+                    ><span>Years Experience</span>
+                    <span
+                        slot="icon"
+                        class="text-3xl -m-[2px] leading-none font-bold"
+                    >
+                        10<sup>+</sup>
+                    </span>
+                </ExperienceSquare>
+                <ExperienceSquare
                     elements={[
                         { name: 'Startups', companies: [birch, even] },
                         { name: 'Public Companies', companies: [moneylion] },
                     ]}
                     }
-                    >Large and Small Orgs
+                    ><span>Large and Small Orgs</span>
+                    <div slot="icon">
+                        <svg viewBox="0 0 24 24" class="h-6 w-6">
+                            <use xlink:href={`#building`}></use>
+                        </svg>
+                    </div>
                 </ExperienceSquare>
                 <ExperienceSquare
-                    icon="industries"
                     elements={[
                         {
                             name: 'FinTech',
@@ -52,10 +59,14 @@ const birch = companies.get('Birch Finance')!
                         { name: 'EdTech' },
                         { name: 'Aerospace' },
                     ]}
-                    >Multiple Industries
+                    ><span>Multiple Industries</span>
+                    <div slot="icon">
+                        <svg viewBox="0 0 24 24" class="h-6 w-6">
+                            <use xlink:href={`#industries`}></use>
+                        </svg>
+                    </div>
                 </ExperienceSquare>
                 <ExperienceSquare
-                    icon="senior-position"
                     elements={[
                         {
                             name: 'Director of Product',
@@ -70,12 +81,14 @@ const birch = companies.get('Birch Finance')!
                             companies: [moneylion],
                         },
                     ]}
-                    >Director<sup>+</sup> Positions
+                    ><span>Director<sup class="text-sm">+</sup> Positions</span>
+                    <div slot="icon">
+                        <svg viewBox="0 0 24 24" class="h-6 w-6">
+                            <use xlink:href={`#senior-position`}></use>
+                        </svg>
+                    </div>
                 </ExperienceSquare>
             </div>
-        </div>
-
-        <div id="background-details" class="flex flex-row gap-3 items-center">
         </div>
     </div>
 </div>
