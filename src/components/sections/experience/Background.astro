@@ -1,32 +1,7 @@
 ---
-import Experience from './Experience.astro'
 import Title from '../../blocks/Title.astro'
 import ExperienceSquare from './ExperienceSquare.astro'
 import { getWorkContent } from '../../../lib/getWorkContent'
-const content = {
-    experiences: {
-        organizations: [
-            { name: 'Startup', icon: 'startup' },
-            // { name: 'Scale-up' },
-            { name: 'Enterprise', icon: 'building' },
-        ],
-        roles: [
-            {
-                name: 'Team Lead',
-            },
-            {
-                name: 'Director of Product',
-            },
-            { name: 'Sr. Director of Engineering' },
-            { name: 'Architect' },
-        ],
-        industries: [
-            { name: 'FinTech' },
-            { name: 'EdTech' },
-            { name: 'Aerospace' },
-        ],
-    },
-}
 
 const companies = await getWorkContent()
 const even = companies.get('Even Financial')!
@@ -103,17 +78,3 @@ const birch = companies.get('Birch Finance')!
         </div>
     </div>
 </div>
-
-<script>
-    const squares = document.querySelectorAll('[data-kind=experience-square]')
-
-    squares.forEach((sq) => {
-        sq.addEventListener('click', (evt) => {
-            evt.preventDefault()
-            const template = sq.querySelector('[data-kind=experience-detail]')
-            if (!(template instanceof HTMLTemplateElement)) return
-            const clone = template.content.cloneNode(true)
-            //    document.getElementById('background-details')?.appendChild(clone)
-        })
-    })
-</script>
