@@ -6,6 +6,6 @@ export const stacked = css({
     borderRadius: '10px',
     backdropBlur: '2xl',
     opacity: 0,
-    transition: 'all 0.5s ease-in',
+    transition: 'all 0.3s ease-in-out',
     transform: 'translateX(-10px)',
 })

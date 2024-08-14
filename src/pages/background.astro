@@ -59,9 +59,13 @@ const sortedByCompany = Object.values(workContent).toSorted(
                                             )}
                                         />
                                         <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
-                                            {company?.roles.map((entry) => (
-                                                <WorkCard slug={entry.slug} />
-                                            ))}
+                                            {company?.roles.map(
+                                                (entry: { slug: string }) => (
+                                                    <WorkCard
+                                                        slug={entry.slug}
+                                                    />
+                                                )
+                                            )}
                                         </article>
                                     </>
                                 )

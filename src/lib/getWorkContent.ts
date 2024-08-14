@@ -1,8 +1,19 @@
-import { getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import { first, group, last, mapValues, sift } from 'radash'
 import { byDate } from '@ui/utils/interval.tsx'
 
-export const getWorkContent = async () => {
+type Work = CollectionEntry<'work'>
+type WorkData = Work['data']
+
+type GroupedEntry = {
+    roles: Array<Work>
+    company: string
+    logo: string
+    from: Date
+    to: Date
+}
+
+export const getWorkContent = async (): Promise<Map<string, GroupedEntry>> => {
     const allWork = await getCollection('work')
     const grouped = group(allWork, (w) => w.data.company)
     const byCompany = mapValues(
@@ -17,5 +28,6 @@ export const getWorkContent = async () => {
             }
     )
 
-    return byCompany
+    // @ts-ignore
+    return new Map(Object.entries(byCompany))
 }

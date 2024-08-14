@@ -29,9 +29,9 @@ const content = {
 }
 
 const companies = await getWorkContent()
-const even = companies['Even Financial']
-const moneylion = companies['MoneyLion']
-const birch = companies['Birch Finance']
+const even = companies.get('Even Financial')!
+const moneylion = companies.get('MoneyLion')!
+const birch = companies.get('Birch Finance')!
 ---
 
 <div

@@ -31,7 +31,7 @@ const { icon, elements } = Astro.props
     </div>
     <div
         slot="inner"
-        class="bg-radial from-zinc-900 to-zinc-200 dark:bg-neutral-900 w-full h-full relative"
+        class="bg-radial from-zinc-900 to-zinc-500 dark:to-zinc-700 w-full h-full relative"
         data-kind="stacked"
     >
         {
@@ -47,7 +47,7 @@ const { icon, elements } = Astro.props
                         {element.companies && (
                             <div class="flex flex-row flex-wrap mx-2 max-h-8">
                                 {element.companies.map((company) => (
-                                    <div class="relative grow flex flex-none items-center justify-center rounded-full shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0  -mx-1">
+                                    <div class="relative basis-1 grow flex flex-none items-center justify-center rounded-full shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0  -mx-1">
                                         <img
                                             src={company.logo}
                                             alt=""
@@ -88,6 +88,7 @@ const { icon, elements } = Astro.props
 
 <script>
     console.log('Script')
+    const stats = new Map<string, { event: string; timestamp: number }[]>()
     document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
         let count = 0
         let lastTimestamp = 0
@@ -105,14 +106,13 @@ const { icon, elements } = Astro.props
             el.addEventListener('transitionend', (evt) => {
                 const element = evt.currentTarget
                 if (!(element instanceof HTMLElement)) return
-                if (evt.timeStamp - lastTimestamp < 50) return
+                if (evt.timeStamp - lastTimestamp < 20) return
                 lastTimestamp = evt.timeStamp
-
                 if (element.classList.replace('end', 'start')) {
                 } else if (element.classList.contains('visible')) {
                     setTimeout(
                         () => element.classList.replace('visible', 'end'),
-                        3000
+                        2000
                     )
                 } else if (element.classList.contains('start')) {
                     setTimeout(() => showNext(), 50)
