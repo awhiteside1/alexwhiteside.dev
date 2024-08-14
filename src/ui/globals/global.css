@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@property --bg-color-main {
+    syntax: "<color>";
+    initial-value: white;
+    inherits: true;
+}
+
 @property --100vw {
     syntax: "<length>";
     initial-value: 0px;

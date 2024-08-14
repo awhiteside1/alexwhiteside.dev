@@ -1,4 +1,5 @@
 ---
+import Lifted from '../../../ui/astro/components/lifted/Lifted.astro'
 type Props = {
     icon: string
     elements: Array<{ name: string }>
@@ -6,21 +7,19 @@ type Props = {
 const { icon, elements } = Astro.props
 ---
 
-<div
-    data-kind="experience-square"
-    class="bg-white aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-center rounded-lg p-3 text-center transition-all hover:shadow-md"
->
-    <template data-kind="experience-detail">
-        {elements.map(({ name }) => <div class="text-sm p-2">{name}</div>)}
-    </template>
-
-    <svg viewBox="0 0 24 24" class="h-6 w-6">
-        <use xlink:href={`#${icon}`}></use>
-    </svg>
-
-    <p
-        class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-medium"
+<Lifted>
+    <div
+        slot="cover"
+        class="aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-center rounded-lg p-3 text-center transition-all hover:shadow-md"
     >
-        <slot />
-    </p>
-</div>
+        <svg viewBox="0 0 24 24" class="h-6 w-6">
+            <use xlink:href={`#${icon}`}></use>
+        </svg>
+
+        <p
+            class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-medium"
+        >
+            <slot />
+        </p>
+    </div>
+</Lifted>

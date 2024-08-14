@@ -5,6 +5,7 @@ import Head from '../sections/Head.astro'
 import Burger from '../sections/navigation/Burger.astro'
 import Header from '../sections/navigation/Header.astro'
 import DotBackground from './DotBackground.astro'
+import { css } from '../../../../styled-system/css'
 
 type Props = {
     title: string
@@ -40,7 +41,7 @@ const { title, description } = Astro.props
             }
         </style>
     </head>
-    <body style="min-height: 103vh; position: relative">
+    <body class={css({ minHeight: '104vh', position: 'relative' })}>
         <DotBackground />
 
         <Header>

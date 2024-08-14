@@ -7,7 +7,7 @@
       "dist/**",
       "src/surreal.d.ts",
       ".astro/**",
-      "src/ui/globals/system/**",
+      "styled-system/**",
       "src/hashnode/graphql/**",
       ".vercel/**",
       ".idx/**",

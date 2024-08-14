@@ -4,6 +4,8 @@ import GradientText from '@ui/astro/components/elements/GradientText.astro'
 import Container from '@ui/astro/components/global/Container.astro'
 import Layout from '@ui/astro/layouts/Layout.astro'
 import { css } from '@styles/css'
+import { grid } from '../ui/globals/grid'
+import Lifted from '@ui/astro/components/lifted/Lifted.astro'
 export const prerender = false
 ---
 
@@ -23,20 +25,6 @@ export const prerender = false
             </div>
             Whiteside
         </GradientText>
-    </div>
-
-    <div
-        class={css({
-            position: 'absolute',
-            width: '100px',
-            aspectRatio: '1',
-            top: '50%',
-            backgroundColor: 'green',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-        })}
-    >
-        HELLO
     </div>
     <Container>
         <div>
