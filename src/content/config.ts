@@ -63,4 +63,14 @@ const sections = defineCollection({
     }),
 })
 
-export const collections = { awesome, work, titles, sections }
+const skills = defineCollection({
+    type: 'data',
+    schema: ({ image }) =>
+        z.object({
+            skill: z.string(),
+            description: z.string(),
+            icon: z.string().or(image()),
+        }),
+})
+
+export const collections = { awesome, work, titles, sections, skills }

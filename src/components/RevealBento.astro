@@ -1,14 +1,10 @@
 ---
-import { resolveIcon } from '@ui/utils/icons'
-
-import portrait from './sections/portrait.png'
-import Title from './blocks/Title.astro'
-import icons from './sections/roles/icons.svg?raw'
-import Pill from './blocks/Pill.astro'
-import Experience from './sections/experience/Experience.astro'
 import Background from './sections/experience/Background.astro'
 import Face from './sections/Face.astro'
 import Summary from './sections/Summary.astro'
+import Knowledge from './sections/knowledge/Knowledge.astro'
+import icons from './sections/roles/icons.svg?raw'
+
 const options = {
     borderColor: 'border-neutral-700',
 }
@@ -45,8 +41,8 @@ const content = {}
     <div class="grid grid-cols-12 grid-flow-row">
         <Summary />
 
-        <Face />
-
         <Background />
+        <Knowledge />
+        <Face />
     </div>
 </div>

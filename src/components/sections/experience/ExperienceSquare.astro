@@ -18,18 +18,21 @@ const { icon, elements } = Astro.props
 <Lifted liftClearance="full" colorInner="">
     <div
         slot="cover"
-        class="aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-evenly rounded-lg p-3 text-center transition-all">
+        class="aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-evenly rounded-lg p-3 text-center transition-all"
+    >
         <slot name="icon" />
 
         <div
-            class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-semibold">
+            class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-semibold"
+        >
             <slot />
         </div>
     </div>
     <div
         slot="inner"
         class="bg-neutral-500 shadow-neutral-800 shadow-inner w-full h-full relative"
-        data-kind="stacked">
+        data-kind="stacked"
+    >
         {
             elements.map((element, index) => {
                 return (
@@ -38,7 +41,8 @@ const { icon, elements } = Astro.props
                             stacked,
                             'start',
                             'flex flex-col max-w-full max-h-full items-center justify-evenly text-balance'
-                        )}>
+                        )}
+                    >
                         {element.companies && (
                             <div class="inline-flex px-2 max-h-8 max-w-full">
                                 {element.companies.map((company, index) => (
@@ -49,7 +53,8 @@ const { icon, elements } = Astro.props
                                                 index > 0
                                                     ? `-${get(element, 'companies', []).length * 0.2}rem`
                                                     : '0px',
-                                        }}>
+                                        }}
+                                    >
                                         <img
                                             src={
                                                 isString(company.logo)
@@ -97,10 +102,10 @@ const { icon, elements } = Astro.props
 
     console.log('Script')
     const setup = (document: Document) => {
-        document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
+        document.querySelectorAll('[skills-kind=stacked]').forEach((stack) => {
             let count = 0
             let lastTimestamp = 0
-            // console.log('Script init for stack', stack.textContent)
+            // console.log('Script init for skills', skills.textContent)
             const showNext = () => {
                 const element = count % elements.length
                 elements[element].classList.replace('start', 'visible')
