@@ -264,7 +264,7 @@ pre {
 
     }
     to {
-        
+
         background: rgba(var(--menu-bg), 0.95);
         border-bottom-color: var(--border);
     }

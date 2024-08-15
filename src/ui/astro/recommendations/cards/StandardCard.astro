@@ -3,22 +3,22 @@ import type { CollectionEntry } from 'astro:content'
 import { optimizeImage } from '../../../utils/optimizeImage'
 
 interface Props {
-	entry: CollectionEntry<'awesome'>
+    entry: CollectionEntry<'awesome'>
 }
 
 const { entry } = Astro.props
 const type = entry.id.split('/')[0] as 'blogs' | 'talks' | 'books'
-let image = optimizeImage(entry.data.cover, 'med')
+let image = optimizeImage(entry.data.cover!, 'med')
 let showTitle = true
 switch (type) {
-	case 'talks':
-		image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
-		break
-	case 'books':
-		showTitle = false
-		break
-	case 'blogs':
-		break
+    case 'talks':
+        image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
+        break
+    case 'books':
+        showTitle = false
+        break
+    case 'blogs':
+        break
 }
 const { url, name } = entry.data
 ---

@@ -125,7 +125,11 @@ const { title, description } = Astro.props
                     registeredAnimations.push(
                         scrollAppend.item(i).animate(
                             [
-                                { width: 0, opacity: 0, offset: 0.8 },
+                                {
+                                    width: 0,
+                                    opacity: 0,
+                                    offset: 0.8,
+                                },
                                 { width: '3.5ch', opacity: 1 },
                             ],
                             {
