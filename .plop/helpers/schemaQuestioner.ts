@@ -1,12 +1,12 @@
-import type {ReadLine} from 'node:readline'
+import type { ReadLine } from 'node:readline'
 import inquirer from 'inquirer'
 // @ts-ignore
-import type {Question} from 'inquirer/dist/esm/types/types'
-import type {NodePlopAPI} from 'plop'
-import {capitalize, get, mapValues} from 'radash'
-import type {ZodObjectDef, ZodType, ZodTypeAny} from 'zod'
-import {collections} from '../../src/content/config.ts'
-import {OpenAIInferer} from './OpenAIInferer.ts'
+import type { Question } from 'inquirer/dist/esm/types/types'
+import type { NodePlopAPI } from 'plop'
+import { capitalize, get, mapValues } from 'radash'
+import type { ZodObjectDef, ZodType, ZodTypeAny } from 'zod'
+import { collections } from '../../src/content/config.ts'
+import { OpenAIInferer } from './OpenAIInferer.ts'
 
 type PromptState = 'pending' | 'idle' | 'loading' | 'answered' | 'done'
 
@@ -50,7 +50,7 @@ class SchemaPrompt {
 		}
 		return { type: 'input' }
 	}
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
 	generateQuestionsFromSchema(schema: ZodObjectDef): Record<string, Question> {
 		return mapValues(
 			schema.shape as unknown as Record<string, ZodType>,
@@ -85,8 +85,10 @@ class SchemaPrompt {
 		Object.assign(this.answers, output)
 		return output
 	}
+
 	status: PromptState
 }
+
 export const setupSchemaInquirerer = (plop: NodePlopAPI) => {
 	plop.setPrompt('schema', SchemaPrompt)
 	plop.setPrompt('openai', OpenAIInferer)

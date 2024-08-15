@@ -1,5 +1,1 @@
-export class ExperienceLogic extends HTMLElement {
-    constructor() {
-        super()
-    }
-}
+export class ExperienceLogic extends HTMLElement {}

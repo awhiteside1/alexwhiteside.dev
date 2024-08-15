@@ -2,13 +2,13 @@
 import MediaElement from '@ui/astro/components/elements/MediaElement.astro'
 import WorkCard from '@ui/astro/components/elements/WorkCard.astro'
 import { byDate, generateInterval } from '@ui/utils/interval'
+import { getWorkContent } from '../lib/getWorkContent'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
-import { getWorkContent } from '../lib/getWorkContent'
 const workContent = await getWorkContent()
-const sortedByCompany = Array.from(workContent.values()).toSorted(
-    byDate((x) => x?.from)
+const sortedByCompany = Array.from(workContent.map.values()).toSorted(
+	byDate((x) => x?.from),
 )
 ---
 

@@ -1,15 +1,16 @@
 ---
+import { getWorkContent } from '../../../lib/getWorkContent'
 import Title from '../../blocks/Title.astro'
 import ExperienceSquare from './ExperienceSquare.astro'
-import { getWorkContent } from '../../../lib/getWorkContent'
 
 const companies = await getWorkContent()
-const even = companies.get('Even Financial')!
-const moneylion = companies.get('MoneyLion')!
-const birch = companies.get('Birch Finance')!
-const amex = companies.get('American Express (AET)')!
-const rile = companies.get('Robotic Interactive Learning Environment')!
-const afrl = companies.get('Air Force Research Lab')!
+
+const even = companies.getByCompany('Even Financial')
+const moneylion = companies.getByCompany('MoneyLion')
+const birch = companies.getByCompany('Birch Finance')
+const amex = companies.getByCompany('American Express (AET)')
+const rile = companies.getByCompany('Robotic Interactive Learning Environment')
+const afrl = companies.getByCompany('Air Force Research Lab')
 ---
 
 <div

@@ -1,26 +1,26 @@
 ---
-import {
-    paletteWrapper,
-    palette,
-    paletteCover,
-    paletteBase,
-    innerColor,
-    coverColor,
-} from './styles'
 import { css } from '@styles/css'
 import { draw, min } from 'radash'
+import {
+	coverColor,
+	innerColor,
+	palette,
+	paletteBase,
+	paletteCover,
+	paletteWrapper,
+} from './styles'
 
 type Props = {
-    colorInner?: string
-    colorCover?: string
-    minSize?: string
-    liftClearance?: 'full' | 'tight' | 'low'
+	colorInner?: string
+	colorCover?: string
+	minSize?: string
+	liftClearance?: 'full' | 'tight' | 'low'
 }
 const {
-    colorInner = 'green',
-    colorCover = 'white',
-    minSize = '100px',
-    liftClearance = 'low',
+	colorInner = 'green',
+	colorCover = 'white',
+	minSize = '100px',
+	liftClearance = 'low',
 } = Astro.props
 ---
 

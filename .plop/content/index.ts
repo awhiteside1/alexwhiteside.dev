@@ -1,7 +1,7 @@
-import {globbySync} from 'globby'
-import type {ActionType} from 'plop'
-import {dash, objectify, sift} from 'radash'
-import type {PlopSetupFn} from '../helpers/types'
+import { globbySync } from 'globby'
+import type { ActionType } from 'plop'
+import { dash, objectify, sift } from 'radash'
+import type { PlopSetupFn } from '../helpers/types'
 
 const getCOllectionTypes = (path?: string) => {
 	const result = globbySync(sift(['src/content', path, '*']).join('/'), {

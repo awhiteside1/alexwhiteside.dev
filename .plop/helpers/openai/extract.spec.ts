@@ -1,4 +1,4 @@
-import {extractFromLink} from "./extractFromLink.tsx";
+import { extractFromLink } from './extractFromLink.tsx'
 
 describe('OpenAI', () => {
 	it('should Work', async () => {

@@ -1,15 +1,15 @@
 ---
 import SpeedInsights from '@vercel/speed-insights/astro'
+import { css } from '../../../../styled-system/css'
 import Footer from '../sections/Footer.astro'
 import Head from '../sections/Head.astro'
 import Burger from '../sections/navigation/Burger.astro'
 import Header from '../sections/navigation/Header.astro'
 import DotBackground from './DotBackground.astro'
-import { css } from '../../../../styled-system/css'
 
 type Props = {
-    title: string
-    description: string
+	title: string
+	description: string
 }
 
 const { title, description } = Astro.props

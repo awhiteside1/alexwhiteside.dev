@@ -1,5 +1,5 @@
-import {generateFromPrompt} from "./client";
-import {load} from 'cheerio';
+import { load } from 'cheerio'
+import { generateFromPrompt } from './client'
 
 const EXTRACT_PROMPT_SYSTEM = `You are an expert content creation system, which collects data from a link and drafts a standard set of values. Often, you will be provided with the contents of the link by the user. Your responses will conform to the following schema:
 \`\`\`ts

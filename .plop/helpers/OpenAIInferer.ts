@@ -1,5 +1,5 @@
-import type {ReadLine} from "node:readline";
-import {extractFromLink} from "./openai/extractFromLink.tsx";
+import type { ReadLine } from 'node:readline'
+import { extractFromLink } from './openai/extractFromLink.tsx'
 
 export class OpenAIInferer {
 	constructor(
