@@ -3,12 +3,13 @@ import Lifted from '../../../ui/astro/components/lifted/Lifted.astro'
 
 import { css, cx } from '@styles/css'
 import { stacked } from './styles'
+import { get, isString } from 'radash'
 
 type Props = {
     icon?: string
     elements: Array<{
         name?: string
-        companies?: Array<{ logo: string; company: string }>
+        companies?: Array<{ logo: string | { src: string }; company: string }>
     }>
 }
 const { icon, elements } = Astro.props
@@ -17,21 +18,18 @@ const { icon, elements } = Astro.props
 <Lifted liftClearance="full" colorInner="">
     <div
         slot="cover"
-        class="aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-evenly rounded-lg p-3 text-center transition-all"
-    >
+        class="aspect-square dark:bg-neutral-700 shadow-sm dark:shadow-neutral-900 flex flex-col items-center gap-2 justify-evenly rounded-lg p-3 text-center transition-all">
         <slot name="icon" />
 
         <div
-            class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-semibold"
-        >
+            class="text-sm max-w-20 text-neutral-800 dark:text-neutral-100 text-balance leading-tight font-semibold">
             <slot />
         </div>
     </div>
     <div
         slot="inner"
-        class="bg-radial from-zinc-900 to-zinc-500 dark:to-zinc-700 w-full h-full relative"
-        data-kind="stacked"
-    >
+        class="bg-neutral-500 shadow-neutral-800 shadow-inner w-full h-full relative"
+        data-kind="stacked">
         {
             elements.map((element, index) => {
                 return (
@@ -39,23 +37,33 @@ const { icon, elements } = Astro.props
                         class={cx(
                             stacked,
                             'start',
-                            'flex flex-col items-center justify-evenly text-balance'
-                        )}
-                    >
+                            'flex flex-col max-w-full max-h-full items-center justify-evenly text-balance'
+                        )}>
                         {element.companies && (
-                            <div class="flex flex-row flex-wrap mx-2 max-h-8">
-                                {element.companies.map((company) => (
-                                    <div class="relative basis-1 grow flex flex-none items-center justify-center rounded-full shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0  -mx-1">
+                            <div class="inline-flex px-2 max-h-8 max-w-full">
+                                {element.companies.map((company, index) => (
+                                    <div
+                                        class="inline-block w-8 rounded-full"
+                                        style={{
+                                            marginLeft:
+                                                index > 0
+                                                    ? `-${get(element, 'companies', []).length * 0.2}rem`
+                                                    : '0px',
+                                        }}>
                                         <img
-                                            src={company.logo}
-                                            alt=""
-                                            class="h-full w-full aspect-square object-cover rounded-full max-h-7"
+                                            src={
+                                                isString(company.logo)
+                                                    ? company.logo
+                                                    : company.logo.src
+                                            }
+                                            alt={company.company}
+                                            class="h-full aspect-square object-contain rounded-full"
                                         />
                                     </div>
                                 ))}
                             </div>
                         )}
-                        <p class="text-sm tracking-tight text-neutral-200 dark:text-neutral-300 font-medium text-center ">
+                        <p class="text-sm  leading-none text-neutral-200 dark:text-neutral-300 font-medium text-center ">
                             {element.name}
                         </p>
                     </section>
@@ -69,17 +77,17 @@ const { icon, elements } = Astro.props
     [data-kind='stacked'] {
         & .visible {
             opacity: 1;
-            transform: translateX(0px);
+            transform: translateX(0px) scale(1);
         }
 
         & .start {
             opacity: 0;
-            transform: translateX(-10px);
+            transform: translateX(-10px) scale(0.9);
         }
 
         & .end {
             opacity: 0;
-            transform: translateX(10px);
+            transform: translateX(10px) scale(0.9);
         }
     }
 </style>

@@ -7,40 +7,50 @@ const companies = await getWorkContent()
 const even = companies.get('Even Financial')!
 const moneylion = companies.get('MoneyLion')!
 const birch = companies.get('Birch Finance')!
+const amex = companies.get('American Express (AET)')!
+const rile = companies.get('Robotic Interactive Learning Environment')!
+const afrl = companies.get('Air Force Research Lab')!
 ---
 
 <div
-    class="col-span-12 flex flex-col md:col-[span_7/-1] lg:col-[span_6/-1] row-span-1 shadow-border"
->
+    class="col-span-12 flex flex-col md:col-[span_7/-1] lg:col-[span_6/-1] row-span-1 shadow-border">
     <div class="px-4 py-4 space-y-4">
         <Title icon="building" text="Career" url="/background" />
 
         <div
-            class="w-full flex flex-row flex-wrap gap-3 justify-between align-middle"
-        >
+            class="w-full flex flex-row flex-wrap gap-3 justify-between align-middle">
             <div
                 style={{ gridAutoRows: '1fr' }}
-                class="grid w-full grid-cols-2 sm:grid-cols-4 gap-3 items-stretch justify-stretch p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl"
-            >
+                class="grid w-full grid-cols-2 sm:grid-cols-4 gap-3 items-stretch justify-stretch p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
                 <ExperienceSquare
                     elements={[
                         {
-                            companies: [birch, even, moneylion],
+                            name: 'Serial Entrepreneur',
+                            companies: [rile, birch],
+                        },
+                        {
+                            name: 'Scientific Background',
+                            companies: [afrl, rile],
+                        },
+                        {
+                            name: 'Experienced Leader',
+                            companies: [even, moneylion],
                         },
                     ]}
-                    }
                     ><span>Years Experience</span>
                     <span
                         slot="icon"
-                        class="text-3xl -m-[2px] leading-none font-bold"
-                    >
+                        class="text-3xl -m-[2px] leading-none font-bold">
                         10<sup>+</sup>
                     </span>
                 </ExperienceSquare>
                 <ExperienceSquare
                     elements={[
-                        { name: 'Startups', companies: [birch, even] },
-                        { name: 'Public Companies', companies: [moneylion] },
+                        { name: 'Startups', companies: [rile, birch, even] },
+                        {
+                            name: 'Public Companies',
+                            companies: [amex, moneylion],
+                        },
                     ]}
                     }
                     ><span>Large and Small Orgs</span>
@@ -56,8 +66,8 @@ const birch = companies.get('Birch Finance')!
                             name: 'FinTech',
                             companies: [birch, even, moneylion],
                         },
-                        { name: 'EdTech' },
-                        { name: 'Aerospace' },
+                        { name: 'EdTech', companies: [rile] },
+                        { name: 'Aerospace', companies: [afrl] },
                     ]}
                     ><span>Multiple Industries</span>
                     <div slot="icon">

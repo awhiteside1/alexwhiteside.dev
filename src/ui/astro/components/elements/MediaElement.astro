@@ -1,11 +1,16 @@
 ---
+import { isString } from 'radash'
+import { cn } from '../../../utils/cn'
 type Props = {
-	logo: string
-	title: string
-	subtitle: string
+    logo: string | { src: string }
+    title: string
+    subtitle: string
 }
 
 const { logo, title, subtitle } = Astro.props
+
+const src = isString(logo) ? logo : logo.src
+const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
 ---
 
 <div
@@ -13,20 +18,19 @@ const { logo, title, subtitle } = Astro.props
     class="flex col-span-4 justify-around sticky top-14 py-4 z-10"
 >
     <div
-        class="flex gap-3 items-center content-center dark:bg-black bg-white rounded-3xl px-3 py-2 ring-1 ring-zinc-200 dark:ring-zinc-800   shadow-md shadow-zinc-600/5 w-[14rem]"
+        class="flex gap-3 items-center content-center dark:bg-black bg-white rounded-3xl px-3 py-2 ring-1 ring-zinc-200 dark:ring-zinc-800 shadow-md shadow-zinc-600/5 w-[14rem] min-h-16"
     >
         <div
             class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
         >
-            <img
-                src={logo}
-                alt=""
-                class="h-10 w-10 object-cover rounded-full"
-            />
+            <img src={src} alt="" class="h-10 w-10 object-cover rounded-full" />
         </div>
         <div>
             <dd
-                class="p-0 m-0 w-full flex-none text-lg font-medium text-zinc-900 dark:text-zinc-100"
+                class={cn(
+                    'p-0 m-0 w-full flex-none  font-medium text-zinc-900 leading-none dark:text-zinc-100',
+                    textClass
+                )}
             >
                 {title}
             </dd>
