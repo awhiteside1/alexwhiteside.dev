@@ -17,6 +17,7 @@
       ]
     },
     "skipDefaultLibCheck": true,
+    "strictNullChecks": true,
     "jsx": "react-jsx",
     "plugins": [
       {
@@ -35,6 +36,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.astro",
+    "panda.config.ts",
     ".storybook/*",
     "vite.config.ts",
     ".plop/plopfile.ts",
