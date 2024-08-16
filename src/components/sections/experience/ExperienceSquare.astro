@@ -6,11 +6,11 @@ import { get, isString } from 'radash'
 import { stacked } from './styles'
 
 type Props = {
-	icon?: string
-	elements: Array<{
-		name?: string
-		companies?: Array<{ logo: string | { src: string }; company: string }>
-	}>
+    icon?: string
+    elements: Array<{
+        name?: string
+        companies?: Array<{ logo: string | { src: string }; company: string }>
+    }>
 }
 const { icon, elements } = Astro.props
 ---
@@ -100,12 +100,12 @@ const { icon, elements } = Astro.props
 <script>
     import { ensureInit } from '../../../lib/astro'
 
-    console.log('Script')
     const setup = (document: Document) => {
-        document.querySelectorAll('[skills-kind=stacked]').forEach((stack) => {
+        console.log('Setup')
+
+        document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
             let count = 0
             let lastTimestamp = 0
-            // console.log('Script init for skills', skills.textContent)
             const showNext = () => {
                 const element = count % elements.length
                 elements[element].classList.replace('start', 'visible')
@@ -118,7 +118,6 @@ const { icon, elements } = Astro.props
                 return
             }
             elements.forEach((el) => {
-                // console.log('for each element handle setup', el.textContent)
                 el.addEventListener('transitionend', (evt) => {
                     const element = evt.target
                     if (!(element instanceof HTMLElement)) return
@@ -133,12 +132,12 @@ const { icon, elements } = Astro.props
                             2000
                         )
                     } else if (element.classList.contains('start')) {
-                        setTimeout(() => showNext(), 50)
+                        setTimeout(() => showNext(), 30)
                     }
                 })
             })
             showNext()
         })
     }
-    ensureInit(setup, { pages: ['/'] })
+    ensureInit(setup, { pages: ['/', ''] })
 </script>

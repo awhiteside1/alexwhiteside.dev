@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { isString } from 'radash'
+type Props = {
+    skill: CollectionEntry<'skills'>['data']
+}
+const { skill } = Astro.props
+const image = isString(skill.icon) ? skill.icon : skill.icon.src
+---
+
+<div class="flex flex-col h-full justify-evenly items-center">
+    <img src={image} class="aspect-square shrink" />
+    <div class="text-md">{skill.skill}</div>
+</div>
