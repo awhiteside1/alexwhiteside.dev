@@ -4,32 +4,25 @@ import HexGrid from './HexGrid.astro'
 import Skill from './SkillCover.astro'
 import Hexagon from './Hexagon.astro'
 const skills = await getSkills()
+import './keyframes.css'
 ---
 
 <div
     class="col-span-12 row-span-1 flex flex-col justify-between shadow-border md:col-span-6 relative overflow-hidden"
 >
     <HexGrid>
-        <Hexagon>
-            <Skill skill={skills.writing} />
-        </Hexagon>
-        <Hexagon>
-            <Skill skill={skills.writing} />
-        </Hexagon>
-        <Hexagon>
-            <Skill skill={skills.writing} />
-        </Hexagon>
-        <Hexagon>
-            <Skill skill={skills.writing} />
-        </Hexagon>
-        <Hexagon>
-            <Skill skill={skills.writing} />
-        </Hexagon>
-        <Hexagon>
-            <Skill skill={skills.writing} />
-        </Hexagon>
-        <Hexagon>
-            <Skill skill={skills['system-design']} />
-        </Hexagon>
+        <Skill skill={skills.writing} />
+
+        <Skill skill={skills.writing} />
+
+        <Skill skill={skills.writing} />
+
+        <Skill skill={skills.writing} />
+
+        <Skill skill={skills.writing} />
+
+        <Skill skill={skills.writing} />
+
+        <Skill skill={skills['system-design']} />
     </HexGrid>
 </div>

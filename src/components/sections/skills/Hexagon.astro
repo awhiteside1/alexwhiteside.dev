@@ -1,9 +1,23 @@
 ---
-import { hexagon } from './styles'
+import {
+    hexagon,
+    hexagonBack,
+    hexagonFront,
+    hexFrontContainer,
+    hexIcon,
+} from './styles'
+import { css } from '@styles/css'
+import { cn } from '../../../lib/utils'
 ---
 
-<div class={hexagon}>
-    <div class="text-md font-bold">
-        <slot />
+<div role="group" class={hexagon}>
+    <!--<div class={hexagonBack}><p>Hello</p></div>-->
+    <div class={hexagonFront}>
+        <div class={hexFrontContainer}>
+            <div class={hexIcon}>
+                <slot name="icon" />
+            </div>
+            <slot name="title" />
+        </div>
     </div>
 </div>

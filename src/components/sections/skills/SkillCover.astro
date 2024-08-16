@@ -1,14 +1,34 @@
 ---
+import { resolveIcon } from '../../../ui/utils/icons'
+
 import type { CollectionEntry } from 'astro:content'
 import { isString } from 'radash'
+import Hexagon from './Hexagon.astro'
 type Props = {
-    skill: CollectionEntry<'skills'>['data']
+    skill: CollectionEntry<'skills'>['data'] & CollectionEntry<'skills'>
 }
 const { skill } = Astro.props
+console.log(skill)
 const image = isString(skill.icon) ? skill.icon : skill.icon.src
+let svg = `<img src="${image}"></img>`
+if (!URL.canParse(image)) {
+    const result = await resolveIcon({ name: image })
+    if (result) {
+        svg = result
+    }
+}
+const { Content } = await skill.render()
 ---
 
-<div class="flex flex-col h-full justify-evenly items-center">
-    <img src={image} class="aspect-square shrink" />
-    <div class="text-md">{skill.skill}</div>
-</div>
+<Hexagon>
+    <div slot="icon" set:html={svg} />
+    <div
+        slot="title"
+        class="text-md leading-none text-center group-hover:text-sm"
+    >
+        {skill.skill}
+    </div>
+    <div slot="content">
+        <Content />
+    </div>
+</Hexagon>
