@@ -26,14 +26,6 @@ export const hexagonGrid = css({
         shapeOutside:
             'repeating-linear-gradient(#0000 0 calc(var(--hex-offset-height) / 2), #fff 0 calc(var(--hex-offset-height) / 2 + 5px), #0000 0 var(--hex-offset-height))',
     },
-    '&::after': {
-        content: '""',
-        width: 'calc(var(--hex-width) / 2 + var(--hex-margin))',
-        float: 'right',
-        height: '120%',
-        shapeOutside:
-            'repeating-linear-gradient(#0000 0 calc(var(--hex-offset-height) / 2), #fff 0 calc(var(--hex-offset-height) / 2 + 5px), #0000 0 var(--hex-offset-height))',
-    },
 })
 
 export const hexagon = css({
