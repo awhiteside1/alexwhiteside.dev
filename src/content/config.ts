@@ -67,6 +67,7 @@ const skills = defineCollection({
     type: 'content',
     schema: ({ image }) =>
         z.object({
+            color: z.string(),
             skill: z.string(),
             description: z.string(),
             icon: z.string().or(image()),

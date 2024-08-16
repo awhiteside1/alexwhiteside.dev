@@ -60,12 +60,24 @@ html {
     scroll-padding-top: 100px;
     --border: 229, 231, 235;
     --menu-bg: 255, 255, 255;
+    --color-neutral-mix: var(--colors-gray-300);
+    --color-page: var(--colors-zinc-50);
+    --color-base: white;
+    --color-page-contrast: var(--colors-gray-300);
+        --color-page-foreground: var(--colors-neutral-700);
+
 }
 
 html.dark {
     color-scheme: dark;
+    --color-base: black;
     --menu-bg: 0, 0, 0;
     --border: 55, 55, 55;
+    --color-page: var(--colors-zinc-800);
+    --color-page-foreground: var(--colors-neutral-300);
+    --color-neutral-mix: var(--colors-neutral-800);
+    --color-page-contrast: var(--colors-gray-700);
+
 }
 
 @font-face {

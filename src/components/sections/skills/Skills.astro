@@ -1,25 +1,23 @@
 ---
+import Title from '@components/blocks/Title.astro'
 import { getSkills } from './getSkills'
 import HexGrid from './HexGrid.astro'
 import Skill from './SkillCover.astro'
-import Hexagon from './Hexagon.astro'
 const skills = await getSkills()
-import './keyframes.css'
 ---
 
 <div
-    class="col-span-12 row-span-1 flex flex-col justify-between shadow-border md:col-span-6 relative overflow-hidden"
+    class="col-span-12 md:col-span-8 row-span-1 flex flex-col justify-between shadow-border col-end-[-1] relative overflow-hidden p-6"
 >
+    <Title text="Skills" icon="puzzle" />
     <HexGrid>
-        <Skill skill={skills.writing} />
+        <Skill skill={skills.architecture} />
 
-        <Skill skill={skills.writing} />
-
-        <Skill skill={skills.writing} />
-
-        <Skill skill={skills.writing} />
-
-        <Skill skill={skills.writing} />
+        <Skill skill={skills.product} />
+        <Skill skill={skills.web} />
+        <Skill skill={skills.leadership} />
+        <Skill skill={skills.delivery} />
+        <!--<Skill skill={skills.architecture} />-->
 
         <Skill skill={skills.writing} />
 

@@ -1,4 +1,5 @@
 ---
+import { cn } from '@ui/utils/cn'
 import {
     hexagon,
     hexagonBack,
@@ -6,12 +7,19 @@ import {
     hexFrontContainer,
     hexIcon,
 } from './styles'
-import { css } from '@styles/css'
-import { cn } from '../../../lib/utils'
+
+type Props = {
+    color: string
+}
 ---
 
-<div role="group" class={hexagon}>
-    <!--<div class={hexagonBack}><p>Hello</p></div>-->
+<div
+    role="group"
+    style={{ '--hex-color': `var(--colors-${Astro.props.color}-300)` }}
+    class={cn(hexagon, 'group')}>
+    <div class={hexagonBack}>
+        <slot name="content" />
+    </div>
     <div class={hexagonFront}>
         <div class={hexFrontContainer}>
             <div class={hexIcon}>

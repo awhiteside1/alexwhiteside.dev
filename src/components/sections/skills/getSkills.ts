@@ -14,6 +14,5 @@ export const getSkills = async () => {
         (skill) => skill.id.replaceAll('.mdx', ''),
         (skill) => ({ ...skill, ...skill.data })
     )
-    console.log(obj)
     return obj
 }
