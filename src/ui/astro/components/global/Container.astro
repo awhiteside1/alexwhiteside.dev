@@ -2,8 +2,8 @@
 import { sift } from 'radash'
 import { cn } from '../../../utils/cn'
 type Props = {
-	background?: boolean
-	class?: string
+    background?: boolean
+    class?: string
 }
 ---
 
@@ -11,7 +11,7 @@ type Props = {
     class={cn(
         sift([
             'mx-auto max-w-[--max-screen-width] w-full',
-            Astro.props.background && 'bg-white dark:bg-black',
+            Astro.props.background && 'bg-white dark:bg-black rounded-3xl',
             Astro.props.class,
         ])
     )}

@@ -41,7 +41,7 @@ const html = chain.process(post.content.markdown)
 
 <Layout title={post.title} description={post.brief}>
     <Container background>
-        <div class="relative animate mb-8 mx-2 -mt-16">
+        <div class="relative animate mb-8 -mx-2 -mt-16">
             <BlogHero
                 title={post.title}
                 date={post.publishedAt}
@@ -51,9 +51,7 @@ const html = chain.process(post.content.markdown)
                 <BackToPrevious href="/blog">Back to blog</BackToPrevious>
             </div>
         </div>
-        <article
-            class="animate mx-4 bg-gradient-to-r from-white/[0.5] to-white/[0.5]"
-        >
+        <article class="animate mx-4">
             <Fragment set:html={html} />
         </article>
     </Container>
