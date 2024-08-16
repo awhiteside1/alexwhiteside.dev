@@ -3,7 +3,7 @@ import { css } from '@styles/css'
 export const hexagonContainer = css({
     display: 'flex',
     position: 'relative',
-    left: 'calc( - 0.5 * var(--hex-width))',
+    // left: 'calc( -0.5 * var(--hex-width))',
     '--hex-color': '#f3f3f3',
     '--hex-width': '150px',
     '--hex-margin': '5px',
