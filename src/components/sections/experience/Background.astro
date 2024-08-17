@@ -3,7 +3,6 @@ import { getWorkContent } from '../../../lib/getWorkContent'
 import Title from '../../blocks/Title.astro'
 import ExperienceSquare from './ExperienceSquare.astro'
 
-console.log('Background')
 const companies = await getWorkContent()
 const even = companies.getByCompany('Even Financial')
 const moneylion = companies.getByCompany('MoneyLion')
