@@ -3,6 +3,8 @@ import { css } from '@styles/css'
 export const hexagonContainer = css({
     display: 'flex',
     position: 'relative',
+    containerType: 'inline-size',
+    containerName: 'hex-grid',
     // left: 'calc( -0.5 * var(--hex-width))',
     '--hex-color': '#f3f3f3',
     '--hex-width': '150px',
@@ -14,18 +16,44 @@ export const hexagonContainer = css({
         'calc(2 * (var(--hex-height) - (var(--hex-height) / 4)))',
 })
 
+export const hexagonRow = css({
+    display: 'flex',
+    flexDir: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    gap: 'var(--hex-margin)',
+
+    // '&:nth-of-type(2n-1)': {
+    //     marginLeft: 'calc(var(--hex-width) / 2 + var(--hex-margin))',
+    // },
+})
+
 export const hexagonGrid = css({
     width: '100%',
     marginBottom: 'calc(var(--hex-height) / 4 )',
-    fontSize: 0,
-    '&::before': {
-        content: '""',
-        width: 'calc(var(--hex-width) / 2 + var(--hex-margin))',
-        float: 'left',
-        height: '120%',
-        shapeOutside:
-            'repeating-linear-gradient(#0000 0 calc(var(--hex-offset-height) / 2), #fff 0 calc(var(--hex-offset-height) / 2 + 5px), #0000 0 var(--hex-offset-height))',
-    },
+
+    display: 'flex',
+    flexDir: 'column',
+
+    // gap: 'var(--hex-margin)',
+    // '&::before': {
+    //     content: '""',
+    //     width: 'calc(var(--hex-width) / 2 + var(--hex-margin))',
+    //     float: 'left',
+    //     height: '120%',
+    //     shapeOutside: 'polygon(0 15%, 15% 12%, 30% 0%, 60% 15%, 80% 0%)',
+    //     // shapeOutside:
+    //     //     'repeating-linear-gradient(#0000 0 calc(var(--hex-offset-height) / 2), #fff 0 calc(var(--hex-offset-height) / 2 + 5px), #0000 0 var(--hex-offset-height))',
+    // },
+})
+
+export const placeholderHex = css({
+    aspectRatio: '1 / cos(30deg)',
+    clipPath: 'var(--hex-clip-path)',
+    height: 'var(--hex-height)',
+    width: 'var(--hex-width)',
+    background: 'var(--color-page)',
+    marginBottom: 'calc(-1 * var(--hex-height) / 4 + var(--hex-margin))',
 })
 
 export const hexagon = css({
@@ -33,9 +61,7 @@ export const hexagon = css({
         'color-mix(in oklab, oklch(from var(--hex-color) 0.6 .2 h) 30%, var(--color-page) 70% )',
     '--hex-color-saturated':
         'color-mix(in oklab, oklch(from var(--hex-color) 0.6 .2 h) 50%, var(--color-page) 50% )',
-    position: 'relative',
-    margin: 'var(--hex-margin)',
-    display: 'inline-block',
+    display: 'block',
     transformStyle: 'preserve-3d',
     height: 'var(--hex-height)',
     transition: 'all 1s',
@@ -44,7 +70,6 @@ export const hexagon = css({
     aspectRatio: '1 / cos(30deg)',
     clipPath: 'var(--hex-clip-path)',
     background: 'var(--color-page)',
-    fontSize: 'initial',
     marginBottom: 'calc(-1 * var(--hex-height) / 4 + var(--hex-margin))',
     '--hex-color-gradient':
         'linear-gradient(to top, var(--hex-color-desaturated) 0%,  var(--color-page) 40% )',

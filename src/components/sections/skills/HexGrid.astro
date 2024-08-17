@@ -1,10 +1,30 @@
 ---
 import { hexagonContainer } from './styles.ts'
 import { hexagonGrid } from './styles'
+import { cn } from '../../../lib/utils'
 ---
 
+<style is:global>
+    @container hex-grid (width < calc(150px * 4) ) {
+        .placeholder-hex {
+            display: none;
+        }
+    }
+
+    @container hex-grid (width < calc(150px * 3) ) {
+        .hex-grid > div {
+            flex-wrap: wrap;
+        }
+
+        .hex-grid div {
+            gap: calc(2 * var(--hex-margin));
+            margin-bottom: var(--hex-margin);
+        }
+    }
+</style>
+
 <div class={hexagonContainer}>
-    <div class={hexagonGrid}>
+    <div class={cn(hexagonGrid, 'hex-grid')}>
         <slot />
     </div>
 </div>

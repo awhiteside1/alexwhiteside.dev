@@ -3,6 +3,8 @@ import Title from '@components/blocks/Title.astro'
 import { getSkills } from './getSkills'
 import HexGrid from './HexGrid.astro'
 import Skill from './SkillCover.astro'
+import { hexagonRow } from './styles'
+import PlaceholderHex from './PlaceholderHex.astro'
 const skills = await getSkills()
 ---
 
@@ -11,16 +13,25 @@ const skills = await getSkills()
 >
     <Title text="Skills" icon="puzzle" />
     <HexGrid>
-        <Skill skill={skills.architecture} />
+        <div class={hexagonRow}>
+            <PlaceholderHex />
+            <Skill skill={skills.architecture} />
 
-        <Skill skill={skills.product} />
-        <Skill skill={skills.web} />
-        <Skill skill={skills.leadership} />
-        <Skill skill={skills.delivery} />
-        <!--<Skill skill={skills.architecture} />-->
+            <Skill skill={skills.product} />
+            <PlaceholderHex />
+        </div>
+        <div class={hexagonRow}>
+            <Skill skill={skills.web} />
+            <Skill skill={skills.leadership} />
+            <Skill skill={skills.delivery} />
+        </div>
+        <div class={hexagonRow}>
+            <PlaceholderHex />
+            <!--<Skill skill={skills.architecture} />-->
+            <Skill skill={skills.writing} />
 
-        <Skill skill={skills.writing} />
-
-        <Skill skill={skills['system-design']} />
+            <Skill skill={skills['system-design']} />
+            <PlaceholderHex />
+        </div>
     </HexGrid>
 </div>
