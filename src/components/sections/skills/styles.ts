@@ -84,9 +84,7 @@ export const hexagonBack = css({
     opacity: 0,
     transition: 'all 1s',
     clipPath: 'var(--hex-clip-path)',
-    paddingInline: 'calc(var(--hex-width) / 8)',
-    paddingBottom: 'calc(var(--hex-height) / 3)',
-    paddingTop: 'calc(var(--hex-height) / 5)',
+    padding: 'calc(var(--hex-height) / 4) calc(var(--hex-width) / 8)',
     _groupHover: {
         opacity: 1,
     },
@@ -167,20 +165,23 @@ export const hexIcon = css({
 })
 
 export const animatedList = css({
-    height: '100%',
     '--slide-el-width': '100px',
     '--slide-el-count': '6',
     '--slide-total-width':
         'calc(var(--slide-el-width) * var(--slide-el-count) + var(--hex-width) * 1.5)',
     ['& ul li']: {
+        maxWidth: 'var(--slide-el-width)',
         textAlign: 'center',
+        textOverflow: 'balanced',
+        fontWeight: 'medium',
         overflow: 'visible',
-        // flexBasis: 'var(--slide-el-width)',
+        flexBasis: 'var(--slide-el-width)',
     },
-    ['& ul li:not(:first-of-type)']: {},
-    ['& ul li:nth-of-type(2n)']: { paddingTop: 'calc(var(--hex-height) / 4)' },
+    ['& ul li:not(:first-of-type)']: {
+        marginLeft: '35%',
+    },
+    ['& ul li:nth-of-type(2n)']: { marginTop: '25%' },
     ['& ul']: {
-        zIndex: 4,
         animation: 'slide linear',
         animationDuration: 'calc(var(--slide-el-count) * 3s)',
         animationIterationCount: 'infinite',
@@ -190,10 +191,6 @@ export const animatedList = css({
         listStyleType: 'none',
         display: 'flex',
         flexDir: 'row',
-        height: '100%',
-        width: 'var(--slide-total-width)',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
         flexWrap: 'nowrap',
         _groupHover: {
             animationPlayState: 'running',
