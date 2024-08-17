@@ -15,22 +15,23 @@ const skills = await getSkills()
     <HexGrid>
         <div class={hexagonRow}>
             <PlaceholderHex />
-            <Skill skill={skills.architecture} />
+            <Skill skill={skills['system-design']} />
 
-            <Skill skill={skills.product} />
+            <Skill skill={skills.leadership} />
             <PlaceholderHex />
         </div>
         <div class={hexagonRow}>
             <Skill skill={skills.web} />
-            <Skill skill={skills.leadership} />
+            <Skill skill={skills.architecture} />
+
             <Skill skill={skills.delivery} />
         </div>
         <div class={hexagonRow}>
             <PlaceholderHex />
             <!--<Skill skill={skills.architecture} />-->
             <Skill skill={skills.writing} />
+            <Skill skill={skills.product} />
 
-            <Skill skill={skills['system-design']} />
             <PlaceholderHex />
         </div>
     </HexGrid>
