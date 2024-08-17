@@ -4,6 +4,7 @@ import { resolveIcon } from '../../../ui/utils/icons'
 import type { CollectionEntry } from 'astro:content'
 import { isString } from 'radash'
 import Hexagon from './Hexagon.astro'
+import { animatedList } from './styles'
 type Props = {
     skill: CollectionEntry<'skills'>['data'] & CollectionEntry<'skills'>
 }
@@ -23,10 +24,11 @@ const { Content } = await skill.render()
     <div slot="icon" set:html={svg} />
     <div
         slot="title"
-        class="text-sm opacity-70 font-medium leading-tight text-center group-hover:mb-1 group-hover:opacity-100">
+        class="text-sm opacity-70 font-medium leading-tight text-center group-hover:mb-1 group-hover:opacity-100"
+    >
         {skill.skill}
     </div>
-    <div slot="content">
+    <div slot="content" class={animatedList}>
         <Content />
     </div>
 </Hexagon>

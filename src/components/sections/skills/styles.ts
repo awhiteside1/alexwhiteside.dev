@@ -84,13 +84,36 @@ export const hexagonBack = css({
     opacity: 0,
     transition: 'all 1s',
     clipPath: 'var(--hex-clip-path)',
-    padding: 'calc(var(--hex-height) / 4) calc(var(--hex-width) / 8)',
+    paddingInline: 'calc(var(--hex-width) / 8)',
+    paddingBottom: 'calc(var(--hex-height) / 3)',
+    paddingTop: 'calc(var(--hex-height) / 5)',
     _groupHover: {
         opacity: 1,
     },
     '& > *': {
         lineHeight: 1,
         fontSize: 'smaller',
+    },
+    _after: {
+        position: 'absolute',
+        content: '""',
+        height: '100%',
+        top: 0,
+        right: 0,
+        width: '20px',
+        background:
+            'linear-gradient(to left,  var(--color-page) 0%, #0000 100%)',
+    },
+    _before: {
+        position: 'absolute',
+        content: '""',
+        height: '100%',
+        top: 0,
+        zIndex: 10,
+        left: 0,
+        width: '20px',
+        background:
+            'linear-gradient(to right,  var(--color-page) 0%, #0000 100%)',
     },
 })
 
@@ -140,5 +163,40 @@ export const hexIcon = css({
         height: 'calc(100% - var(--hex-height)/4)',
         opacity: 0,
         transform: 'translateY(-10px)',
+    },
+})
+
+export const animatedList = css({
+    height: '100%',
+    '--slide-el-width': '100px',
+    '--slide-el-count': '6',
+    '--slide-total-width':
+        'calc(var(--slide-el-width) * var(--slide-el-count) + var(--hex-width) * 1.5)',
+    ['& ul li']: {
+        textAlign: 'center',
+        overflow: 'visible',
+        // flexBasis: 'var(--slide-el-width)',
+    },
+    ['& ul li:not(:first-of-type)']: {},
+    ['& ul li:nth-of-type(2n)']: { paddingTop: 'calc(var(--hex-height) / 4)' },
+    ['& ul']: {
+        zIndex: 4,
+        animation: 'slide linear',
+        animationDuration: 'calc(var(--slide-el-count) * 3s)',
+        animationIterationCount: 'infinite',
+        animationPlayState: 'paused',
+        transform:
+            'translateX(calc(var(--animation-percent) * ( var(--slide-total-width) ) * -1 + var(--hex-width) ))',
+        listStyleType: 'none',
+        display: 'flex',
+        flexDir: 'row',
+        height: '100%',
+        width: 'var(--slide-total-width)',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        flexWrap: 'nowrap',
+        _groupHover: {
+            animationPlayState: 'running',
+        },
     },
 })

@@ -5,6 +5,12 @@
 @tailwind utilities;
 
 
+@property --animation-percent {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+}
+
 @property --bg-color-main {
     syntax: "<color>";
     initial-value: white;
@@ -64,7 +70,7 @@ html {
     --color-page: var(--colors-zinc-50);
     --color-base: white;
     --color-page-contrast: var(--colors-gray-300);
-        --color-page-foreground: var(--colors-neutral-700);
+    --color-page-foreground: var(--colors-neutral-700);
 
 }
 
