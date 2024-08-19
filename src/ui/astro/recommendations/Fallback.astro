@@ -1,8 +1,22 @@
 ---
 import Flat from './Flat.astro'
+import Square from '../components/bento/Square.astro'
+import BentoGridItem from '../components/bento/BentoGridItem.astro'
+import BentoGrid from '../components/bento/BentoGrid.astro'
 ---
+
 <Flat>
-<div class="h-screen w-full"></div>
-
-
+    <div class="h-screen w-full">
+        <BentoGrid>
+            <BentoGridItem title={''} description={''} url={`#`}>
+                <Square color="loading" />
+            </BentoGridItem>
+            <BentoGridItem title={''} description={''} url={`#`}>
+                <Square color="loading" />
+            </BentoGridItem>
+            <BentoGridItem title={''} description={''} url={`#`}>
+                <Square color="loading" />
+            </BentoGridItem>
+        </BentoGrid>
+    </div>
 </Flat>

@@ -2,25 +2,25 @@
 import { css } from '@styles/css'
 import { draw, min } from 'radash'
 import {
-	coverColor,
-	innerColor,
-	palette,
-	paletteBase,
-	paletteCover,
-	paletteWrapper,
+    coverColor,
+    innerColor,
+    palette,
+    paletteBase,
+    paletteCover,
+    paletteWrapper,
 } from './styles'
 
 type Props = {
-	colorInner?: string
-	colorCover?: string
-	minSize?: string
-	liftClearance?: 'full' | 'tight' | 'low'
+    colorInner?: string
+    colorCover?: string
+    minSize?: string
+    liftClearance?: 'full' | 'tight' | 'low'
 }
 const {
-	colorInner = 'green',
-	colorCover = 'white',
-	minSize = '100px',
-	liftClearance = 'low',
+    colorInner = 'green',
+    colorCover = 'white',
+    minSize = '100px',
+    liftClearance = 'low',
 } = Astro.props
 ---
 
@@ -42,20 +42,3 @@ const {
         </div>
     </div>
 </div>
-
-<script>
-    import { animate, type AnimationControls, stagger, timeline } from 'motion'
-
-    const controls = animate(
-        '[data-role=cover]',
-        { transform: [null, 'rotateX(40deg)', 'rotateX(0deg)'] },
-        {
-            delay: stagger(0.5),
-            duration: 1,
-            direction: 'alternate',
-            easing: 'ease-in',
-            persist: true,
-        }
-    )
-    controls.finished.then(() => controls.cancel())
-</script>
