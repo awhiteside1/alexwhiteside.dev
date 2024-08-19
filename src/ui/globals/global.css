@@ -76,7 +76,7 @@ html {
 
 html.dark {
     color-scheme: dark;
-    --color-base: black;
+    --color-base: rgb(8,8,8);
     --menu-bg: 0, 0, 0;
     --border: 55, 55, 55;
     --color-page: var(--colors-zinc-800);
