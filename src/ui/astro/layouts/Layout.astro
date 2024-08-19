@@ -8,8 +8,8 @@ import Header from '../sections/navigation/Header.astro'
 import DotBackground from './DotBackground.astro'
 
 type Props = {
-	title: string
-	description: string
+    title: string
+    description: string
 }
 
 const { title, description } = Astro.props
@@ -61,169 +61,10 @@ const { title, description } = Astro.props
         <Footer />
         <SpeedInsights />
         <!--<PageFind />-->
+    </body><script>
+        import { setupScrollAnimation } from './titleAnimation'
+        import { ensureInit } from '../../../lib/astro'
 
-        <script is:inline>
-            let initializedScrollTimeline = false
-
-            function initScrollTimeline() {
-                if (initializedScrollTimeline) return
-                initializedScrollTimeline = true
-                const registeredAnimations = []
-
-                // Some elements we'll need
-
-                //@ts-ignore
-                const scrollTimeline = new ScrollTimeline({
-                    source: document.documentElement,
-                    axis: 'block',
-                    scrollOffsets: [
-                        {
-                            target: document.documentElement,
-                            edge: 'start',
-                        },
-                        {
-                            target: document.documentElement,
-                            edge: 'start',
-                        },
-                    ],
-                })
-
-                const elements = document.getElementsByClassName('scroll-scale')
-                for (let i = 0; i < elements.length; i++) {
-                    const $header = elements.item(i)
-
-                    registeredAnimations.push(
-                        $header.animate(
-                            [
-                                {
-                                    fontSize:
-                                        'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
-                                },
-                                {
-                                    fontSize:
-                                        'min(max(calc(4vw + 1em), 2.8rem), 4rem)',
-                                    offset: 0.6,
-                                },
-                                { fontSize: 'var(--max-font-size)' },
-                            ],
-
-                            {
-                                fill: 'both',
-                                timeline: scrollTimeline,
-                                rangeStart: '0px',
-                                rangeEnd: '200px',
-                            }
-                        )
-                    )
-
-                    $header.classList.remove('load')
-                }
-
-                const scrollAppend =
-                    document.getElementsByClassName('scroll-append')
-                for (let i = 0; i < scrollAppend.length; i++) {
-                    registeredAnimations.push(
-                        scrollAppend.item(i).animate(
-                            [
-                                {
-                                    width: 0,
-                                    opacity: 0,
-                                    offset: 0.8,
-                                },
-                                { width: '3.5ch', opacity: 1 },
-                            ],
-                            {
-                                duration: 1,
-                                fill: 'both',
-                                rangeStart: '100px',
-                                rangeEnd: '200px',
-                                timeline: scrollTimeline,
-                            }
-                        )
-                    )
-                    scrollAppend.item(i).classList.remove('load')
-                }
-
-                const bgElements = document.getElementsByClassName('scroll-bg')
-                for (let i = 0; i < bgElements.length; i++) {
-                    const $bg = bgElements.item(i)
-                    registeredAnimations.push(
-                        $bg.animate(
-                            [
-                                {
-                                    background: 'transparent',
-                                    borderBottomColor: 'transparent',
-                                },
-                                {
-                                    background: 'transparent',
-                                    borderBottomColor: 'transparent',
-                                    offset: 0.3,
-                                },
-                                {
-                                    background: 'rgba(var(--menu-bg), 0.2)',
-                                    borderBottomColor: 'transparent',
-                                    offset: 0.7,
-                                },
-                                {
-                                    background: 'rgba(var(--menu-bg), 0.75)',
-                                    borderBottomColor:
-                                        'rgba(var(--border), 0.2)',
-                                    offset: 0.9,
-                                },
-                                {
-                                    background: 'rgba(var(--menu-bg), 0.9)',
-                                    borderBottomColor: 'rgb(var(--border), 1)',
-                                },
-                            ],
-                            {
-                                duration: 1,
-                                fill: 'both',
-                                rangeStart: '0px',
-                                rangeEnd: '200px',
-                                timeline: scrollTimeline,
-                            }
-                        )
-                    )
-                    $bg.classList.remove('load')
-                }
-
-                const beforeSwap = () => {
-                    registeredAnimations.forEach((animation) => {
-                        animation.cancel()
-                    })
-                    initializedScrollTimeline = false
-                    document.removeEventListener(
-                        'astro:before-swap',
-                        beforeSwap
-                    )
-                }
-
-                document.addEventListener('astro:before-swap', beforeSwap)
-            }
-
-            document.addEventListener('astro:after-swap', () => {
-                initScrollTimeline()
-            })
-
-            window.initScrollTimeline = initScrollTimeline
-        </script>
-
-        <script is:inline>
-            function appendPolyfill() {
-                const script = document.createElement('script')
-                script.onload = () => window.initScrollTimeline()
-                script.src = '/js/scroll-timeline.js'
-                script.async = true
-                document.body.appendChild(script)
-            }
-
-            if (window.ScrollTimeline === undefined) {
-                console.log('loading polyfill')
-                appendPolyfill()
-            } else {
-                console.log('init scroll timeline invoked')
-                window.initScrollTimeline()
-            }
-        </script>
-    </body>
+        ensureInit(() => setupScrollAnimation())
+    </script>
 </html>

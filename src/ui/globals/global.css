@@ -254,15 +254,12 @@ pre {
     /* animation: bgProgress auto linear;
     animation-timeline: scroll(root);
     animation-range: 0vh 20vh; */
-    background: rgb(var(--menu-bg));
+    background: transparent;
     border-bottom: 1px solid;
-    border-bottom-color: rgb(var(--border));
+    border-bottom-color: transparent;
+
 }
 
-.scroll-bg.load {
-    background: transparent;
-    border-bottom-color: transparent;
-}
 
 /*
 @keyframes bgProgress {

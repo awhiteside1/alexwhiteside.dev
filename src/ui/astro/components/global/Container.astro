@@ -2,16 +2,20 @@
 import { sift } from 'radash'
 import { cn } from '../../../utils/cn'
 type Props = {
+    fullWidth?: boolean
     background?: boolean
     class?: string
 }
+
+const { background, fullWidth = false } = Astro.props
 ---
 
 <div
     class={cn(
         sift([
             'mx-auto max-w-[--max-screen-width] w-full',
-            Astro.props.background && 'bg-white dark:bg-black rounded-3xl',
+            !fullWidth && 'px-2',
+            background && 'bg-white dark:bg-black rounded-3xl',
             Astro.props.class,
         ])
     )}
