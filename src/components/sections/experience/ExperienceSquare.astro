@@ -4,6 +4,7 @@ import Lifted from '../../../ui/astro/components/lifted/Lifted.astro'
 import { css, cx } from '@styles/css'
 import { get, isString } from 'radash'
 import { stacked } from './styles'
+import { optimizeImage } from '../../../ui/utils/optimizeImage'
 
 type Props = {
     icon?: string
@@ -56,11 +57,13 @@ const { icon, elements } = Astro.props
                                         }}
                                     >
                                         <img
-                                            src={
+                                            src={optimizeImage(
                                                 isString(company.logo)
                                                     ? company.logo
-                                                    : company.logo.src
-                                            }
+                                                    : company.logo.src,
+                                                'thumb'
+                                            )}
+                                            loading="lazy"
                                             alt={company.company}
                                             class="h-full aspect-square object-contain rounded-full"
                                         />
