@@ -9,7 +9,7 @@ interface Props {
 
 const { entry } = Astro.props
 const type = entry.id.split('/')[0] as 'blogs' | 'talks' | 'books'
-let image: string
+let image = ''
 let showTitle = true
 if (entry.data.cover) {
     if (isString(entry.data.cover)) {
