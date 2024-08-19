@@ -1,13 +1,15 @@
 ---
 import { isString } from 'radash'
 import { cn } from '../../../utils/cn'
+import { optimizeImage } from '../../../utils/optimizeImage'
 type Props = {
-	logo: string | { src: string }
-	title: string
-	subtitle: string
+    logo: string | { src: string }
+    title: string
+    subtitle: string
+    priority?: boolean
 }
 
-const { logo, title, subtitle } = Astro.props
+const { logo, title, subtitle, priority = false } = Astro.props
 
 const src = isString(logo) ? logo : logo.src
 const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
@@ -23,7 +25,12 @@ const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
         <div
             class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
         >
-            <img src={src} alt="" class="h-10 w-10 object-cover rounded-full" />
+            <img
+                src={optimizeImage(src, 'thumb')}
+                alt={title}
+                loading={priority ? 'eager' : 'lazy'}
+                class="h-10 w-10 object-cover rounded-full"
+            />
         </div>
         <div>
             <dd
