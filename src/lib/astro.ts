@@ -12,7 +12,7 @@ interface Props {
 	id?: string
 }
 
-export const ensureInit = <T extends Map<string, any>>(
+export const ensureInit = <T extends Map<string, unknown>>(
 	fn: (document: Document, context: T) => void,
 	props?: Props,
 ) => {
