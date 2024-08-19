@@ -23,7 +23,7 @@ export const ensureInit = <T extends Map<string, unknown>>(
 	document.addEventListener('astro:page-load', (ev) => {
 		const document = window.document
 		const pathname = window.location.pathname
-		if (propss.pages && !propss.pages.includes(pathname)) {
+		if (propss.pages && !propss.pages.some(page => matchWildcard(page, pathname))) {
 			console.log('Skipping init for ', pathname)
 			return
 		}
@@ -34,4 +34,10 @@ export const ensureInit = <T extends Map<string, unknown>>(
 			console.error(err)
 		}
 	})
+}
+
+function matchWildcard(pattern: string, str: string): boolean {
+	const regexPattern = pattern.replace(/\*/g, '.*')
+	const regex = new RegExp(`^${regexPattern}$`)
+	return regex.test(str)
 }

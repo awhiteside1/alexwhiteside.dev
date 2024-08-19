@@ -9,9 +9,9 @@ const pathname = Astro.props.pathname
 const slug = pathname.replace('/recommendations', '')
 
 const newTabs = listify(tabs, (key, value) => ({
-	selected: value.slug === slug,
-	name: key,
-	href: `/recommendations${value.slug}`,
+    selected: value.slug === slug,
+    name: key,
+    href: `/recommendations${value.slug}`,
 }))
 ---
 
@@ -23,12 +23,14 @@ const newTabs = listify(tabs, (key, value) => ({
             <select
                 id="current-tab"
                 name="current-tab"
-                class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-zinc-700">
+                class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:bg-slate-800 dark:border-zinc-700"
+            >
                 {
                     newTabs.map((option) => (
                         <option
                             value={option.href}
-                            {...{ selected: option.selected }}>
+                            {...{ selected: option.selected }}
+                        >
                             {option.name}
                         </option>
                     ))
@@ -46,7 +48,8 @@ const newTabs = listify(tabs, (key, value) => ({
                                 'whitespace-nowrap border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-gray-5000 hover:border-gray-300',
                                 selected &&
                                     'border-indigo-500 font-bold hover:border-indigo-600'
-                            )}>
+                            )}
+                        >
                             {name}
                         </a>
                     ))
@@ -58,6 +61,7 @@ const newTabs = listify(tabs, (key, value) => ({
 
 <script>
     import { navigate } from 'astro:transitions/client'
+    import { ensureInit } from '../../../lib/astro'
 
     function setupSelect() {
         document
@@ -65,12 +69,11 @@ const newTabs = listify(tabs, (key, value) => ({
             ?.addEventListener('change', (event) => {
                 const select = event.target as HTMLSelectElement
                 const value = select.value
-                console.log(value)
                 navigate(value)
             })
     }
-    document.addEventListener('astro:after-swap', () => {
-        setupSelect()
+
+    ensureInit(() => setupSelect(), {
+        pages: ['/recommendations', '/recommendations/*'],
     })
-    setupSelect()
 </script>
