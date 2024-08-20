@@ -208,7 +208,7 @@ export default async function handler(request: VercelRequest) {
 						position: 'absolute',
 						display: 'flex',
 						top: '29px',
-						right: '28px',
+						right: units(2),
 					}}
 				>
 					<MastHead />
@@ -216,9 +216,9 @@ export default async function handler(request: VercelRequest) {
 				<div
 					style={{
 						position: 'absolute',
-						border: '2px solid #0000',
+						margin: 1,
 						display: 'flex',
-						left: units(1),
+						left: units(3),
 						bottom: units(1) + 13,
 						flexDirection: 'column',
 						alignItems: 'flex-start',
@@ -227,27 +227,36 @@ export default async function handler(request: VercelRequest) {
 					<div
 						style={{
 							fontSize: '80px',
-							margin: 0,
-							paddingLeft: 2,
+							margin: 1,
+							marginBottom: 0,
+							paddingLeft: 10,
+							paddingBottom: 13,
+							paddingTop: 13,
+							lineHeight: '84px',
+							background: 'white',
 							fontWeight: 'bold',
 							fontFamily: 'concourse-bold',
-							textAlign: 'left',
+							// height: units(4) - 2,
+							width: units(27) - 2,
 						}}
 					>
 						{display.title}
 					</div>
 					<div
 						style={{
-							border: '2px solid #0000',
-							height: units(4) - 2,
-							width: round(800) - 2,
+							marginBottom: 1,
+							marginLeft: 1,
+							paddingTop: 13,
+							paddingLeft: 10,
+							paddingBottom: 13,
+							width: round(880) - 2,
 							background: 'white',
 							display: 'flex',
 						}}
 					>
 						<div
 							style={{
-								margin: '10px',
+								lineHeight: '56px',
 								fontSize: '36px',
 							}}
 						>
