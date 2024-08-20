@@ -18,10 +18,11 @@ if (entry.data.cover) {
         image = entry.data.cover.src
     }
 } else {
+    if(type==='talks') {
+        image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
+    }
+}
     switch (type) {
-        case 'talks':
-            image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
-            break
         case 'books':
             showTitle = false
             break
