@@ -64,6 +64,7 @@ export default async function handler(request: VercelRequest) {
 				justifyContent: 'center',
 				alignItems: 'center',
 				height: '100vh',
+				width: '100vw',
 				fontFamily: 'Arial, sans-serif',
 				background:
 					'linear-gradient(to bottom, #e3dcd2 60%, #f7f7f7 75%, #fff 85%)',
