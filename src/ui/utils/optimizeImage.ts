@@ -17,8 +17,16 @@ export const optimizeImage = (
 	url: string,
 	preset: keyof typeof optimizePresets,
 ) => {
-	if (!isProd()) return url
-	const options = optimizePresets[preset]
-	const optionsString = generateOptionsString(options)
-	return `https://alexwhiteside.dev/cdn-cgi/image/${optionsString}/${url}`
+	try {
+		const Url = new URL(url)
+		if (!isProd()) {
+			Url.searchParams.set('local', 'true')
+			return Url.toString()
+		}
+		const options = optimizePresets[preset]
+		const optionsString = generateOptionsString(options)
+		return `https://alexwhiteside.dev/cdn-cgi/image/${optionsString}/${url}`
+	} catch (err) {
+		return url
+	}
 }
