@@ -37,18 +37,21 @@ export default async function handler(request: VercelRequest) {
 			return {
 				title: page.title,
 				image: undefined,
+				description: page.description,
 			}
 		})
 		.with({ kind: 'post' }, (post) => {
 			return {
 				title: post.title,
 				image: post.coverUrl,
+				description: '',
 			}
 		})
 		.otherwise(() => {
 			return {
 				title: 'Alex Whiteside',
 				image: undefined,
+				description: '',
 			}
 		})
 
@@ -62,12 +65,15 @@ export default async function handler(request: VercelRequest) {
 				alignItems: 'center',
 				height: '100vh',
 				fontFamily: 'Arial, sans-serif',
-				background: 'linear-gradient(to bottom right, #f0f0f0, #ffffff)',
+				background:
+					'linear-gradient(to bottom, #e3dcd2 60%, #f7f7f7 75%, #fff 85%)',
 			}}
 		>
 			<div
 				style={{
 					display: 'flex',
+					gap: 2,
+					flexDirection: 'column',
 					alignItems: 'center',
 					textAlign: 'center',
 				}}
@@ -75,13 +81,23 @@ export default async function handler(request: VercelRequest) {
 				<h1
 					style={{
 						fontSize: '3rem',
-						margin: '20px 20px',
-						flexGrow: 1,
-						textAlign: 'right',
+						margin: 0,
+						textAlign: 'center',
 					}}
 				>
 					{display.title}
 				</h1>
+				<p>{display.description}</p>
+				<div
+					style={{
+						width: '100%',
+						borderBottom: '1px solid gray',
+					}}
+				>
+					{''}
+				</div>
+
+				<p>AlexWhiteside.dev</p>
 			</div>
 		</div>,
 		{
