@@ -161,6 +161,9 @@ importers:
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0
+      ts-pattern:
+        specifier: ^5.3.1
+        version: 5.3.1
       type-fest:
         specifier: ^4.21.0
         version: 4.21.0
@@ -5734,6 +5737,9 @@ packages:
 
   ts-pattern@5.0.8:
     resolution: {integrity: sha512-aafbuAQOTEeWmA7wtcL94w6I89EgLD7F+IlWkr596wYxeb0oveWDO5dQpv85YP0CGbxXT/qXBIeV6IYLcoZ2uA==}
+
+  ts-pattern@5.3.1:
+    resolution: {integrity: sha512-1RUMKa8jYQdNfmnK4jyzBK3/PS/tnjcZ1CW0v1vWDeYe5RBklc/nquw03MEoB66hVBm4BnlCfmOqDVxHyT1DpA==}
 
   ts-toolbelt@6.15.5:
     resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
@@ -12767,6 +12773,8 @@ snapshots:
     optional: true
 
   ts-pattern@5.0.8: {}
+
+  ts-pattern@5.3.1: {}
 
   ts-toolbelt@6.15.5: {}
 

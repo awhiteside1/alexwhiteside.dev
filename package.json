@@ -67,6 +67,7 @@
     "surrealdb.js": "1.0.0-beta.9",
     "surrealdb.node": "1.0.0-beta.1",
     "tailwind-merge": "^2.3.0",
+    "ts-pattern": "^5.3.1",
     "type-fest": "^4.21.0",
     "typescript": "^5.5.4",
     "unified": "^11.0.5",
