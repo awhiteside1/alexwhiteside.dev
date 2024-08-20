@@ -12,7 +12,10 @@ let posts = await Hashnode.getPosts()
 posts = posts.sort(byDate((x) => new Date(x.publishedAt)))
 ---
 
-<Layout title={''} description={''}>
+<Layout
+    title={'Thoughts and Writing'}
+    description={'Short essays on a range of topics that I felt needed to be written. '}
+>
     <div slot="before" class="text-3xl z-[100] translate-y-4">
         <GradientText color="blue">Thoughts and</GradientText>
     </div>
