@@ -52,7 +52,7 @@ export default async function handler(request: VercelRequest) {
 			}
 		})
 
-	new ImageResponse(
+	return new ImageResponse(
 		<div
 			style={{
 				margin: 0,
