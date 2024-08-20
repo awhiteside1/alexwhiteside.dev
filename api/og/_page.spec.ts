@@ -9,7 +9,11 @@ describe('', () => {
 	it('should sdfds', async () => {
 		// @ts-ignore
 		const request: VercelRequest = {
-			query: { kind: 'page', title: 'Hello' },
+			query: {
+				kind: 'page',
+				title: 'Career and Background',
+				description: '10+ years of experience at companies large and small',
+			},
 		}
 		const response = await handler(request)
 		if (!response.body) return
