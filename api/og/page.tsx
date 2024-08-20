@@ -97,7 +97,7 @@ export default async function handler(request: VercelRequest) {
 					{''}
 				</div>
 
-				<p>AlexWhiteside.dev</p>
+				<p style={{ color: 'gray' }}>alexwhiteside.dev</p>
 			</div>
 		</div>,
 		{
