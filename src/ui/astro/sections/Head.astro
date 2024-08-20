@@ -47,7 +47,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 <meta
     property="og:image"
     content={new URL(
-        `/api/og/page?${new URLSearchParams({ kind: 'page', title: title }).toString()}`,
+        `/api/og/page?${new URLSearchParams({ kind: 'page', title: title, description: description }).toString()}`,
         Astro.url
     )}
 />
@@ -60,7 +60,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 <meta
     property="twitter:image"
     content={new URL(
-        `/api/og/page?${new URLSearchParams({ kind: 'page', title: title }).toString()}`,
+        `/api/og/page?${new URLSearchParams({ kind: 'page', title: title, description: description }).toString()}`,
         Astro.url
     )}
 />

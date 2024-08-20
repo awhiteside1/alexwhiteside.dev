@@ -30,6 +30,7 @@ const BORDERS = 'none' // `1px dashed ${draw(['blue', 'green', 'red', 'purple'])
 const extractParametersFromRequest = (
 	request: VercelRequest,
 ): RequestParameters => {
+	console.table({ ...request.query, url: request.url })
 	if (!request.query) return { kind: undefined }
 	// const { searchParams } = new URL(request.url)
 	const data = request.query

@@ -8,13 +8,13 @@ import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
 const workContent = await getWorkContent()
 const sortedByCompany = Array.from(workContent.map.values()).toSorted(
-	byDate((x) => x?.from),
+    byDate((x) => x?.from)
 )
 ---
 
 <Layout
-    title="Background & Experience"
-    description="Multiple startup exists in Fintech, Edtech, and more."
+    title="Career & Background"
+    description="10+ years experience developing systems and teams that build them"
 >
     <div slot="before" class="text-3xl z-[100] translate-y-4">
         <GradientText color="pink">Career &</GradientText>
