@@ -30,10 +30,9 @@ const BORDERS = 'none' // `1px dashed ${draw(['blue', 'green', 'red', 'purple'])
 const extractParametersFromRequest = (
 	request: VercelRequest,
 ): RequestParameters => {
-	console.table({ ...request.query, url: request.url })
-	if (!request.query) return { kind: undefined }
-	// const { searchParams } = new URL(request.url)
-	const data = request.query
+	if (!request.url) return { kind: undefined }
+	const { searchParams } = new URL(request.url)
+	const data = Object.fromEntries(searchParams.entries())
 	return data as RequestParameters
 }
 
@@ -49,6 +48,7 @@ const Caption = (props: PropsWithChildren<{ units: number }>) => (
 	<div
 		style={{
 			display: 'flex',
+			border: '2px solid #0000',
 			height: units(1),
 			width: units(props.units) - 2,
 		}}
@@ -68,11 +68,15 @@ const Caption = (props: PropsWithChildren<{ units: number }>) => (
 const MastHead = () => (
 	<div
 		style={{
-			border: BORDERS,
+			border: '4px solid #0000',
 			display: 'flex',
+			width: units(15) - 2,
+			height: units(6) - 2,
 			justifyItems: 'right',
 			alignItems: 'flex-end',
 			flexDirection: 'column',
+			background: 'white',
+			padding: '14px',
 		}}
 	>
 		<div
@@ -83,18 +87,33 @@ const MastHead = () => (
 				width: '100%',
 				display: 'flex',
 				color: '#262626',
-				justifyItems: 'end',
+				justifyItems: 'center',
 				flexDirection: 'row',
-				verticalAlign: 'bottom',
-
-				height: units(2),
+				verticalAlign: 'middle',
+				background: 'white',
+				height: units(3),
 			}}
 		>
-			<div style={{ marginTop: 'auto', lineHeight: 1, textAlign: 'right' }}>
+			<div
+				style={{
+					margin: 'auto',
+					lineHeight: 1,
+					textAlign: 'center',
+					color: '#454545',
+				}}
+			>
 				Alex Whiteside
 			</div>
 		</div>
-		<div style={{ display: 'flex', flexDirection: 'row' }}>
+		<div
+			style={{
+				display: 'flex',
+				width: '100%',
+				justifyContent: 'space-between',
+				border: '2px solid #0000',
+				flexDirection: 'row',
+			}}
+		>
 			<Caption units={6}>Software Architect</Caption>
 			<Caption units={4}>Entrepreneur</Caption>
 			<Caption units={3}>Creative</Caption>
@@ -188,7 +207,7 @@ export default async function handler(request: VercelRequest) {
 					style={{
 						position: 'absolute',
 						display: 'flex',
-						top: '28px',
+						top: '29px',
 						right: '28px',
 					}}
 				>
@@ -197,10 +216,10 @@ export default async function handler(request: VercelRequest) {
 				<div
 					style={{
 						position: 'absolute',
-						bottom: 0,
-						width: '100%',
+						border: '2px solid #0000',
 						display: 'flex',
-						gap: '28px',
+						left: units(1),
+						bottom: units(1) + 13,
 						flexDirection: 'column',
 						alignItems: 'flex-start',
 					}}
@@ -209,14 +228,31 @@ export default async function handler(request: VercelRequest) {
 						style={{
 							fontSize: '80px',
 							margin: 0,
+							paddingLeft: 2,
 							fontWeight: 'bold',
+							fontFamily: 'concourse-bold',
 							textAlign: 'left',
 						}}
 					>
 						{display.title}
 					</div>
-					<div style={{ background: 'white', fontSize: '36px' }}>
-						{display.description}
+					<div
+						style={{
+							border: '2px solid #0000',
+							height: units(4) - 2,
+							width: round(800) - 2,
+							background: 'white',
+							display: 'flex',
+						}}
+					>
+						<div
+							style={{
+								margin: '10px',
+								fontSize: '36px',
+							}}
+						>
+							{display.description}
+						</div>
 					</div>
 				</div>
 			</div>
