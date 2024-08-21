@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { optimizeImage } from '../../../utils/optimizeImage'
-import { isString } from 'radash'
+import { resolveImage } from '../../../utils/imagesCollese'
+import { CardTypes } from './CardTypes'
 
 interface Props {
     entry: CollectionEntry<'awesome'>
@@ -9,27 +10,11 @@ interface Props {
 
 const { entry } = Astro.props
 const type = entry.id.split('/')[0] as 'blogs' | 'talks' | 'books'
-let image = ''
-let showTitle = true
-if (entry.data.cover) {
-    if (isString(entry.data.cover)) {
-        image = entry.data.cover
-    } else {
-        image = entry.data.cover.src
-    }
-} else {
-    if(type==='talks') {
-        image = `https://i.ytimg.com/vi/${new URL(entry.data.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
-    }
-}
-    switch (type) {
-        case 'books':
-            showTitle = false
-            break
-        case 'blogs':
-            break
-    }
-}
+
+const image =
+    resolveImage(entry.data.cover) ?? CardTypes[type].imageGenerationFn(entry)
+const showTitle = CardTypes[type].showTitle
+
 const { url, name } = entry.data
 ---
 
