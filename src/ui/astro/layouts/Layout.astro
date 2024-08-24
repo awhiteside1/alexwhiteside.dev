@@ -6,6 +6,7 @@ import Head from '../sections/Head.astro'
 import Burger from '../sections/navigation/Burger.astro'
 import Header from '../sections/navigation/Header.astro'
 import DotBackground from './DotBackground.astro'
+import WorkerConnection from 'src/github/psqlite/worker/WorkerConnection.astro'
 
 type Props = {
     title: string
@@ -60,6 +61,7 @@ const { title, description } = Astro.props
         </main>
         <Footer />
         <SpeedInsights />
+        <WorkerConnection />
         <!--<PageFind />-->
     </body><script>
         import { setupScrollAnimation } from './titleAnimation'

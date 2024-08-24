@@ -3,7 +3,7 @@ import { EmbeddingFunction, register } from '@lancedb/lancedb/embedding'
 import { Ollama } from 'ollama'
 
 const client = new Ollama({
-	host: 'http://100.118.219.122:11434',
+	host: 'http://studio.local:11434',
 })
 
 @register('ollama')

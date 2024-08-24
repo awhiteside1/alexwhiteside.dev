@@ -1,0 +1,16 @@
+---
+
+---
+
+<script>
+    import { ensureInit } from 'src/lib/astro'
+    import { PGliteWorker } from '@electric-sql/pglite/worker'
+
+    const worker = new Worker('./Worker.ts', { type: 'module' })
+    const pg = new PGliteWorker(worker, { dataDir: 'idb://my-db-2' })
+    // const pg = new PGlite('idb://my-pgdata')
+
+    Object.assign(window, { pg })
+
+    ensureInit(() => {})
+</script>

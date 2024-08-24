@@ -71,6 +71,11 @@ export const summarizeData = async () => {
 		.toArray()
 		.sort(byString((x) => x.text))
 	summarizeTable('topics', topics)
+
+	const cache = (await (await tables.db.openTable('cache')).toArrow())
+		.toArray()
+		.sort(byString((x) => x.original))
+	summarizeTable('cache', cache)
 }
 
 const summarizeTable = (name: string, data: unknown[]) => {

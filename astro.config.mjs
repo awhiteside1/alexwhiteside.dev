@@ -3,7 +3,9 @@ import nodeBuilder from '@astrojs/node'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import vercelServerless from '@astrojs/vercel/serverless'
+import worker from '@astropub/worker'
 import { defineConfig, envField } from 'astro/config'
+
 const vercel = vercelServerless({
 	webAnalytics: {
 		enabled: true,
@@ -22,7 +24,7 @@ const isVercel = () => process.env.VERCEL !== undefined
 export default defineConfig({
 	site: 'https://alexwhiteside.dev',
 	adapter: isVercel() ? vercel : node,
-	integrations: [mdx(), sitemap(), react()],
+	integrations: [worker(), mdx(), sitemap(), react()],
 	output: 'hybrid',
 	experimental: {
 		serverIslands: true,

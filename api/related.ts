@@ -1,7 +1,6 @@
 import lancedb from '@lancedb/lancedb'
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-
 import { awsCredentialsProvider } from '@vercel/functions/oidc'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 const getSecrets = () => {
 	const NOMIC_API_LEY = process.env.NOMIC_API
@@ -19,6 +18,7 @@ export default async function (
 	const termString = typeof term === 'string' ? term : term[0]
 	try {
 		const credentials = awsCredentialsProvider({
+			// @ts-ignore
 			roleArn: process.env.AWS_ROLE_ARN,
 		})
 		console.log(typeof credentials)
