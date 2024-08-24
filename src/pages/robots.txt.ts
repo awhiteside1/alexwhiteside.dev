@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro'
 
 const hostFromEnv = import.meta.env.VERCEL_PROJECT_PRODUCTION_URL
 const host = hostFromEnv ? `https://${hostFromEnv}` : 'http://localhost:4321'
-console.log({ host, hostFromEnv })
+// console.log({ host, hostFromEnv })
 
 const robotsTxt = `
 User-agent: *

@@ -53,8 +53,15 @@ export const placeholderHex = css({
 	clipPath: 'var(--hex-clip-path)',
 	height: 'var(--hex-height)',
 	width: 'var(--hex-width)',
-	background: 'var(--color-page)',
+	background:
+		'linear-gradient(var(--hex-angle), var(--color-page) 31%, transparent 102%)',
 	marginBottom: 'calc(-1 * var(--hex-height) / 4 + var(--hex-margin))',
+	_firstOfType: {
+		'--hex-angle': '-60deg',
+	},
+	_lastOfType: {
+		'--hex-angle': '60deg',
+	},
 })
 
 export const hexagon = css({

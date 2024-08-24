@@ -3,24 +3,27 @@ import { optimizeImage } from '@ui/utils/optimizeImage'
 import FormattedDate from '../components/text/FormattedDate.astro'
 
 interface Props {
-	title: string
-	date: string
-	coverImage: string
+    title: string
+    date: string
+    coverImage: string
 }
 
 const { title, date, coverImage } = Astro.props
 ---
 
-<div class="relative w-full aspect-[5/3] min-h-[14rem]  max-h-[40vh] sm:aspect-[21/9] rounded-xl overflow-hidden">
-  <img
-    src={optimizeImage(coverImage, "large")}
-    alt={title}
-    class="w-full h-full object-cover"
-  />
-  <!-- <div class="absolute inset-0 "></div> -->
-  <div class="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-tr from-black/60 via-black/40 to-black/15">
-    <h1 class="text-xl sm:text-3xl font-bold mb-2 text-pretty">{title}</h1>
-    <FormattedDate date={date}/>
-  </div>
-  
+<div
+    class="relative w-full aspect-[5/3] min-h-[14rem] max-h-[40vh] sm:aspect-[21/9] md:rounded-xl overflow-hidden"
+>
+    <img
+        src={optimizeImage(coverImage, 'large')}
+        alt={title}
+        class="w-full h-full object-cover"
+    />
+    <!-- <div class="absolute inset-0 "></div> -->
+    <div
+        class="absolute bottom-0 left-0 right-0 p-6 text-white bg-gradient-to-tr from-black/60 via-black/40 to-black/15"
+    >
+        <h1 class="text-xl sm:text-3xl font-bold mb-2 text-pretty">{title}</h1>
+        <FormattedDate date={date} />
+    </div>
 </div>

@@ -1,6 +1,15 @@
 ---
 import { placeholderHex } from './styles'
 import { cn } from '../../../lib/utils'
+
+type Props = {
+    angle: number
+}
+const { angle = 0 } = Astro.props
 ---
 
-<div class={cn(placeholderHex, 'placeholder-hex')}></div>
+<div
+    style={{ '--hex-angle': `${angle}deg` }}
+    class={cn(placeholderHex, 'placeholder-hex')}
+>
+</div>

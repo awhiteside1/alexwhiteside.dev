@@ -14,11 +14,11 @@ const skills = await getSkills()
     <Title text="Skills" icon="puzzle" />
     <HexGrid>
         <div class={hexagonRow}>
-            <PlaceholderHex />
+            <PlaceholderHex angle={-45} />
             <Skill skill={skills['system-design']} />
 
             <Skill skill={skills.leadership} />
-            <PlaceholderHex />
+            <PlaceholderHex angle={45} />
         </div>
         <div class={hexagonRow}>
             <Skill skill={skills.web} />
@@ -27,12 +27,12 @@ const skills = await getSkills()
             <Skill skill={skills.delivery} />
         </div>
         <div class={hexagonRow}>
-            <PlaceholderHex />
+            <PlaceholderHex angle={-135} />
             <!--<Skill skill={skills.architecture} />-->
             <Skill skill={skills.product} />
             <Skill skill={skills.writing} />
 
-            <PlaceholderHex />
+            <PlaceholderHex angle={135} />
         </div>
     </HexGrid>
 </div>

@@ -23,8 +23,11 @@ export const ensureInit = <T extends Map<string, unknown>>(
 	document.addEventListener('astro:page-load', (ev) => {
 		const document = window.document
 		const pathname = window.location.pathname
-		if (propss.pages && !propss.pages.some(page => matchWildcard(page, pathname))) {
-			console.log('Skipping init for ', pathname)
+		if (
+			propss.pages &&
+			!propss.pages.some((page) => matchWildcard(page, pathname))
+		) {
+			// console.log('Skipping init for ', pathname)
 			return
 		}
 		const updatedContext = window.astroInitContexts.get(propss.id) as T

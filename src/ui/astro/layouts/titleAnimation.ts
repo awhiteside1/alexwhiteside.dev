@@ -1,7 +1,6 @@
 import { animate, scroll } from 'motion'
 
 export const setupScrollAnimation = () => {
-	console.log('Setup scroll')
 	if (document.querySelectorAll('.scroll-scale').length > 0) {
 		scroll(
 			animate('.scroll-scale', {

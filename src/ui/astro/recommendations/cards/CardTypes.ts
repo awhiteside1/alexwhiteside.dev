@@ -1,5 +1,4 @@
 import type { CollectionEntry } from 'astro:content'
-import { undefined } from 'zod'
 
 export type CardTypeOptions = {
 	imageGenerationFn: (entry: CollectionEntry<'awesome'>) => string

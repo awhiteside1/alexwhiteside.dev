@@ -104,8 +104,6 @@ const { icon, elements } = Astro.props
     import { ensureInit } from '../../../lib/astro'
 
     const setup = (document: Document) => {
-        console.log('Setup')
-
         document.querySelectorAll('[data-kind=stacked]').forEach((stack) => {
             let count = 0
             let lastTimestamp = 0

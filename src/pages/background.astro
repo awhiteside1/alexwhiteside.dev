@@ -6,6 +6,7 @@ import { getWorkContent } from '../lib/getWorkContent'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
+import MdxSection from 'src/ui/astro/components/mdx/MdxSection.astro'
 const workContent = await getWorkContent()
 const sortedByCompany = Array.from(workContent.map.values()).toSorted(
     byDate((x) => x?.from)
@@ -24,7 +25,7 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
         <GradientText color="pink">Background</GradientText>
     </div>
 
-    <Container background class="p-2">
+    <Container background class="md:p-2">
         <div
             id="sticky-backdrop"
             style="opacity: 0;"
@@ -32,12 +33,8 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
         >
             &nbsp;
         </div>
-        <div class="space-y-6 px-2">
-            <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-                Over the last decade I've spent most of my time in Fintech and
-                Edtech as a (very) hands on technical leader.
-            </p>
-
+        <div class="space-y-6 px-4 py-4">
+            <MdxSection page="background" name="intro" />
             <div>
                 <div data-container="companies" class="flex max-w-4xl flex-col">
                     {
@@ -161,7 +158,7 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
         const backdropEl = document.getElementById('sticky-backdrop')
 
         if (backdropEl && !backdropEl.dataset.initialized) {
-            console.log('initializing scroll')
+            // console.log('initializing scroll')
             addEventListener('scroll', listener)
             backdropEl.dataset.initialized = 'true'
         }
