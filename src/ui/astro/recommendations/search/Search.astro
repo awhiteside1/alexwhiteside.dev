@@ -1,0 +1,48 @@
+---
+
+---
+
+<script>
+    import { ensureInit } from '../../../../lib/astro'
+    import { isString } from 'radash'
+    import { PromiseWorker } from './PromiseWorker'
+    const worker = new Worker('./SearchWorker.ts', { type: 'module' })
+    const sharedWorked = new PromiseWorker(worker)
+    console.log(worker)
+    const executeSearch = (query: string) => {
+        sharedWorked.postMessage({ query }).then(console.log)
+    }
+
+    const setupSearchForm = () => {
+        const form = document.getElementById('searchForm') as HTMLFormElement
+        const query = document.getElementById('query') as HTMLInputElement
+        if (!form || !query) return
+        form.addEventListener('submit', (evt) => {
+            evt.preventDefault()
+            const data = new FormData(form)
+            const query = data.get('query')
+            if (isString(query)) {
+                executeSearch(query)
+            }
+        })
+
+        query.addEventListener('input', (evt) => {
+            executeSearch(query.value)
+        })
+    }
+
+    ensureInit(setupSearchForm)
+</script>
+
+<form id="searchForm">
+    <label class="block text-sm font-medium leading-6 text-gray-900" for="query"
+        >Search</label
+    >
+    <input
+        id="query"
+        placeholder="Search for a movie..."
+        type="text"
+        name="query"
+        class="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    />
+</form>

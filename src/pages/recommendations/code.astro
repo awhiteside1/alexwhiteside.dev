@@ -2,9 +2,11 @@
 import AwesomeLayout from '@ui/astro/recommendations/AwesomeLayout.astro'
 import Fallback from '@ui/astro/recommendations/Fallback.astro'
 import Language2 from '@ui/astro/recommendations/Language.astro'
+import Search from 'src/ui/astro/recommendations/search/Search.astro'
 ---
 
 <AwesomeLayout pathname="/recommendations/code">
+    <Search />
     <Language2 server:defer>
         <Fallback slot="fallback" />
     </Language2>

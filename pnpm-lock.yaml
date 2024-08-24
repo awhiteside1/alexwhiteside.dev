@@ -29,6 +29,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.1.6
         version: 3.1.6
+      '@astropub/worker':
+        specifier: ^0.2.0
+        version: 0.2.0
       '@inquirer/core':
         specifier: ^9.0.10
         version: 9.0.10
@@ -225,6 +228,9 @@ importers:
       '@types/request':
         specifier: ^2.48.12
         version: 2.48.12
+      '@types/sharedworker':
+        specifier: ^0.0.123
+        version: 0.0.123
       '@vercel/node':
         specifier: ^3.2.8
         version: 3.2.8
@@ -456,6 +462,9 @@ packages:
     resolution: {integrity: sha512-FXh2IxLQ7GOl5w+1uUuSO5AO0fwlZWDjwEZ5NdEOAoWfFW0QeOR+LILbccjIuWKdugEJknAT4XxwQvsmVMh+8A==}
     peerDependencies:
       astro: ^4.2.0
+
+  '@astropub/worker@0.2.0':
+    resolution: {integrity: sha512-DkvD+H3N3n9XqRV66Jh3nYq0fPkfPwlbuOcKmLgSINms0z5VcHALVUmneceMJ1ni/MexkqffezWtGgKAiglYbw==}
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -1744,6 +1753,9 @@ packages:
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
+
+  '@types/sharedworker@0.0.123':
+    resolution: {integrity: sha512-NibseUyQBOAqs7FKbA8sa6uda5zHbnMCliJPD1t8Kavz5E1pLKWyodR0QTzXMSdoxGeq0QuGZ4kPBTWqwYjt1w==}
 
   '@types/through@0.0.33':
     resolution: {integrity: sha512-HsJ+z3QuETzP3cswwtzt2vEIiHBk/dCcHGhbmG5X3ecnwFD/lPrMpliGXxSCg03L9AhrdwA4Oz/qfspkDW+xGQ==}
@@ -6629,6 +6641,8 @@ snapshots:
       - react
       - supports-color
 
+  '@astropub/worker@0.2.0': {}
+
   '@babel/code-frame@7.24.7':
     dependencies:
       '@babel/highlight': 7.24.7
@@ -7968,6 +7982,8 @@ snapshots:
   '@types/sax@1.2.7':
     dependencies:
       '@types/node': 22.1.0
+
+  '@types/sharedworker@0.0.123': {}
 
   '@types/through@0.0.33':
     dependencies:
