@@ -1,6 +1,7 @@
 const optimizePresets = {
-	thumb: { width: '500', quality: '80', format: 'avif' },
-	med: { width: '800', quality: '80', format: 'avif' },
+	thumb: { width: '200', quality: '70', format: 'avif' },
+	small: { width: '400', quality: '70', format: 'avif' },
+	med: { width: '800', quality: '70', format: 'avif' },
 	large: { width: '1200', quality: '80', format: 'avif' },
 }
 
@@ -20,6 +21,7 @@ export const optimizeImage = (
 	try {
 		const Url = new URL(url)
 		if (!isProd()) {
+			//Has no functionality, just makes debugging easier. I don't love it. But I don't like hosting another service more.
 			Url.searchParams.set('local', 'true')
 			return Url.toString()
 		}
