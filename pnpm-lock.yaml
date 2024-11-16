@@ -12,8 +12,8 @@ importers:
         specifier: ^0.0.37
         version: 0.0.37(zod@3.23.8)
       '@apache-arrow/esnext-esm':
-        specifier: 17.0.0
-        version: 17.0.0
+        specifier: 18.0.0
+        version: 18.0.0
       '@astrojs/check':
         specifier: ^0.7.0
         version: 0.7.0(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.4)
@@ -39,8 +39,8 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8
       '@lancedb/lancedb':
-        specifier: ^0.7.1
-        version: 0.7.1(apache-arrow@17.0.0)
+        specifier: ^0.13.0
+        version: 0.13.0(apache-arrow@17.0.0)
       '@tailwind-plugin/expose-colors':
         specifier: ^1.1.8
         version: 1.1.8(tailwindcss@3.4.4(ts-node@10.9.1(@types/node@22.1.0)(typescript@5.5.4)))
@@ -381,8 +381,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@apache-arrow/esnext-esm@17.0.0':
-    resolution: {integrity: sha512-2dcd6jCdeeoAln7vNvTuyGOj1UB23PtBic2nwWJo7JaqFjNBiybC/KNW+W5p1rLeG9fLDmlZWYTNxQbIkWSHDw==}
+  '@apache-arrow/esnext-esm@18.0.0':
+    resolution: {integrity: sha512-oA3480/UwbGmJbcuT7bCKyRmqSiF8GF87cIWGYiuB0uFF8qAR3Ehst9AJbbXoDSd4IB5vtvQep6tchWCt82T8w==}
     hasBin: true
 
   '@astrojs/check@0.7.0':
@@ -1389,42 +1389,43 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@lancedb/lancedb-darwin-arm64@0.7.1':
-    resolution: {integrity: sha512-uHoLa2fScUikMRle3N+u54UH7Rn1gOBYpz1cdVJZtGRlD+IG+/tORcSlOycS+EnClAKR2M2vk7RDkpOtL9mTbw==}
+  '@lancedb/lancedb-darwin-arm64@0.13.0':
+    resolution: {integrity: sha512-x+oRj7PDlxOONr27+NgLIk+Pm8VjnEO5VNoEkDv/j4sBimMp3CZNiD/OndxDlOpT1RykJJSMQ1SCYWtInNramQ==}
     engines: {node: '>= 18'}
     cpu: [arm64]
     os: [darwin]
 
-  '@lancedb/lancedb-darwin-x64@0.7.1':
-    resolution: {integrity: sha512-FYvKoyjv5QrM/KZY6uHRpf9pLJQlDyves5ZwFJQBSsyWux46plCozxmTSO9MfyGMWF0NKwpX73mj4i4Xj5DLXw==}
+  '@lancedb/lancedb-darwin-x64@0.13.0':
+    resolution: {integrity: sha512-xNwxx/rjvAO0qfKKrsMZyI93ftbz0oxVO34F6nSaPe9u53R+JJJOnYkVAt2Suv0B5lFqeiqgFtE0c5LsD/SUaw==}
     engines: {node: '>= 18'}
     cpu: [x64]
     os: [darwin]
 
-  '@lancedb/lancedb-linux-arm64-gnu@0.7.1':
-    resolution: {integrity: sha512-z1LY/r+SWG9czWkzXunYX+p6mTuIvF4HuQFrQVRW6p/1Nm1H4EBK8ztXHxpinuJ00/xpRBN8kFa8/hdFPvPgZw==}
+  '@lancedb/lancedb-linux-arm64-gnu@0.13.0':
+    resolution: {integrity: sha512-s3wxoMYERvtk2XrXBNjf1BJVta1+c9mi2x1W0Jxm2iThALUU+MnzY7oAzF3l/JmYJCjxgEEHne0+ZRz0Nrwt4A==}
     engines: {node: '>= 18'}
     cpu: [arm64]
     os: [linux]
 
-  '@lancedb/lancedb-linux-x64-gnu@0.7.1':
-    resolution: {integrity: sha512-aKwZSRnZlqPCYurjshep+gQfaplPc0a6UmI5CNvVIuUhsN4TsbAu5E3IqEDlrq4sdryRt2uzlMlQfeTpeZYbkA==}
+  '@lancedb/lancedb-linux-x64-gnu@0.13.0':
+    resolution: {integrity: sha512-AtJLPTmEU4LvZOhj6s7N/UgA9g01Qqm9rLkhosKHcDxKQcvqrVhsoOKJ7MRgfiiGxYUdnUHlehscPm5VdA0GMw==}
     engines: {node: '>= 18'}
     cpu: [x64]
     os: [linux]
 
-  '@lancedb/lancedb-win32-x64-msvc@0.7.1':
-    resolution: {integrity: sha512-veZ6HxY6JUnr/CrJiyYu79PnW9fVUgjZtZvKFBbHrwR1cx2b3SHr8HfRGs9qT2zohm/3ZBRF1pc7Cknp8KcJkg==}
+  '@lancedb/lancedb-win32-x64-msvc@0.13.0':
+    resolution: {integrity: sha512-5D04/JKidhq73nPK/BC/p+cnDazFxGfwy0XYSs3gyIwIGVVTfMggVs6Wn2Qu3OJ4ENYD7lQpQj/blNl+Ovqp8g==}
     engines: {node: '>= 18'}
     cpu: [x64]
     os: [win32]
 
-  '@lancedb/lancedb@0.7.1':
-    resolution: {integrity: sha512-iPLPL699J/IQL7UBvkFB5oAzsyCxJY8dV33UCZbrkU66qsgka8Nn31Ou03HdNhUMGRGRiAsahntUSvcp0GB8yQ==}
+  '@lancedb/lancedb@0.13.0':
+    resolution: {integrity: sha512-QSzYvswjroH3aREKaqV6eXENo4zUAHLEPBrb2YCWNWZi/QhA8mbjJcB4hEnqQh55q4qgoqG6tuMsx4dd//mTiQ==}
     engines: {node: '>= 18'}
+    cpu: [x64, arm64]
     os: [darwin, linux, win32]
     peerDependencies:
-      apache-arrow: ^15.0.0
+      apache-arrow: '>=13.0.0 <=17.0.0'
 
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -2325,9 +2326,6 @@ packages:
 
   aws4@1.13.0:
     resolution: {integrity: sha512-3AungXC4I8kKsS9PuS4JH2nc+0bVY/mjgrephHTIi8fpEeGsTHBUJeosp0Wc1myYMElmD0B3Oc4XL/HVJ4PV2g==}
-
-  axios@1.7.3:
-    resolution: {integrity: sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -3269,15 +3267,6 @@ packages:
   flattie@1.1.1:
     resolution: {integrity: sha512-9UbaD6XdAL97+k/n+N7JwX46K/M6Zc6KcFYskrYL8wbBV/Uyk0CTAMY0VT+qiK5PM7AIc9aTWYtq65U7T+aCNQ==}
     engines: {node: '>=8'}
-
-  follow-redirects@1.15.6:
-    resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
 
   for-in@1.0.2:
     resolution: {integrity: sha512-7EwmXrOjyL+ChxMhmG5lnW9MPt1aIeZEwKhQzoBUdTV0N3zuwWDZYVJatDvZ2OyzPUvdIAZDsCetk3coyMfcnQ==}
@@ -4994,9 +4983,6 @@ packages:
   property-information@6.4.1:
     resolution: {integrity: sha512-OHYtXfu5aI2sS2LWFSN5rgJjrQ4pCy8i1jubJLe2QvMF8JJ++HXTUIVWFLfXJoaOfvYYjk2SN8J2wFUWIGXT4w==}
 
-  proxy-from-env@1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-
   psl@1.9.0:
     resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
 
@@ -6445,7 +6431,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@apache-arrow/esnext-esm@17.0.0':
+  '@apache-arrow/esnext-esm@18.0.0':
     dependencies:
       '@swc/helpers': 0.5.12
       '@types/command-line-args': 5.2.3
@@ -7463,34 +7449,31 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@lancedb/lancedb-darwin-arm64@0.7.1':
+  '@lancedb/lancedb-darwin-arm64@0.13.0':
     optional: true
 
-  '@lancedb/lancedb-darwin-x64@0.7.1':
+  '@lancedb/lancedb-darwin-x64@0.13.0':
     optional: true
 
-  '@lancedb/lancedb-linux-arm64-gnu@0.7.1':
+  '@lancedb/lancedb-linux-arm64-gnu@0.13.0':
     optional: true
 
-  '@lancedb/lancedb-linux-x64-gnu@0.7.1':
+  '@lancedb/lancedb-linux-x64-gnu@0.13.0':
     optional: true
 
-  '@lancedb/lancedb-win32-x64-msvc@0.7.1':
+  '@lancedb/lancedb-win32-x64-msvc@0.13.0':
     optional: true
 
-  '@lancedb/lancedb@0.7.1(apache-arrow@17.0.0)':
+  '@lancedb/lancedb@0.13.0(apache-arrow@17.0.0)':
     dependencies:
       apache-arrow: 17.0.0
-      axios: 1.7.3
       reflect-metadata: 0.2.2
     optionalDependencies:
-      '@lancedb/lancedb-darwin-arm64': 0.7.1
-      '@lancedb/lancedb-darwin-x64': 0.7.1
-      '@lancedb/lancedb-linux-arm64-gnu': 0.7.1
-      '@lancedb/lancedb-linux-x64-gnu': 0.7.1
-      '@lancedb/lancedb-win32-x64-msvc': 0.7.1
-    transitivePeerDependencies:
-      - debug
+      '@lancedb/lancedb-darwin-arm64': 0.13.0
+      '@lancedb/lancedb-darwin-x64': 0.13.0
+      '@lancedb/lancedb-linux-arm64-gnu': 0.13.0
+      '@lancedb/lancedb-linux-x64-gnu': 0.13.0
+      '@lancedb/lancedb-win32-x64-msvc': 0.13.0
 
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
@@ -8763,14 +8746,6 @@ snapshots:
 
   aws4@1.13.0: {}
 
-  axios@1.7.3:
-    dependencies:
-      follow-redirects: 1.15.6
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-
   axobject-query@4.1.0: {}
 
   bail@2.0.2: {}
@@ -9748,8 +9723,6 @@ snapshots:
   flatbuffers@24.3.25: {}
 
   flattie@1.1.1: {}
-
-  follow-redirects@1.15.6: {}
 
   for-in@1.0.2: {}
 
@@ -11844,8 +11817,6 @@ snapshots:
       sisteransi: 1.0.5
 
   property-information@6.4.1: {}
-
-  proxy-from-env@1.1.0: {}
 
   psl@1.9.0: {}
 
