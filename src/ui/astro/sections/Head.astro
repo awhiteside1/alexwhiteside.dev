@@ -4,13 +4,14 @@ import '@styles/css'
 import { ViewTransitions } from 'astro:transitions'
 interface Props {
     title: string
+    kind?: 'page' | 'post' 
     description: string
     image?: string
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
+const { title, description, image = '/blog-placeholder-1.jpg', kind ="page"} = Astro.props
 ---
 
 <!-- Global Metadata -->
@@ -48,7 +49,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 <meta
     property="og:image"
     content={new URL(
-        `/api/og/page?${new URLSearchParams({ kind: 'page', title: title, description: description }).toString()}`,
+        `/api/og/page?${new URLSearchParams({ kind, title: title, description: description }).toString()}`,
         Astro.url
     )}
 />
@@ -62,7 +63,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props
 <meta
     property="twitter:image"
     content={new URL(
-        `/api/og/page?${new URLSearchParams({ kind: 'page', title: title, description: description }).toString()}`,
+        `/api/og/page?${new URLSearchParams({ kind, title: title, description: description }).toString()}`,
         Astro.url
     )}
 />

@@ -10,15 +10,16 @@ import DotBackground from './DotBackground.astro'
 type Props = {
     title: string
     description: string
+    kind?: 'page' | 'post'
 }
 
-const { title, description } = Astro.props
+const { title, description, kind } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en" class="light">
     <head>
-        <Head title={title} description={description} />
+        <Head kind={kind} title={title} description={description} />
         <style>
             :root {
                 /*--100vw: 100vw;*/

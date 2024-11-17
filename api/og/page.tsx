@@ -242,27 +242,29 @@ export default async function handler(request: VercelRequest) {
 					>
 						{display.title}
 					</div>
-					<div
-						style={{
-							marginBottom: 1,
-							marginLeft: 1,
-							paddingTop: 13,
-							paddingLeft: 10,
-							paddingBottom: 13,
-							width: round(880) - 2,
-							background: 'white',
-							display: 'flex',
-						}}
-					>
+					{display.description && (
 						<div
 							style={{
-								lineHeight: '56px',
-								fontSize: '36px',
+								marginBottom: 1,
+								marginLeft: 1,
+								paddingTop: 13,
+								paddingLeft: 10,
+								paddingBottom: 13,
+								width: round(880) - 2,
+								background: 'white',
+								display: 'flex',
 							}}
 						>
-							{display.description}
+							<div
+								style={{
+									lineHeight: '56px',
+									fontSize: '36px',
+								}}
+							>
+								{display.description}
+							</div>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
 		</div>,
