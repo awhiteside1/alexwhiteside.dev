@@ -18,11 +18,11 @@ Scoped, Unambiguous, etc.
 
 For a system to be reasoned about, it must have well-defined boundaries<sup>[3]</sup>.
 
-When defining boundaries, decompose the system based on volatility<sup>[2]</sup> . 
+When defining boundaries, decompose the system based on volatility<sup>[2]</sup>. 
 
 ## Standards
 
-Use them
+Use them 
 
 ### Sources
 
