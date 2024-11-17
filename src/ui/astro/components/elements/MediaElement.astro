@@ -7,9 +7,10 @@ type Props = {
     title: string
     subtitle: string
     priority?: boolean
+    detail?:string
 }
 
-const { logo, title, subtitle, priority = false } = Astro.props
+const { logo, title, subtitle, priority = false, detail } = Astro.props
 
 const src = isString(logo) ? logo : logo.src
 const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
@@ -20,7 +21,7 @@ const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
     class="flex col-span-4 justify-around sticky top-14 py-4 z-10"
 >
     <div
-        class="flex gap-3 items-center content-center dark:bg-black bg-white rounded-3xl px-3 py-2 ring-1 ring-zinc-200 dark:ring-zinc-800 shadow-md shadow-zinc-600/5 w-[14rem] min-h-16"
+        class="flex gap-3 items-center content-center dark:bg-black bg-white rounded-3xl px-3 py-2 ring-1 ring-zinc-200 dark:ring-zinc-800 shadow-md shadow-zinc-600/5 w-[14rem] min-h-20"
     >
         <div
             class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
@@ -40,9 +41,10 @@ const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
                 )}
             >
                 {title}
+                {detail && <p class="w-full -mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">{detail}</p> }
             </dd>
 
-            <dd class="p-0 m-0 text-sm text-zinc-400 dark:text-zinc-500">
+            <dd class={cn("p-0 m-0 text-sm text-zinc-400 dark:text-zinc-500", detail && 'text-xs')}>
                 {subtitle}
             </dd>
         </div>
