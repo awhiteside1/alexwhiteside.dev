@@ -7,6 +7,7 @@ import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
 import MdxSection from 'src/ui/astro/components/mdx/MdxSection.astro'
+import {sift} from "radash";
 const workContent = await getWorkContent()
 const sortedByCompany = Array.from(workContent.map.values()).toSorted(
     byDate((x) => x?.from)
@@ -48,7 +49,8 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
                                         <MediaElement
                                             logo={company.logo}
                                             title={company.company}
-                                            subtitle={generateInterval(
+                                            detail={company.acquired && `Acquired by ${company.acquired}`}
+                                            subtitle={ generateInterval(
                                                 company.from,
                                                 company.to
                                             )}

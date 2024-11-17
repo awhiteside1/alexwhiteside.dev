@@ -36,6 +36,7 @@ const work = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
+			acquired: z.string().optional(),
 			company: z.string(),
 			from: z.coerce.date(),
 			to: z.coerce.date().optional(),
