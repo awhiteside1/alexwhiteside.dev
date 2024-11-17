@@ -1,5 +1,18 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
+	"overrides": [
+		{
+			"include": ["*.svelte", "*.astro", "*.vue"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					}
+				}
+			}
+		}
+	],
 	"files": {
 		"ignore": [
 			"*.unsafe.spec.ts",
@@ -14,6 +27,7 @@
 			".devcontainer/**",
 			".vscode/**",
 			"**/*.js",
+			"**/*.mdx",
 			"public/**"
 		]
 	},
