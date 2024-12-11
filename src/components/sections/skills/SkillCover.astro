@@ -6,16 +6,16 @@ import { isString } from 'radash'
 import Hexagon from './Hexagon.astro'
 import { animatedList } from './styles'
 type Props = {
-	skill: CollectionEntry<'skills'>['data'] & CollectionEntry<'skills'>
+    skill: CollectionEntry<'skills'>['data'] & CollectionEntry<'skills'>
 }
 const { skill } = Astro.props
 const image = isString(skill.icon) ? skill.icon : skill.icon.src
 let svg = `<img src="${image}"></img>`
 if (!URL.canParse(image)) {
-	const result = await resolveIcon({ name: image })
-	if (result) {
-		svg = result
-	}
+    const result = await resolveIcon({ name: image })
+    if (result) {
+        svg = result
+    }
 }
 const { Content } = await skill.render()
 ---

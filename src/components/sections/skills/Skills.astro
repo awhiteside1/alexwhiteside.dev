@@ -1,10 +1,10 @@
 ---
 import Title from '@components/blocks/Title.astro'
-import HexGrid from './HexGrid.astro'
-import PlaceholderHex from './PlaceholderHex.astro'
-import Skill from './SkillCover.astro'
 import { getSkills } from './getSkills'
+import HexGrid from './HexGrid.astro'
+import Skill from './SkillCover.astro'
 import { hexagonRow } from './styles'
+import PlaceholderHex from './PlaceholderHex.astro'
 const skills = await getSkills()
 ---
 

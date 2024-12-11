@@ -9,9 +9,9 @@ const pathname = Astro.props.pathname
 const slug = pathname.replace('/recommendations', '')
 
 const newTabs = listify(tabs, (key, value) => ({
-	selected: value.slug === slug,
-	name: key,
-	href: `/recommendations${value.slug}`,
+    selected: value.slug === slug,
+    name: key,
+    href: `/recommendations${value.slug}`,
 }))
 ---
 
