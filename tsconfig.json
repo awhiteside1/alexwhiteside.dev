@@ -1,51 +1,41 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "noEmit": true,
-    "strict": true,
-    "types": [
-      "vitest/globals",
-      "node"
-    ],
-    "baseUrl": "./",
-    "paths": {
-      "@styles/*": [
-        "styled-system/*"
-      ],
-      "@*": [
-        "src/*"
-      ]
-    },
-    "sourceMap": true,
-    "skipDefaultLibCheck": true,
-    "strictNullChecks": true,
-    "jsx": "react-jsx",
-    "plugins": [
-      {
-        "name": "gql.tada/ts-plugin",
-        "schema": "https://gql.hashnode.com",
-        "tadaOutputLocation": "./src/hashnode/graphql/graphql-env.d.ts",
-        "tadaTurboLocation": "./src/hashnode/graphql/graphql-cache.d.ts"
-      },
-      {
-        "name": "@astrojs/ts-plugin"
-      }
-    ]
-  },
-  "include": [
-    "styled-system/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.astro",
-    "panda.config.ts",
-    ".storybook/*",
-    "vite.config.ts",
-    ".plop/plopfile.ts",
-    ".plop/**/*.ts"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "old"
-  ]
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"noEmit": true,
+		"strict": true,
+		"types": ["vitest/globals", "node"],
+		"baseUrl": "./",
+		"paths": {
+			"@styles/*": ["styled-system/*"],
+			"@*": ["src/*"]
+		},
+		"sourceMap": true,
+		"skipDefaultLibCheck": true,
+		"strictNullChecks": true,
+		"jsx": "react-jsx",
+		"plugins": [
+			{
+				"name": "gql.tada/ts-plugin",
+				"schema": "https://gql.hashnode.com",
+				"tadaOutputLocation": "./src/hashnode/graphql/graphql-env.d.ts",
+				"tadaTurboLocation": "./src/hashnode/graphql/graphql-cache.d.ts"
+			},
+			{
+				"name": "@astrojs/ts-plugin"
+			}
+		]
+	},
+	"include": [
+		"api/*",
+		"styled-system/**/*.d.ts",
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.astro",
+		"panda.config.ts",
+		".storybook/*",
+		"vite.config.ts",
+		".plop/plopfile.ts",
+		".plop/**/*.ts"
+	],
+	"exclude": ["dist", "node_modules", "old"]
 }
