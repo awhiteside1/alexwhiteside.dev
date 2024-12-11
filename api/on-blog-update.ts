@@ -1,5 +1,5 @@
-import type {APIRoute} from 'astro'
-import {Hashnode} from '../src/hashnode'
+import type { APIRoute } from 'astro'
+import { Hashnode } from '../src/hashnode'
 
 const bypassToken = '87734ad8259d67c3c11747d3e4e112d01234'
 
@@ -44,7 +44,7 @@ const attemptBustCache = async (postId: string) => {
 					? {
 							status: r.status,
 							url: r.value.url,
-							headers: Object.fromEntries(r.value.headers.entries()),
+							headers: r.value.headers,
 						}
 					: { status: r.status, reason: r.reason },
 			),
