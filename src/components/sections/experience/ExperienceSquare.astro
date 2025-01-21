@@ -3,15 +3,15 @@ import Lifted from '../../../ui/astro/components/lifted/Lifted.astro'
 
 import { css, cx } from '@styles/css'
 import { get, isString } from 'radash'
-import { stacked } from './styles'
 import { optimizeImage } from '../../../ui/utils/optimizeImage'
+import { stacked } from './styles'
 
 type Props = {
-    icon?: string
-    elements: Array<{
-        name?: string
-        companies?: Array<{ logo: string | { src: string }; company: string }>
-    }>
+	icon?: string
+	elements: Array<{
+		name?: string
+		companies?: Array<{ logo: string | { src: string }; company: string }>
+	}>
 }
 const { icon, elements } = Astro.props
 ---

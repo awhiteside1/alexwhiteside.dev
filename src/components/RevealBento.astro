@@ -1,5 +1,6 @@
 ---
 import Face from './sections/Face.astro'
+import FeaturedPosts from './sections/FeaturedPosts.astro'
 import Summary from './sections/Summary.astro'
 import Background from './sections/experience/Background.astro'
 import Knowledge from './sections/knowledge/Knowledge.astro'
@@ -7,7 +8,7 @@ import icons from './sections/roles/icons.svg?raw'
 import Skills from './sections/skills/Skills.astro'
 
 const options = {
-    borderColor: 'border-neutral-700',
+	borderColor: 'border-neutral-700',
 }
 
 const content = {}
@@ -18,33 +19,32 @@ const content = {}
         background: var(--color-base);
         color: black;
         --border-color: hsl(0 0% 90% / 50%);
-        box-shadow:
-            1px -1px var(--border-color),
-            -1px 1px var(--border-color),
-            1px 1px var(--border-color),
-            -1px -1px var(--border-color);
+        box-shadow: 1px -1px var(--border-color),
+        -1px 1px var(--border-color),
+        1px 1px var(--border-color),
+        -1px -1px var(--border-color);
     }
 
     html.dark .shadow-border {
         background: var(--color-base);
         color: white;
         --border-color: hsl(0 0% 20% / 50%);
-        box-shadow:
-            1px -1px var(--border-color),
-            -1px 1px var(--border-color),
-            1px 1px var(--border-color),
-            -1px -1px var(--border-color);
+        box-shadow: 1px -1px var(--border-color),
+        -1px 1px var(--border-color),
+        1px 1px var(--border-color),
+        -1px -1px var(--border-color);
     }
 </style>
 
-<div class="hidden" set:html={icons} />
+<div class="hidden" set:html={icons}/>
 <div>
     <div class="grid grid-cols-12 grid-flow-row">
-        <Summary />
+        <Summary/>
 
-        <Background />
+        <Background/>
         <!-- <Knowledge /> -->
         <!--<Face />-->
-        <Skills />
+        <Skills/>
+        <FeaturedPosts/>
     </div>
 </div>

@@ -1,0 +1,26 @@
+---
+import {Hashnode} from '../../hashnode'
+import Title from '../blocks/Title.astro'
+import FeaturedPost from './FeaturedPost.astro'
+
+const featuredPosts = await Hashnode.getFeatured()
+---
+
+<div
+        class="col-span-12 row-span-1 flex flex-col justify-between shadow-border md:col-span-4 lg:col-span-4"
+>
+    <div class="px-6 py-6 space-y-4 h-full">
+        <Title icon="megaphone" text="Blog" url="/blog" cta="All Posts"/>
+        <div class=" flex flex-col content-stretch gap-2 ">
+
+            {
+                featuredPosts.map(post => (
+
+                        <FeaturedPost post={post}/>
+
+                ))
+            }
+
+        </div>
+    </div>
+</div>
