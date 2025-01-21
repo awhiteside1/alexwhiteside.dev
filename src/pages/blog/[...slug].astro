@@ -43,7 +43,8 @@ const html = chain.process(post.content.markdown)
 <Layout title={post.title} description={post.brief} kind="post">
     <div slot="before" class="p-2">
         <GradientText class="text-4xl" color="neutral"
-            >Alex Whiteside</GradientText
+        >Alex Whiteside
+        </GradientText
         >
     </div>
     <div slot="title">
@@ -52,13 +53,13 @@ const html = chain.process(post.content.markdown)
     <Container background>
         <div class="relative animate mb-8 -mx-2 -mt-16">
             <BlogHero
-                title={post.title}
-                date={post.publishedAt}
-                coverImage={post.coverImage!.url}
+                    title={post.title}
+                    date={post.publishedAt}
+                    coverImage={post.coverImage!.url}
             />
         </div>
         <article class="animate mx-4">
-            <Fragment set:html={html} />
+            <Fragment set:html={html}/>
         </article>
     </Container>
 </Layout>

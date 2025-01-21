@@ -1,14 +1,14 @@
 ---
-import type {FeaturedPost} from '../../hashnode/queries'
+import type { FeaturedPost } from '../../hashnode/queries'
 type Props = {
-    post: FeaturedPost
+	post: FeaturedPost
 }
 
 const post = Astro.props.post
-const image = post.coverImage?.url ?? ''
+const url = `/blog/${post.slug}`
 ---
 
-<a class="flex-grow relative group" href={post.url}>
+<a class="flex-grow relative group" href={url}>
 
     <span class="absolute left-0 top-0 bottom-0 opacity-0 group-hover:opacity-80 transition-opacity duration-200 w-1 bg-teal-400"></span>
     <div class="flex justify-start align-middle flex-col py-1.5 ml-3">

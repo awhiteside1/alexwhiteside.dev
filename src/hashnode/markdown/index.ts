@@ -1,3 +1,4 @@
+import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
@@ -16,6 +17,7 @@ export const chain = unified()
 	.use(remarkGfm)
 	.use(optimizeImagePlugin)
 	.use(hoistImagesOutOfParagraphs)
-	.use(remarkRehype)
+	.use(remarkRehype, { allowDangerousHtml: true })
 	.use(remarkUnwrapImages)
+	.use(rehypeRaw)
 	.use(rehypeStringify)

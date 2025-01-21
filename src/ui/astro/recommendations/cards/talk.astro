@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import BentoGridItem from "../../components/bento/BentoGridItem.astro";
-const url = "https://i.ytimg.com/vi/r0VgFZv7o0k/mqdefault.jpg";
+import type { CollectionEntry } from 'astro:content'
+import BentoGridItem from '../../components/bento/BentoGridItem.astro'
+const url = 'https://i.ytimg.com/vi/r0VgFZv7o0k/mqdefault.jpg'
 
 type Props = {
-  entry: CollectionEntry<"awesome">;
-};
-const talkData = Astro.props.entry.data;
+	entry: CollectionEntry<'awesome'>
+}
+const talkData = Astro.props.entry.data
 
-const image = `https://i.ytimg.com/vi/${new URL(talkData.url).pathname.replaceAll("/", "")}/hqdefault.jpg`;
+const image = `https://i.ytimg.com/vi/${new URL(talkData.url).pathname.replaceAll('/', '')}/hqdefault.jpg`
 ---
 
 <BentoGridItem
