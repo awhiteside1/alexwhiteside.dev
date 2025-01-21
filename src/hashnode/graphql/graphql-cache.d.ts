@@ -10,5 +10,7 @@ declare module 'gql.tada' {
       TadaDocumentNode<{ publication: { id: string; posts: { edges: { node: { id: string; slug: string; coverImage: { url: string; } | null; updatedAt: string | null; publishedAt: string; readTimeInMinutes: number; canonicalUrl: string | null; title: string; subtitle: string | null; brief: string; tags: { name: string; slug: string; }[] | null; url: string; reactionCount: number; }; }[]; }; } | null; }, {}, void>;
     "\n    query getPostFromId($id: ID!) {\n            post(id: $id) {\n                id\n                slug  \n                url\n             \n        }\n    }\n":
       TadaDocumentNode<{ post: { id: string; slug: string; url: string; } | null; }, { id: string; }, void>;
+    "{\n  publication(host: \"alexwhiteside.dev/blog\") {\n    series(slug: \"featured\") {\n      posts(first: 10) {\n        edges {\n          node {\n            id\n            slug\n            title\n            coverImage{\n            url\n            }\n            subtitle\n            url\n          }\n        }\n      }\n    }\n  }\n}":
+      TadaDocumentNode<{ publication: { series: { posts: { edges: { node: { id: string; slug: string; title: string; coverImage: { url: string; } | null; subtitle: string | null; url: string; }; }[]; }; } | null; } | null; }, {}, void>;
   }
 }

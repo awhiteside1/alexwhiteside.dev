@@ -15,6 +15,7 @@
 	],
 	"files": {
 		"ignore": [
+			"tailwind.config.cjs",
 			"*.unsafe.spec.ts",
 			"node_modules/**",
 			"dist/**",

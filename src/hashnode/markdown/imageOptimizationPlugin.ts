@@ -18,6 +18,7 @@ export const optimizeImagePlugin = () => {
 						if (meta.style) {
 							Object.assign(node.data, {
 								hProperties: {
+									...meta,
 									...node.data.hProperties,
 									className,
 									style: meta.style,
@@ -26,7 +27,7 @@ export const optimizeImagePlugin = () => {
 						}
 					}
 				} catch (e) {
-					console.log(e)
+					//console.log(e)
 				}
 			}
 		})

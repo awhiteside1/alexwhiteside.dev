@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { optimizeImage } from '../../../utils/optimizeImage'
 import BentoGridItem from '../../components/bento/BentoGridItem.astro'
 const url = 'https://i.ytimg.com/vi/r0VgFZv7o0k/mqdefault.jpg'
 
@@ -13,13 +12,12 @@ const image = `https://i.ytimg.com/vi/${new URL(talkData.url).pathname.replaceAl
 ---
 
 <BentoGridItem
-    url={talkData.url}
-    variant="row"
-    title={talkData.name}
-    description={talkData.description}
->
-    <img
-        src={image}
-        class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"
-    />
+  url={talkData.url}
+  variant="row"
+  title={talkData.name}
+  description={talkData.description}>
+  <img
+    src={image}
+    class="transition-all w-1/3 group-hover/bento:scale-105 object-cover rounded-lg shadow-md"
+  />
 </BentoGridItem>

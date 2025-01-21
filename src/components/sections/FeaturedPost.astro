@@ -1,0 +1,22 @@
+---
+import type { FeaturedPost } from '../../hashnode/queries'
+type Props = {
+	post: FeaturedPost
+}
+
+const post = Astro.props.post
+const url = `/blog/${post.slug}`
+---
+
+<a class="flex-grow relative group" href={url}>
+
+    <span class="absolute left-0 top-0 bottom-0 opacity-0 group-hover:opacity-80 transition-opacity duration-200 w-1 bg-teal-400"></span>
+    <div class="flex justify-start align-middle flex-col py-1.5 ml-3">
+        <p class="text-base mb-0.5 font-semibold text-neutral-800 dark:text-neutral-200 hover:text-neutral-900 hover:dark:text-neutral-100">{post.title}</p>
+        <p class="text-sm text-neutral-700 dark:text-neutral-300">{post.subtitle}</p>
+    </div>
+
+
+</a>
+
+

@@ -4,6 +4,7 @@ type Props = {
 	text: string
 	icon: string
 	url?: string
+	cta?: string
 }
 ---
 
@@ -13,22 +14,22 @@ type Props = {
             <use xlink:href={`#${Astro.props.icon}`}></use>
         </svg>
         <div
-            class="ml-3 text-sm font-bold uppercase tracking-wide text-gray-600 dark:text-green-400"
+                class="ml-3 text-sm font-bold uppercase tracking-wide text-gray-600 dark:text-green-400"
         >
             {Astro.props.text}
         </div>
         <div class="grow min-h-1"></div>
         {
             Astro.props.url && (
-                <div class="text-gray-500 align-middle  flex items-center gap-1 group-hover:text-green-500 uppercase tracking-wide text-sm font-bold">
-                    Details
-                    <svg
-                        viewBox="0 0 24 24"
-                        class=" w-4 inline-flex  group-hover:translate-x-1 transition duration-300 "
-                    >
-                        <use xlink:href="#arrow-right" />
-                    </svg>
-                </div>
+                        <div class="text-gray-500 align-middle  flex items-center gap-1 group-hover:text-green-500 uppercase tracking-wide text-sm font-bold">
+                            {Astro.props.cta ?? "Details"}
+                            <svg
+                                    viewBox="0 0 24 24"
+                                    class=" w-4 inline-flex  group-hover:translate-x-1 transition duration-300 "
+                            >
+                                <use xlink:href="#arrow-right"/>
+                            </svg>
+                        </div>
             )
         }
     </div>

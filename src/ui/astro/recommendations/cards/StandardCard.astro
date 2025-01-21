@@ -1,18 +1,18 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { optimizeImage } from '../../../utils/optimizeImage'
 import { resolveImage } from '../../../utils/imagesCollese'
+import { optimizeImage } from '../../../utils/optimizeImage'
 import { CardTypes } from './CardTypes'
 
 interface Props {
-    entry: CollectionEntry<'awesome'>
+	entry: CollectionEntry<'awesome'>
 }
 
 const { entry } = Astro.props
 const type = entry.id.split('/')[0] as 'blogs' | 'talks' | 'books'
 
 const image =
-    resolveImage(entry.data.cover) ?? CardTypes[type].imageGenerationFn(entry)
+	resolveImage(entry.data.cover) ?? CardTypes[type].imageGenerationFn(entry)
 const showTitle = CardTypes[type].showTitle
 
 const { url, name } = entry.data
