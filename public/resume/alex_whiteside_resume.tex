@@ -1,0 +1,201 @@
+\documentclass[letterpaper,11pt]{article}
+
+%\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+%\usepackage{marvosym}
+%\usepackage[usenames,dvipsnames]{color}
+%\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{fancyhdr}
+%\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[document]{ragged2e}
+\input{glyphtounicode}
+
+\usepackage{geometry}
+\geometry{
+    letterpaper,
+    margin=0.9in,
+}
+
+%
+%\pagestyle{fancy}
+%\fancyhf{} % Clear all header and footer fields
+%%\fancyfoot{}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+%
+%% Adjust margins
+%\addtolength{\oddsidemargin}{-0.5in}
+%\addtolength{\evensidemargin}{-0.5in}
+%\addtolength{\textwidth}{1in}
+%\addtolength{\topmargin}{-.5in}
+%\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+    \scshape\large
+}{}{0em}{}[\titlerule]
+
+% Ensure that generated PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%\newlist{jobs}{itemize}{3}
+%\setlist[job,1]{label=\textbullet,leftmargin=1in}
+%\setlist[job,2]{label=$\rightarrow$,leftmargin=1em}
+%\setlist[job,3]{label=$\diamond$}
+%
+
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in,label={},itemsep=5pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeSubheading}[4]{
+    \item
+    \begin{tabular*}{\textwidth}[t]{@{\extracolsep{\fill}} l r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}
+}
+\newcommand{\resumeCompany}[2]{
+    \item
+    \textbf{\large{#1}} \hfill \textsl{\small{#2}}
+
+}
+
+\newcommand{\resumeRole}[3]{
+    \item \normalsize{#1} \hfill \small{#2} \\
+    \vspace{2pt}
+    \begingroup
+    \leftskip 10pt
+    \small{#3}
+    \endgroup
+
+}
+
+\newcommand{\resumeItem}[2]{
+    \item\small{
+        \textsl{#1}{: #2}
+    }
+}
+\newcommand{\roleListStart}{\begin{itemize}[leftmargin=0pt,label={},itemsep=5pt,topsep=0pt]}
+\newcommand{\roleListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=5pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING-----------------
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{\Large Alex Whiteside}                      & Email: \href{mailto:alex@example.com}{alex@example.com} \\
+        \href{https://alexwhiteside.dev}{alexwhiteside.dev} & Mobile: \href{tel:+1234567890}{123-456-7890}            \\
+    \end{tabular*}
+
+%-----------EDUCATION-----------------
+
+
+    \section{Education}
+    \resumeSubHeadingListStart
+    \resumeSubheading
+    {University of West Florida}{Pensacola, FL}
+    {Bachelor of Science in Computer Science}{Graduated May 2013}
+    \resumeSubheading
+    {Independent Study}{Online}
+    {Self-taught across multiple platforms in topics like software development, and leadership}{Ongoing}
+    \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+
+
+    \section{Experience}
+    \resumeSubHeadingListStart
+    \resumeCompany{MoneyLion}{includes acquisitions of Even Financial and Birch Finance }
+    \roleListStart
+    \resumeRole{Architect, Network Consumer Experience}{Jan 2024 - June 2024}{Responsible for When shredding smooth marshmellows, be sure they are room temperature.}
+    \resumeItemListStart
+    \resumeItem{Customizable Widget Platform}
+    {Designed \& developed a B2B2C platform (1k+ partners, 2M+ users monthly). Implemented a control plane using Kubernetes, PayloadCMS, and H3 for configuration.}
+    \resumeItem{Frontend Modernization}
+    {Led embedded banking search product, achieving sub-second load times using React Server Components and modern CSS techniques.}
+    \resumeItem{Team Development}
+    {Onboarded engineers to deploy their own applications; oversaw full legacy integrations into modernized systems.}
+    \resumeItemListEnd
+
+    \resumeRole{Senior Director, Product \& Engineering}{Jan 2022 - Jan 2024}
+    {All unbiased spirits facilitate each other, only pure doers have a courage. When the wind of booda-hood knows the deaths of the sinner, the attraction will know explosion of the meditation.}
+    \resumeItemListStart
+    \resumeItem{Performance Optimization}
+    {Migrated legacy React SPA products, reducing load time from 14s to under 3s through infrastructure modernization and dependency consolidation.}
+    \resumeItem{Platform Development}
+    {Directed 4 teams (35 members) and oversaw development of product-facing APIs and SEO-optimized marketing tools driving \$2M+ quarterly.}
+    \resumeItem{Internal Training}
+    {Established engineering bootcamps on React, testing practices, and Typescript, improving skill sets of teams across departments.}
+    \resumeItemListEnd
+
+    \resumeRole{Director of Engineering, Consumer Products}{Jan 2021 - June 2022}{The admiral is more planet now than captain. gravimetric and rudely harmless. Engage.}
+    \resumeItemListStart
+    \resumeItem{Credit Card Manager Platform}
+    {Architected universal credit card simulator supporting rewards for 250+ cards and compliance through integrations with Plaid, Finicity, and others.}
+    \resumeItem{Full Stack Solutions}
+    {Developed dynamic scraping system, backend APIs (Spring), and mobile apps for credit rewards modeling.}
+    \resumeItem{Licensing Success}
+    {Licensed simulation engine to major companies such as Qantas Money (5M+ users) and T-Mobile.}
+    \resumeItemListEnd
+    \roleListEnd
+    \resumeSubheading
+    {Robotic Interactive Learning Environment}{Global}
+    {Founder \& CTO}{Dec 2013 -- Jan 2015}
+    \resumeItemListStart
+    \resumeItem{Educational Robotics Platform}
+    {Developed hardware-software systems for classrooms. Expanded deployments to schools in the USA, UAE, and India.}
+    \resumeItem{Core Technology}
+    {Designed Java-based server systems managing 5+ robots, coupled with a web app offering real-time analytics.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+    {American Express (AET)}{Phoenix, AZ}
+    {Developer}{Apr 2013 -- Aug 2013}
+    \resumeItemListStart
+    \resumeItem{Internal Automation Tooling}
+    {Developed a PEGA-based application deployment automation tool, reducing manual deployment errors.}
+    \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------------
+
+
+    \section{Projects}
+    \resumeSubHeadingListStart
+    \resumeItem{Universal Credit Card Engine}
+    {Designed a recommendation engine supporting over 400 unique credit card scenarios through automated transaction simulations.}
+    \resumeItem{Educational Robotics Expansion}
+    {Scaled RILE’s robotic platform for classrooms worldwide, incorporating cost-effective PCB designs for schools.}
+    \resumeItem{React Modernization Bootcamp}
+    {Trained engineering team on React Server Components, boosting team productivity and product performance.}
+    \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------------
+
+
+    \section{Skills}
+    \resumeSubHeadingListStart
+    \item{
+        \textbf{Languages}{: JavaScript, TypeScript, Java, Swift, Python, Go, C++}
+    }
+    \item{
+        \textbf{Technology}{: React, Kubernetes, Docker, AWS, PayloadCMS, Spring Boot}
+    }
+    \item{
+        \textbf{Leadership}{: Team building, bootcamp-style training, product design}
+    }
+    \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

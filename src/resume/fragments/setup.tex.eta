@@ -1,0 +1,65 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{tabularx}
+\usepackage[document]{ragged2e}
+\input{glyphtounicode}
+
+\usepackage{geometry}
+\geometry{
+    letterpaper,
+    margin=0.9in,
+}
+
+\urlstyle{same}
+
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+    \vspace{-2pt}
+    \scshape\large
+}{}{0em}{}[\titlerule]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in,label={},itemsep=5pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeSubheading}[4]{
+    \item
+    \begin{tabular*}{\textwidth}[t]{@{\extracolsep{\fill}} l r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}
+}
+\newcommand{\resumeCompany}[2]{
+    \item
+    \textbf{\large{#1}} \hfill \textsl{\small{#2}}
+
+}
+
+\newcommand{\resumeRole}[2]{
+    \item \normalsize{#1} \hfill \small{#2} \par
+}
+
+\newcommand{\resumeItem}[2]{
+    \item\small{
+            {#1}{: #2}
+    }
+}
+\newcommand{\roleListStart}{\begin{itemize}[leftmargin=0pt,label={},itemsep=5pt,topsep=0pt]}
+\newcommand{\roleListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=2pt,topsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+
+\begin{document}
+
+    <%~ it.body %>
+
+
+
+\end{document}

@@ -1,0 +1,21 @@
+\section{Work Experience}
+\resumeSubHeadingListStart
+<% for (var company of it?.experience ?? []) { %>
+\resumeCompany{<%= company.name %>}{<%= company.details %>}
+<% if (company.roles?.length) { %>
+\roleListStart
+<% for (var role of company.roles) { %>
+\resumeRole{<%= role.title %>}{<%= role.duration %>}
+\small{<%= role.summary %>}
+\resumeItemListStart
+<% if (role.items?.length) { %>
+<% for (var item of role.items) { %>
+\resumeItem{<%= item.title %>}{<%= item.details %>}
+<% } %>
+\resumeItemListEnd
+<% } %>
+<% } %>
+\roleListEnd
+<% } %>
+<% } %>
+\resumeSubHeadingListEnd

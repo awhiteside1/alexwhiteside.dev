@@ -1,0 +1,8 @@
+\section{Education}\label{sec:education}
+\resumeSubHeadingListStart
+<% for (var education of it?.education??[]) { %>
+\resumeSubheading
+{<%= education.institution %> }{<%= education.location %>}
+{<%= education.degree %>}{<%= education.year %>}
+<% } %>
+\resumeSubHeadingListEnd

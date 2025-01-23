@@ -1,0 +1,8 @@
+<% layout('./setup.tex.eta') %>
+
+<%~ include('./heading.tex.eta',it.contact) %>
+<%~ include('./summary.tex.eta',it) %>
+<%~ include('./experience.tex.eta',it) %>
+<%~ include('./education.tex.eta',it) %>
+
+

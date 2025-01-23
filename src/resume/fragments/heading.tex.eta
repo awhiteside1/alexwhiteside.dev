@@ -1,0 +1,14 @@
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    <% if (it?.name) { %>
+    \textbf{\Large <%= it.name %>}
+    <% } %>
+    <% if (it?.email) { %>
+    & Email: \href{mailto:<%= it.email %>}{<%= it.email %>} \\
+    <% } else { %> \\ <% } %>
+    <% if (it?.website) { %>
+    \href{<%= it.website %>}{<%= it.website %>}
+    <% } %>
+    <% if (it?.phone) { %>
+    & Mobile: \href{tel:+<%= it.phone.replace(/[^0-9]/g, "") %>}{<%= it.phone %>} \\
+    <% } %>
+\end{tabular*}
