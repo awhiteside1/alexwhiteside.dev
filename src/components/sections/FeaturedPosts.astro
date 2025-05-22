@@ -1,16 +1,14 @@
 ---
-import {Hashnode} from '../../hashnode'
-import type {FeaturedPost} from "../../hashnode/queries";
+import { Hashnode } from '../../hashnode'
+import type { FeaturedPost } from '../../hashnode/queries'
 import Title from '../blocks/Title.astro'
 import FeaturedPostComponenet from './FeaturedPost.astro'
 type Props = {
-    fallback?: boolean
-
-
+	fallback?: boolean
 }
 let featuredPosts: Array<FeaturedPost> = []
 if (!Astro.props.fallback) {
-    featuredPosts = await Hashnode.getFeatured()
+	featuredPosts = await Hashnode.getFeatured()
 }
 ---
 
