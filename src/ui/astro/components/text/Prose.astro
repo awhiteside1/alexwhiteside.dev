@@ -1,10 +1,15 @@
 ---
 import { cn } from '@ui/utils/cn'
 import type { HTMLAttributes } from 'astro/types'
-type Props = HTMLAttributes<'div'>
+type ProseProps ={
+    size?: 'sm'|'lg'|'md'|'xl'
+}
+type Props = HTMLAttributes<'div'> & ProseProps
 const props = Astro.props
+const size = Astro.props.size ?? 'lg'
+const sizeClass = `${size}`
 ---
 
-<div class={cn(props.class, 'prose lg:prose-lg dark:prose-invert')} {...props}>
+<div class={cn(props.class, 'prose prose-sm lg:prose-base dark:prose-invert')} {...props}>
     <slot />
 </div>

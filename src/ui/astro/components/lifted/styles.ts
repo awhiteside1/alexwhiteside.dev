@@ -1,4 +1,3 @@
-import { defineStyles } from '@pandacss/dev'
 import { css, cva } from '@styles/css'
 import type { CssVarKeys, CssVarValue } from '@styles/types'
 import { dash } from 'radash'
@@ -31,10 +30,6 @@ class CssVar {
 
 export const innerColor = new CssVar('lifted-color-inner')
 export const coverColor = new CssVar('lifted-color-cover')
-const coverTopColor = new CssVar('lifted-color-top')
-const colors = defineStyles({
-	'--lifted-color-top': 'hsl(from var(--bg-color-main), h s l)',
-})
 
 export const paletteWrapper = css({
 	flex: 1,
