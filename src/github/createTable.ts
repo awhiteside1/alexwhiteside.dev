@@ -1,18 +1,12 @@
 import { Field, Int32, Schema, Utf8 } from '@apache-arrow/esnext-esm'
-import lancedb from '@lancedb/lancedb'
-import type { EmbeddingFunction } from '@lancedb/lancedb/embedding'
 import { getRegistry } from '@lancedb/lancedb/embedding'
 import { OllamaEmbeddings } from './llm/Ollama'
 
 const registry = getRegistry()
 
 registry.register()(OllamaEmbeddings)
-const func = registry
-	.get('ollama')
-	?.create({ model: 'nomic-embed-text' }) as EmbeddingFunction
 
 const uri = '/tmp/lancedb/'
-const db = await lancedb.connect(uri)
 
 export const repoSchema = new Schema([
 	new Field('id', new Int32()),

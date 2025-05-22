@@ -1,13 +1,8 @@
 import { type CollectionEntry, getCollection } from 'astro:content'
 import { objectify } from 'radash'
 
-type SkillData = CollectionEntry<'skills'>['data']
-
-type Skill = SkillData & {
-	id: string
-}
-
-export const getSkills = async () => {
+type SkillData = CollectionEntry<'skills'>['data'] & CollectionEntry<'skills'>
+export const getSkills = async (): Promise<Record<string, SkillData>> => {
 	const skills = await getCollection('skills')
 	const obj = objectify(
 		skills,

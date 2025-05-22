@@ -21,6 +21,7 @@ const isVercel = () => process.env.VERCEL !== undefined
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://alexwhiteside.dev',
+
 	adapter: isVercel() ? vercel : node,
 	integrations: [mdx(), sitemap(), react()],
 	output: 'hybrid',

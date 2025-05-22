@@ -26,7 +26,7 @@ const circles = Array.from({ length: numCircles }, (_, i) => {
 <div
     class={` absolute inset-0 flex items-center justify-center bg-white/50 [mask-image:linear-gradient(to_bottom,white,transparent)]`}>
     {
-        circles.map((circle, i) => (
+        circles.map((circle) => (
             <div
                 class={` group-hover/bento:animate-ripple absolute  rounded-full bg-foreground/25 shadow-xl border `}
                 style={{
