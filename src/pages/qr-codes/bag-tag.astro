@@ -1,0 +1,29 @@
+---
+
+import Layout from "../../ui/astro/layouts/Layout.astro";
+import Container from "../../ui/astro/components/global/Container.astro";
+import GradientText from "../../ui/astro/components/elements/GradientText.astro";
+---
+
+
+
+<Layout title={"Found Luggage"} description={"You found something of mine, here's how to get it back to me. Thanks for your help!"} kind="hidden">
+    <div class="scroll-scale load" slot="title">
+        <GradientText slot="title" color="neutral">Thank you!</GradientText>
+    </div>
+
+    <Container >
+        <!-- Luggage QR Contact Fragment -->
+        <div class="max-w-md mx-auto bg-white bg-opacity-80 backdrop-blur-lg rounded-lg shadow-lg p-6 text-center">
+            <h2 class="text-2xl font-semibold mb-4">You found my luggage ❤️</h2>
+            <p class="text-lg mb-4">Please contact me so I can retrieve it.</p>
+            <p class="font-mono text-base break-words">
+                Alex Whiteside<br>
+                Email: <a href="mailto:bags@alexwhiteside.dev" class="text-blue-600 hover:underline">bags@alexwhiteside.dev</a>
+            </p>
+            <p class="mt-6 text-sm text-gray-600">I truly appreciate your help!</p>
+            <p class="mt-6 text-sm text-gray-600">Most of my bags have an AirTag in them, which may beep. <br/>Contact me to quiet them.  </p>
+
+        </div>
+    </Container>
+</Layout>
