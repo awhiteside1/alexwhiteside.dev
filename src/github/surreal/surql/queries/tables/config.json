@@ -1,6 +1,0 @@
-{
-	"ns": "default",
-	"db": "public",
-	"outputFolder": ".generated",
-	"generateClient": true
-}
