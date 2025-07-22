@@ -1,0 +1,90 @@
+experience:
+  - organization: MoneyLion
+    url: https://www.moneylion.com
+    location: New York, NY (Remote)
+    positions:
+      - position: 
+          title: Architect
+          department: Network Frontend
+        startDate: 2023-02-01
+        endDate: "present"
+        remote: 1
+        highlights:
+          - Responsible for the consumer-facing B2B2C platform enabling millions of users to search, compare, and convert on financial products.
+      - position: 
+          title: Senior Director 
+          department: Engineering & Product
+        startDate: 2022-01-01
+        endDate: 2023-01-31
+        remote: 1
+        highlights:
+          - Led performance overhaul of embedded-banking experiences, driving sub-second first-contentful paint and stronger SEO.
+  - organization: Even Financial
+    url: https://www.engine.moneylion.com
+    location: New York, NY (Remote)
+    positions:
+      - position: Senior Director of Product Engineering
+        startDate: 2021-02-01
+        endDate: 2022-01-31
+        remote: 1
+        highlights:
+          - Consolidated front-end codebases into an Nx monorepo, cutting p75 load times from 14 s to < 3 s.
+      - position: Director of Product Engineering, Consumer Products
+        startDate: 2019-10-01
+        endDate: 2021-01-31
+        remote: 1
+        highlights:
+          - Directed four cross-functional teams across Fiona, LeapLife, and BirchFinance consumer brands.
+      - position: Technical Lead
+        startDate: 2018-08-01
+        endDate: 2019-10-31
+        remote: 0
+        highlights:
+          - Migrated flagship app from Angular to React and instituted a formal career ladder for front-end engineers.
+  - organization: Birch Finance (acquired by Even)
+    location: San Jose, CA
+    url: https://birchfinance.com
+    positions:
+      - position: Cofounder & Chief Technology Officer
+        remote: 0.5
+        startDate: 2015-06-01
+        endDate: 2018-12-31
+        highlights:
+          - Built a scalable credit-card optimization engine and data pipeline, later licensed to external partners.
+  - organization: Ultimate Software
+    url: https://www.ultimatesoftware.com
+    location: Weston, FL
+    positions:
+      - position: Software Developer / Test Engineer
+        remote: 0.5
+        startDate: 2015-04-01
+        endDate: 2015-12-31
+        highlights:
+          - Developed custom automation frameworks and SaaS integrations with NetSuite and Informatica.
+  - organization: Discovery Spot / RILE
+    location: Pensacola, Florida (USA)
+    url: https://www.discoveryspot.com
+    positions:
+      - position: Founder & Chief Technology Officer
+        remote: 1
+        startDate: 2013-12-01
+        endDate: 2015-01-31
+        highlights:
+          - Invented Wi-Fi-controlled classroom robots used to teach STEM concepts in schools worldwide.
+
+education:
+  - institution: University of Florida
+    url: https://www.ufl.edu
+    area: Computer Engineering
+    studyType: Bachelor of Science
+    startDate: 2012-08-01
+    endDate: 2015-05-31
+    location: Gainesville, Florida, USA
+  - institution: University of West Florida
+    url: https://uwf.edu
+    area: Computer Engineering (non-degree coursework)
+    studyType: Computer Science
+    startDate: 2010-08-01
+    endDate: 2012-05-31
+    location: Pensacola, Florida, USA
+  

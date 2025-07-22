@@ -1,0 +1,89 @@
+
+
+publications:
+  - name: "Robotics: A Project-Based Approach"
+    url:
+    publisher: Cengage Learning
+    releaseDate: 2014-07-01
+    publisher:
+  - name: A Robotic Interactive Learning Environment To Teach Physics
+    url:
+    releaseDate: 2014-06-15
+    publisher:
+  - name: Tele-Robotics For Online Networking And Telecommunications Courses
+    releaseDate: 2014-06-15
+    url:
+    publisher:
+  - name: The Design And Implementation Of Tele-Robotics in Education
+    url:
+    releaseDate: 2013-11-01
+    publisher:
+  - name: Android App Inventor for the Absolute Beginner
+    url:
+    releaseDate: 2013-05-28
+    publisher:
+  - name: "RILE: Robotic Interactive Learning Environment"
+    releaseDate: 2012-09-20
+    url:
+    publisher:
+
+projects:
+  - name: Netsuite Integration
+    startDate: 2015-07-01
+    endDate: "present"
+    affiliation:
+    url: 
+    highlights:
+      - Enabled on-demand GL exports from UltiPro to NetSuite via Informatica Cloud Services.
+  - name: ITEP – Project Robo-Explore
+    startDate: 2013-06-01
+    endDate: "present"
+    affiliation:
+    url: 
+    highlights:
+      - Created robotics-based networking labs for distance-learning courses.
+  - name: RILE – Robotic Interactive Learning Environment
+    url: http://www.rileinc.com
+    startDate: 2012-04-01
+    endDate: "present"
+    affiliation:
+    url: 
+    highlights:
+      - Remote robot system teaching physics and networking concepts to middle- and high-school students.
+  - name: Self-service API Extensions via Informatica Cloud
+    startDate: 2015-04-01
+    affiliation:
+    url: 
+    endDate: 2015-07-31
+    highlights:
+      - Added new export entities for cross-system data integrations.
+
+skills:
+  - category: Leadership & Management
+    skills:
+      - Engineering strategy
+      - Team scaling
+      - Career laddering
+      - Cross-functional collaboration
+  - category: Architecture & Product
+    skills:
+      - System design
+      - API architecture
+      - Performance optimization
+  - category: Web & Application Development
+    skills:
+      - React / Next.js
+      - TypeScript & JavaScript
+      - Node.js
+      - Swift
+  - category: Cloud & DevOps
+    skills:
+      - Kubernetes
+      - AWS Lambda
+      - CI/CD & IaC (Terraform)
+      - Docker
+  - category: Data & Testing
+    skills:
+      - SQL / MS SQL
+      - Selenium
+      - Redis
