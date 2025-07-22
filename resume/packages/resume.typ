@@ -20,7 +20,6 @@
   ),
   body,
 ) = {
-
   // Sets document metadata
   set document(author: author, title: author)
 
@@ -29,37 +28,29 @@
     font: font,
     size: font-size,
     lang: lang,
-    ligatures: false,  // Disable ligatures for better compatibility and readability
+    ligatures: false, // Disable ligatures for better compatibility and readability
   )
 
   set page(
     margin: margin,
   )
 
-  show link: set text(
-    fill: rgb("#0645AD")
-  )
-  
+  show link: set text(fill: rgb("#0645AD"))
 
-    
-  
+
   // Accent Color Styling
-  show heading: set text(
-    ..Fonts.Fonts.headingCaps,
-    fill: rgb(theme-color),
-  )
+  show heading: set text(..Fonts.Fonts.headingCaps, fill: rgb(theme-color))
 
-  // Header parameters, including author and contact information.
+  // // Header parameters, including author and contact information.
   show heading: it => [
     #line(length: 100%, stroke: 1pt)
-    #pad(top: -1em, bottom: 0.5em,lower(it.body))
-  ]
-  
-  // Author
-  align(center)[
-    #block(text(weight: 700, size:2em, font:Fonts.FontFamilites.concourse.caps, [#author]))
+    #pad(top: -1em, bottom: 0.5em, lower(it.body))
   ]
 
+  // Author
+  align(center)[
+    #block(text(weight: 700, size: 2em, font: Fonts.FontFamilites.concourse.caps, [#author]))
+  ]
 
 
   // Main body.
@@ -71,7 +62,7 @@
 }
 
 /*
-Education section formatting, allowing enumeration of degrees and GPA. 
+Education section formatting, allowing enumeration of degrees and GPA.
 `hide` flag to allow for hiding individual Education entries.
 */
 #let edu(
@@ -82,46 +73,57 @@ Education section formatting, allowing enumeration of degrees and GPA.
   location: "",
   extra: "",
   hide: false,
-  
 ) = {
   if hide {
     return
   }
-  pad(
-    bottom: -0em,
-    grid(
-      columns: (auto, 1fr),
-      align(left)[
-        #strong[#institution]
-        #{
-          if gpa != "" [
-            | #emph[GPA: #gpa]
-          ]
-        }
-        \ 
-        #{
-          for degree in degrees [
-            #strong[#degree.at(0)] | #emph[#degree.at(1)] \
-          ]
-        }
-        #{
-          if extra != "" [
-            #emph[#strong[#extra]]
-          ]
-        }
-      ],
-      align(right)[
-        #emph[#date]
-        #{
-          if location != "" [
-            \ #emph[#location]
-          ]
-        }
-      ]
-    )
-  )
+  pad(bottom: -0em, grid(
+    columns: (auto, 1fr),
+    align(left)[
+      #strong[#institution]
+      #{
+        if gpa != "" [
+          | #emph[GPA: #gpa]
+        ]
+      }
+      \
+      #{
+        for degree in degrees [
+          #strong[#degree.at(0)] | #emph[#degree.at(1)] \
+        ]
+      }
+      #{
+        if extra != "" [
+          #emph[#strong[#extra]]
+        ]
+      }
+    ],
+    align(right)[
+      #emph[#date]
+      #{
+        if location != "" [
+          \ #emph[#location]
+        ]
+      }
+    ],
+  ))
 }
 
+
+
+#let organizationChange(org) = {
+  let stroke = (dash: "solid", thickness: 1pt)
+  if not org.employerChange {
+    stroke = (dash: "dashed")
+  }
+
+  pad(top: 0em, grid(
+    columns: (auto, auto, 1fr),
+    align(left)[
+      #block(text(..Fonts.Fonts.subheading, size: 14pt)[#org.organization], fill: white, inset: (right: 6pt))
+    ],
+  ))
+}
 /*
 Skills section formatting, responsible for collapsing individual entries into
 a single list.
@@ -132,6 +134,17 @@ a single list.
     area.at(1).join(", ")
     linebreak()
   }
+}
+
+#let tag(label) = {
+  let current = color.luma(140)
+  box(radius: 2pt, stroke: 1pt + current, inset: 2pt, outset: 1pt)[#align(horizon)[#text(..Fonts.Fonts.tagCaps,
+  features: ("smcp",),
+  number-type: "old-style",
+      size: 8pt,
+      weight: 500,
+      fill: color.luma(80),
+    )[#lower(label)]]]
 }
 
 /*
@@ -149,20 +162,33 @@ Experience section formatting logic.
   if hide {
     return
   }
-  pad(
-    bottom: -0.3em,
-    grid(
-      columns: (auto, 1fr),
-      align(left)[
-        #strong[#title] -
-        #organization
-      ],
-      align(right)[
-        #date
-      ]
-    )
-  )
-  details
+
+  // if type(title) != str {
+  //   title = strong[#title.title] + ", " + text(size: 12pt, )[#title.department]
+  // }
+
+  let tags = none
+  if title.tags != none {
+    tags = stack(dir: ltr, spacing: 4pt, ..title.tags.map(l => tag(l)))
+  }
+
+  pad(bottom: -0.3em, grid(
+    align: top,
+    columns: (auto, 1fr),
+    align(left)[
+      #set text(..Fonts.Fonts.bodyTitle)
+      #stack(
+        spacing: 5pt,
+        text(size: 14pt, strong(title.title)) + " " + text(size: 12pt)[#title.department],
+        tags,
+      )
+    ],
+    align(right)[
+      #text(size: 12pt)[#strong(organization.organization)] \
+      #date
+    ],
+  ))
+  block(list(..details))
 }
 
 /*
@@ -184,13 +210,11 @@ Publication section formatting logic.
   }
 
   // Bold the specified author
-  let fmt-authors = authors.map(
-    a => if a == bold-author { 
-      strong[#a] 
-    } else { 
-      a 
-    }
-  )
+  let fmt-authors = authors.map(a => if a == bold-author {
+    strong[#a]
+  } else {
+    a
+  })
 
   // Link the doi or link to the publication title for the cv style
   let fmt-link = if doi-link != "" {
@@ -202,16 +226,23 @@ Publication section formatting logic.
   // Citation formatting logic
   let citation = [
     #{
-      fmt-authors.join(", ") + ", " + fmt-link + ", " + emph(venue) + ", " + year + "." + if extra != "" { " " + strong[#extra] }
+      (
+        fmt-authors.join(", ")
+          + ", "
+          + fmt-link
+          + ", "
+          + emph(venue)
+          + ", "
+          + year
+          + "."
+          + if extra != "" { " " + strong[#extra] }
+      )
     }
   ]
 
-  pad(
-    bottom: -0.3em,
-    align(left)[
-      #citation
-    ]
-  )
+  pad(bottom: -0.3em, align(left)[
+    #citation
+  ])
 }
 
 /*
@@ -219,9 +250,9 @@ Publication list section formatting logic based on a BibLaTeX .bib or a Hayagriv
 for style options, see: https://typst.app/docs/reference/model/bibliography/
 */
 #let pub-list(
-  bib: "", 
-  style: "ieee", 
-  ) = {
+  bib: "",
+  style: "ieee",
+) = {
   let publicationStyle(str) = {
     text(str)
   }

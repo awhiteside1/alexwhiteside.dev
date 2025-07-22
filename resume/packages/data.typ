@@ -2,7 +2,7 @@
 
 #let load(path) = {
   let resolve(file) = {
-   let p= (path, file).join("/")
+   let p = (path, file).join("/")
    return yaml(p)
   }
   let personal = resolve("personal.yaml")
@@ -19,5 +19,5 @@
 #let DebugData(data)={
   
   let string = "```YAML\n"+yaml.encode(data)+"```\n"
-  return pagebreak()+eval(string)
+  return page(string)
 }

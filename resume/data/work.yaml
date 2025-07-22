@@ -2,73 +2,97 @@ experience:
   - organization: MoneyLion
     url: https://www.moneylion.com
     location: New York, NY (Remote)
+    employerChange: true
     positions:
-      - position: 
+      - position:
           title: Architect
           department: Network Frontend
-        startDate: 2023-02-01
-        endDate: "present"
+          tags:
+            - "IC"
+            - "Product Owner"
+        startDate: Feb 2023
+        endDate: July 2024
+        highlights:
+            - "Led strategic modernization of MoneyLions financial platform, serving millions monthly, cutting new product launches from months to days."
+            - "Designed flexible architecture, improving user load times (10s+ to <2s), simplifying analytics, compliance, and branding."
+            - "Drove adoption across teams via developer training and workshops, aligning infrastructure, product, and engineering."
+            - "Delivered complex technical solution leveraging TypeScript, Kubernetes, GitOps automation, enabling modular, scalable product experiences."
+      - position:
+          title: Senior Director
+          department: Product & Engineering
+          tags: 
+            - "30+ Reports"
+        startDate: Jan 2022
+        endDate: Jan 2023
         remote: 1
         highlights:
-          - Responsible for the consumer-facing B2B2C platform enabling millions of users to search, compare, and convert on financial products.
-      - position: 
-          title: Senior Director 
-          department: Engineering & Product
-        startDate: 2022-01-01
-        endDate: 2023-01-31
-        remote: 1
-        highlights:
-          - Led performance overhaul of embedded-banking experiences, driving sub-second first-contentful paint and stronger SEO.
+          - "Led performance overhaul of embedded-banking experiences, driving sub-second first-contentful paint and stronger SEO."
   - organization: Even Financial
+    note: merged with MoneyLion
     url: https://www.engine.moneylion.com
     location: New York, NY (Remote)
+    employerChange: false
     positions:
-      - position: Senior Director of Product Engineering
-        startDate: 2021-02-01
-        endDate: 2022-01-31
-        remote: 1
-        highlights:
-          - Consolidated front-end codebases into an Nx monorepo, cutting p75 load times from 14 s to < 3 s.
-      - position: Director of Product Engineering, Consumer Products
-        startDate: 2019-10-01
-        endDate: 2021-01-31
+      - position:
+          title: Director of Engineering
+          department: Consumer Products
+          tags:
+            - "40+ Staff"
+            - "Senior Management"
+        startDate: Oct 2019
+        endDate: Jan 2021
         remote: 1
         highlights:
           - Directed four cross-functional teams across Fiona, LeapLife, and BirchFinance consumer brands.
-      - position: Technical Lead
-        startDate: 2018-08-01
-        endDate: 2019-10-31
+      - position:
+          title: Team Lead
+          department: Frontend
+          tags:
+        startDate: Aug 2018
+        endDate: Oct 2019
         remote: 0
         highlights:
           - Migrated flagship app from Angular to React and instituted a formal career ladder for front-end engineers.
   - organization: Birch Finance (acquired by Even)
     location: San Jose, CA
+    employerChange: false
     url: https://birchfinance.com
     positions:
-      - position: Cofounder & Chief Technology Officer
+      - position: 
+          title: Cofounder & Chief Technology Officer
+          department: Engineering
+          tags:
         remote: 0.5
-        startDate: 2015-06-01
-        endDate: 2018-12-31
+        startDate: Jun 2015
+        endDate: Dec 2018
         highlights:
           - Built a scalable credit-card optimization engine and data pipeline, later licensed to external partners.
   - organization: Ultimate Software
+    employerChange: true
     url: https://www.ultimatesoftware.com
     location: Weston, FL
     positions:
-      - position: Software Developer / Test Engineer
+      - position: 
+          title: Software Developer / Test Engineer
+          department: Engineering
+          tags:
         remote: 0.5
-        startDate: 2015-04-01
-        endDate: 2015-12-31
+        startDate: Apr 2015
+        endDate: Dec 2015
         highlights:
           - Developed custom automation frameworks and SaaS integrations with NetSuite and Informatica.
   - organization: Discovery Spot / RILE
+    employerChange: true
     location: Pensacola, Florida (USA)
     url: https://www.discoveryspot.com
     positions:
-      - position: Founder & Chief Technology Officer
+      - position: 
+            title: Founder & Chief Technology Officer
+            department: Engineering
+            tags:
         remote: 1
-        startDate: 2013-12-01
-        endDate: 2015-01-31
+        startDate: Dec 2013
+        endDate: Jan 2015
         highlights:
           - Invented Wi-Fi-controlled classroom robots used to teach STEM concepts in schools worldwide.
 
@@ -77,14 +101,14 @@ education:
     url: https://www.ufl.edu
     area: Computer Engineering
     studyType: Bachelor of Science
-    startDate: 2012-08-01
-    endDate: 2015-05-31
+    startDate: Aug 2012
+    endDate: May 2015
     location: Gainesville, Florida, USA
   - institution: University of West Florida
     url: https://uwf.edu
     area: Computer Engineering (non-degree coursework)
     studyType: Computer Science
-    startDate: 2010-08-01
-    endDate: 2012-05-31
+    startDate: Aug 2010
+    endDate: May 2012
     location: Pensacola, Florida, USA
   
