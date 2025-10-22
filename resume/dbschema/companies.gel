@@ -1,0 +1,36 @@
+module Orgs {
+
+    type Company{
+        required name: str;
+        required external_ids: json  {
+                               default := to_json('{}');
+                             };
+        required raw: json;
+        required retrieved_at: datetime;
+
+    }
+
+
+}
+
+
+module Jobs{
+
+type JobPosting{
+    required title : str;
+    required url: str;
+    link company : Orgs::Company;
+    required raw: str;
+    retrieved_at: datetime {
+    default := datetime_current();
+
+    };
+
+
+    
+
+
+}
+
+
+}

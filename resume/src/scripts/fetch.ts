@@ -1,0 +1,66 @@
+import {parse, resolve, join} from "jsr:@std/path";
+// @formatter:off
+const EMPLOYEE_MATCHES = new Set([354818966, 119845588, 394966884, 96493602, 125671583, 73602271, 359710795, 421307982, 357582035, 349818241, 231006164, 202377160, 101852642, 260346712, 397041463, 255283819, 354922625, 395154870, 168882285, 118303327, 70800314, 48858859, 359120016, 356700906, 293667837, 275706521, 360548703, 455180391, 360640253, 195393020, 395271825, 142050082, 342414671, 246566539, 49860825, 174875106, 162550795, 83046335, 29399695, 197313978, 407316946, 346418067, 129853956, 227025422, 220955769, 322679924, 323161795, 216776676, 355325258, 28388522, 5555598, 353761702, 433549081, 393194530, 349627591, 155163961, 202304211, 324516365, 209610073, 54662008, 381993895, 9443795, 122934088, 121621102, 195867167, 178654455, 238959098, 89599308, 251955891, 722528087, 161256485, 400434952, 119407247, 275909955, 104842719, 405583141, 434544979, 196472038, 360069225, 168153854, 355330101, 336261863, 165041239, 268152370, 193679879, 261006650, 139913079, 356346976, 423054652, 215626650, 104580177, 8092550, 232992368, 385911815, 360360750, 151331356, 5110745, 158070134, 110135891, 115322189, 279206999, 339321707, 349132775, 154330648, 401112723, 192188220, 108004592, 333166089, 395075919, 266514491, 360082395, 124255179, 395143288, 52111168, 360205745, 293551264, 261231729, 115210464, 25477210, 360315787, 194671955, 395179740, 84663229, 352084049, 327269455, 37869190, 173542582, 347964565, 498248969, 36512129, 329548858, 173529679, 401071386, 834227350, 409287004, 49613448, 340525435, 256857845, 99383854, 164716330, 83093033, 121344714, 360607547, 250214259, 383271474, 395030069, 239285844, 326929522, 286439363, 391245754, 85956980, 103189874, 168852815, 1516674, 405526713, 326213663, 283633068, 294614570, 218484598, 90116622, 345214573, 332438285, 184773290, 218577912, 360429669, 226742636, 159216291, 261379053, 390135950, 285114622, 188043317, 353614844, 97021206, 110548918, 153714007, 344822738, 395016474, 226817053, 141084469, 333427199, 99211802, 395261737, 241823093, 256489785, 225233612, 165046863, 477907299, 257910062, 117599998, 181184573, 64313492, 435663074, 32162149, 394135861, 360271336, 415286146, 335361876, 395053329, 281652999, 356786264, 111610842, 348551659, 222274573, 87133408, 397629820,]);
+// @formatter:on
+
+type EmployeeRecord = Record<string, any> & { id: number }
+const folder = resolve("../data/raw");
+
+const dedupeCompleted = async () => {
+    const originalSize = EMPLOYEE_MATCHES.size;
+
+    const files = Deno.readDir(folder);
+    for await (const file of files) {
+        if (!file.isFile) continue;
+        const parsed = parse(file.name);
+        try {
+            const id = parseInt(parsed.name);
+            EMPLOYEE_MATCHES.delete(id);
+        } catch (_) {
+        }
+    }
+    const removedCount = originalSize - EMPLOYEE_MATCHES.size;
+    console.log(removedCount, "removed");
+};
+
+
+await dedupeCompleted()
+
+
+const fetchEmployeeRecord = async (id: number) => {
+
+    const url = `https://api.coresignal.com/cdapi/v2/employee_multi_source/collect/${id}`
+
+    const customHeaders = {
+        "Content-Type": "application/json",
+        "apikey": "6zCek1E2ieTE7LEyubyRUi6VHLDClsra"
+    }
+
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: customHeaders
+    })
+    if (!response.ok) throw new Error("Failed to fetch employee records", response.status)
+    const body = await response.json()
+    return body as EmployeeRecord
+
+}
+
+const writeEmployeeRecord = async (id: number) => {
+    try {
+        const employeeRecord = await fetchEmployeeRecord(id)
+        const filePath = join(folder, `${employeeRecord.id}.json`)
+        await Deno.writeTextFile(filePath, JSON.stringify(employeeRecord))
+    } catch (err) {
+        console.error("Failed to write employee record", id, err)
+    }
+}
+
+let count = 0
+
+for (const id of EMPLOYEE_MATCHES.keys()) {
+    count++
+    await writeEmployeeRecord(id)
+    if (count > 15) break;
+
+}

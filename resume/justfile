@@ -1,0 +1,10 @@
+default:
+  just --list
+
+install:
+  brew install typst
+
+
+build: 
+  typst resume.typ
+

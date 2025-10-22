@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/hiring-assistant.schema.json",
+  "title": "Hiring-Assistant Configuration",
+  "type": "object",
+  "required": ["modelRequirements", "systemPrompt", "tasks"],
+  "properties": {
+    "modelRequirements": {
+      "type": "object",
+      "required": ["focus", "contextLength", "vision", "tools"],
+      "properties": {
+        "focus": { "type": "string" },
+        "contextLength": { "type": "integer", "minimum": 1 },
+        "vision": { "type": "boolean" },
+        "tools": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+
+    "systemPrompt": {
+      "type": "object",
+      "required": ["role", "priorities", "directions"],
+      "properties": {
+        "role": { "type": "string" },
+        "priorities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "directions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "tasks": {
+      "type": "object",
+
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z_][A-Za-z0-9_\\-]*$"
+      },
+
+      "additionalProperties": { "$ref": "#/$defs/task" }
+    }
+  },
+
+  "$defs": {
+    "task": {
+      "type": "object",
+      "required": ["context", "prompt"],
+      "properties": {
+        "context": {
+          "type": "object",
+          "propertyNames": { "type": "string" },
+          "additionalProperties": { "type": "string" },
+          "description": "Named text blocks available to the prompt."
+        },
+
+        "prompt": {
+          "type": "string",
+          "description": "The instruction text the model should answer."
+        },
+
+        "parameters": {
+          "type": "object",
+          "description": "Extra, task-specific parameters (none are mandated).",
+          "propertyNames": { "type": "string" },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "additionalProperties": false
+}
