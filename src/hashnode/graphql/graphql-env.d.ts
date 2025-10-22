@@ -1,20 +1,7 @@
 /* eslint-disable */
 /* prettier-ignore */
 
-/** An IntrospectionQuery representation of your schema.
- *
- * @remarks
- * This is an introspection of your schema saved as a file by GraphQLSP.
- * It will automatically be used by `gql.tada` to infer the types of your GraphQL documents.
- * If you need to reuse this data or update your `scalars`, update `tadaOutputLocation` to
- * instead save to a .ts instead of a .d.ts file.
- */
-export type introspection = {
-  name: never;
-  query: 'Query';
-  mutation: 'Mutation';
-  subscription: never;
-  types: {
+export type introspection_types = {
     'AbsoluteTimeRange': { kind: 'INPUT_OBJECT'; name: 'AbsoluteTimeRange'; isOneOf: false; inputFields: [{ name: 'from'; type: { kind: 'SCALAR'; name: 'DateTime'; ofType: null; }; defaultValue: null }, { name: 'to'; type: { kind: 'SCALAR'; name: 'DateTime'; ofType: null; }; defaultValue: null }]; };
     'AcceptInviteToDocumentationProjectInput': { kind: 'INPUT_OBJECT'; name: 'AcceptInviteToDocumentationProjectInput'; isOneOf: false; inputFields: [{ name: 'inviteToken'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; }; defaultValue: null }]; };
     'AcceptInviteToDocumentationProjectPayload': { kind: 'OBJECT'; name: 'AcceptInviteToDocumentationProjectPayload'; fields: { 'project': { name: 'project'; type: { kind: 'OBJECT'; name: 'DocumentationProject'; ofType: null; } }; 'success': { name: 'success'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'Boolean'; ofType: null; }; } }; }; };
@@ -549,7 +536,22 @@ export type introspection = {
     'Widget': { kind: 'OBJECT'; name: 'Widget'; fields: { 'content': { name: 'content'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'createdAt': { name: 'createdAt'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'DateTime'; ofType: null; }; } }; 'id': { name: 'id'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'ID'; ofType: null; }; } }; 'pinSettings': { name: 'pinSettings'; type: { kind: 'OBJECT'; name: 'WidgetPinSettings'; ofType: null; } }; 'widgetId': { name: 'widgetId'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; }; };
     'WidgetPinLocation': { name: 'WidgetPinLocation'; enumValues: 'TOP' | 'BOTTOM'; };
     'WidgetPinSettings': { kind: 'OBJECT'; name: 'WidgetPinSettings'; fields: { 'isPinned': { name: 'isPinned'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'Boolean'; ofType: null; }; } }; 'location': { name: 'location'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'ENUM'; name: 'WidgetPinLocation'; ofType: null; }; } }; }; };
-  };
+};
+
+/** An IntrospectionQuery representation of your schema.
+ *
+ * @remarks
+ * This is an introspection of your schema saved as a file by GraphQLSP.
+ * It will automatically be used by `gql.tada` to infer the types of your GraphQL documents.
+ * If you need to reuse this data or update your `scalars`, update `tadaOutputLocation` to
+ * instead save to a .ts instead of a .d.ts file.
+ */
+export type introspection = {
+  name: never;
+  query: 'Query';
+  mutation: 'Mutation';
+  subscription: never;
+  types: introspection_types;
 };
 
 import * as gqlTada from 'gql.tada';
