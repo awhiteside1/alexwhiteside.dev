@@ -1346,6 +1346,7 @@ packages:
   '@lancedb/lancedb@0.13.0':
     resolution: {integrity: sha512-QSzYvswjroH3aREKaqV6eXENo4zUAHLEPBrb2YCWNWZi/QhA8mbjJcB4hEnqQh55q4qgoqG6tuMsx4dd//mTiQ==}
     engines: {node: '>= 18'}
+    cpu: [x64, arm64]
     os: [darwin, linux, win32]
     peerDependencies:
       apache-arrow: '>=13.0.0 <=17.0.0'
@@ -7625,7 +7626,7 @@ snapshots:
       detect-libc: 2.1.2
       https-proxy-agent: 5.0.1
       make-dir: 3.1.0
-      node-fetch: 2.6.9
+      node-fetch: 2.7.0
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
@@ -8582,8 +8583,8 @@ snapshots:
       '@vue/compiler-ssr': 3.4.19
       '@vue/shared': 3.4.19
       estree-walker: 2.0.2
-      magic-string: 0.30.17
-      postcss: 8.4.49
+      magic-string: 0.30.19
+      postcss: 8.5.6
       source-map-js: 1.2.1
 
   '@vue/compiler-sfc@3.4.33':
@@ -9299,7 +9300,7 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.23.3
+      browserslist: 4.27.0
       caniuse-lite: 1.0.30001751
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
@@ -12086,7 +12087,7 @@ snapshots:
 
   postcss-merge-rules@7.0.4(postcss@8.4.49):
     dependencies:
-      browserslist: 4.23.3
+      browserslist: 4.27.0
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.1(postcss@8.4.49)
       postcss: 8.4.49
