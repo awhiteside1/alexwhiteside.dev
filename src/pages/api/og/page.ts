@@ -3,13 +3,8 @@ import {match} from "ts-pattern";
 import {ImageResponse} from "@vercel/og";
 import {createImageElement} from "@ui/react/opengraph/og_elements.tsx";
 
+export const prerender = false;
 
-
-
-
-export const config = {
-    runtime: 'edge',
-}
 
 type PageParameters = {
     kind: 'page'
@@ -29,8 +24,10 @@ const getFont = async (name: string) => {
     const res = await fetch(`https://alexwhiteside.dev/fonts/${name}.ttf`)
     return res.arrayBuffer()
 }
-export const GET: APIRoute<RequestParameters> = async ({request, params}) => {
+export const GET: APIRoute<RequestParameters> = async ({request, url }) => {
     //const params = extractParametersFromRequest(request)
+
+    const params = Object.fromEntries(url.searchParams.entries()) as RequestParameters
 
     const display = match(params)
         .with({kind: 'page'}, (page) => {

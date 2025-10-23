@@ -12,11 +12,11 @@ const getSecrets = () => {
 
 export const GET: APIRoute = async (
     {
-        request,
-        params
+       url
     }
 ) => {
-    const {term} = params
+    const {term} = Object.fromEntries(url.searchParams.entries())
+    console.log({term})
     if (!term) return new Response(JSON.stringify({error: 'Missing term'}), {status: 400})
 
     const termString = typeof term === 'string' ? term : term[0]
@@ -24,7 +24,6 @@ export const GET: APIRoute = async (
         const credentials = awsCredentialsProvider({
             roleArn: process.env.AWS_ROLE_ARN,
         })
-        console.log(typeof credentials)
 
         const connection = await lancedb.connect('s3://alexwhitesidedev/lancedb/', {
             storageOptions: {
