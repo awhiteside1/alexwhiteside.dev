@@ -1,25 +1,5 @@
-import type { VercelRequest } from '@vercel/node'
-import { ImageResponse } from '@vercel/og'
 import type { PropsWithChildren } from 'react'
-import { match } from 'ts-pattern'
 
-export const config = {
-	runtime: 'edge',
-}
-
-type PageParameters = {
-	kind: 'page'
-	title: string
-	description: string
-}
-
-type PostParameters = {
-	kind: 'post'
-	title: string
-	coverUrl: string
-}
-
-type RequestParameters = PageParameters | PostParameters | { kind: undefined }
 
 const svg = btoa(
 	`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='28' height='28' fill='none' stroke='#737373'><path d='M0 .5H31.5V32'/></svg>`,
@@ -27,14 +7,7 @@ const svg = btoa(
 
 const BORDERS = 'none' // `1px dashed ${draw(['blue', 'green', 'red', 'purple'])}`
 
-const extractParametersFromRequest = (
-	request: VercelRequest,
-): RequestParameters => {
-	if (!request.url) return { kind: undefined }
-	const { searchParams } = new URL(request.url)
-	const data = Object.fromEntries(searchParams.entries())
-	return data as RequestParameters
-}
+
 
 const round = (value: number) => {
 	return Math.ceil(value / 28) * 28
@@ -120,37 +93,12 @@ const MastHead = () => (
 		</div>
 	</div>
 )
-const getFont = async (name: string) => {
-	const res = await fetch(`https://alexwhiteside.dev/fonts/${name}.ttf`)
-	return res.arrayBuffer()
-}
-export default async function handler(request: VercelRequest) {
-	const params = extractParametersFromRequest(request)
 
-	const display = match(params)
-		.with({ kind: 'page' }, (page) => {
-			return {
-				title: page.title,
-				image: undefined,
-				description: page.description,
-			}
-		})
-		.with({ kind: 'post' }, (post) => {
-			return {
-				title: post.title,
-				image: post.coverUrl,
-				description: '',
-			}
-		})
-		.otherwise(() => {
-			return {
-				title: 'Alex Whiteside',
-				image: undefined,
-				description: '',
-			}
-		})
 
-	return new ImageResponse(
+interface ElementProps {title?: string, description?: string, image?: string}
+export const createImageElement = (display:ElementProps)=>{
+
+	return (
 		<div
 			style={{
 				position: 'relative',
@@ -267,22 +215,6 @@ export default async function handler(request: VercelRequest) {
 					)}
 				</div>
 			</div>
-		</div>,
-		{
-			width: 1200,
-			height: 630,
-			fonts: [
-				{
-					name: 'concourse',
-					data: await getFont('concourse-regular'),
-					style: 'normal',
-				},
-				{
-					name: 'concourse-bold',
-					data: await getFont('concourse-medium'),
-					style: 'normal',
-				},
-			],
-		},
+		</div>
 	)
 }

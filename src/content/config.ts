@@ -76,5 +76,4 @@ const skills = defineCollection({
 		}),
 })
 
-
 export const collections = { awesome, work, titles, sections, skills }

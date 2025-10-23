@@ -8,11 +8,11 @@
     "dev": "astro dev",
     "dev:network": "astro dev --host",
     "start": "node ./dist/server/entry.mjs",
-    "build": "gql.tada turbo && astro check && astro build",
+    "build": "gql.tada turbo && astro check --minimumSeverity warning && astro build",
     "preview": "astro preview --host",
     "preview:network": "astro dev --host",
     "astro": "astro",
-    "lint": "biome check  src",
+    "lint": "biome check  src && astro check",
     "lint:fix": "biome check --write --unsafe src"
   },
   "dependencies": {

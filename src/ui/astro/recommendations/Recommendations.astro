@@ -61,7 +61,7 @@ const newTabs = listify(tabs, (key, value) => ({
 
 <script>
     import { navigate } from 'astro:transitions/client'
-    import { ensureInit } from '../../../lib/astro'
+    import { ensureInit } from '@lib/astro.ts'
 
     function setupSelect() {
         document
