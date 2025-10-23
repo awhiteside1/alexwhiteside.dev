@@ -24,13 +24,14 @@ const getFont = async (name: string) => {
     const res = await fetch(`https://alexwhiteside.dev/fonts/${name}.ttf`)
     return res.arrayBuffer()
 }
-export const GET: APIRoute<RequestParameters> = async ({request, url }) => {
+export const GET: APIRoute<RequestParameters> = async ({request, url}) => {
     //const params = extractParametersFromRequest(request)
-
+    console.log(`OG Image Generatoor with url: ${url.href}`)
     const params = Object.fromEntries(url.searchParams.entries()) as RequestParameters
-
+    console.log(`OG Image Generatoor with params: ${JSON.stringify(params, undefined, 2)}`)
     const display = match(params)
         .with({kind: 'page'}, (page) => {
+            console.log("Page Generating")
             return {
                 title: page.title,
                 image: undefined,
@@ -38,6 +39,7 @@ export const GET: APIRoute<RequestParameters> = async ({request, url }) => {
             }
         })
         .with({kind: 'post'}, (post) => {
+            console.log("Post Generating")
             return {
                 title: post.title,
                 image: post.coverUrl,
@@ -45,6 +47,7 @@ export const GET: APIRoute<RequestParameters> = async ({request, url }) => {
             }
         })
         .otherwise(() => {
+            console.log("Default Generating")
             return {
                 title: 'Alex Whiteside',
                 image: undefined,
@@ -54,6 +57,9 @@ export const GET: APIRoute<RequestParameters> = async ({request, url }) => {
     return new ImageResponse(
         createImageElement(display),
         {
+            headers: {
+                'Cache-Control': 'public, no-store'
+            },
             width: 1200,
             height: 630,
             fonts: [
