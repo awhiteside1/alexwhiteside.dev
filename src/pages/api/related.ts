@@ -1,4 +1,5 @@
 import lancedb from '@lancedb/lancedb'
+export const prerender = false;
 
 import {awsCredentialsProvider} from '@vercel/functions/oidc'
 import type {APIRoute} from "astro";
