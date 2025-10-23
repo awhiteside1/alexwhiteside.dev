@@ -98,6 +98,8 @@ const MastHead = () => (
 interface ElementProps {title?: string, description?: string, image?: string}
 export const createImageElement = (display:ElementProps)=>{
 
+    const imageBg = display.image ? `url(${display.image})` : `url("data:image/svg+xml;base64,${svg}")`
+console.log(imageBg)
 	return (
 		<div
 			style={{
@@ -116,16 +118,21 @@ export const createImageElement = (display:ElementProps)=>{
 		>
 			<div
 				style={{
-					backgroundImage: `url("data:image/svg+xml;base64,${svg}")`,
+					backgroundImage: imageBg,
 					inset: 0,
 					opacity: 1,
 					backgroundOrigin: 'center center',
 					top: 0,
 					left: 0,
 					right: 0,
+                    justifySelf:'stretch',
+                    minWdth: '100%',
+                    backgroundRepeat: 'no-repeat',
 					bottom: 0,
+                    objectFit:'cover',
 					display: 'flex',
 					position: 'absolute',
+                    minHeight: '100%',
 				}}
 			>
 				<div
