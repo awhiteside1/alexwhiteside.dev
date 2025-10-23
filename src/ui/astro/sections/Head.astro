@@ -19,8 +19,10 @@ const {
 } = Astro.props
 
 
+const params = new URLSearchParams({kind, title, description})
+if (image) params.set('image', image)
 const openGraphImage = new URL(
-    `/api/og/image?${new URLSearchParams({kind, title, description, image}).toString()}`,
+    `/api/og/image?${params.toString()}`,
     Astro.url
 )
 ---
