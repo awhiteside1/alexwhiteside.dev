@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react'
+import {optimizeImage} from "@ui/utils/optimizeImage.ts";
 
 
 const svg = btoa(
@@ -98,8 +99,8 @@ const MastHead = () => (
 interface ElementProps {title?: string, description?: string, image?: string}
 export const createImageElement = (display:ElementProps)=>{
 
-    const imageBg = display.image ? `url(${display.image})` : `url("data:image/svg+xml;base64,${svg}")`
-console.log(imageBg)
+    const imageBg = display.image ? `url(${optimizeImage(display.image, 'openGraph')})` : `url("data:image/svg+xml;base64,${svg}")`
+    console.log(imageBg)
 	return (
 		<div
 			style={{

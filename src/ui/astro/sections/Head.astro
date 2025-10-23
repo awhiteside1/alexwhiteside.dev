@@ -1,22 +1,28 @@
 ---
 import '../../globals/global.css'
 import '@styles/css'
-import { ViewTransitions } from 'astro:transitions'
+import {ViewTransitions} from 'astro:transitions'
 interface Props {
-	title: string
-	kind?: 'page' | 'post' | 'hidden'
-	description: string
-	image?: string
+    title: string
+    kind?: 'page' | 'post' | 'hidden'
+    description: string
+    image?: string
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const {
-	title,
-	description,
-	image = '/blog-placeholder-1.jpg',
-	kind = 'page',
+    title,
+    description,
+    image = '/blog-placeholder-1.jpg',
+    kind = 'page',
 } = Astro.props
+
+
+const openGraphImage = new URL(
+    `/api/og/image?${new URLSearchParams({kind, title, description, image}).toString()}`,
+    Astro.url
+)
 ---
 
 <!-- Global Metadata -->
@@ -36,7 +42,8 @@ const {
 <title>{title} | Alex Whiteside</title>
 <meta name="title" content={title}/>
 <meta name="description" content={description}/>
-{kind ==='hidden' ? <meta name="robots" content="noindex"> : null }
+{kind ==='hidden' ?
+<meta name="robots" content="noindex"> : null }
 
 <link
         rel="preload"
@@ -54,10 +61,7 @@ const {
 <meta property="og:description" content={description}/>
 <meta
         property="og:image"
-        content={new URL(
-            `/api/og/page?${new URLSearchParams({kind, title: title, description: description}).toString()}`,
-            Astro.url
-        )}
+        content={openGraphImage}
 />
 
 <!-- Twitter -->
@@ -68,10 +72,7 @@ const {
 <meta property="twitter:description" content={description}/>
 <meta
         property="twitter:image"
-        content={new URL(
-            `/api/og/page?${new URLSearchParams({kind, title: title, description: description}).toString()}`,
-            Astro.url
-        )}
+        content={openGraphImage}
 />
 
 <script is:inline>
@@ -91,74 +92,74 @@ const {
 </script>
 
 <noscript>
-<style>
-.animate:not(.show) {
-    opacity: 1;
-    }
-</style>
+    <style>
+        .animate:not(.show) {
+            opacity: 1;
+        }
+    </style>
 </noscript>
 
-<ViewTransitions />
+<ViewTransitions/>
 
 <script is:inline>
-function init() {
-    setup()
-    animate()
-    addCopyCodeButtons()
+    function init() {
+        setup()
+        animate()
+        addCopyCodeButtons()
     }
 
-function animate() {
-    const animateElements = document.querySelectorAll('.animate')
+    function animate() {
+        const animateElements = document.querySelectorAll('.animate')
 
-    animateElements.forEach((element, index) => {
-        setTimeout(() => {
-            element.classList.add('show')
+        animateElements.forEach((element, index) => {
+            setTimeout(() => {
+                element.classList.add('show')
             }, index * 50)
         })
     }
 
-const setup = () => {
-    if (window.astroInitContexts != null) return
-    window.astroInitContexts = new Map()
+    const setup = () => {
+        if (window.astroInitContexts != null) return
+        window.astroInitContexts = new Map()
     }
 
-function addCopyCodeButtons() {
-    let copyButtonLabel = '📋'
-    let codeBlocks = Array.from(document.querySelectorAll('pre'))
+    function addCopyCodeButtons() {
+        let copyButtonLabel = '📋'
+        let codeBlocks = Array.from(document.querySelectorAll('pre'))
 
-    async function copyCode(codeBlock, copyButton) {
-        const codeText = codeBlock.innerText
-        const buttonText = copyButton.innerText
-        const textToCopy = codeText.replace(buttonText, '')
+        async function copyCode(codeBlock, copyButton) {
+            const codeText = codeBlock.innerText
+            const buttonText = copyButton.innerText
+            const textToCopy = codeText.replace(buttonText, '')
 
-        await navigator.clipboard.writeText(textToCopy)
-        copyButton.innerText = '✅'
+            await navigator.clipboard.writeText(textToCopy)
+            copyButton.innerText = '✅'
 
-        setTimeout(() => {
-            copyButton.innerText = copyButtonLabel
+            setTimeout(() => {
+                copyButton.innerText = copyButtonLabel
             }, 2000)
         }
 
-    for (let codeBlock of codeBlocks) {
-    const wrapper = document.createElement('div')
-    wrapper.style.position = 'relative'
+        for (let codeBlock of codeBlocks) {
+            const wrapper = document.createElement('div')
+            wrapper.style.position = 'relative'
 
-    const copyButton = document.createElement('button')
-    copyButton.innerText = copyButtonLabel
-    copyButton.classList = 'copy-code'
+            const copyButton = document.createElement('button')
+            copyButton.innerText = copyButtonLabel
+            copyButton.classList = 'copy-code'
 
-    codeBlock.setAttribute('tabindex', '0')
-    codeBlock.appendChild(copyButton)
+            codeBlock.setAttribute('tabindex', '0')
+            codeBlock.appendChild(copyButton)
 
-    codeBlock.parentNode.insertBefore(wrapper, codeBlock)
-    wrapper.appendChild(codeBlock)
+            codeBlock.parentNode.insertBefore(wrapper, codeBlock)
+            wrapper.appendChild(codeBlock)
 
-    copyButton?.addEventListener('click', async () => {
-    await copyCode(codeBlock, copyButton)
-    })
+            copyButton?.addEventListener('click', async () => {
+                await copyCode(codeBlock, copyButton)
+            })
+        }
     }
-    }
 
-setup()
-document.addEventListener('astro:page-load', () => init())
+    setup()
+    document.addEventListener('astro:page-load', () => init())
 </script>

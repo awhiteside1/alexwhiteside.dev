@@ -11,15 +11,16 @@ type Props = {
 	title: string
 	description: string
 	kind?: 'page' | 'post' | 'hidden'
+    image?:string
 }
 
-const { title, description, kind } = Astro.props
+const { title, description, kind, image } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en" class="light">
     <head>
-        <Head kind={kind} title={title} description={description} />
+        <Head kind={kind} title={title} description={description} image={image} />
         <style>
             :root {
                 /*--100vw: 100vw;*/

@@ -40,7 +40,7 @@ const html = chain.process(post.content.markdown)
     }
 </style>
 
-<Layout title={post.title} description={post.brief} kind="post">
+<Layout title={post.title} description={post.brief} kind="post" image={post.coverImage!.url}>
     <div slot="before" class="p-2">
         <GradientText class="text-4xl" color="neutral"
         >Alex Whiteside
