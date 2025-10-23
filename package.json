@@ -76,7 +76,6 @@
     "@types/request": "^2.48.13",
     "@vercel/node": "^3.2.29",
     "autoprefixer": "^10.4.21",
-    "handlebars-helpers": "^0.10.0",
     "inquirer": "^10.2.2",
     "plop": "^4.0.4",
     "postcss-import": "^16.1.1",
