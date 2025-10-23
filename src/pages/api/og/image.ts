@@ -15,7 +15,8 @@ type PageParameters = {
 type PostParameters = {
     kind: 'post'
     title: string
-    coverUrl: string
+    coverUrl?: string
+    image?: string
 }
 
 type RequestParameters = PageParameters | PostParameters | { kind: undefined }

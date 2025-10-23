@@ -126,7 +126,7 @@ console.log(imageBg)
 					left: 0,
 					right: 0,
                     justifySelf:'stretch',
-                    minWdth: '100%',
+                    minWidth: '100%',
                     backgroundRepeat: 'no-repeat',
 					bottom: 0,
                     objectFit:'cover',
