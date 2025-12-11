@@ -1,5 +1,6 @@
 ---
 import { resolveIcon } from '@ui/utils/icons'
+
 /**
  * Renders a badge with icon that adapts to the current text styles, sourced from a collection of icon libraries.
  */
@@ -21,7 +22,7 @@ type Props = {
 
 function replaceFillsWithCurrentColor(svgString: string) {
 	let filledString = svgString.replace(/fill="[^"]*"/g, 'fill="currentColor"')
-	filledString = filledString.replace(/\<svg/, '<svg fill="currentColor" ')
+	filledString = filledString.replace(/<svg/, '<svg fill="currentColor" ')
 	return filledString
 }
 

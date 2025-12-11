@@ -1,6 +1,6 @@
 import type { ReadLine } from 'node:readline'
 import inquirer from 'inquirer'
-// @ts-ignore
+// @ts-expect-error
 import type { Question } from 'inquirer/dist/esm/types/types'
 import type { NodePlopAPI } from 'plop'
 import { capitalize, get, mapValues } from 'radash'
@@ -60,7 +60,6 @@ class SchemaPrompt {
 					...base,
 					name: key,
 					message: `Enter ${capitalize(key.toString())}:`,
-					//@ts-ignore
 					transform: value.parse,
 				}
 			},

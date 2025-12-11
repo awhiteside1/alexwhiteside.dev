@@ -3,11 +3,7 @@ import { getCollection } from 'astro:content'
 import { filterFeatured } from '@ui/utils/draftProdFilter'
 import { sift } from 'radash'
 import { cn } from '../../utils/cn'
-import {
-	type CollectionFilter,
-	combineFilters,
-	filterByPath,
-} from '../../utils/draftProdFilter'
+import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
 import BookCard from './BookCard.astro'
 
 type Props = {
@@ -27,6 +23,6 @@ const filter = combineFilters(
 const featured = await getCollection('awesome', filter)
 ---
 
-<div class={cn('flex flex-wrap gap-4 w-full justify-evenly')}>
+<div class={cn('grid w-full justify-items-center grid-cols-[repeat(auto-fit,minmax(min(150px,100%),1fr))] gap-4')}>
     <BookCard books={featured} />
 </div>

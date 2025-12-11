@@ -2,6 +2,7 @@
 import { getStarredReposByLanguage } from '@github/getRepos'
 import Flat from './Flat.astro'
 import RepoList from './RepoList.astro'
+
 const groups = await getStarredReposByLanguage()
 ---
 

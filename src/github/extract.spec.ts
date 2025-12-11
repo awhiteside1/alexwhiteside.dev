@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest'
 import { getStarredRepos } from './getRepos'
-import { OllamaEmbeddings } from './llm/Ollama.ts'
 import { connectToDB } from './llm/init.ts'
+import { OllamaEmbeddings } from './llm/Ollama.ts'
 import { processRepository, summarizeData } from './llm/processRepository'
 
 describe('extract', () => {
@@ -17,7 +17,6 @@ describe('extract', () => {
 		const embedding = await new OllamaEmbeddings().computeQueryEmbeddings('css')
 		//const         db = await createDb()
 		//const response = await fetchReposByTopicAll(db) as Array<Record<string, any>>
-		// @ts-ignore
 		const connection = await connectToDB('s3://alexwhitesidedev')
 		const t = await connection.tableNames()
 		console.log(t)

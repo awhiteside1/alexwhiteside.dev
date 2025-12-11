@@ -3,10 +3,10 @@ import {
 	FixedSizeList,
 	Float32,
 	Int32,
+	List,
 	Schema,
 	Utf8,
 } from '@apache-arrow/esnext-esm'
-import { List } from '@apache-arrow/esnext-esm'
 import { LanceSchema } from '@lancedb/lancedb/embedding'
 import { connectToDB, embeddingFunction } from './init.ts'
 

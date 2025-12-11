@@ -4,6 +4,7 @@ import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import vercelServerless from '@astrojs/vercel'
 import { defineConfig, envField } from 'astro/config'
+
 const vercel = vercelServerless({
 	webAnalytics: {
 		enabled: true,
@@ -25,7 +26,7 @@ export default defineConfig({
 	adapter: isVercel() ? vercel : node,
 	integrations: [mdx(), sitemap(), react()],
 	output: 'static',
-	env:{
+	env: {
 		schema: {
 			HASHNODE: envField.string({
 				context: 'server',
@@ -33,7 +34,5 @@ export default defineConfig({
 			}),
 		},
 	},
-	experimental: {
-
-	},
+	experimental: {},
 })

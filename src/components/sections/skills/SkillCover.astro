@@ -1,10 +1,10 @@
 ---
-import { resolveIcon } from '../../../ui/utils/icons'
-
 import type { CollectionEntry } from 'astro:content'
 import { isString } from 'radash'
+import { resolveIcon } from '../../../ui/utils/icons'
 import Hexagon from './Hexagon.astro'
 import { animatedList } from './styles'
+
 type Props = {
 	skill: CollectionEntry<'skills'>['data'] & CollectionEntry<'skills'>
 }

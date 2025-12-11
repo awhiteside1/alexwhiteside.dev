@@ -8,6 +8,7 @@ import { getWorkContent } from '../lib/getWorkContent'
 import GradientText from '../ui/astro/components/elements/GradientText.astro'
 import Container from '../ui/astro/components/global/Container.astro'
 import Layout from '../ui/astro/layouts/Layout.astro'
+
 const workContent = await getWorkContent()
 const sortedByCompany = Array.from(workContent.map.values()).toSorted(
 	byDate((x) => x?.from),

@@ -1,41 +1,44 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { resolveImage } from '../../../utils/imagesCollese'
-import { optimizeImage } from '../../../utils/optimizeImage'
-import { CardTypes } from './CardTypes'
+import type {CollectionEntry} from 'astro:content'
+import {resolveImage} from '../../../utils/imagesCollese'
+import {optimizeImage} from '../../../utils/optimizeImage'
+import {CardTypes} from './CardTypes'
 
 interface Props {
-	entry: CollectionEntry<'awesome'>
+    entry: CollectionEntry<'awesome'>
 }
 
-const { entry } = Astro.props
+const {entry} = Astro.props
 const type = entry.id.split('/')[0] as 'blogs' | 'talks' | 'books'
 
 const image =
-	resolveImage(entry.data.cover) ?? CardTypes[type].imageGenerationFn(entry)
+    resolveImage(entry.data.cover) ?? CardTypes[type].imageGenerationFn(entry)
 const showTitle = CardTypes[type].showTitle
 
-const { url, name } = entry.data
+const {url, name} = entry.data
 ---
 
 <a
-    href={url}
-    class="block relative [aspect-ratio:6/9] max-h-[14rem] overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
+        href={url}
+        class="relative block aspect-[3/4] w-full max-w-[14rem] overflow-hidden rounded-lg shadow-md transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg"
 >
-    <div class="relative w-full h-full">
+    <div class="relative h-full w-full">
         <img
-            src={optimizeImage(image, 'med')}
-            alt={name}
-            class="w-full h-full object-cover"
+                src={optimizeImage(image, 'med')}
+                alt={name}
+                loading="lazy"
+                decoding="async"
+                style={`background-size: cover; background-image: url(${optimizeImage(image, 'placeholder')});`}
+                class="w-full h-full object-cover"
         />
 
         {
             showTitle && (
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <h3 class="text-white text-xl font-semibold m-0 drop-shadow-md">
-                        {name}
-                    </h3>
-                </div>
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <h3 class="m-0 text-xl font-semibold text-white drop-shadow-md">
+                                {name}
+                            </h3>
+                        </div>
             )
         }
     </div>
