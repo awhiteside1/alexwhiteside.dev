@@ -1,4 +1,5 @@
 const optimizePresets = {
+    placeholder: { width: '50', quality: '50', format: 'jpeg' },
 	thumb: { width: '500', quality: '80', format: 'avif' },
 	med: { width: '800', quality: '80', format: 'avif' },
 	large: { width: '1200', quality: '80', format: 'avif' },

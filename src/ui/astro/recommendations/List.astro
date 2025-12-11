@@ -23,6 +23,6 @@ const filter = combineFilters(
 const featured = await getCollection('awesome', filter)
 ---
 
-<div class={cn('grid w-full justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3')}>
+<div class={cn('grid w-full justify-items-center grid-cols-[repeat(auto-fit,minmax(min(150px,100%),1fr))] gap-4')}>
     <BookCard books={featured} />
 </div>
