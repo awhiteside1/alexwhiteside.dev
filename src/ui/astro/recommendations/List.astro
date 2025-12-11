@@ -7,17 +7,17 @@ import { combineFilters, filterByPath } from '../../utils/draftProdFilter'
 import BookCard from './BookCard.astro'
 
 type Props = {
-        filter: {
-                featured?: boolean
-                path?: string
-        }
+	filter: {
+		featured?: boolean
+		path?: string
+	}
 }
 
 const filter = combineFilters(
-        ...sift([
-                Astro.props.filter.featured && filterFeatured,
-                Astro.props.filter.path && filterByPath(Astro.props.filter.path),
-        ]),
+	...sift([
+		Astro.props.filter.featured && filterFeatured,
+		Astro.props.filter.path && filterByPath(Astro.props.filter.path),
+	]),
 )
 
 const featured = await getCollection('awesome', filter)

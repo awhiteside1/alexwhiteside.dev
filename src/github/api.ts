@@ -1,5 +1,6 @@
 const username = 'awhiteside1'
 const token = process.env.GITHUB
+
 import { parseLinkHeader } from './parseLink'
 import type { Repository } from './types'
 

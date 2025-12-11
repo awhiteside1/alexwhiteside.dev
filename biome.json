@@ -1,39 +1,48 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
 	"overrides": [
 		{
-			"include": ["*.svelte", "*.astro", "*.vue"],
+			"includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
 			"linter": {
 				"rules": {
 					"style": {
 						"useConst": "off",
 						"useImportType": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
 					}
 				}
 			}
 		}
 	],
 	"files": {
-		"ignore": [
-			"tailwind.config.cjs",
-			"*.unsafe.spec.ts",
-			"node_modules/**",
-			"dist/**",
-			"src/surreal.d.ts",
-			".astro/**",
-			"styled-system/**",
-			"src/hashnode/graphql/**",
-			".vercel/**",
-			".idx/**",
-			".devcontainer/**",
-			".vscode/**",
-			"**/*.js",
-			"**/*.mdx",
-			"public/**"
+		"includes": [
+			"src/**",
+			"!**/.astro",
+			"!**/tailwind.config.cjs",
+			"!**/*.unsafe.spec.ts",
+			"!**/node_modules",
+			"!**/dist",
+			"!**/src/surreal.d.ts",
+			"!**/styled-system",
+			"!**/src/hashnode/graphql",
+			"!**/.vercel",
+			"!**/.idx",
+			"!**/.devcontainer",
+			"!**/.vscode",
+			"!**/*.js",
+			"!**/*.mdx",
+			"!**/public"
 		]
 	},
-	"organizeImports": {
-		"enabled": true
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
 	},
 	"linter": {
 		"enabled": true,
@@ -49,6 +58,14 @@
 			"enabled": true,
 			"quoteStyle": "single",
 			"semicolons": "asNeeded"
+		}
+	},
+	"css": {
+		"linter": {
+			"enabled": true
+		},
+		"parser": {
+			"tailwindDirectives": false
 		}
 	}
 }

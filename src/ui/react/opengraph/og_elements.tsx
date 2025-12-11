@@ -1,14 +1,11 @@
+import { optimizeImage } from '@ui/utils/optimizeImage.ts'
 import type { PropsWithChildren } from 'react'
-import {optimizeImage} from "@ui/utils/optimizeImage.ts";
-
 
 const svg = btoa(
 	`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='28' height='28' fill='none' stroke='#737373'><path d='M0 .5H31.5V32'/></svg>`,
 )
 
 const BORDERS = 'none' // `1px dashed ${draw(['blue', 'green', 'red', 'purple'])}`
-
-
 
 const round = (value: number) => {
 	return Math.ceil(value / 28) * 28
@@ -95,12 +92,16 @@ const MastHead = () => (
 	</div>
 )
 
-
-interface ElementProps {title?: string, description?: string, image?: string}
-export const createImageElement = (display:ElementProps)=>{
-
-    const imageBg = display.image ? `url(${optimizeImage(display.image, 'openGraph')})` : `url("data:image/svg+xml;base64,${svg}")`
-    console.log(imageBg)
+interface ElementProps {
+	title?: string
+	description?: string
+	image?: string
+}
+export const createImageElement = (display: ElementProps) => {
+	const imageBg = display.image
+		? `url(${optimizeImage(display.image, 'openGraph')})`
+		: `url("data:image/svg+xml;base64,${svg}")`
+	console.log(imageBg)
 	return (
 		<div
 			style={{
@@ -126,14 +127,14 @@ export const createImageElement = (display:ElementProps)=>{
 					top: 0,
 					left: 0,
 					right: 0,
-                    justifySelf:'stretch',
-                    minWidth: '100%',
-                    backgroundRepeat: 'no-repeat',
+					justifySelf: 'stretch',
+					minWidth: '100%',
+					backgroundRepeat: 'no-repeat',
 					bottom: 0,
-                    objectFit:'cover',
+					objectFit: 'cover',
 					display: 'flex',
 					position: 'absolute',
-                    minHeight: '100%',
+					minHeight: '100%',
 				}}
 			>
 				<div

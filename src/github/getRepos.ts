@@ -5,7 +5,7 @@ import { fetchStarredRepos } from './api'
 import type { Repository } from './types'
 
 export const getStarredRepos = async (all = true) => {
-	const repos = new Array<Repository>()
+	const repos: Repository[] = []
 	let response = await fetchStarredRepos()
 	do {
 		repos.push(...response.data)
