@@ -1,6 +1,7 @@
 'use client'
 import { cn } from '@ui/utils/cn'
 import { AnimatePresence, motion } from 'framer-motion'
+// biome-ignore lint/correctness/noUnusedImports: React
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 export const FlipWords = ({
@@ -92,7 +93,7 @@ export const FlipWords = ({
 				>
 					{[...currentWord].map((letter, index) => (
 						<motion.span
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+							// biome-ignore lint/suspicious/noArrayIndexKey: Concat
 							key={currentWord + index}
 							initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
 							animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}

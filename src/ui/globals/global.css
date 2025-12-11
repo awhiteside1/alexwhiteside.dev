@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: Tailwind */
+/** biome-ignore-all lint/complexity/noImportantStyles: Globals */
 @layer reset, base, tokens, recipes, utilities;
 
 @tailwind base;

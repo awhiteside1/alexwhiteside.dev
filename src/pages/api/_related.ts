@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ url }) => {
 
 	const termString = typeof term === 'string' ? term : term[0]
 	try {
-		const credentials = awsCredentialsProvider({
+		const _credentials = awsCredentialsProvider({
 			roleArn: process.env.AWS_ROLE_ARN,
 		})
 

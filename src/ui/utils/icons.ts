@@ -35,7 +35,7 @@ const fetchIcon = async (url: string) => {
 				if (data) return data
 			}
 		}
-	} catch (err) {}
+	} catch (_err) {}
 
 	if (url.startsWith('local:')) {
 		const name = url.replace('local:', '').toLowerCase()
@@ -53,6 +53,6 @@ const tryLoadLocal = async (name: string) => {
 	try {
 		const data = await import(`./icons/${name}.svg?raw`)
 		if (data.default) return data.default
-	} catch (err) {}
+	} catch (_err) {}
 	return undefined
 }

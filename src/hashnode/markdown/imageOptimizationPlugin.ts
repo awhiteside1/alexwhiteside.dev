@@ -26,7 +26,7 @@ export const optimizeImagePlugin = () => {
 							})
 						}
 					}
-				} catch (e) {
+				} catch (_e) {
 					//console.log(e)
 				}
 			}
@@ -43,9 +43,7 @@ export const hoistImagesOutOfParagraphs = () => {
 					const parent = parents.pop()
 					const grandParent = parents.pop()
 					if (parent && grandParent && parent.type === 'paragraph') {
-						const parentIndex = grandParent.children.findIndex(
-							(item) => item === parent,
-						)
+						const parentIndex = grandParent.children.indexOf(parent)
 						const previousNode = grandParent.children[parentIndex - 1]
 						grandParent.children = replace(
 							grandParent.children,
@@ -59,7 +57,7 @@ export const hoistImagesOutOfParagraphs = () => {
 						)
 					}
 				}
-			} catch (e) {}
+			} catch (_e) {}
 		})
 	}
 }

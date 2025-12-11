@@ -20,7 +20,7 @@ export const ensureInit = <T extends Map<string, unknown>>(
 	const context = new Map()
 	window.astroInitContexts.set(propss.id, context)
 
-	document.addEventListener('astro:page-load', (ev) => {
+	document.addEventListener('astro:page-load', (_ev) => {
 		const document = window.document
 		const pathname = window.location.pathname
 		if (

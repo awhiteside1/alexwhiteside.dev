@@ -12,7 +12,7 @@
 		"preview": "astro preview --host",
 		"preview:network": "astro dev --host",
 		"astro": "astro",
-		"lint": "biome check  src && astro check",
+		"lint": "biome check src && astro check",
 		"lint:fix": "biome check --write --unsafe src"
 	},
 	"dependencies": {

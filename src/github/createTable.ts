@@ -6,7 +6,7 @@ const registry = getRegistry()
 
 registry.register()(OllamaEmbeddings)
 
-const uri = '/tmp/lancedb/'
+const _uri = '/tmp/lancedb/'
 
 export const repoSchema = new Schema([
 	new Field('id', new Int32()),

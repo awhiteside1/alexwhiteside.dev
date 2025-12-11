@@ -65,7 +65,7 @@
 			"enabled": true
 		},
 		"parser": {
-			"tailwindDirectives": false
+			"tailwindDirectives": true
 		}
 	}
 }

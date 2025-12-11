@@ -46,7 +46,7 @@ function parseLink(link: string): LinkInfo | null {
 		info = { ...qry, ...info }
 		info.url = linkUrl
 		return info
-	} catch (e) {
+	} catch (_e) {
 		return null
 	}
 }

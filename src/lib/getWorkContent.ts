@@ -3,7 +3,6 @@ import { byDate } from '@ui/utils/interval.tsx'
 import { first, group, last, mapValues, sift } from 'radash'
 
 type Work = CollectionEntry<'work'>
-type WorkData = Work['data']
 
 type GroupedEntry = {
 	roles: Array<Work>

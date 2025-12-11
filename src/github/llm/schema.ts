@@ -38,7 +38,7 @@ const resourcesSchema = LanceSchema({
 	repository: new Int32(),
 })
 
-const cacheSchema = LanceSchema({
+const _cacheSchema = LanceSchema({
 	vector: new FixedSizeList(768, new Field('item', new Float32())),
 	text: new Utf8(),
 	repos: new List(new Field('topic', new Utf8())),

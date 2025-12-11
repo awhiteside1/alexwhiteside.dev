@@ -1,5 +1,5 @@
 const optimizePresets = {
-    placeholder: { width: '50', quality: '50', format: 'jpeg' },
+	placeholder: { width: '50', quality: '50', format: 'jpeg' },
 	thumb: { width: '500', quality: '80', format: 'avif' },
 	med: { width: '800', quality: '80', format: 'avif' },
 	large: { width: '1200', quality: '80', format: 'avif' },
@@ -28,7 +28,7 @@ export const optimizeImage = (
 		const options = optimizePresets[preset]
 		const optionsString = generateOptionsString(options)
 		return `https://alexwhiteside.dev/cdn-cgi/image/${optionsString}/${url}`
-	} catch (err) {
+	} catch (_err) {
 		return url
 	}
 }
