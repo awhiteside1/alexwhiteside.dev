@@ -1,34 +1,67 @@
 import { cn } from '@lib/utils'
 import { optimizeImage } from '@ui/utils/optimizeImage'
-import type { Image, Root } from 'mdast'
+import type { ClassValue } from 'clsx'
+import type { Properties } from 'hast'
+import type { Image, Root, RootContent } from 'mdast'
 import { replace } from 'radash'
 import { visit } from 'unist-util-visit'
-import { CONTINUE, visitParents } from 'unist-util-visit-parents'
+import { CONTINUE } from 'unist-util-visit-parents'
+
+type HProperties = Properties & Record<string, unknown>
+
+type ImageData = (Image['data'] & Record<string, unknown>) & {
+	hProperties?: HProperties
+}
+
+type ImageMeta = {
+	class?: ClassValue
+	style?: HProperties['style']
+} & Record<string, unknown>
+
+const isFloatImage = (
+	node: RootContent,
+): node is Image & { data?: ImageData } =>
+	node.type === 'image' && hasFloatClass(node.data?.hProperties?.className)
+
+const parseImageMeta = (alt?: string | null): ImageMeta => {
+	if (!alt) return {}
+
+	try {
+		const parsed = JSON.parse(alt) as ImageMeta
+		return parsed && typeof parsed === 'object' ? parsed : {}
+	} catch (_error) {
+		return {}
+	}
+}
+
+const hasFloatClass = (className?: HProperties['className']) => {
+	if (!className) return false
+
+	const classes = Array.isArray(className) ? className : [className]
+	return classes.some((value) => value?.toString().includes('float'))
+}
 
 export const optimizeImagePlugin = () => {
 	return (tree: Root) => {
-		visit(tree, 'image', (node: Image) => {
-			if (node.url) {
-				node.url = optimizeImage(node.url, 'large')
-				try {
-					if (node.data) {
-						const meta = JSON.parse(node.alt || '{}')
-						const className = cn(['max-w-full', meta.class])
+		visit<Root, 'image'>(tree, 'image', (node) => {
+			const imageNode = node as Image & { data?: ImageData }
 
-						if (meta.style) {
-							Object.assign(node.data, {
-								hProperties: {
-									...meta,
-									...node.data.hProperties,
-									className,
-									style: meta.style,
-								},
-							})
-						}
-					}
-				} catch (_e) {
-					//console.log(e)
-				}
+			if (!imageNode.url) return
+
+			imageNode.url = optimizeImage(imageNode.url, 'large')
+
+			const meta = parseImageMeta(imageNode.alt)
+			const { class: metaClass, style, ...restMeta } = meta
+
+			const data = imageNode.data ?? ({} as ImageData)
+			const existingProperties = (data.hProperties ?? {}) as HProperties
+			const className = cn(['max-w-full', metaClass])
+
+			data.hProperties = {
+				...existingProperties,
+				...restMeta,
+				className,
+				...(style ? { style } : {}),
 			}
 		})
 	}
@@ -36,28 +69,34 @@ export const optimizeImagePlugin = () => {
 
 export const hoistImagesOutOfParagraphs = () => {
 	return (tree: Root) => {
-		visitParents(tree, 'image', (node, parents) => {
-			try {
-				if (parents.length < 2) return CONTINUE
-				if (node.data?.hProperties?.className?.toString().includes('float')) {
-					const parent = parents.pop()
-					const grandParent = parents.pop()
-					if (parent && grandParent && parent.type === 'paragraph') {
-						const parentIndex = grandParent.children.indexOf(parent)
-						const previousNode = grandParent.children[parentIndex - 1]
-						grandParent.children = replace(
-							grandParent.children,
-							node,
-							(item) => item === previousNode,
-						)
-						grandParent.children = replace(
-							grandParent.children,
-							previousNode,
-							(item) => item === parent,
-						)
-					}
-				}
-			} catch (_e) {}
+		visit<Root, 'paragraph'>(tree, 'paragraph', (paragraph, index, parent) => {
+			if (!parent || index == null) return CONTINUE
+
+			const floatImageIndex = paragraph.children.findIndex(isFloatImage)
+			if (floatImageIndex === -1) return CONTINUE
+
+			const imageNode = paragraph.children[floatImageIndex]
+			if (!imageNode || paragraph.children.length !== 1) return CONTINUE
+
+			const previousSiblingIndex = index - 1
+			if (previousSiblingIndex < 0) return CONTINUE
+
+			const previousSibling = parent.children?.[previousSiblingIndex]
+			if (!previousSibling) return CONTINUE
+
+			parent.children = replace(
+				parent.children ?? [],
+				imageNode as RootContent,
+				(item: RootContent) => item === previousSibling,
+			)
+
+			parent.children = replace(
+				parent.children,
+				previousSibling,
+				(item: RootContent) => item === paragraph,
+			)
+
+			return CONTINUE
 		})
 	}
 }
