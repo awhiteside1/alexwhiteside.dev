@@ -1,5 +1,6 @@
 ---
 import { isString } from 'radash'
+import { match, P } from 'ts-pattern'
 import { cn } from '../../../utils/cn'
 import { optimizeImage } from '../../../utils/optimizeImage'
 
@@ -8,7 +9,12 @@ type Props = {
 	title: string
 	subtitle: string
 	priority?: boolean
-	detail?: string
+	detail?:
+		| {
+				label: string
+				href?: string
+		  }
+		| string
 }
 
 const { logo, title, subtitle, priority = false, detail } = Astro.props
@@ -18,32 +24,37 @@ const textClass = title.length > 14 ? 'text-sm' : 'text-lg'
 ---
 
 <div
-    data-section-kind="sticky"
-    class="flex col-span-4 justify-around sticky top-14 py-4 z-10"
+        data-section-kind="sticky"
+        class="flex col-span-4 justify-around sticky top-14 py-4 z-10"
 >
     <div
-        class="flex gap-3 items-center content-center dark:bg-black bg-white rounded-3xl px-3 py-2 ring-1 ring-zinc-200 dark:ring-zinc-800 shadow-md shadow-zinc-600/5 w-[14rem] min-h-20"
+            class="flex gap-3 items-center content-center dark:bg-black bg-white rounded-3xl px-3 py-2 ring-1 ring-zinc-200 dark:ring-zinc-800 shadow-md shadow-zinc-600/5 w-[15rem] min-h-20"
     >
         <div
-            class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+                class="relative flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
         >
             <img
-                src={optimizeImage(src, 'thumb')}
-                alt={title}
-                loading={priority ? 'eager' : 'lazy'}
-                class="h-10 w-10 object-cover rounded-full"
+                    src={optimizeImage(src, 'thumb')}
+                    alt={title}
+                    loading={priority ? 'eager' : 'lazy'}
+                    class="h-10 w-10 object-cover rounded-full"
             />
         </div>
         <div>
-            <dd
-                class={cn(
-                    'p-0 m-0 w-full flex-none  font-medium text-zinc-900 leading-none dark:text-zinc-100',
-                    textClass
-                )}
+            <h2
+                    class={cn(
+                        'p-0 m-0 w-full flex-none  font-medium text-zinc-900 leading-none dark:text-zinc-100',
+                        textClass
+                    )}
             >
                 {title}
-                {detail && <p class="w-full -mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">{detail}</p> }
-            </dd>
+                {detail && (<p class="w-full -mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">{match(detail).with({
+                    href: P.string,
+                    label: P.string
+                }, ({href, label}) => <a
+                        href={href}>{label}</a>).with({label: P.string}, ({label}) =>
+                        <span>{label}</span>).with(P.string, (label) => <span>{label}</span>).exhaustive()}</p>)}
+            </h2>
 
             <dd class={cn("p-0 m-0 text-sm text-zinc-400 dark:text-zinc-500", detail && 'text-xs')}>
                 {subtitle}

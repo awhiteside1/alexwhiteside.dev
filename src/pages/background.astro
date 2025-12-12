@@ -16,8 +16,8 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
 ---
 
 <Layout
-    title="Career & Background"
-    description="10+ years experience developing robust systems and efficient organizations"
+        title="Career & Background"
+        description="10+ years experience developing robust systems and efficient organizations"
 >
     <div slot="before" class="text-3xl z-[100] translate-y-4">
         <GradientText color="pink">Career &</GradientText>
@@ -29,14 +29,14 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
 
     <Container background class="md:p-2">
         <div
-            id="sticky-backdrop"
-            style="opacity: 0;"
-            class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
+                id="sticky-backdrop"
+                style="opacity: 0;"
+                class="z-[2] fixed top-12 w-full h-20 left-0 right-0 backdrop-blur-sm saturate-200 transition-opacity duration-300"
         >
             &nbsp;
         </div>
         <div class="space-y-6 px-4 py-4">
-            <MdxSection page="background" name="intro" className="text-sm" />
+            <MdxSection page="background" name="intro" className="text-sm"/>
             <div class="w-full border-t border-gray-300"></div>
             <div>
                 <div data-container="companies" class="flex max-w-4xl flex-col">
@@ -47,26 +47,32 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
                                 company.logo &&
                                 company.company &&
                                 company.from && (
-                                    <>
-                                        <MediaElement
-                                            logo={company.logo}
-                                            title={company.company}
-                                            detail={company.acquired && `Acquired by ${company.acquired}`}
-                                            subtitle={ generateInterval(
-                                                company.from,
-                                                company.to
-                                            )}
-                                        />
-                                        <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
-                                            {company?.roles.map(
-                                                (entry: { slug: string }) => (
-                                                    <WorkCard
-                                                        slug={entry.slug}
-                                                    />
-                                                )
-                                            )}
-                                        </article>
-                                    </>
+                                            <>
+
+                                                <MediaElement
+                                                        logo={company.logo}
+                                                        title={company.company}
+                                                        detail={company.acquired && {
+                                                            label: `Acquired by ${company.acquired}`,
+                                                            href: `#${company.acquired}`
+                                                        }
+                                                        }
+                                                        subtitle={generateInterval(
+                                                            company.from,
+                                                            company.to
+                                                        )}
+                                                />
+                                                <span style="scroll-margin-top: 3rem" id={company.company} />
+                                                <article class="md:grid md:grid-cols-4 gap-y-4 gap-x-4 md:items-baseline">
+                                                    {company?.roles.map(
+                                                        (entry: { slug: string }) => (
+                                                                <WorkCard
+                                                                        slug={entry.slug}
+                                                                />
+                                                        )
+                                                    )}
+                                                </article>
+                                            </>
                                 )
                         )
                     }
@@ -77,7 +83,7 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
 </Layout>
 
 <script>
-    import { ensureInit } from '../lib/astro'
+    import {ensureInit} from '../lib/astro'
 
     const getBackdrop = () => {
         const background = document.getElementById('sticky-backdrop')
@@ -168,5 +174,5 @@ const sortedByCompany = Array.from(workContent.map.values()).toSorted(
         }
     }
 
-    ensureInit(initializeScroll, { pages: ['/background'] })
+    ensureInit(initializeScroll, {pages: ['/background']})
 </script>
