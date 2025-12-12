@@ -43,6 +43,7 @@ export const hoistImagesOutOfParagraphs = () => {
 					const parent = parents.pop()
 					const grandParent = parents.pop()
 					if (parent && grandParent && parent.type === 'paragraph') {
+						// @ts-expect-error
 						const parentIndex = grandParent.children.indexOf(parent)
 						const previousNode = grandParent.children[parentIndex - 1]
 						grandParent.children = replace(
