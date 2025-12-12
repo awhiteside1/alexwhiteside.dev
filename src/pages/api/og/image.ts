@@ -24,7 +24,7 @@ const getFont = async (name: string) => {
 	const res = await fetch(`https://alexwhiteside.dev/fonts/${name}.ttf`)
 	return res.arrayBuffer()
 }
-export const GET: APIRoute<RequestParameters> = async ({ url }) => {
+export const GET: APIRoute<RequestParameters> = async ({ request, url }) => {
 	//const params = extractParametersFromRequest(request)
 	console.log(`OG Image Generatoor with url: ${url.href}`)
 	const params = Object.fromEntries(
