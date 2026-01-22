@@ -1,7 +1,5 @@
 # Core Network Frontend
 
-
-
 Core Network Frontend was a platform I developed at Even Financial, which was designed to handle things. 
 
 Score Network Frontend is a platform which allows me to do blah blah blah blah blah blah blah da da da da I want it to transcribe. Oh my god 
