@@ -1,4 +1,4 @@
-import { createCompiler } from "typstkit";
+import { createCompiler } from "@awhiteside1/typstkit";
 import {doc} from "./resume";
 
 

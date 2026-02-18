@@ -4,8 +4,8 @@
  * Run with: bun run playground/resume.tsx
  */
 
-import { render, Doc, Section, Bullets, Item, DebugOutlines, DebugMeasure } from "typstkit/jsx"
-import { Heading, Company, Role, Education, Publication, Skills } from "typstkit"
+import { render, Doc, Section, Bullets, Item, DebugOutlines, DebugMeasure } from "@awhiteside1/typstkit/jsx"
+import { Heading, Company, Role, Education, Publication, Skills } from "@awhiteside1/typstkit"
 
 /** Toggle to visualize all bounding boxes in the PDF */
 const DEBUG_LAYOUT = false
