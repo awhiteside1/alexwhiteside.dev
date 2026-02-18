@@ -1,0 +1,16 @@
+---
+import {getPdfContents} from "../../resume/build.ts";
+import Layout from "@ui/astro/layouts/Layout.astro";
+const pdf = await getPdfContents();
+const base64 = Buffer.from(pdf.data).toString("base64");
+const dataUrl = `data:application/pdf;base64,${base64}`;
+---
+
+<Layout
+        title="Alex Whiteside"
+        description="Experienced software architect, entrepreneur, and creator with over 10 years bringing products from 0 to 1 and beyond in edtech, fintech, and B2B. "
+>
+
+    <iframe src={`${dataUrl}#toolbar=0&navpanes=0`} style="width: 100%; height: 100vh; border: none;"></iframe>
+
+</Layout>

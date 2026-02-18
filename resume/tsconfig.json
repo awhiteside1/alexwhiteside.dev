@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "typstkit/jsx",
+    "allowImportingTsExtensions": true
+  },
+  "include": ["resume.tsx", "build.ts"]
+}
