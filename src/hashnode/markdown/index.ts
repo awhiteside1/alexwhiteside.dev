@@ -3,7 +3,7 @@ import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import remarkUnwrapImages from 'remark-unwrap-images'
+import rehypeUnwrapImages from 'rehype-unwrap-images'
 import { unified } from 'unified'
 import { hashnodeImageFixer } from './hashnodeImagePlugin'
 import {
@@ -18,6 +18,6 @@ export const chain = unified()
 	.use(optimizeImagePlugin)
 	.use(hoistImagesOutOfParagraphs)
 	.use(remarkRehype, { allowDangerousHtml: true })
-	.use(remarkUnwrapImages)
+	.use(rehypeUnwrapImages)
 	.use(rehypeRaw)
 	.use(rehypeStringify)

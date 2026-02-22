@@ -1,9 +1,9 @@
-import { Temporal, type Intl as TemporalIntl } from 'temporal-polyfill'
+import { Temporal } from 'temporal-polyfill'
 
 export const generateInterval = (
 	fromDate: Date,
 	toDate?: Date,
-	options: TemporalIntl.DateTimeFormatOptions = {
+	options: Intl.DateTimeFormatOptions = {
 		month: 'short',
 		year: 'numeric',
 	},
