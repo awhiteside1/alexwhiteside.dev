@@ -32,6 +32,10 @@ export default defineConfig({
 				context: 'server',
 				access: 'secret',
 			}),
+			HASHNODE_WEBHOOK_SECRET: envField.string({
+				context: 'server',
+				access: 'secret',
+			}),
 		},
 	},
 	experimental: {},

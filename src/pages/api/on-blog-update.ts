@@ -1,17 +1,11 @@
+import { HASHNODE_WEBHOOK_SECRET } from 'astro:env/server'
 import { Hashnode } from '@hashnode'
+import { verifyWebhookSignature } from '@hashnode/webhook'
 import type { APIRoute } from 'astro'
 
 const bypassToken = '87734ad8259d67c3c11747d3e4e112d01234'
 
 export const prerender = false
-
-const isValidRequest = (request: Request) => {
-	const isJson = request.headers.get('Content-Type') === 'application/json'
-	// Headers.get() yields null, never undefined - comparing against undefined
-	// made this check pass for every caller.
-	const isHashnode = request.headers.get('x-hashnode-signature') !== null
-	return isJson && isHashnode
-}
 
 const revalidate = async (slug: string) => {
 	const pages = [
@@ -45,14 +39,28 @@ const revalidate = async (slug: string) => {
 }
 
 export const POST: APIRoute = async ({ request }) => {
-	if (!isValidRequest(request)) {
-		return new Response('Not a Hashnode webhook request', { status: 401 })
+	if (request.headers.get('Content-Type') !== 'application/json') {
+		return new Response('Expected application/json', { status: 415 })
+	}
+
+	// The signature covers the raw bytes, so the body must be read as text and
+	// parsed afterwards rather than via request.json().
+	const body = await request.text()
+
+	const verification = verifyWebhookSignature({
+		body,
+		header: request.headers.get('x-hashnode-signature'),
+		secret: HASHNODE_WEBHOOK_SECRET,
+	})
+
+	if (!verification.valid) {
+		console.warn(`Rejected webhook: ${verification.reason}`)
+		return new Response(verification.reason, { status: 401 })
 	}
 
 	let postId: string | undefined
 	try {
-		const body = await request.json()
-		postId = body?.data?.post?.id
+		postId = JSON.parse(body)?.data?.post?.id
 	} catch (e) {
 		console.error('Malformed webhook body', e)
 		return new Response('Malformed body', { status: 400 })

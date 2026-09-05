@@ -16,7 +16,7 @@
 		"plugins": [
 			{
 				"name": "gql.tada/ts-plugin",
-				"schema": "https://gql.hashnode.com",
+				"schema": "https://gql-beta.hashnode.com",
 				"tadaOutputLocation": "./src/hashnode/graphql/graphql-env.d.ts",
 				"tadaTurboLocation": "./src/hashnode/graphql/graphql-cache.d.ts"
 			},
