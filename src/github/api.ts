@@ -1,5 +1,6 @@
 const username = 'awhiteside1'
-const token = process.env.GITHUB
+// Vercel provisions this as GITHUB_TOKEN; keep GITHUB working for local shells.
+const token = process.env.GITHUB ?? process.env.GITHUB_TOKEN
 
 import { parseLinkHeader } from './parseLink'
 import type { Repository } from './types'

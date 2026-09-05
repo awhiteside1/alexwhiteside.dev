@@ -12,3 +12,4 @@ dist/
 styled-system
 styled-system-studio
 .pnpm-store/
+.env*.local

@@ -1,4 +1,5 @@
 import type { Client } from '@urql/core'
+import { isNotFound, unwrap } from '../client'
 import { graphql } from '../graphql'
 
 const query = graphql(`
@@ -17,7 +18,9 @@ export const getPostByID =
 		if (!id) return undefined
 		const client = makeClient()
 		const result = await client.query(query, { id }).toPromise()
-		if (result.error || !result.data?.post) return undefined
-		//TODO: These are for types only, consider using different fragment strategy
-		return result.data.post
+		// A missing post is a real 404, not an outage.
+		if (isNotFound(result)) return undefined
+
+		const data = unwrap(result, `getPostByID(${id})`)
+		return data.post ?? undefined
 	}

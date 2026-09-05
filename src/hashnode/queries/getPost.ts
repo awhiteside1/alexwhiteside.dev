@@ -1,4 +1,5 @@
 import type { Client } from '@urql/core'
+import { isNotFound, requirePublication, unwrap } from '../client'
 import { graphql } from '../graphql'
 
 const query = graphql(`
@@ -48,7 +49,10 @@ export const getPost = (makeClient: () => Client) => async (slug?: string) => {
 	const client = makeClient()
 
 	const result = await client.query(query, { slug }).toPromise()
-	if (result.error || !result.data?.publication?.post) return undefined
-	//TODO: These are for types only, consider using different fragment strategy
-	return result.data.publication.post
+	// A missing post is a real 404, not an outage.
+	if (isNotFound(result)) return undefined
+
+	const data = unwrap(result, `getPost(${slug})`)
+	const publication = requirePublication(data.publication, 'getPost')
+	return publication.post ?? undefined
 }

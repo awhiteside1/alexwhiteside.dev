@@ -1,6 +1,7 @@
 import type { Client } from '@urql/core'
 import type { ResultOf } from 'gql.tada'
 import type { IterableElement } from 'type-fest'
+import { requirePublication, unwrap } from '../client'
 import { graphql } from '../graphql'
 
 const getPostsQuery = graphql(`
@@ -38,8 +39,9 @@ const getPostsQuery = graphql(`
 export const getPosts = (makeClient: () => Client) => async () => {
 	const client = makeClient()
 	const result = await client.query(getPostsQuery, {}).toPromise()
-	const posts = result.data?.publication?.posts.edges ?? []
-	return posts.map((post) => post.node)
+	const data = unwrap(result, 'getPosts')
+	const publication = requirePublication(data.publication, 'getPosts')
+	return publication.posts.edges.map((post) => post.node)
 }
 
 type Result = ResultOf<typeof getPostsQuery>

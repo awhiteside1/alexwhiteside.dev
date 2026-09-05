@@ -1,4 +1,5 @@
 import type { Client } from '@urql/core'
+import { requirePublication, unwrap } from '../client'
 import { graphql } from '../graphql'
 
 const getFeaturedQuery = graphql(`{
@@ -22,7 +23,10 @@ const getFeaturedQuery = graphql(`{
 export const getFeatured = (makeClient: () => Client) => async () => {
 	const client = makeClient()
 	const result = await client.query(getFeaturedQuery, {}).toPromise()
-	const posts = result.data?.publication?.series?.posts.edges ?? []
+	const data = unwrap(result, 'getFeatured')
+	const publication = requirePublication(data.publication, 'getFeatured')
+	// An empty or missing series is a content state, not a failure.
+	const posts = publication.series?.posts.edges ?? []
 	return posts.map((post) => post.node)
 }
 
