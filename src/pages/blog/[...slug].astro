@@ -16,6 +16,8 @@ import GradientText from 'src/ui/astro/components/elements/GradientText.astro'
 import Container from '../../ui/astro/components/global/Container.astro'
 
 const html = chain.process(post.content.markdown)
+// The beta schema types a cover URL as nullable, so posts without one must render.
+const coverImage = post.coverImage?.url ?? undefined
 ---
 
 <style is:global>
@@ -40,7 +42,7 @@ const html = chain.process(post.content.markdown)
     }
 </style>
 
-<Layout title={post.title} description={post.brief} kind="post" image={post.coverImage!.url}>
+<Layout title={post.title} description={post.brief} kind="post" image={coverImage}>
     <div slot="before" class="p-2">
         <GradientText class="text-4xl" color="neutral"
         >Alex Whiteside
@@ -55,7 +57,7 @@ const html = chain.process(post.content.markdown)
             <BlogHero
                     title={post.title}
                     date={post.publishedAt}
-                    coverImage={post.coverImage!.url}
+                    coverImage={coverImage}
             />
         </div>
         <article class="animate mx-4">
